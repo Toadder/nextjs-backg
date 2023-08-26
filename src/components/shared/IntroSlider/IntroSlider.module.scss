@@ -1,0 +1,49 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply lg:pb-10 md:pb-8 pb-6;
+
+	.outer {
+		@apply relative;
+
+		.slider {
+			height: rem(425);
+
+			@media (max-width: $xl) {
+				height: rem(270);
+			}
+
+			@media (max-width: $md) {
+				height: rem(250);
+			}
+		}
+
+		.link {
+			@apply block w-full h-full;
+		}
+
+		.slide {
+		}
+
+		.image {
+			@apply image-like-bg;
+		}
+
+		.prev,
+		.next {
+			@apply absolute top-1/2 -translate-y-1/2;
+		}
+
+		.prev {
+			@apply left-3;
+		}
+
+		.next {
+			@apply right-3;
+		}
+
+		.pagination {
+			@apply slider-pagination lg:mt-6 mt-4;
+		}
+	}
+}

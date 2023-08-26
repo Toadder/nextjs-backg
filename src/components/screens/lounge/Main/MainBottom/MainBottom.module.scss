@@ -1,0 +1,77 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply flex xl:flex-row flex-col items-start justify-between gap-x-10 md:gap-y-6 gap-y-4;
+
+	.media {
+		@apply w-full flex justify-center;
+		flex: 0 1 rem(520);
+
+		@media (max-width: $xl) {
+			flex: 1 1 auto;
+		}
+	}
+
+	.link {
+		@apply cursor-pointer;
+	}
+
+	.info {
+		@apply lg:space-y-6 md:space-y-5 space-y-3;
+		flex: 0 1 rem(580);
+
+		@media (max-width: $xl) {
+			flex: 1 1 auto;
+		}
+	}
+
+	.properties {
+		@apply grid md:grid-cols-2 grid-cols-1 gap-3;
+	}
+
+	.property {
+		@apply text-center relative overflow-hidden cursor-pointer bg-grey;
+		min-height: rem(260);
+
+		@media(max-width: $md) {
+			min-height: auto;
+		}
+
+		@media (any-hover: hover) {
+			&:hover .content {
+				@apply translate-y-0;
+			}
+		}
+	}
+
+	.preview,
+	.content {
+		@apply md:py-14 py-8 md:px-8 px-5 md:space-y-3 space-y-2;
+	}
+
+	.preview {
+		@apply h-full;
+
+		> svg {
+			@apply md:text-5xl text-4xl mx-auto;
+		}
+	}
+
+	.content {
+		@apply bg-white absolute md:pb-5 pb-2 md:px-6 px-2 top-0 left-0 w-full h-full overflow-hidden translate-y-full transition-transform duration-500;
+
+		&.active {
+			@media (any-hover: none) {
+				@apply translate-y-0;
+			}
+		}
+	}
+
+	.title {
+		@apply font-raleway md:text-xl;
+	}
+
+	.text {
+		@apply md:text-sm text-xs font-medium overflow-ellipsis;
+	}
+}

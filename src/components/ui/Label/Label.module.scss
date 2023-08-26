@@ -1,0 +1,12 @@
+@import '@/assets/styles/vars.scss';
+
+.label {
+	@apply absolute z-1 top-0 right-0 w-full h-full;
+	max-width: rem(150);
+	max-height: rem(150);
+
+	.text {
+		@apply text-white font-extrabold text-center bg-orange w-full uppercase whitespace-nowrap py-1 text-xs;
+		transform: rotate(45deg) translateY(-45%) translateX(30%);
+	}
+}

@@ -1,0 +1,33 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply flex lg:flex-row flex-col items-start justify-between gap-x-10 md:gap-y-7 gap-y-5;
+
+	.content {
+		@apply md:space-y-2 space-y-1;
+		flex: 0 1 rem(550);
+
+		@media (max-width: $lg) {
+			flex: 1 1 auto;
+		}
+	}
+
+	.title {
+		@apply md:text-left text-center;
+	}
+
+	.media {
+		@apply md:space-y-5 space-y-4 w-full;
+		flex: 0 1 rem(550);
+
+		@media (max-width: $lg) {
+			@apply mx-auto;
+			flex: 1 1 auto;
+			max-width: rem(550);
+		}
+	}
+
+	.btn {
+		@apply btn-primary relative left-1/2 -translate-x-1/2 font-bold;
+	}
+}

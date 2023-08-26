@@ -1,0 +1,67 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply lg:pb-10 md:pb-8 pb-6;
+
+	.outer {
+		@apply relative;
+	}
+
+	.slider {
+	}
+
+	.slide {
+		@apply flex items-center justify-center md:p-14 py-7 p-12;
+		min-height: rem(630);
+
+		@media (max-width: $md) {
+			min-height: rem(230);
+		}
+
+		&::before {
+			content: '';
+			@apply absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-1;
+		}
+	}
+
+	.image {
+		@apply image-like-bg;
+	}
+
+	.content {
+		@apply relative z-2 text-center text-white lg:space-y-5 space-y-4 translate-y-20 opacity-0;
+		max-width: 90%;
+		transition:
+			transform 1.25s ease 600ms,
+			opacity 1.25s ease 600ms;
+
+		&.active {
+			@apply translate-y-0 opacity-100;
+		}
+	}
+
+	.title {
+		@apply font-raleway lg:text-5xl md:text-4xl text-2xl uppercase leading-none;
+	}
+
+	.text {
+		@apply md:text-lg text-xs leading-snug;
+	}
+
+	.prev,
+	.next {
+		@apply absolute top-1/2 -translate-y-1/2 z-3;
+	}
+
+	.prev {
+		@apply left-3;
+	}
+
+	.next {
+		@apply right-3;
+	}
+
+	.pagination {
+		@apply slider-pagination lg:mt-6 mt-4;
+	}
+}

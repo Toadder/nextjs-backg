@@ -1,0 +1,36 @@
+@import '@/assets/styles/vars.scss';
+
+.burger {
+	@apply xl:hidden md:w-11 md:h-9 w-8 h-6 relative z-2 cursor-pointer;
+
+	&.active {
+		span {
+			@apply scale-0;
+		}
+
+		&::before {
+			@apply rotate-45 md:top-3.5 top-2.5;
+		}
+
+		&::after {
+			@apply -rotate-45 md:bottom-4 bottom-2.5;
+		}
+	}
+
+	span {
+		@apply absolute left-0 w-full md:h-1.5 h-1 bg-brown rounded-xl top-1/2 -translate-y-1/2 transition-transform;
+	}
+
+	&::before, &::after {
+		content: '';
+		@apply absolute left-0 w-full md:h-1.5 h-1 bg-brown rounded-xl transition-all;
+	}
+
+	&::before {
+		@apply top-0;
+	}
+
+	&::after {
+		@apply bottom-0;
+	}
+}

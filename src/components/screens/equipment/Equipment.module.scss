@@ -1,0 +1,11 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section;
+
+	.inner {
+		@apply container grid md:grid-cols-2 grid-cols-1 md:gap-5 gap-4;
+	}
+
+	
+}

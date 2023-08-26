@@ -1,0 +1,33 @@
+.root {
+	@apply relative md:py-16 py-10;
+
+	.link {
+		@apply block text-white;
+	}
+
+	.bg {
+		@apply image-like-bg;
+	}
+
+	.inner {
+		@apply relative z-1 container text-center flex flex-col gap-y-2 items-center;
+
+		> svg {
+			@apply md:text-5xl text-4xl;
+			animation: pulse 1s infinite ease-in-out alternate;
+		}
+	}
+
+	.text {
+		@apply font-raleway md:text-8xl text-6xl uppercase;
+	}
+}
+
+@keyframes pulse {
+	from {
+		transform: scale(0.85);
+	}
+	to {
+		transform: scale(1.15);
+	}
+}

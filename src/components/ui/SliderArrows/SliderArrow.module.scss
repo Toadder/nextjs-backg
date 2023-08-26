@@ -1,0 +1,7 @@
+.arrow {
+	@apply text-2xl text-[#EEEEEE] inline-block cursor-pointer z-3;
+
+	&.next {
+		@apply rotate-180;
+	}
+}

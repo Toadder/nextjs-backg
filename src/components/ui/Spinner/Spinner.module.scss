@@ -1,0 +1,7 @@
+.wrapper {
+	@apply absolute top-1/2 left-1/2 inline-block -translate-y-1/2 -translate-x-1/2 z-2;
+
+	.spinner {
+		@apply animate-spin rounded-full border-solid border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite];
+	}
+}

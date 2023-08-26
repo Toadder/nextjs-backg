@@ -1,0 +1,7 @@
+.root {
+	@apply section ;
+
+	.inner {
+		@apply container bg-grey text-center md:text-xl py-7 font-medium;
+	}
+}

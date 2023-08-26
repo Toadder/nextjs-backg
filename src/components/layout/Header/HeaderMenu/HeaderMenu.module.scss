@@ -1,0 +1,107 @@
+@import '@/assets/styles/vars.scss';
+
+.menu {
+	@apply xl:overflow-y-visible overflow-y-auto xl:relative fixed xl:top-auto top-0 xl:left-0 xl:translate-y-0 -translate-y-full left-0 xl:w-auto w-full xl:h-auto h-full xl:z-2 duration-400 transition-transform;
+
+	&.active {
+		@apply translate-y-0;
+	}
+
+	.backdrop {
+		@apply xl:hidden absolute top-0 left-0 z-[-1] w-full h-full;
+	}
+
+	.inner {
+		@apply xl:bg-transparent bg-white xl:shadow-none shadow-primary;
+
+		@media (max-width: $xl) {
+			padding-top: rem(71);
+		}
+
+		@media (max-width: $md) {
+			padding-top: rem(48);
+		}
+	}
+
+	.nav {
+	}
+
+	.list {
+		@apply xl:flex items-center flex-wrap font-raleway font-extrabold;
+		font-size: rem(15);
+	}
+
+	.item {
+		@apply relative;
+
+		&:not(:first-child) {
+			.link {
+				@apply xl:border-t-0 border-t border-t-grey;
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				.link::before {
+					@apply w-full scale-100 opacity-100;
+				}
+				.sublist {
+					@apply block animate-fade;
+				}
+			}
+		}
+
+		@media (max-width: $xl) {
+			&:hover .sublist {
+				animation: none;
+			}
+		}
+
+		.link {
+			@apply transition-colors xl:whitespace-nowrap relative xl:py-3 md:py-4 py-2 2xl:px-5 px-4 flex items-center justify-center gap-x-1 uppercase cursor-pointer xl:text-base md:text-xl text-lg;
+
+			&.active {
+				@apply xl:bg-transparent bg-orange;
+				&::before {
+					@apply w-full scale-100 opacity-100;
+				}
+			}
+
+			&.toggled {
+				> svg {
+					@apply rotate-180 mt-0.5;
+				}
+			}
+
+			&::before {
+				content: '';
+				@apply xl:block hidden h-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-2/3 scale-50 opacity-0 bg-orange z-[-1] transition-all duration-300;
+			}
+
+			> svg {
+				@apply xl:text-lg md:text-xl -mt-0.5 transition-all;
+			}
+		}
+	}
+
+	.sublist {
+		@apply xl:hidden xl:absolute xl:left-0 xl:top-full bg-white xl:shadow-primary;
+		min-width: rem(190);
+	}
+
+	.subitem {
+		&:not(:first-child) {
+			.sublink {
+				@apply border-t border-t-grey;
+			}
+		}
+
+		.sublink {
+			@apply xl:border-t-0 border-t border-t-grey xl:text-left text-center xl:p-5 md:p-4 py-2 px-4 block xl:text-base md:text-xl text-lg uppercase xl:whitespace-nowrap transition-colors duration-300 hover:bg-[#55595c] hover:text-white;
+
+			&.active {
+				@apply bg-[#55595c] text-white border-t-transparent;
+			}
+		}
+	}
+}

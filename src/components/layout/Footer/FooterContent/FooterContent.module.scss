@@ -1,0 +1,40 @@
+@import '@/assets/styles/vars.scss';
+
+.content {
+	@apply px-4 xl:py-6 lg:py-10 md:py-8 py-6 xl:relative z-1 inline-flex items-center xl:w-auto w-full;
+	left: calc((100vw - rem(1582)) / 2);
+	min-height: rem(420);
+
+	@media(max-width: 103.75em) {
+		left: 38px;
+	};
+
+	@media(max-width: $xl) {
+		min-height: auto;
+	}
+	
+	.card {
+		@apply xl:bg-white xl:p-6 xl:bg-opacity-90 inline-block text-center xl:text-base md:text-2xl font-medium xl:space-y-5 md:space-y-8 space-y-6 xl:shadow-primary w-full;
+		max-width: rem(360);
+
+		@media(max-width: $xl) {
+			max-width: 100%;
+		}
+
+		.socials {
+			@apply flex xl:flex-col items-center justify-center flex-wrap gap-y-3 md:gap-x-8 gap-x-6;
+		}
+
+		.social {
+			@apply xl:text-6xl md:text-7xl text-5xl transition-colors hover:text-orange;
+		}
+
+		.links {
+			@apply flex flex-col justify-center xl:text-base md:text-xl text-sm gap-y-0.5;
+		}
+
+		.link {
+			@apply hover:underline;
+		}
+	}
+}

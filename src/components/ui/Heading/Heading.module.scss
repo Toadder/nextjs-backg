@@ -1,0 +1,14 @@
+@import '@/assets/styles/vars.scss';
+
+.heading {
+	@apply font-raleway leading-tight uppercase;
+	font-size: rem(55);
+
+	@media(max-width: $lg) {
+		font-size: rem(48);
+	}
+
+	@media(max-width: $md) {
+		font-size: rem(34);
+	}
+}

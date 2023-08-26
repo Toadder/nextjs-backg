@@ -1,0 +1,50 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section;
+
+	.inner {
+		@apply container md:space-y-8 space-y-7;
+	}
+
+	.block {
+		@apply md:space-y-6 space-y-4;
+	}
+
+	.title {
+		@apply text-center;
+	}
+
+	.contacts {
+		@apply grid gap-5;
+		grid-template-columns: repeat(auto-fit, minmax(rem(210), 1fr));
+		grid-auto-rows: 1fr;
+	}
+
+	.contact {
+		@apply text-center bg-grey md:py-8 py-7 md:px-4 px-5 transition-colors duration-400 md:shadow-none shadow-primary;
+
+		@media (any-hover: hover) {
+			&:hover {
+				@apply bg-orange;
+				.subtitle,
+				.text,
+				> svg {
+					@apply text-white;
+				}
+			}
+		}
+
+		> svg {
+			@apply mx-auto text-4xl transition-colors duration-400;
+		}
+	}
+
+	.subtitle {
+		@apply md:text-lg text-xl font-raleway mt-3 transition-colors duration-400;
+	}
+
+	.text {
+		@apply md:text-sm mt-2 transition-colors duration-400;
+	}
+}

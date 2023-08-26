@@ -1,0 +1,33 @@
+.root {
+	@apply section;
+
+	.inner {
+		@apply container;
+	}
+
+	.title {
+		@apply text-center;
+	}
+	
+	.text {
+		@apply text-center text-lg mt-2.5;
+	}
+
+	.items {
+		@apply mt-12 grid grid-cols-3 gap-8;
+	}
+
+	.btns {
+		@apply flex items-stretch justify-center gap-5 mt-9;
+	}
+
+	.link {
+		&:first-child {
+			@apply btn-secondary;
+		}
+
+		&:last-child {
+			@apply btn-primary;
+		}
+	}
+}

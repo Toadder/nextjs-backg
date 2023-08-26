@@ -1,0 +1,7 @@
+.root {
+	@apply section;
+
+	.inner {
+		@apply container lg:space-y-7 md:space-y-5 space-y-4;
+	}
+}

@@ -1,0 +1,50 @@
+@import '@/assets/styles/vars.scss';
+
+.header {
+	@apply xl:relative fixed xl:top-auto top-0 xl:left-auto left-0 w-full z-10 md:py-2.5 py-1.5;
+
+	&::before {
+		content: '';
+		@apply absolute top-0 left-0 z-1 bg-white w-full h-full;
+	}
+
+	.inner {
+		@apply container-wide flex-center-between md:gap-x-5 gap-x-3;
+	}
+
+	.logo {
+		@apply relative z-2 md:w-auto w-[130px] xl:mr-0 mr-auto;
+	}
+
+	.phone {
+		@apply text-right;
+		min-width: rem(180);
+
+		@media (max-width: $xxl) {
+			min-width: auto;
+		}
+
+		> a {
+			@apply relative z-2 font-raleway font-extrabold hover:text-orange transition-colors;
+			font-size: rem(17);
+
+			@media (max-width: $xl) {
+				font-size: rem(32);
+			}
+
+			@media (max-width: $md) {
+				font-size: rem(21);
+			}
+
+			span {
+				@apply xl:inline-block hidden;
+			}
+
+			svg {
+				@apply xl:hidden block;
+			}
+		}
+
+		
+	}
+}

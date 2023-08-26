@@ -1,0 +1,25 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section;
+
+	.inner {
+		@apply container;
+	}
+
+	.text {
+		@apply font-medium text-center md:mt-3 mt-2;
+
+		@media (max-width: $md) {
+			font-size: rem(14);
+		}
+
+		a {
+			@apply text-blue hover:underline;
+		}
+	}
+
+	.link {
+		@apply btn-secondary relative left-1/2 -translate-x-1/2 mt-5;
+	}
+}

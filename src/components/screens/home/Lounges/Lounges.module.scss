@@ -1,0 +1,17 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section;
+
+	.inner {
+		@apply container grid grid-cols-6 md:gap-5 gap-4 auto-cols-max;
+	}
+
+	.wrapper {
+		@apply lg:col-span-2 md:col-span-3 col-span-6;
+
+		&.wide {
+			@apply md:col-span-3 col-span-6;
+		}
+	}
+}

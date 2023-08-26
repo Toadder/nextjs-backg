@@ -1,0 +1,23 @@
+.root {
+	@apply section;
+
+	.inner {
+		@apply container text-center;
+	}
+
+	.error {
+		@apply font-raleway md:text-9xl text-8xl;
+	}
+
+	.title {
+		@apply font-raleway md:text-5xl text-2xl md:mt-1.5 mt-2.5;
+	}
+
+	.content {
+		@apply font-medium md:text-xl md:mt-4 mt-3;
+	}
+
+	.link {
+		@apply btn-primary md:mt-4 mt-5;
+	}
+}

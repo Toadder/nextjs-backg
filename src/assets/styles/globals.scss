@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@/assets/styles/vars.scss';
+
+* {
+	box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+	outline: none;
+}
+
+body {
+	@apply font-open-sans text-brown overflow-x-hidden;
+}
+
+.layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.main {
+	flex: 1 0 auto;
+
+	@media (max-width: $xl) {
+		margin-top: rem(71);
+	}
+
+	@media (max-width: $md) {
+		margin-top: rem(46);
+	}
+}
+
+.swiper-pagination-bullet {
+	margin: 0 0 !important;
+}

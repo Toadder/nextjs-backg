@@ -1,0 +1,44 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section;
+	.outer {
+		@apply relative;
+
+		.slider {
+			height: rem(400);
+
+			@media (max-width: $lg) {
+				height: rem(450);
+			}
+		}
+
+		.slide {
+		}
+
+		.link {
+			@apply block w-full h-full;
+		}
+
+		.image {
+			@apply image-like-bg;
+		}
+
+		.prev,
+		.next {
+			@apply absolute top-1/2 -translate-y-1/2;
+		}
+
+		.prev {
+			@apply left-3;
+		}
+
+		.next {
+			@apply right-3;
+		}
+
+		.pagination {
+			@apply slider-pagination lg:mt-6 mt-4;
+		}
+	}
+}
