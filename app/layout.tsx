@@ -1,4 +1,5 @@
-import { Open_Sans, Raleway } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import Footer from '@/components/layout/Footer/Footer';
 import Header from '@/components/layout/Header/Header';
@@ -6,11 +7,12 @@ import Layout from '@/components/layout/Layout';
 
 import '@/assets/styles/globals.scss';
 
-const raleway = Raleway({
-	weight: ['900'],
-	display: 'swap',
-	variable: '--font-raleway',
+const raleway = localFont({
+	src: './Raleway-BlackItalic.ttf',
+	weight: '900',
 	style: 'italic',
+	variable: '--font-raleway',
+	display: 'swap'
 });
 
 const openSans = Open_Sans({

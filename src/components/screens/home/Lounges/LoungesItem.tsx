@@ -7,7 +7,7 @@ import styles from './Lounges.module.scss';
 import { ILoungeItem } from './lounges.interface';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const LoungesItem: FC<Omit<ILoungeItem, 'imageSizes'>> = ({
+const LoungesItem: FC<ILoungeItem> = ({
 	index,
 	image,
 	title,

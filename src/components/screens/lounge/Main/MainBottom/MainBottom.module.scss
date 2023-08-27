@@ -33,7 +33,7 @@
 		@apply text-center relative overflow-hidden cursor-pointer bg-grey;
 		min-height: rem(260);
 
-		@media(max-width: $md) {
+		@media (max-width: $md) {
 			min-height: auto;
 		}
 
