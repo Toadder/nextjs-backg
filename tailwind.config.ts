@@ -20,7 +20,6 @@ const config: Config = {
 		},
 		extend: {
 			fontFamily: {
-				raleway: ['var(--font-raleway)'],
 				'open-sans': ['var(--font-open-sans)']
 			},
 			lineHeight: {
@@ -46,10 +45,10 @@ const config: Config = {
 				fade: {
 					from: { opacity: '0%' },
 					to: { opacity: '100%' }
-				},
+				}
 			},
 			animation: {
-				fade: 'fade .6s ease',
+				fade: 'fade .6s ease'
 			}
 		}
 	},
@@ -123,6 +122,10 @@ const config: Config = {
 			});
 
 			addUtilities({
+				'.font-raleway': {
+					fontFamily: 'Raleway, sans-serif'
+				},
+
 				'.section': {
 					padding: '2.5rem 0',
 					'@media (max-width: 64em)': {
