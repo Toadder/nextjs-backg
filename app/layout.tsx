@@ -11,7 +11,6 @@ const raleway = Raleway({
 	display: 'swap',
 	variable: '--font-raleway',
 	style: 'italic',
-	subsets: ['cyrillic']
 });
 
 const openSans = Open_Sans({
