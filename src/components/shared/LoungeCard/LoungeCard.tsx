@@ -11,6 +11,7 @@ const LoungeCard: FC<ILoungeCard> = ({ link, title, image, imageSizes, excerpt, 
 		<article className={styles.item}>
 			<Link href={link} className={styles.link}>
 				<Image
+					priority
 					src={image}
 					fill
 					sizes={imageSizes}

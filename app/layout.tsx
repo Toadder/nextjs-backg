@@ -8,7 +8,6 @@ import '@/assets/styles/globals.scss';
 
 const raleway = Raleway({
 	weight: ['900'],
-	display: 'swap',
 	variable: '--font-raleway',
 	style: 'italic',
 	subsets: ['cyrillic']
@@ -16,7 +15,6 @@ const raleway = Raleway({
 
 const openSans = Open_Sans({
 	weight: ['400', '500', '600', '800'],
-	display: 'swap',
 	style: 'normal',
 	variable: '--font-open-sans',
 	subsets: ['cyrillic']

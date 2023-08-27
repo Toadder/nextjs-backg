@@ -40,11 +40,10 @@ const LazyVideo: FC<ILazyVideo> = ({
 					playsInline
 					onLoadedData={() => setIsLoading(false)}
 				>
-					<source src={videoMp4} type="video/webm" />
+					<source src={videoMp4} type="video/mp4" />
 					{videoWebm ? <source src={videoWebm} type="video/webm" /> : null}
 				</video>
 			)}
-			)
 		</div>
 	);
 };
