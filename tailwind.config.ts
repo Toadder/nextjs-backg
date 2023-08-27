@@ -20,7 +20,7 @@ const config: Config = {
 		},
 		extend: {
 			fontFamily: {
-				'muller-narrow': ['var(--font-muller-narrow)'],
+				'muller-narrow': ['Muller Narrow', 'sans-serif'],
 				'open-sans': ['var(--font-open-sans)']
 			},
 			lineHeight: {
