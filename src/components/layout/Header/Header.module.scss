@@ -25,7 +25,7 @@
 		}
 
 		> a {
-			@apply relative z-2 font-raleway font-extrabold hover:text-orange transition-colors;
+			@apply relative z-2 font-muller-narrow font-extrabold hover:text-orange transition-colors;
 			font-size: rem(17);
 
 			@media (max-width: $xl) {

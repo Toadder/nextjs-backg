@@ -7,11 +7,11 @@ import Layout from '@/components/layout/Layout';
 
 import '@/assets/styles/globals.scss';
 
-const raleway = localFont({
-	src: './Raleway-BlackItalic.ttf',
-	weight: '900',
+const mullerNarrow = localFont({
+	src: './MullerNarrow-ExtraBoldItalic.ttf',
+	weight: '800',
 	style: 'italic',
-	variable: '--font-raleway',
+	variable: '--font-muller-narrow',
 	display: 'swap'
 });
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="ru">
-			<body className={`${openSans.variable} ${raleway.variable}`}>
+			<body className={`${openSans.variable} ${mullerNarrow.variable}`}>
 				<Layout>
 					<Header />
 					<main className="main">{children}</main>

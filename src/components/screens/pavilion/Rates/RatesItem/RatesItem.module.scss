@@ -10,7 +10,7 @@
 	}
 
 	.title {
-		@apply font-raleway md:text-2xl text-xl;
+		@apply font-muller-narrow md:text-2xl text-xl;
 	}
 
 	.time {
@@ -25,7 +25,7 @@
 	}
 
 	.price {
-		@apply flex items-start justify-center font-raleway md:text-6xl text-5xl leading-none;
+		@apply flex items-start justify-center font-muller-narrow md:text-6xl text-5xl leading-none;
 
 		> span {
 			@apply text-2xl;
