@@ -41,7 +41,7 @@
 	}
 
 	.title {
-		@apply font-muller-narrow lg:text-5xl md:text-4xl text-2xl uppercase leading-none;
+		@apply font-muller-narrow font-extrabold italic lg:text-5xl md:text-4xl text-2xl uppercase leading-none;
 	}
 
 	.text {

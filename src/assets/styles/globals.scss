@@ -2,15 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	font-family: 'Muller Narrow';
-	font-display: swap;
-	src:
-		url('../fonts/MullerNarrow-ExtraBoldItalic.woff2') format('woff2'),
-		url('../fonts/MullerNarrow-ExtraBoldItalic.woff') format('woff');
-	font-weight: 800;
-	font-style: italic;
-}
+// @font-face {
+// 	font-family: 'Muller Narrow';
+// 	font-display: swap;
+// 	src:
+// 		url('../fonts/MullerNarrow-ExtraBoldItalic.woff2') format('woff2'),
+// 		url('../fonts/MullerNarrow-ExtraBoldItalic.woff') format('woff');
+// 	font-weight: 800;
+// 	font-style: italic;
+// }
 
 @import '@/assets/styles/vars.scss';
 
@@ -24,7 +24,7 @@
 }
 
 body {
-	@apply font-open-sans text-brown overflow-x-hidden;
+	@apply text-brown overflow-x-hidden;
 }
 
 .layout {

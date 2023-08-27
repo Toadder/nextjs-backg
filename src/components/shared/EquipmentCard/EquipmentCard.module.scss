@@ -40,7 +40,7 @@
 	}
 
 	.title {
-		@apply font-muller-narrow lg:text-4xl text-3xl uppercase transition-transform duration-600;
+		@apply font-muller-narrow font-extrabold italic lg:text-4xl text-3xl uppercase transition-transform duration-600;
 	}
 
 	.text {

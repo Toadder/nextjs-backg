@@ -1,7 +1,7 @@
 @import '@/assets/styles/vars.scss';
 
 .heading {
-	@apply font-muller-narrow leading-tight uppercase;
+	@apply font-muller-narrow font-extrabold italic leading-tight uppercase;
 	font-size: rem(55);
 
 	@media (max-width: $lg) {

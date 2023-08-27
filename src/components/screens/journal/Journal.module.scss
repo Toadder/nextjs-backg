@@ -50,7 +50,7 @@
 	}
 
 	.title {
-		@apply font-muller-narrow md:text-2xl text-xl uppercase transition-transform duration-600;
+		@apply font-muller-narrow font-extrabold italic md:text-2xl text-xl uppercase transition-transform duration-600;
 	}
 
 	.text {
