@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,900&display=swap');
-
 @import '@/assets/styles/vars.scss';
 
 * {
 	box-sizing: border-box;
+	-webkit-locale: auto;
+	white-space: normal;
 }
 
 *:focus,
