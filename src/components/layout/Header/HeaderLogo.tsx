@@ -12,7 +12,7 @@ const HeaderLogo: FC<{ hideMenu: () => void }> = ({ hideMenu }) => {
 				width={180}
 				height={51}
 				alt=""
-				sizes="(min-width: 768px) 190px, 135px"
+				sizes="(min-width: 768px) 11.875rem, 8.4375rem"
 				priority
 			/>
 		</Link>

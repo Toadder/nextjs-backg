@@ -1,5 +1,5 @@
-import { ILoungeCard } from '@/components/shared/LoungeCard/lounge-card.interface'
+import { ILounge } from '@/components/shared/LoungeCard/lounge-card.interface'
 
-export interface ILoungeItem extends ILoungeCard {
+export interface ILoungeItem extends ILounge {
 	index: number;
 }

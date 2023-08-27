@@ -14,14 +14,14 @@ const SimilarLounges: FC = () => {
 					<Heading className={styles.title}>Похожие залы</Heading>
 					<div className={styles.items}>
 						<LoungeCard
-							imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(1200px / 2)"
+							imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(75rem / 2)"
 							image="/static/home/lounges/pavilion-ciklorama.webp"
 							title="Павильон циклорама"
 							excerpt="Одна из самых больших циклорам в Москве. 18 метров ширины и 9 метров глубины..."
 							link="/pavilions/cycle"
 						/>
 						<LoungeCard
-							imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(1200px / 2)"
+							imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(75rem / 2)"
 							image="/static/home/lounges/mini-cikla.webp"
 							title="Мини цикла"
 							excerpt="Мини циклорама - просторный зал с угловой циклорамой и просторной рабочей зоной..."

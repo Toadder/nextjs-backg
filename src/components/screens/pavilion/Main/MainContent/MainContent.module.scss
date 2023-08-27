@@ -1,0 +1,30 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply md:space-y-5 space-y-4;
+	flex: 0 1 rem(570);
+
+	@media (max-width: $lg) {
+		flex: 1 1 auto;
+	}
+
+	.title {
+		@apply md:text-4xl text-2xl lg:text-left text-center;
+	}
+
+	.links {
+		@apply flex flex-col items-center justify-center text-center gap-y-2;
+	}
+
+	.btn {
+		@apply btn-primary font-bold;
+	}
+
+	.link {
+		@apply text-sm;
+
+		> a {
+			@apply text-blue underline transition-colors hover:text-orange;
+		}
+	}
+}

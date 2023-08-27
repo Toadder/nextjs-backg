@@ -16,13 +16,13 @@ const MainBottom: FC = () => {
 					<a
 						className={styles.link}
 						href="/static/lounge/plan.webp"
-						data-fancybox="MainContentPlan"
+						data-fancybox="mainBottomPlan"
 					>
 						<Image
 							src="/static/lounge/plan.webp"
 							width={520}
 							height={0}
-							sizes="(max-width: 32.5em) 100vw, 520px"
+							sizes="(max-width: 32.5em) 100vw, 32.5rem"
 							alt=""
 						/>
 					</a>

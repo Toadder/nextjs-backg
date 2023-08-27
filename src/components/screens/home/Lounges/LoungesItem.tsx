@@ -7,7 +7,7 @@ import styles from './Lounges.module.scss';
 import { ILoungeItem } from './lounges.interface';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const LoungesItem: FC<ILoungeItem> = ({
+const LoungesItem: FC<Omit<ILoungeItem, 'imageSizes'>> = ({
 	index,
 	image,
 	title,
@@ -17,8 +17,8 @@ const LoungesItem: FC<ILoungeItem> = ({
 }) => {
 	const isWide: boolean = (index + 1) % 5 === 0 || (index + 2) % 5 === 0;
 	const desktopImageSizes: string = isWide
-		? 'calc(1200px / 2)'
-		: 'calc(1200px / 3)';
+		? 'calc(75rem / 2)'
+		: 'calc(75rem / 3)';
 	const imageSizes = `(max-width: 48em) 100vw, (max-width: 64em) 50vw, ${desktopImageSizes}`;
 
 	return (

@@ -15,7 +15,7 @@ const JournalItem: FC<IJournalItem> = ({ title, excerpt, link, image }) => {
 						className={styles.image}
 						src={image}
 						fill
-						sizes="calc(1200px / 3), (max-width: 64em) 50vw, (max-width: 48em) 100vw"
+						sizes="calc(75rem / 3), (max-width: 64em) 50vw, (max-width: 48em) 100vw"
 						alt=""
 					/>
 					<div className={styles.content}>

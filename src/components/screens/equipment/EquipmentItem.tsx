@@ -7,7 +7,7 @@ import { WithAnimation } from '@/hoc/WithAnimation';
 const EquipmentItem: FC = () => {
 	return (
 		<WithAnimation>
-			<EquipmentCard imageSizes="(max-width: 48em) 100vw, calc(1200px / 2)" />
+			<EquipmentCard imageSizes="(max-width: 48em) 100vw, calc(75rem / 2)" />
 		</WithAnimation>
 	);
 };
