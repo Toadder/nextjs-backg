@@ -5,7 +5,7 @@
 
 	.media {
 		@apply w-full flex justify-center;
-		flex: 0 1 rem(520);
+		flex: 1 1 rem(520);
 
 		@media (max-width: $xl) {
 			flex: 1 1 auto;
@@ -18,7 +18,7 @@
 
 	.info {
 		@apply lg:space-y-6 md:space-y-5 space-y-3;
-		flex: 0 1 rem(580);
+		flex: 1 1 rem(580);
 
 		@media (max-width: $xl) {
 			flex: 1 1 auto;
@@ -42,6 +42,10 @@
 				@apply translate-y-0;
 			}
 		}
+	}
+
+	.icon {
+		@apply mx-auto md:w-12 md:h-12 w-9 h-9;
 	}
 
 	.preview,

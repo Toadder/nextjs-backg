@@ -1,12 +1,16 @@
 import cn from 'clsx';
 import { FC } from 'react';
 
+import { IHeaderMenu } from '../header.interface';
+
 import HeaderItem from './HeaderItem';
 import styles from './HeaderMenu.module.scss';
-import { menuItems } from './menu.data';
-import { IHeaderMenu } from './menu.interface';
 
-const HeaderMenu: FC<IHeaderMenu> = ({ isOpened, hideMenu }) => {
+const HeaderMenu: FC<IHeaderMenu> = ({ menu, isOpened, hideMenu }) => {
+	if (!menu.length) {
+		return;
+	}
+
 	return (
 		<div
 			className={cn(styles.menu, {
@@ -16,8 +20,14 @@ const HeaderMenu: FC<IHeaderMenu> = ({ isOpened, hideMenu }) => {
 			<div className={styles.inner}>
 				<nav className={styles.nav}>
 					<ul className={styles.list}>
-						{menuItems.map((item) => (
-							<HeaderItem key={item.name} {...item} hideMenu={hideMenu} />
+						{menu.map(({ node }) => (
+							<HeaderItem
+								key={node.id}
+								label={node.label}
+								path={node.path}
+								childItems={node.childItems}
+								hideMenu={hideMenu}
+							/>
 						))}
 					</ul>
 				</nav>

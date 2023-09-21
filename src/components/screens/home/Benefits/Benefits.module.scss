@@ -17,6 +17,10 @@
 		}
 	}
 
+	.icon {
+		@apply mx-auto md:w-12 md:h-12 w-9 h-9;
+	}
+
 	.preview,
 	.content {
 		@apply md:py-9 py-5 md:px-8 px-5 md:space-y-3 space-y-2.5;

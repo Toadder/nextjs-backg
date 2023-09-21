@@ -1,22 +1,27 @@
 'use client';
 
 import cn from 'clsx';
+import Image from 'next/image';
 import { FC, useState } from 'react';
 
-import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
-
-import { FontAwesomeIconName } from '@/shared/types/icon.types';
+import { ILoungeProperty } from '../../lounge.interface';
 
 import styles from './MainBottom.module.scss';
 
-interface IMainProperty {
-	icon: FontAwesomeIconName;
-	title: string;
-	excerpt: string;
-	text: string;
-}
+const MainProperty: FC<ILoungeProperty> = ({
+	icon,
+	title,
+	content,
+	excerpt
+}) => {
+	const isFieldsExists: boolean =
+		!!icon?.sourceUrl?.length ||
+		!!title?.length ||
+		!!content?.length ||
+		!!excerpt?.length;
 
-const MainProperty: FC<IMainProperty> = ({ icon, title, text, excerpt }) => {
+	if (!isFieldsExists) return;
+
 	const [isOpened, setIsOpened] = useState<boolean>(false);
 
 	const toggleIsOpened = (): void => {
@@ -26,7 +31,13 @@ const MainProperty: FC<IMainProperty> = ({ icon, title, text, excerpt }) => {
 	return (
 		<div className={styles.property} onClick={toggleIsOpened}>
 			<div className={styles.preview}>
-				<FontAwesomeIcon name={icon} />
+				<Image
+					className={styles.icon}
+					src={icon?.sourceUrl || ''}
+					width={48}
+					height={48}
+					alt={icon?.altText || ''}
+				/>
 				<div className={styles.title}>{title}</div>
 				<p className={styles.text}>{excerpt}</p>
 			</div>
@@ -36,7 +47,7 @@ const MainProperty: FC<IMainProperty> = ({ icon, title, text, excerpt }) => {
 				})}
 			>
 				<div className={styles.title}>{title}</div>
-				<p className={styles.text}>{text}</p>
+				<p className={styles.text}>{content}</p>
 			</div>
 		</div>
 	);

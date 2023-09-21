@@ -1,0 +1,14 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply lg:space-y-2 space-y-3 lg:py-5;
+	flex: 1 1 rem(556);
+
+	@media(max-width: $lg) {
+		flex: 1 1 auto;
+	}
+
+	.title {
+		@apply text-center md:text-4xl text-3xl;
+	}
+}

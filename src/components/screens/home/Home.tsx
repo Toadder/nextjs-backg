@@ -4,12 +4,12 @@ import Benefits from '@/components/screens/home/Benefits/Benefits';
 import Booking from '@/components/shared/Booking/Booking';
 import Tour from '@/components/shared/Tour/Tour';
 
-import Lounges from './Lounges/Lounges';
+import Objects from './Objects/Objects';
 
 const Home: FC = () => {
 	return (
 		<>
-			<Lounges />
+			<Objects />
 			<Benefits />
 			<Tour />
 			<Booking />

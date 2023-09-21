@@ -1,32 +1,45 @@
 import { FC } from 'react';
 
-import LoungeCard from '@/components/shared/LoungeCard/LoungeCard';
+import ObjectCard from '@/components/shared/ObjectCard/ObjectCard';
 import Heading from '@/components/ui/Heading/Heading';
+
+import { parseToObjectType } from '@/utils/data/parseToObjectType';
+
+import { IPavilionSimilarLounges } from '../pavilion.interface';
 
 import styles from './SimilarLounges.module.scss';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const SimilarLounges: FC = () => {
+const SimilarLounges: FC<IPavilionSimilarLounges> = ({
+	title,
+	similarLounges
+}) => {
+	if (!similarLounges?.length) return;
+
 	return (
 		<WithAnimation>
 			<section className={styles.root}>
 				<div className={styles.inner}>
-					<Heading className={styles.title}>Похожие залы</Heading>
+					{title?.length ? (
+						<Heading className={styles.title}>{title}</Heading>
+					) : null}
+
 					<div className={styles.items}>
-						<LoungeCard
-							imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(75rem / 2)"
-							image="/static/home/lounges/pavilion-ciklorama.webp"
-							title="Павильон циклорама"
-							excerpt="Одна из самых больших циклорам в Москве. 18 метров ширины и 9 метров глубины..."
-							link="/pavilions/cycle"
-						/>
-						<LoungeCard
-							imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(75rem / 2)"
-							image="/static/home/lounges/mini-cikla.webp"
-							title="Мини цикла"
-							excerpt="Мини циклорама - просторный зал с угловой циклорамой и просторной рабочей зоной..."
-							link="/lounges/kuhnya"
-						/>
+						{similarLounges?.map((element) => {
+							if (!element) return;
+							const object = parseToObjectType(element);
+							return (
+								<ObjectCard
+									key={object?.id}
+									imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(75rem / 2)"
+									image={object?.image}
+									title={object?.title}
+									excerpt={object?.excerpt}
+									link={object?.link}
+									label={object?.label}
+								/>
+							);
+						})}
 					</div>
 				</div>
 			</section>

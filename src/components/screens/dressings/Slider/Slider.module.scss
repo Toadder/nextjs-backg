@@ -1,0 +1,54 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	flex: 0 1 rem(556);
+	max-width: rem(556);
+
+	@media(max-width: $lg) {
+		flex: 1 1 auto;
+		max-width: 100%;
+	}
+
+	.outer {
+		@apply relative h-full;
+	}
+
+	.fancy {
+		@apply h-full;
+
+		> * {
+			@apply h-full;
+		}
+	}
+
+	.slide {
+		@apply h-full relative;
+		min-height: rem(380);
+
+		@media(max-width: $lg) {
+			min-height: auto;
+			padding-bottom: 63%;
+		}
+	}
+
+	.link {
+		@apply block w-full h-full absolute top-0 left-0;
+	}
+
+	.image {
+		@apply image-like-bg;
+	}
+
+	.prev,
+	.next {
+		@apply absolute top-1/2;
+	}
+
+	.prev {
+		@apply left-3;
+	}
+
+	.next {
+		@apply right-3;
+	}
+}

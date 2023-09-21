@@ -1,14 +1,22 @@
 import { FC, memo } from 'react';
 
-import styles from './Header.module.scss';
-import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon'
+import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
 
-const HeaderPhone: FC = () => {
+import { convertPhone } from '@/utils/data/convertPhone';
+
+import styles from './Header.module.scss';
+import { IHeaderPhone } from './header.interface';
+
+const HeaderPhone: FC<IHeaderPhone> = ({ phone }) => {
+	if (!phone?.length) return;
+
+	const cleanedPhoneNumber: string = convertPhone(phone);
+
 	return (
 		<div className={styles.phone}>
-			<a href="tel:74994554504">
-				<span>+7 (499) 455-45-04</span>
-				<FontAwesomeIcon name='FaPhoneAlt' />
+			<a href={`tel:${cleanedPhoneNumber}`}>
+				<span>{phone}</span>
+				<FontAwesomeIcon name="FaPhoneAlt" />
 			</a>
 		</div>
 	);

@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-// @font-face {
-// 	font-family: 'Muller Narrow';
-// 	font-display: swap;
-// 	src:
-// 		url('../fonts/MullerNarrow-ExtraBoldItalic.woff2') format('woff2'),
-// 		url('../fonts/MullerNarrow-ExtraBoldItalic.woff') format('woff');
-// 	font-weight: 800;
-// 	font-style: italic;
-// }
-
 @import '@/assets/styles/vars.scss';
 
 * {
@@ -47,4 +37,13 @@ body {
 
 .swiper-pagination-bullet {
 	margin: 0 0 !important;
+}
+
+.page-loader {
+	@apply relative;
+	height: calc(100vh - rem(71));
+
+	@media (max-width: $md) {
+		height: calc(100vh - rem(49));
+	}
 }

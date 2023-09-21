@@ -1,31 +1,23 @@
-import { NextPage } from 'next';
+import { Metadata } from 'next';
 
 import Lounge from '@/components/screens/lounge/Lounge';
 
-export const dynamicParams = false;
+import { INextContext } from '@/shared/types/next.types';
 
-export const generateStaticParams = () => {
-	return [
-		{
-			slug: 'podcast'
-		},
-		{
-			slug: 'neon'
-		},
-		{
-			slug: 'kuhnya'
-		},
-		{
-			slug: 'zal-2'
-		},
-		{
-			slug: 'gostinaya'
-		}
-	];
+import { getMetadata } from '@/utils/seo/getMetadata';
+
+import { pagesUri } from '@/constants/pages';
+
+export const dynamic = 'force-dynamic';
+
+export const generateMetadata = (context: INextContext): Promise<Metadata> => {
+	const { slug } = context?.params;
+	return getMetadata(`${pagesUri.lounges}/${slug}`);
 };
 
-const LoungePage: NextPage = () => {
-	return <Lounge />;
+const LoungePage = (context: INextContext) => {
+	const slug = context?.params?.slug || '';
+	return <Lounge slug={slug} />;
 };
 
 export default LoungePage;

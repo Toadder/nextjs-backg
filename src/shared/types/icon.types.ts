@@ -1,22 +1,15 @@
 import {
-	FaBoxOpen,
 	FaCaretDown,
-	FaCoffee,
+	FaCheckCircle,
+	FaChevronLeft,
 	FaEnvelope,
-	FaFan,
 	FaInstagram,
-	FaParking,
 	FaPhoneAlt,
-	FaRecycle,
 	FaTelegram,
 	FaVk,
-	FaWhatsapp,
-	FaChevronLeft,
-	FaFire,
-	FaTh,
-	FaCheckCircle
+	FaWhatsapp
 } from 'react-icons/fa';
-import { FaHandPointUp, FaLocationDot } from 'react-icons/fa6';
+import { FaHandPointUp, FaLocationDot, FaCalendar } from 'react-icons/fa6';
 
 export const fontAwesomeIcons = {
 	FaCaretDown,
@@ -25,18 +18,12 @@ export const fontAwesomeIcons = {
 	FaWhatsapp,
 	FaEnvelope,
 	FaHandPointUp,
-	FaParking,
-	FaBoxOpen,
-	FaFan,
-	FaRecycle,
-	FaCoffee,
 	FaVk,
 	FaInstagram,
 	FaLocationDot,
 	FaChevronLeft,
-	FaFire,
-	FaTh,
-	FaCheckCircle
+	FaCheckCircle,
+	FaCalendar
 } as const;
 
 export type FontAwesomeIconName = keyof typeof fontAwesomeIcons;

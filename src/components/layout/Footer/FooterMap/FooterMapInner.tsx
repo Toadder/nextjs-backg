@@ -1,7 +1,16 @@
 import { Map, Placemark } from '@pbe/react-yandex-maps';
 import { FC } from 'react';
 
-const FooterMapInner: FC = () => {
+import { IFooterMap } from '../footer.interface';
+
+const FooterMapInner: FC<IFooterMap> = ({ address, coordinates }) => {
+	if (!coordinates?.length) return;
+
+	const coordinatesArray: number[] = coordinates
+		.replaceAll(' ', '')
+		.split(',')
+		.map((item) => Number(item));
+
 	return (
 		<>
 			<Map
@@ -9,7 +18,7 @@ const FooterMapInner: FC = () => {
 					ref && ref.behaviors.disable('scrollZoom');
 				}}
 				defaultState={{
-					center: [55.688583, 37.433139],
+					center: coordinatesArray,
 					zoom: 18,
 					controls: ['zoomControl', 'fullscreenControl']
 				}}
@@ -21,9 +30,9 @@ const FooterMapInner: FC = () => {
 			>
 				<Placemark
 					modules={['geoObject.addon.balloon']}
-					defaultGeometry={[55.688583, 37.433139]}
+					defaultGeometry={coordinatesArray}
 					properties={{
-						balloonContentBody: 'г. Москва, ул. Генерала Дорохова, 28А'
+						balloonContentBody: address
 					}}
 					options={{
 						iconColor: '#f9be07'

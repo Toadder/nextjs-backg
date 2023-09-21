@@ -31,7 +31,7 @@
 
 		.prev,
 		.next {
-			@apply absolute top-1/2 -translate-y-1/2;
+			@apply absolute top-1/2;
 		}
 
 		.prev {
@@ -42,8 +42,9 @@
 			@apply right-3;
 		}
 
-		.pagination {
-			@apply slider-pagination lg:mt-6 mt-4;
-		}
+	}
+
+	.pagination {
+		@apply slider-pagination lg:mt-6 mt-4;
 	}
 }

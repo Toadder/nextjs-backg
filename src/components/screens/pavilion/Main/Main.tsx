@@ -1,17 +1,31 @@
 import { FC } from 'react';
 
+import { IPavilionMain } from '../pavilion.interface';
+
 import styles from './Main.module.scss';
 import MainContent from './MainContent/MainContent';
 import MainMedia from './MainMedia/MainMedia';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const Main: FC = () => {
+const Main: FC<IPavilionMain> = ({
+	title,
+	content,
+	slider,
+	layout,
+	phone,
+	whatsapp
+}) => {
 	return (
 		<WithAnimation>
 			<section className={styles.root}>
 				<div className={styles.inner}>
-					<MainMedia />
-					<MainContent />
+					<MainMedia slider={slider} layout={layout} />
+					<MainContent
+						title={title}
+						content={content}
+						phone={phone}
+						whatsapp={whatsapp}
+					/>
 				</div>
 			</section>
 		</WithAnimation>

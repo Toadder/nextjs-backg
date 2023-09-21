@@ -1,22 +1,25 @@
 import { usePathname } from 'next/navigation';
 
-interface INavItem {
-	path: string;
-	[key: string]: any;
-}
+import { IMenuNodes } from '@/components/layout/Header/header.interface';
+
+import { MenuItem } from '@/shared/types/grahpql.types';
 
 export const useActivePath = () => {
 	const pathname = usePathname();
 
-	return (path: string, items?: INavItem[]): boolean => {
-		if (items?.length) {
-			return Boolean(items?.find((item) => item.path === pathname));
+	return (path: MenuItem['path'], childItems?: IMenuNodes[]): boolean => {
+		if (childItems?.length) {
+			return Boolean(
+				childItems?.find(
+					({ node }) => node?.path === `${pathname}/` || node?.path === pathname
+				)
+			);
 		}
 
-		if (path.endsWith('#')) {
+		if (path?.endsWith('#')) {
 			return false;
 		}
 
-		return path === pathname;
+		return path === `${pathname}/` || path === pathname;
 	};
 };

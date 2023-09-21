@@ -1,7 +1,7 @@
 @import '@/assets/styles/vars.scss';
 
 .item {
-	@apply relative h-full overflow-hidden flex items-start justify-start xl:p-9 p-7;
+	@apply relative h-full overflow-hidden flex xl:p-9 p-7;
 	min-height: rem(500);
 
 	&::before {

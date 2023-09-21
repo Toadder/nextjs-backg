@@ -7,31 +7,39 @@ import { FC, useState } from 'react';
 import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
 
 import { useActivePath } from '@/hooks/useActivePath';
-import {useMediaQuery} from '@/hooks/useMediaQuery';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+
+import {
+	IHeaderItemContent,
+	IHeaderItemInteractive
+} from '../header.interface';
 
 import styles from './HeaderMenu.module.scss';
 import HeaderSubmenu from './HeaderSubmenu';
-import { IHeaderItemContent, IHeaderItemInteractive } from './menu.interface';
 
 const HeaderItemContent: FC<IHeaderItemContent> = ({
-	name,
+	label,
 	path,
-	items,
+	childItems,
 	onClickHandler,
 	isSubmenuShown
 }) => {
+	if (!label || !path) {
+		return;
+	}
+
 	const checkActivePath = useActivePath();
 
-	if (items?.length) {
+	if (childItems?.edges?.length) {
 		return (
 			<div
 				className={cn(styles.link, {
 					[styles.toggled]: isSubmenuShown,
-					[styles.active]: checkActivePath(path, items)
+					[styles.active]: checkActivePath(path, childItems.edges)
 				})}
-				onClick={() => onClickHandler(items.length)}
+				onClick={() => onClickHandler(childItems.edges.length)}
 			>
-				<span>{name}</span>
+				<span>{label}</span>
 				<FontAwesomeIcon name="FaCaretDown" />
 			</div>
 		);
@@ -46,15 +54,15 @@ const HeaderItemContent: FC<IHeaderItemContent> = ({
 			})}
 			onClick={() => onClickHandler()}
 		>
-			<span>{name}</span>
+			<span>{label}</span>
 		</Link>
 	);
 };
 
 const HeaderItem: FC<IHeaderItemInteractive> = ({
-	name,
+	label,
 	path,
-	items,
+	childItems,
 	hideMenu
 }) => {
 	const isMobileDevice = useMediaQuery('(max-width: 80em)');
@@ -71,18 +79,18 @@ const HeaderItem: FC<IHeaderItemInteractive> = ({
 	return (
 		<li className={styles.item}>
 			<HeaderItemContent
-				name={name}
+				label={label}
 				path={path}
-				items={items}
+				childItems={childItems}
 				isSubmenuShown={isSubmenuShown}
 				onClickHandler={onClickHandler}
 			/>
-			{items?.length ? (
+			{childItems?.edges?.length ? (
 				<HeaderSubmenu
 					isMobileDevice={isMobileDevice}
 					onClickHandler={onClickHandler}
 					toggleEvent={toggleEvent}
-					items={items}
+					childItems={childItems.edges}
 				/>
 			) : null}
 		</li>

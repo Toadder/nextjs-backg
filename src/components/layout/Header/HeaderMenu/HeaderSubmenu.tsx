@@ -5,30 +5,37 @@ import SlideToggle from 'react-slide-toggle';
 
 import { useActivePath } from '@/hooks/useActivePath';
 
+import { IHeaderSubmenu } from '../header.interface';
+
 import styles from './HeaderMenu.module.scss';
-import { IHeaderSubmenu } from './menu.interface';
 
 const HeaderSubmenu: FC<IHeaderSubmenu> = ({
-	items,
+	childItems,
 	isMobileDevice,
 	toggleEvent,
 	onClickHandler
 }) => {
+	if (!childItems.length) return;
+
 	const checkActivePath = useActivePath();
 
-	const itemsJsx = items.map((item) => (
-		<li key={item.name} className={styles.subitem}>
-			<Link
-				onClick={() => onClickHandler()}
-				href={item.path}
-				className={cn(styles.sublink, {
-					[styles.active]: checkActivePath(item.path)
-				})}
-			>
-				<span>{item.name}</span>
-			</Link>
-		</li>
-	));
+	const itemsJsx = childItems.map(({ node }) => {
+		if (!node?.label || !node?.path) return;
+
+		return (
+			<li key={node.id} className={styles.subitem}>
+				<Link
+					onClick={() => onClickHandler()}
+					href={node?.path}
+					className={cn(styles.sublink, {
+						[styles.active]: checkActivePath(node?.path)
+					})}
+				>
+					<span>{node.label}</span>
+				</Link>
+			</li>
+		);
+	});
 
 	return isMobileDevice ? (
 		<SlideToggle toggleEvent={toggleEvent} duration={400} collapsed={true}>

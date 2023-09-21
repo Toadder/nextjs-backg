@@ -1,0 +1,19 @@
+.root {
+	> *:nth-child(even) {
+		.item {
+			@apply bg-grey;
+
+			.inner {
+				@apply lg:flex-row-reverse flex-col;
+			}
+		}
+	}
+
+	.item {
+		@apply py-8;
+	}
+
+	.inner {
+		@apply container flex lg:flex-row flex-col md:gap-y-6 gap-y-4 gap-x-7;
+	}
+}

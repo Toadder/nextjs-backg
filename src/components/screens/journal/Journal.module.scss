@@ -4,56 +4,14 @@
 	@apply section;
 
 	.inner {
-		@apply container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-3 gap-4;
+		@apply container space-y-5;
 	}
 
-	.item {
-		@apply relative h-full overflow-hidden;
-		min-height: rem(450);
-
-		@media (any-hover: hover) {
-			&:hover {
-				.image {
-					@apply scale-125;
-				}
-				.title,
-				.text {
-					@apply scale-90;
-				}
-			}
-		}
-
-		@media (max-width: $lg) {
-			min-height: rem(400);
-		}
-
-		@media (max-width: $md) {
-			min-height: rem(350);
-		}
+	.gridContainer {
+		@apply grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-3 gap-4;
 	}
 
-	.image {
-		@apply image-like-bg z-0 transition-transform duration-600;
-	}
-
-	.link {
-		@apply flex items-end justify-start p-5 h-full relative;
-
-		&::before {
-			content: '';
-			@apply absolute top-0 left-0 w-full h-full z-1 bg-black bg-opacity-50;
-		}
-	}
-
-	.content {
-		@apply relative z-2 text-white space-y-2;
-	}
-
-	.title {
-		@apply font-muller-narrow font-extrabold italic md:text-2xl text-xl uppercase transition-transform duration-600;
-	}
-
-	.text {
-		@apply font-medium transition-transform duration-600 text-sm;
+	.spinnerContainer {
+		@apply relative w-full h-20;
 	}
 }

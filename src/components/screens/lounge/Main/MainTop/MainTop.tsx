@@ -5,43 +5,34 @@ import Description from '@/components/ui/Description/Description';
 import Heading from '@/components/ui/Heading/Heading';
 import LazyVideo from '@/components/ui/LazyVideo/LazyVideo';
 
+import { ILoungeTop } from '../../lounge.interface';
+
 import styles from './MainTop.module.scss';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const MainTop: FC = () => {
+const MainTop: FC<ILoungeTop> = ({ title, content, videoMp4, videoWebm }) => {
+	if (!title?.length) return;
+
 	return (
 		<WithAnimation>
 			<div className={styles.root}>
 				<div className={styles.content}>
-					<Heading type="h1" className={styles.title}>
-						Зал <span className="text-orange">кухня</span>
-					</Heading>
-					<Description>
-						<p>
-							Просторный зал с функционирующей кухней. В вашем распоряжении:
-							холодильник, духовка, индукционная плита, вытяжка, горячая и
-							холодная вода, а также набор посуды, в который входит все самое
-							необходимое: от столовых приборов, до кастрюль и винных бокалов.
-						</p>
-						<p>
-							В кухонной зоне находится большой остров, на котором установлена
-							индукционная плита и розетки. В столовой зоне расположен стол,
-							стулья и окно со шторами.
-						</p>
-						<p>
-							Зал выполнен в темных оттенках, с большим количеством стеновых
-							фактурных рисунков, а также интересным световым решением.
-						</p>
-					</Description>
+					<Heading type="h1" className={styles.title} htmlContent={title} />
+					<Description htmlContent={content || ''} />
 				</div>
-				<div className={styles.media}>
-					<LazyVideo videoMp4="/static/lounge/video.mp4" />
-					<AnchorBtn
-						selector="#booking"
-						text="Забронировать"
-						className={styles.btn}
-					/>
-				</div>
+				{videoMp4?.mediaItemUrl?.length || videoWebm?.mediaItemUrl?.length ? (
+					<div className={styles.media}>
+						<LazyVideo
+							videoMp4={videoMp4?.mediaItemUrl || ''}
+							videoWebm={videoWebm?.mediaItemUrl || ''}
+						/>
+						<AnchorBtn
+							selector="#booking"
+							text="Забронировать"
+							className={styles.btn}
+						/>
+					</div>
+				) : null}
 			</div>
 		</WithAnimation>
 	);

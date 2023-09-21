@@ -1,0 +1,71 @@
+@import '@/assets/styles/vars.scss';
+
+.item {
+	@apply relative h-full overflow-hidden;
+	min-height: rem(450);
+
+	@media (max-width: $lg) {
+		min-height: rem(400);
+	}
+
+	@media (max-width: $md) {
+		min-height: rem(350);
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			.image {
+				@apply scale-125;
+			}
+			.title,
+			.text {
+				@apply scale-90;
+			}
+		}
+	}
+
+	.image {
+		@apply image-like-bg z-0 transition-transform duration-600;
+	}
+
+	.link {
+		@apply flex items-end justify-start p-5 h-full relative;
+
+		&::before {
+			content: '';
+			@apply absolute top-0 left-0 w-full h-full z-1 bg-black bg-opacity-50;
+		}
+	}
+
+	.content {
+		@apply relative z-2 text-white space-y-2;
+	}
+
+	.title {
+		@apply font-muller-narrow font-extrabold italic md:text-2xl text-xl uppercase transition-transform duration-600;
+	}
+
+	.text {
+		@apply font-medium transition-transform duration-600 text-sm;
+	}
+
+	&.smallItem {
+		min-height: rem(300);
+
+		@media (max-width: $lg) {
+			min-height: rem(400);
+		}
+
+		@media (max-width: $md) {
+			min-height: rem(350);
+		}
+
+		.title {
+			@apply lg:text-base;
+		}
+
+		.text {
+			@apply lg:text-xs;
+		}
+	}
+}

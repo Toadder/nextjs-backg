@@ -1,23 +1,26 @@
 'use client';
 
-import Image from 'next/image';
-import { FC, useRef } from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
+import cn from 'clsx'
+import Image from 'next/image'
+import { FC, useRef } from 'react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Autoplay, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
 
-import cn from 'clsx';
+import SliderArrow from '@/components/ui/SliderArrows/SliderArrow'
 
-import SliderArrow from '@/components/ui/SliderArrows/SliderArrow';
+import { IPavilionBenefitSlider } from '../pavilion.interface'
 
-import styles from './BenefitSlider.module.scss';
-import { WithAnimation } from '@/hoc/WithAnimation';
+import { WithAnimation } from '@/hoc/WithAnimation'
+import styles from './BenefitSlider.module.scss'
 
-// FIXME: key={index} пофиксить
-const BenefitSlider: FC = () => {
+const BenefitSlider: FC<IPavilionBenefitSlider> = ({ benefitSlider }) => {
+	if (!benefitSlider?.length) return;
+
 	const sliderRef = useRef<SwiperType | null>(null);
+	const isControlsVisible: boolean = benefitSlider?.length > 1;
 
 	return (
 		<WithAnimation>
@@ -30,59 +33,71 @@ const BenefitSlider: FC = () => {
 						}}
 						slidesPerView={1}
 						speed={600}
-						loop={true}
 						pagination={{
 							el: `.${styles.pagination}`,
 							clickable: true
 						}}
+						loop={true}
 						autoplay={{
 							delay: 3000,
 							pauseOnMouseEnter: true
 						}}
 						modules={[Pagination, Autoplay]}
 					>
-						{Array(9)
-							.fill('')
-							.map((_, index) => (
-								<SwiperSlide key={index} className={styles.slide}>
-									{({ isActive }) => (
-										<>
-											<Image
-												src="/static/pavilion/benefit_slide.jpg"
-												fill
-												sizes="100vw"
-												alt=""
-												className={styles.image}
-											/>
-											<div className={cn(styles.content, {
+						{benefitSlider?.map((slide) => (
+							<SwiperSlide
+								key={slide?.image?.sourceUrl}
+								className={styles.slide}
+							>
+								{({ isActive }) => (
+									<>
+										<Image
+											src={slide?.image?.sourceUrl || ''}
+											fill
+											sizes="100vw"
+											alt={slide?.image?.altText || ''}
+											className={styles.image}
+										/>
+										<div
+											className={cn(styles.content, {
 												[styles.active]: isActive
-											})}>
-												<div className={styles.title}>
-													Вместимость до 100 человек
-												</div>
-												<p className={styles.text}>
-													Павильон одновременно может вмещать до 100 человек и
-													никому не будет душно
-												</p>
-											</div>
-										</>
-									)}
-								</SwiperSlide>
-							))}
+											})}
+										>
+											{slide?.title?.length ? (
+												<div className={styles.title}>{slide?.title}</div>
+											) : null}
+											{slide?.content?.length ? (
+												<p
+													className={styles.text}
+													dangerouslySetInnerHTML={{ __html: slide?.content }}
+												/>
+											) : null}
+										</div>
+									</>
+								)}
+							</SwiperSlide>
+						))}
 					</Swiper>
 
-					<SliderArrow
-						className={styles.prev}
-						sliderRef={sliderRef}
-						type="prev"
-					/>
-					<SliderArrow
-						className={styles.next}
-						sliderRef={sliderRef}
-						type="next"
-					/>
-					<div className={styles.pagination}></div>
+					{isControlsVisible && (
+						<>
+							<SliderArrow
+								className={styles.prev}
+								sliderRef={sliderRef}
+								type="prev"
+							/>
+							<SliderArrow
+								className={styles.next}
+								sliderRef={sliderRef}
+								type="next"
+							/>
+							
+						</>
+					)}
 				</div>
+				{
+					isControlsVisible && <div className={styles.pagination}></div>
+				}
 			</div>
 		</WithAnimation>
 	);

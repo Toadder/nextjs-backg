@@ -1,17 +1,23 @@
-import { NextPage } from 'next';
+import { Metadata } from 'next';
 
-export const dynamicParams = false;
+import Article from '@/components/screens/article/Article';
 
-export const generateStaticParams = () => {
-	return [
-		{
-			slug: 'article'
-		}
-	];
+import { INextContext } from '@/shared/types/next.types';
+
+import { getMetadata } from '@/utils/seo/getMetadata';
+
+import { pagesUri } from '@/constants/pages';
+
+export const dynamic = 'force-dynamic';
+
+export const generateMetadata = (context: INextContext): Promise<Metadata> => {
+	const { slug } = context?.params;
+	return getMetadata(`${pagesUri.journal}/${slug}`);
 };
 
-const JournalArticlePage: NextPage = () => {
-	return <div className="text-center section">Здесь будет страница статьи</div>;
+const ArticlePage = (context: INextContext) => {
+	const slug = context?.params?.slug || '';
+	return <Article slug={slug} />;
 };
 
-export default JournalArticlePage;
+export default ArticlePage;

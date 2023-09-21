@@ -1,0 +1,6 @@
+overwrite: true
+schema: "http://zheka2y5.beget.tech/graphql"
+generates:
+  src/shared/types/grahpql.types.ts:
+    plugins:
+      - "typescript"

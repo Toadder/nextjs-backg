@@ -1,14 +1,18 @@
 'use client';
 
 import cn from 'clsx';
+import Image from 'next/image';
 import { FC, useState } from 'react';
-
-import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
 
 import styles from './Benefits.module.scss';
 import { IBenefit } from './benefits.interface';
 
-const BenefitsItem: FC<IBenefit> = ({ icon, title, text, excerpt }) => {
+const BenefitsItem: FC<IBenefit> = ({ icon, title, content, excerpt }) => {
+	const ifFieldsExist: boolean =
+		!!icon || !!title?.length || !!content?.length || !!excerpt?.length;
+
+	if (!ifFieldsExist) return;
+
 	const [isOpened, setIsOpened] = useState<boolean>(false);
 
 	const toggleIsOpened = (): void => {
@@ -18,7 +22,13 @@ const BenefitsItem: FC<IBenefit> = ({ icon, title, text, excerpt }) => {
 	return (
 		<div className={styles.item} onClick={toggleIsOpened}>
 			<div className={styles.preview}>
-				<FontAwesomeIcon name={icon} />
+				<Image
+					className={styles.icon}
+					src={icon?.sourceUrl || ''}
+					width={48}
+					height={48}
+					alt={icon?.altText || ''}
+				/>
 				<div className={styles.title}>{title}</div>
 				<p className={styles.text}>{excerpt}</p>
 			</div>
@@ -28,7 +38,7 @@ const BenefitsItem: FC<IBenefit> = ({ icon, title, text, excerpt }) => {
 				})}
 			>
 				<div className={styles.title}>{title}</div>
-				<p className={styles.text}>{text}</p>
+				<p className={styles.text}>{content}</p>
 			</div>
 		</div>
 	);

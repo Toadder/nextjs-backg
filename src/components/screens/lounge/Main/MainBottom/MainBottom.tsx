@@ -4,64 +4,52 @@ import { FC } from 'react';
 import Description from '@/components/ui/Description/Description';
 import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer';
 
+import { ILoungeBottom } from '../../lounge.interface';
+
 import styles from './MainBottom.module.scss';
 import MainContentProperty from './MainProperty';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const MainBottom: FC = () => {
+const MainBottom: FC<ILoungeBottom> = ({ layout, content, properties }) => {
 	return (
 		<WithAnimation>
 			<div className={styles.root}>
-				<FancyboxContainer className={styles.media}>
-					<a
-						className={styles.link}
-						href="/static/lounge/plan.webp"
-						data-fancybox="mainBottomPlan"
-					>
-						<Image
-							src="/static/lounge/plan.webp"
-							width={520}
-							height={0}
-							sizes="(max-width: 32.5em) 100vw, 32.5rem"
-							alt=""
-						/>
-					</a>
-				</FancyboxContainer>
-				<div className={styles.info}>
-					<Description>
-						<p>
-							Потолки белые – 3 метра. Для комфортной работы в зале работает
-							кондиционер.
-						</p>
-						<p>
-							Вы можете воспользоваться услугами нашего клининга, если после
-							приготовления пищи осталось много грязной посуды, данная услуга
-							стоит – 2000 рублей. В наш зал вы можете привезти любой декор,
-							фон, или же световое оборудование, без наценки с нашей стороны.
-						</p>
-						<p>
-							В стоимость зала включено два источника импульсного света Godox.
-						</p>
-						<p>
-							**Звоните админу для уточнения наличия источников, а также
-							насадок.
-						</p>
-					</Description>
-					<div className={styles.properties}>
-						<MainContentProperty
-							icon="FaFire"
-							title="Кухня"
-							excerpt="Полностью функциональная кухня"
-							text="Главное достоинство этого зала, также вам не нужно везти с собой посуду, ведь у нас есть все что нужно для проведения съемок"
-						/>
-						<MainContentProperty
-							icon="FaTh"
-							title="Зоны"
-							excerpt="Разделенные зоны в зале"
-							text="Зона столовой отлично подходит не только для кулинарных шоу, но и для съемок интервью, и любых других развлекательных шоу "
-						/>
+				{layout?.sourceUrl?.length ? (
+					<FancyboxContainer className={styles.media}>
+						<a
+							className={styles.link}
+							href={layout?.sourceUrl || ''}
+							data-fancybox="mainBottomPlan"
+						>
+							<Image
+								src={layout?.sourceUrl || ''}
+								width={520}
+								height={0}
+								sizes="(max-width: 32.5em) 100vw, 32.5rem"
+								alt={layout?.altText || ''}
+							/>
+						</a>
+					</FancyboxContainer>
+				) : null}
+
+				{content?.length || properties?.length ? (
+					<div className={styles.info}>
+						<Description htmlContent={content || ''} />
+						{properties?.length ? (
+							<div className={styles.properties}>
+								{properties?.map((property) => (
+									<MainContentProperty
+										key={property?.title}
+										icon={property?.icon}
+										title={property?.title}
+										excerpt={property?.excerpt}
+										content={property?.content}
+									/>
+								))}
+							</div>
+						) : null}
 					</div>
-				</div>
+				) : null}
 			</div>
 		</WithAnimation>
 	);

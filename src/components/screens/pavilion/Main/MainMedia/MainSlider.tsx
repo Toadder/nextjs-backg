@@ -9,10 +9,13 @@ import { Swiper as SwiperType } from 'swiper/types';
 import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer';
 import SliderArrow from '@/components/ui/SliderArrows/SliderArrow';
 
+import { IPavilionMainSlider } from '../../pavilion.interface';
+
 import styles from './MainMedia.module.scss';
 
-// FIXME: key={index}
-const MainSlider: FC = () => {
+const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
+	if (!slider?.length) return;
+
 	const sliderRef = useRef<SwiperType | null>(null);
 	const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -35,38 +38,40 @@ const MainSlider: FC = () => {
 						loop={true}
 						modules={[Autoplay, Thumbs]}
 					>
-						{Array(9)
-							.fill('')
-							.map((_, index) => (
-								<SwiperSlide key={index} className={styles.slide}>
-									<a
-										href="/static/pavilion/main_slide.jpg"
-										data-fancybox="mainSlider"
-										data-caption="Текст к картинке"
-										className={styles.link}
-									>
-										<Image
-											src="/static/pavilion/main_slide.jpg"
-											fill
-											sizes="(max-width: 64em) 100vw, 33.125rem"
-											alt=""
-											className={styles.image}
-										/>
-									</a>
-								</SwiperSlide>
-							))}
+						{slider?.map((slide) => (
+							<SwiperSlide key={slide?.sourceUrl} className={styles.slide}>
+								<a
+									href={slide?.sourceUrl || ''}
+									data-fancybox="mainSlider"
+									className={styles.link}
+								>
+									<Image
+										src={slide?.sourceUrl || ''}
+										fill
+										sizes="(max-width: 64em) 100vw, 33.125rem"
+										alt={slide?.altText || ''}
+										className={styles.image}
+									/>
+								</a>
+							</SwiperSlide>
+						))}
 					</Swiper>
 				</FancyboxContainer>
-				<SliderArrow
-					className={styles.prev}
-					sliderRef={sliderRef}
-					type="prev"
-				/>
-				<SliderArrow
-					className={styles.next}
-					sliderRef={sliderRef}
-					type="next"
-				/>
+
+				{slider?.length > 1 && (
+					<>
+						<SliderArrow
+							className={styles.prev}
+							sliderRef={sliderRef}
+							type="prev"
+						/>
+						<SliderArrow
+							className={styles.next}
+							sliderRef={sliderRef}
+							type="next"
+						/>
+					</>
+				)}
 			</div>
 			<Swiper
 				className={styles.thumbs}
@@ -88,19 +93,17 @@ const MainSlider: FC = () => {
 					}
 				}}
 			>
-				{Array(9)
-					.fill('')
-					.map((_, index) => (
-						<SwiperSlide key={index} className={styles.thumb}>
-							<Image
-								src="/static/pavilion/main_slide.jpg"
-								fill
-								sizes="(max-width: 48em) calc(100vw / 3), (max-width: 64em) 25vw, calc(33.125rem / 5)"
-								alt=""
-								className={styles.image}
-							/>
-						</SwiperSlide>
-					))}
+				{slider?.map((slide) => (
+					<SwiperSlide key={slide?.sourceUrl} className={styles.thumb}>
+						<Image
+							src={slide?.sourceUrl || ''}
+							fill
+							sizes="(max-width: 48em) calc(100vw / 3), (max-width: 64em) 25vw, calc(33.125rem / 5)"
+							alt={slide?.altText || ''}
+							className={styles.image}
+						/>
+					</SwiperSlide>
+				))}
 			</Swiper>
 		</div>
 	);

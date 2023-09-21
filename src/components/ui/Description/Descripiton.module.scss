@@ -1,7 +1,7 @@
 @import '@/assets/styles/vars.scss';
 
 .description {
-	@apply md:space-y-5 space-y-3 text-justify;
+	@apply md:space-y-5 space-y-4 text-justify;
 
 	@media(max-width: $md) {
 		font-size: rem(15);

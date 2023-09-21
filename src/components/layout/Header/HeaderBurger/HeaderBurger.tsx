@@ -1,7 +1,7 @@
 import cn from 'clsx';
 import { FC } from 'react';
 
-import { IHeaderBurger } from '../HeaderMenu/menu.interface';
+import { IHeaderBurger } from '../header.interface';
 
 import styles from './HeaderBurger.module.scss';
 

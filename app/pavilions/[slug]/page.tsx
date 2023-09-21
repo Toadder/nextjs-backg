@@ -1,22 +1,23 @@
-import { NextPage } from 'next';
+import { Metadata } from 'next';
 
 import Pavilion from '@/components/screens/pavilion/Pavilion';
 
-export const dynamicParams = false;
+import { INextContext } from '@/shared/types/next.types';
 
-export const generateStaticParams = () => {
-	return [
-		{
-			slug: 'cycle'
-		},
-		{
-			slug: 'big-cycle'
-		}
-	];
+import { getMetadata } from '@/utils/seo/getMetadata';
+
+import { pagesUri } from '@/constants/pages';
+
+export const dynamic = 'force-dynamic';
+
+export const generateMetadata = (context: INextContext): Promise<Metadata> => {
+	const { slug } = context?.params;
+	return getMetadata(`${pagesUri.pavilions}/${slug}`);
 };
 
-const PavilionPage: NextPage = () => {
-	return <Pavilion />;
+const PavilionPage = (content: INextContext) => {
+	const slug = content?.params?.slug || '';
+	return <Pavilion slug={slug} />;
 };
 
 export default PavilionPage;

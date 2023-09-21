@@ -4,26 +4,50 @@ import Heading from '@/components/ui/Heading/Heading';
 import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
 
 import styles from './Communication.module.scss';
+import { ICommunicationGroups } from './communication.interface';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const CommunicationGroups: FC = () => {
+const CommunicationGroups: FC<ICommunicationGroups> = ({
+	title,
+	vkGroup,
+	tgChannel,
+	instagramChannel
+}) => {
+	const isGroupsExist: boolean =
+		!!vkGroup?.length || !!tgChannel?.length || !!instagramChannel?.length;
+
+	if (!isGroupsExist) return;
+
 	return (
 		<WithAnimation>
 			<div className={styles.block}>
-				<Heading className={styles.title}>Наши сообщества</Heading>
+				{title ? <Heading className={styles.title}>{title}</Heading> : null}
+
 				<div className={styles.contacts}>
-					<a className={styles.contact} href="" target="_blank">
-						<FontAwesomeIcon name="FaVk" />
-						<div className={styles.subtitle}>ВКонтакте</div>
-					</a>
-					<a className={styles.contact} href="" target="_blank">
-						<FontAwesomeIcon name="FaTelegram" />
-						<div className={styles.subtitle}>Telegram</div>
-					</a>
-					<a className={styles.contact} href="" target="_blank">
-						<FontAwesomeIcon name="FaInstagram" />
-						<div className={styles.subtitle}>Запрещённограм</div>
-					</a>
+					{vkGroup?.length ? (
+						<a className={styles.contact} href={vkGroup} target="_blank">
+							<FontAwesomeIcon name="FaVk" />
+							<div className={styles.subtitle}>ВКонтакте</div>
+						</a>
+					) : null}
+
+					{tgChannel?.length ? (
+						<a className={styles.contact} href={tgChannel} target="_blank">
+							<FontAwesomeIcon name="FaTelegram" />
+							<div className={styles.subtitle}>Telegram</div>
+						</a>
+					) : null}
+
+					{instagramChannel?.length ? (
+						<a
+							className={styles.contact}
+							href={instagramChannel}
+							target="_blank"
+						>
+							<FontAwesomeIcon name="FaInstagram" />
+							<div className={styles.subtitle}>Instagram</div>
+						</a>
+					) : null}
 				</div>
 			</div>
 		</WithAnimation>

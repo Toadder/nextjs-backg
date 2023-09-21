@@ -1,0 +1,11 @@
+@import '@/assets/styles/functions.scss';
+
+.root {
+	@apply section;
+
+	.inner {
+		@apply container md:space-y-8 space-y-6;
+		max-width: rem(957);
+	}
+
+}

@@ -2,37 +2,66 @@ import { FC } from 'react';
 
 import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
 
-import styles from './FooterContent.module.scss';
-import { footerSocials } from './footer-content.data';
+import { IFooterContent } from '../footer.interface';
 
-const FooterContent: FC = () => {
+import styles from './FooterContent.module.scss';
+
+const FooterContent: FC<IFooterContent> = ({
+	text,
+	telegram,
+	whatsapp,
+	email,
+	documents
+}) => {
+	const isSocialsExist: boolean =
+		!!telegram?.length || !!whatsapp?.length || !!email?.length;
+
 	return (
 		<div className={styles.content}>
 			<div className={styles.card}>
-				<p className={styles.text}>
-					Напишите нам в Whatsapp, Telegram или на почту и мы постараемся
-					максимально быстро с вами связаться.
-				</p>
-				<div className={styles.socials}>
-					{footerSocials.map((social) => (
-						<a
-							key={social.id}
-							href={social.link}
-							target="_blank"
-							className={styles.social}
-						>
-							<FontAwesomeIcon name={social.icon} />
-						</a>
-					))}
-				</div>
-				<div className={styles.links}>
-					<a href="" target="_blank" className={styles.link}>
-						Решение о выпуске ЦФА от 26.04.2023
-					</a>
-					<a href="" target="_blank" className={styles.link}>
-						Решение о выпуске ЦФА от 18.05.2023
-					</a>
-				</div>
+				{/* Text */}
+				{text?.length ? <p className={styles.text}>{text}</p> : null}
+
+				{/* Socials */}
+				{isSocialsExist && (
+					<div className={styles.socials}>
+						{telegram?.length ? (
+							<a href={telegram} target="_blank" className={styles.social}>
+								<FontAwesomeIcon name="FaTelegram" />
+							</a>
+						) : null}
+						{whatsapp?.length ? (
+							<a href={whatsapp} target="_blank" className={styles.social}>
+								<FontAwesomeIcon name="FaWhatsapp" />
+							</a>
+						) : null}
+						{email?.length ? (
+							<a
+								href={`mailto:${email}`}
+								target="_blank"
+								className={styles.social}
+							>
+								<FontAwesomeIcon name="FaEnvelope" />
+							</a>
+						) : null}
+					</div>
+				)}
+
+				{/* Documents */}
+				{documents?.length ? (
+					<div className={styles.links}>
+						{documents?.map((documentObj) => (
+							<a
+								key={documentObj?.documentname}
+								href={documentObj?.documentfile?.mediaItemUrl || ''}
+								target="_blank"
+								className={styles.link}
+							>
+								{documentObj?.documentname}
+							</a>
+						))}
+					</div>
+				) : null}
 			</div>
 		</div>
 	);
