@@ -24,7 +24,8 @@ const EquipmentCard: FC<IEquipmentCard> = ({
 	contentAlignHorizontal,
 	contentAlignVertical,
 	label,
-	imageSizes
+	imageSizes,
+	isImagePreloaded = false
 }) => {
 	const itemVerticalPosition: string =
 		alignVariants[contentAlignVertical ?? 'verticalTop'];
@@ -40,6 +41,7 @@ const EquipmentCard: FC<IEquipmentCard> = ({
 				sizes={imageSizes}
 				alt={image?.altText || ''}
 				className={styles.image}
+				priority={isImagePreloaded}
 			/>
 			<div className={styles.content}>
 				<div className={styles.title}>{title}</div>

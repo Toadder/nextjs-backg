@@ -12,7 +12,8 @@ const JournalCard: FC<IJournalCard> = ({
 	excerpt,
 	link,
 	imageSizes,
-	size = 'big'
+	size = 'big',
+	isImagePreloaded = false
 }) => {
 	return (
 		<article
@@ -27,6 +28,7 @@ const JournalCard: FC<IJournalCard> = ({
 					fill
 					sizes={imageSizes}
 					alt={image?.altText || ''}
+					priority={isImagePreloaded}
 				/>
 				<div className={styles.content}>
 					{title?.length ? <div className={styles.title}>{title}</div> : null}

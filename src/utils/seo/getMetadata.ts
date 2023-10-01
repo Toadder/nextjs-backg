@@ -30,7 +30,7 @@ export const getMetadata = async (path: string): Promise<Metadata> => {
 		keywords: metadata?.focuskw,
 		robots: `${metadata?.metaRobotsNoindex}, ${metadata?.metaRobotsNofollow}`,
 		metadataBase: new URL(process.env.SITE_URL || 'http://localhost:3000'),
-		alternates: { canonical: '/' },
+		alternates: { canonical: path },
 		openGraph: {
 			title: metadata?.opengraphTitle || '',
 			siteName: metadata?.opengraphTitle || '',

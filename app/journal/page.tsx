@@ -8,8 +8,6 @@ import { getMetadata } from '@/utils/seo/getMetadata';
 
 import { pagesUri } from '@/constants/pages';
 
-export const dynamic = 'force-dynamic';
-
 export const generateMetadata = (): Promise<Metadata> =>
 	getMetadata(pagesUri.journal);
 

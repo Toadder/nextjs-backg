@@ -10,4 +10,5 @@ export interface IEquipment
 		Pick<Equipment_Acfequipmentfields, 'content' | 'label' | 'image'> {
 	contentAlignHorizontal: Equipment_Acfequipmentfields['contentalignhorizontal'];
 	contentAlignVertical: Equipment_Acfequipmentfields['contentalignvertical'];
+	index: number;
 }

@@ -52,8 +52,9 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 		<div className={styles.root}>
 			<div className={styles.inner}>
 				<div className={styles.gridContainer}>
-					{articles?.map(({ node }) => (
+					{articles?.map(({ node }, index) => (
 						<JournalItem
+							index={index}
 							key={node?.id}
 							title={node?.title}
 							link={node?.uri}

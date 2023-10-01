@@ -12,6 +12,7 @@ export interface IAlignVariants {
 	[key: string]: string;
 }
 
-export interface IEquipmentCard extends IEquipment {
+export interface IEquipmentCard extends Omit<IEquipment, 'index'> {
 	imageSizes: string;
+	isImagePreloaded?: boolean;
 }

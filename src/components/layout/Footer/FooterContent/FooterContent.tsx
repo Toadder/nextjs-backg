@@ -26,12 +26,12 @@ const FooterContent: FC<IFooterContent> = ({
 				{isSocialsExist && (
 					<div className={styles.socials}>
 						{telegram?.length ? (
-							<a href={telegram} target="_blank" className={styles.social}>
+							<a href={telegram} target="_blank" className={styles.social} aria-label='Telegram'>
 								<FontAwesomeIcon name="FaTelegram" />
 							</a>
 						) : null}
 						{whatsapp?.length ? (
-							<a href={whatsapp} target="_blank" className={styles.social}>
+							<a href={whatsapp} target="_blank" className={styles.social} aria-label='WhatsApp'>
 								<FontAwesomeIcon name="FaWhatsapp" />
 							</a>
 						) : null}
@@ -40,6 +40,7 @@ const FooterContent: FC<IFooterContent> = ({
 								href={`mailto:${email}`}
 								target="_blank"
 								className={styles.social}
+								aria-label='Email'
 							>
 								<FontAwesomeIcon name="FaEnvelope" />
 							</a>

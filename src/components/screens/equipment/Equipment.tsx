@@ -26,8 +26,9 @@ const Equipment: FC = () => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.inner}>
-				{equipmentData?.map(({ node }) => (
+				{equipmentData?.map(({ node }, index) => (
 					<EquipmentItem
+						index={index}
 						key={node?.id}
 						title={node?.title}
 						content={node?.acfEquipmentFields?.content}

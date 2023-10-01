@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, memo } from 'react';
+import { FC } from 'react';
 
 import styles from './Header.module.scss';
 import { IHeaderLogo } from './header.interface';

@@ -48,3 +48,15 @@ body {
 		height: calc(100vh - rem(49));
 	}
 }
+
+.alignleft {
+	@apply md:float-left md:mr-5 md:ml-0 mx-auto;
+}
+
+.aligncenter {
+	@apply ml-auto mr-auto;
+}
+
+.alignright {
+	@apply md:float-right md:ml-5 md:mr-0 mx-auto;
+}
