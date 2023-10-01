@@ -1,7 +1,7 @@
 @import '@/assets/styles/vars.scss';
 
 .header {
-	@apply xl:relative fixed xl:top-auto top-0 xl:left-auto left-0 w-full z-10 md:py-2.5 py-1.5;
+	@apply fixed top-0 left-0 w-full z-10 md:py-2.5 py-1.5;
 
 	&::before {
 		content: '';
@@ -16,25 +16,21 @@
 		@apply relative z-2 md:w-auto w-[130px] xl:mr-0 mr-auto;
 	}
 
-	.phone {
-		@apply text-right;
+	.actions {
+		@apply flex items-center justify-end md:gap-x-4 gap-x-3;
 		min-width: rem(180);
 
 		@media (max-width: $xxl) {
 			min-width: auto;
 		}
+	}
+
+	.phone {
+		@apply text-right relative z-2;
 
 		> a {
 			@apply relative z-2 font-muller-narrow font-extrabold italic hover:text-orange transition-colors;
 			font-size: rem(17);
-
-			@media (max-width: $xl) {
-				font-size: rem(32);
-			}
-
-			@media (max-width: $md) {
-				font-size: rem(21);
-			}
 
 			span {
 				@apply xl:inline-block hidden;
@@ -43,6 +39,21 @@
 			svg {
 				@apply xl:hidden block;
 			}
+		}
+	}
+
+	.messenger {
+		@apply relative z-2 xl:text-xl transition-colors hover:text-orange cursor-pointer;
+	}
+
+	.phone > a,
+	.messenger {
+		@media (max-width: $xl) {
+			font-size: rem(32);
+		}
+
+		@media (max-width: $md) {
+			font-size: rem(21);
 		}
 	}
 }

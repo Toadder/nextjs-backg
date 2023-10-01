@@ -9,8 +9,8 @@ export interface IDressingsNode
 export interface IDressingsData extends Array<IDressingsItem> {}
 
 export interface IDressings {
-	items: IDressingsData;
 	slug: string | undefined;
+	items: IDressingsData;
 }
 
 export interface IDressingsItem extends Pick<Dressing, 'id' | 'slug'> {

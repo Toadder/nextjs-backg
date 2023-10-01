@@ -12,19 +12,24 @@
 		@apply md:text-5xl text-3xl lg:text-left text-center;
 	}
 
+	.wrapper {
+		@apply flex justify-center;
+	}
+
 	.links {
-		@apply flex flex-col items-center justify-center text-center gap-y-2;
+		@apply flex flex-col justify-center text-center gap-y-2;
+	}
+
+	.btn,
+	.link {
+		@apply font-bold;
 	}
 
 	.btn {
-		@apply btn-primary font-bold;
+		@apply btn-primary;
 	}
 
 	.link {
-		@apply text-sm;
-
-		> a {
-			@apply text-blue underline transition-colors hover:text-orange;
-		}
+		@apply btn-secondary;
 	}
 }

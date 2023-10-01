@@ -27,7 +27,24 @@
 		}
 	}
 
+	.wrapper {
+		@apply flex justify-center;
+	}
+
+	.links {
+		@apply flex flex-col justify-center text-center gap-y-2;
+	}
+
+	.btn,
+	.link {
+		@apply font-bold;
+	}
+
 	.btn {
-		@apply btn-primary relative left-1/2 -translate-x-1/2 font-bold;
+		@apply btn-primary relative left-1/2 -translate-x-1/2;
+	}
+
+	.link {
+		@apply btn-secondary;
 	}
 }

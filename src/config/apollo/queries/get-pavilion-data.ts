@@ -12,6 +12,7 @@ export const GET_PAVILION_DATA = gql`
 		}
 		pavilion(id: $slug, idType: SLUG) {
 			acfPavilionFields {
+				isbenefithidden
 				benefitslider {
 					image {
 						...ImageFragment
@@ -19,6 +20,7 @@ export const GET_PAVILION_DATA = gql`
 					title
 					content
 				}
+				ismainhidden
 				maintitle
 				maincontent
 				mainslider {
@@ -29,20 +31,9 @@ export const GET_PAVILION_DATA = gql`
 					altText
 					sourceUrl
 				}
+				issimilarloungeshidden
 				titlesimilarlounges
 				similarlounges {
-					... on Lounge {
-						id
-						title
-						uri
-						acfLoungeFields {
-							previewcontent
-							previewimage {
-								...ImageFragment
-							}
-							previewlabel
-						}
-					}
 					... on Pavilion {
 						id
 						title
@@ -56,6 +47,7 @@ export const GET_PAVILION_DATA = gql`
 						}
 					}
 				}
+				isequipmenthidden
 				titleequipment
 				equipment {
 					... on Equipment {
@@ -72,6 +64,7 @@ export const GET_PAVILION_DATA = gql`
 						}
 					}
 				}
+				israteshidden
 				titlerates
 				contentrates
 				rates {

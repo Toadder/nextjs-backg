@@ -30,6 +30,9 @@ const ObjectCard: FC<IObjectCard> = ({
 				<div className={styles.content}>
 					{title?.length ? <div className={styles.title}>{title}</div> : null}
 					{excerpt?.length ? <p className={styles.text}>{excerpt}</p> : null}
+					<button className={styles.button} type="button">
+						Подробнее
+					</button>
 				</div>
 				{label ? <Label text={label} /> : null}
 			</Link>

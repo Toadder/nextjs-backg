@@ -17,8 +17,8 @@ import { WithAnimation } from '@/hoc/WithAnimation';
 
 const INIT_SLIDES_PER_VIEW: number = 3;
 
-const IntroSlider: FC<ILoungeIntroSlider> = ({ introSlider }) => {
-	if (!introSlider?.length) return;
+const IntroSlider: FC<ILoungeIntroSlider> = ({ isBlockHidden, introSlider }) => {
+	if (!introSlider?.length || isBlockHidden) return;
 
 	const sliderRef = useRef<SwiperType | null>(null);
 	const [slidesPerView, setSlidesPerView] =

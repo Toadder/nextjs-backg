@@ -1,27 +1,23 @@
 'use client';
 
-import { useEffect } from 'react';
-import { FC } from 'react';
-
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { FC, useEffect } from 'react';
 
 import { scrollToBlock } from '@/utils/window/scrollToBlock';
 
 import styles from './Dressings.module.scss';
 import DressingsItem from './DressingsItem';
 import { IDressings } from './dressings.interface';
-import { useRouter, usePathname } from 'next/navigation'
 
-const Dressings: FC<IDressings> = ({ items, slug }) => {
+const Dressings: FC<IDressings> = ({ slug, items }) => {
 	if (!items?.length) return;
 
 	const router = useRouter();
 	const pathname = usePathname();
-	const isMobile: boolean | null = useMediaQuery('(max-width: 80em)');
 
 	useEffect(() => {
-		scrollToBlock(`#${slug}`, isMobile);
-		router.replace(pathname, { scroll: false })
+		scrollToBlock(`#${slug}`);
+		router.replace(pathname, { scroll: false });
 	}, []);
 
 	return (

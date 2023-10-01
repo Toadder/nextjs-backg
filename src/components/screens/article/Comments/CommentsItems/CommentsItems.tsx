@@ -39,7 +39,7 @@ const CommentsItems: FC<IArticleCommentsItems> = ({
 				setLastItemCursor(commentsEndCursor);
 			})
 			.catch((error) => {
-				console.log(error);
+				console.error(error);
 				setMoreItemsAvailable(false);
 				alert('При загрузке данных произошла ошибка...');
 			})

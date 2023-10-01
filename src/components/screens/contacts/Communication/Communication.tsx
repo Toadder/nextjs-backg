@@ -23,7 +23,7 @@ const Communication: FC = () => {
 	const { error, communicationData } = use(getData());
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return;
 	}
 
@@ -31,15 +31,16 @@ const Communication: FC = () => {
 		<section className={styles.root}>
 			<div className={styles.inner}>
 				<CommunicationMain
+					isBlockHidden={communicationData?.issocialhidden}
 					title={communicationData?.socialtitle}
 					phone={communicationData?.phone}
 					email={communicationData?.email}
 					address={communicationData?.address}
 					addressLink={communicationData?.addresslink}
-					telegram={communicationData?.telegram}
-					whatsapp={communicationData?.whatsapp}
+					youtube={communicationData?.youtube}
 				/>
 				<CommunicationGroups
+					isBlockHidden={communicationData?.iscommunityhidden}
 					title={communicationData?.communitytitle}
 					vkGroup={communicationData?.vkgroup}
 					tgChannel={communicationData?.tgchannel}

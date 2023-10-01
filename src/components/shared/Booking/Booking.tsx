@@ -25,11 +25,11 @@ const Booking: FC = () => {
 		!!bookingData?.bookingfile?.mediaItemUrl?.length;
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return;
 	}
 
-	if (!isFieldsExist) return;
+	if (!isFieldsExist || bookingData?.isbookinghidden) return;
 
 	return (
 		<WithAnimation>

@@ -1,0 +1,30 @@
+@import '@/assets/styles/functions.scss';
+
+.card {
+	@apply invisible opacity-0 transition-all duration-300 fixed top-0 left-0 w-full h-full z-10 overflow-y-auto;
+
+	&.active {
+		@apply opacity-100 visible;
+
+		.body {
+			@apply translate-y-0;
+		}
+	}
+
+	.inner {
+		@apply w-full min-h-full flex items-center justify-center bg-black bg-opacity-50 px-4 py-8;
+	}
+
+	.body {
+		@apply md:p-12 px-5 py-9 translate-y-7 transition-all duration-300 w-full bg-white rounded-3xl relative z-1;
+		max-width: rem(650);
+	}
+
+	.close {
+		@apply md:text-3xl text-2xl cursor-pointer transition-colors hover:text-orange absolute z-2 top-3 right-3;
+	}
+
+	.backdrop {
+		@apply absolute top-0 left-0 w-full h-full;
+	}
+}

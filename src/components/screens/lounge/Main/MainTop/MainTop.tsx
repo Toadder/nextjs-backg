@@ -10,8 +10,15 @@ import { ILoungeTop } from '../../lounge.interface';
 import styles from './MainTop.module.scss';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const MainTop: FC<ILoungeTop> = ({ title, content, videoMp4, videoWebm }) => {
-	if (!title?.length) return;
+const MainTop: FC<ILoungeTop> = ({
+	isBlockHidden,
+	whatsapp,
+	title,
+	content,
+	videoMp4,
+	videoWebm
+}) => {
+	if (!title?.length || isBlockHidden) return;
 
 	return (
 		<WithAnimation>
@@ -26,11 +33,24 @@ const MainTop: FC<ILoungeTop> = ({ title, content, videoMp4, videoWebm }) => {
 							videoMp4={videoMp4?.mediaItemUrl || ''}
 							videoWebm={videoWebm?.mediaItemUrl || ''}
 						/>
-						<AnchorBtn
-							selector="#booking"
-							text="Забронировать"
-							className={styles.btn}
-						/>
+						<div className={styles.wrapper}>
+							<div className={styles.links}>
+								<AnchorBtn
+									selector="#booking"
+									text="Забронировать"
+									className={styles.btn}
+								/>
+								{whatsapp?.length ? (
+									<a
+										href={whatsapp || ''}
+										target="_blank"
+										className={styles.link}
+									>
+										или в WhatsApp
+									</a>
+								) : null}
+							</div>
+						</div>
 					</div>
 				) : null}
 			</div>

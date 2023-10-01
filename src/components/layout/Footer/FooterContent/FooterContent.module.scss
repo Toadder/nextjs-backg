@@ -6,7 +6,7 @@
 	min-height: rem(420);
 
 	@media(max-width: 103.75em) {
-		left: 38px;
+		left: rem(38);
 	};
 
 	@media(max-width: $xl) {

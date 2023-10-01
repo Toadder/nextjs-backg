@@ -1,16 +1,34 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, use } from 'react';
 
 import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
 
 import styles from './Tour.module.scss';
 import { WithAnimation } from '@/hoc/WithAnimation';
+import client from '@/config/apollo/client'
+import { GET_TOUR_DATA } from '@/config/apollo/queries/get-tour-data'
+import { ITourData } from './tour.interface'
+
+const getData = async () => {
+	const { error, data } = await client.query({ query: GET_TOUR_DATA });
+	const tourData: ITourData = data?.fields?.acfSettings;
+	return { error, tourData };
+};
 
 const Tour: FC = () => {
+	const { error, tourData } = use(getData());
+
+	if(error) {
+		console.error(error);
+		return;
+	}
+
+	if(tourData?.istourhidden) return;
+
 	return (
 		<WithAnimation>
 			<div className={styles.root}>
-				<a href="" className={styles.link}>
+				<a href="/" className={styles.link}>
 					<Image
 						className={styles.bg}
 						src="/static/shared/tour/main.webp"

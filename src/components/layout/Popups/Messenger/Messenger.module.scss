@@ -1,0 +1,27 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	.title {
+		@apply font-muller-narrow text-center uppercase md:text-5xl;
+
+		@media (max-width: $md) {
+			font-size: rem(26);
+		}
+	}
+
+	.socials {
+		@apply flex items-center justify-center flex-wrap md:gap-x-5 gap-x-4 md:mt-6 mt-3;
+	}
+
+	.social {
+		@apply md:text-7xl transition-colors hover:text-orange leading-none;
+
+		@media(max-width: $md) {
+			font-size: rem(46);
+		}
+	}
+
+	.error {
+		@apply text-center;
+	}
+}

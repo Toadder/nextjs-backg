@@ -19,7 +19,7 @@ const Conditions: FC = () => {
 	const { error, generalSettings, conditionsData } = use(getData());
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return;
 	}
 
@@ -33,7 +33,11 @@ const Conditions: FC = () => {
 					dangerouslySetInnerHTML={{ __html: conditionsData?.content || '' }}
 				/>
 				{generalSettings?.bookingfile?.mediaItemUrl?.length ? (
-					<a className={styles.btn} target="_blank" href={generalSettings?.bookingfile?.mediaItemUrl}>
+					<a
+						className={styles.btn}
+						target="_blank"
+						href={generalSettings?.bookingfile?.mediaItemUrl}
+					>
 						Полные условия
 					</a>
 				) : null}

@@ -12,8 +12,8 @@ import RatesItem from './RatesItem/RatesItem';
 import { pagesUri } from '@/constants/pages';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const Rates: FC<IPavilionRates> = ({ title, content, rates, phone }) => {
-	if (!rates?.length) return;
+const Rates: FC<IPavilionRates> = ({ isBlockHidden, title, content, rates, phone }) => {
+	if (!rates?.length || isBlockHidden) return;
 
 	return (
 		<WithAnimation>

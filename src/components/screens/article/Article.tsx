@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import { FC, use } from 'react';
 
 import Comments from './Comments/Comments';
@@ -7,10 +6,16 @@ import Main from './Main/Main';
 import { getData } from './article.requests';
 
 const Article: FC<{ slug: string }> = ({ slug }) => {
-	const { error, articleData, commentsHasNextPage, commentsEndCursor, otherArticles } = use(getData(slug));
+	const {
+		error,
+		articleData,
+		commentsHasNextPage,
+		commentsEndCursor,
+		otherArticles
+	} = use(getData(slug));
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return;
 	}
 

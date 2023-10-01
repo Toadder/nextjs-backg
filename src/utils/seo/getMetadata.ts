@@ -12,7 +12,7 @@ export const getMetadata = async (path: string): Promise<Metadata> => {
 	});
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return {};
 	}
 

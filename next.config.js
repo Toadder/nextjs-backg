@@ -4,13 +4,25 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true'
 });
 
-// FIXME: В ПРОДАКШЕНЕ УБРАТЬ IMAGES И HEADERS
 const nextConfig = {
 	poweredByHeader: false,
+
 	env: {
 		WORDPRESS_SITE_URL: process.env.WORDPRESS_SITE_URL
 	},
+
+	webpack(config, { webpack }) {
+		// Graphql Optimization
+		config.plugins.push(
+			new webpack.DefinePlugin({
+				'globalThis.__DEV__': process.env.NODE_ENV === 'development'
+			})
+		);
+		return config;
+	},
+
 	images: {
+		// FIXME: Delete in production mode
 		remotePatterns: [
 			{
 				protocol: 'http',
@@ -21,6 +33,7 @@ const nextConfig = {
 		]
 	},
 	async headers() {
+		// FIXME: Delete in production mode
 		return [
 			{
 				// matching all API routes

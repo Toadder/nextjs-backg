@@ -1,9 +1,12 @@
 import { notFound } from 'next/navigation';
 import { FC, use } from 'react';
 
+import IntroSlider from '@/components/screens/lounge/IntroSlider/IntroSlider';
 import Booking from '@/components/shared/Booking/Booking';
-import IntroSlider from '@/components/shared/IntroSlider/IntroSlider';
 import RentalWidget from '@/components/shared/RentalWidget/RentalWidget';
+import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects';
+
+import { IGeneralSettings } from '@/shared/types/general.types';
 
 import client from '@/config/apollo/client';
 import { GET_LOUNGE_DATA } from '@/config/apollo/queries/get-lounge-data';
@@ -18,35 +21,51 @@ const getData = async (slug: string) => {
 		variables: { slug }
 	});
 
-	if(!data?.lounge) notFound();
+	if (!data?.lounge) notFound();
 
+	const generalSettings: IGeneralSettings = data?.generalSettings?.acfSettings;
 	const loungeData: ILoungeData = data?.lounge?.acfLoungeFields;
-	return { error, loungeData };
+	return { error, generalSettings, loungeData };
 };
 
 const Lounge: FC<{ slug: string }> = ({ slug }) => {
-	const { error, loungeData } = use(getData(slug));
+	const { error, generalSettings, loungeData } = use(getData(slug));
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return;
 	}
 
 	return (
 		<>
-			<IntroSlider introSlider={loungeData?.introslider} />
+			<IntroSlider
+				isBlockHidden={loungeData?.isintrohidden}
+				introSlider={loungeData?.introslider}
+			/>
 			<Main
+				isMainHidden={loungeData?.ismainhidden}
 				title={loungeData?.maintitle}
 				mainContent={loungeData?.maincontent}
 				videoMp4={loungeData?.mainvideomp4}
 				videoWebm={loungeData?.mainvideowebm}
+				isLayoutHidden={loungeData?.islayouthidden}
 				layout={loungeData?.layout}
 				layoutContent={loungeData?.layoutcontent}
 				properties={loungeData?.layoutproperties}
+				whatsapp={generalSettings?.whatsapp}
 			/>
-			<ExampleSlider exampleSlider={loungeData?.exampleslider} />
+			<ExampleSlider
+				isBlockHidden={loungeData?.isexamplehidden}
+				exampleSlider={loungeData?.exampleslider}
+			/>
+			<SimilarObjects
+				isBlockHidden={loungeData?.issimilarloungeshidden}
+				title={loungeData?.titlesimilarlounges}
+				similarObjects={loungeData?.similarlounges}
+			/>
 			<Booking />
 			<RentalWidget
+				isBlockHidden={loungeData?.isiframehidden}
 				iframeSrc={loungeData?.iframesrc}
 				iframeClass={loungeData?.iframeclass}
 				iframeStyles={loungeData?.iframestyles}

@@ -17,7 +17,7 @@ const Equipment: FC = () => {
 	const { error, equipmentData } = use(getData());
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return;
 	}
 

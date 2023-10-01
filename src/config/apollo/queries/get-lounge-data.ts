@@ -4,17 +4,25 @@ import { imageFragment } from '../fraqments/image';
 
 export const GET_LOUNGE_DATA = gql`
 	query GET_LOUNGE_DATA($slug: ID!) {
+		generalSettings {
+			acfSettings {
+				whatsapp
+			}
+		}
 		lounge(id: $slug, idType: SLUG) {
 			acfLoungeFields {
+				isintrohidden
 				introslider {
 					...ImageFragment
 				}
+				isexamplehidden
 				exampleslider {
 					caption
 					image {
 						...ImageFragment
 					}
 				}
+				ismainhidden
 				maintitle
 				mainvideomp4 {
 					mediaItemUrl
@@ -23,6 +31,7 @@ export const GET_LOUNGE_DATA = gql`
 					mediaItemUrl
 				}
 				maincontent
+				islayouthidden
 				layout {
 					...ImageFragment
 				}
@@ -35,6 +44,23 @@ export const GET_LOUNGE_DATA = gql`
 					excerpt
 					content
 				}
+				issimilarloungeshidden
+				titlesimilarlounges
+				similarlounges {
+					... on Lounge {
+						id
+						title
+						uri
+						acfLoungeFields {
+							previewcontent
+							previewimage {
+								...ImageFragment
+							}
+							previewlabel
+						}
+					}
+				}
+				isiframehidden
 				iframesrc
 				iframeclass
 				iframestyles

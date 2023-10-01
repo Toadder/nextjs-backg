@@ -4,6 +4,7 @@ import { IObject } from '@/components/shared/ObjectCard/object-card.interface';
 
 import { Dressing, Lounge, Pavilion } from '@/shared/types/grahpql.types';
 
+import { compareByPriority } from '@/utils/data/compareByPriority';
 import { parseToObjectType } from '@/utils/data/parseToObjectType';
 
 import client from '@/config/apollo/client';
@@ -15,6 +16,8 @@ import { IObjectsData } from './objects.interface';
 
 const getData = async () => {
 	const { error, data } = await client.query({ query: GET_OBJECTS_DATA });
+
+	const isObjectsHidden: boolean = data?.fields?.acfHomeFields?.isobjectshidden;
 
 	const lounges: IObject[] = data?.lounges?.edges?.map(
 		({ node }: { node: Lounge }) => parseToObjectType(node)
@@ -28,20 +31,24 @@ const getData = async () => {
 		({ node }: { node: Dressing }) => parseToObjectType(node)
 	);
 
-	const objectsData: IObjectsData = [...lounges, ...pavilions, ...dressings];
+	const objectsData: IObjectsData = [
+		...lounges,
+		...pavilions,
+		...dressings
+	].sort(compareByPriority);
 
-	return { error, objectsData };
+	return { error, isObjectsHidden, objectsData  };
 };
 
 const Objects: FC = () => {
-	const { error, objectsData } = use(getData());
+	const { error, isObjectsHidden, objectsData } = use(getData());
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return;
 	}
 
-	if (!objectsData?.length) return;
+	if (!objectsData?.length || isObjectsHidden) return;
 
 	return (
 		<div className={styles.root}>

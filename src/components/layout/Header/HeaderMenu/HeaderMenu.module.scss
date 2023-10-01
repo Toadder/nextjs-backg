@@ -85,8 +85,13 @@
 	}
 
 	.sublist {
-		@apply xl:hidden xl:absolute xl:left-0 xl:top-full bg-white xl:shadow-primary;
+		@apply xl:hidden xl:absolute xl:left-0 xl:top-full bg-white xl:shadow-primary overflow-y-auto;
 		min-width: rem(190);
+		max-height: calc(100vh - rem(58));
+
+		@media(max-width: $xl) {
+			max-height: 100%;
+		}
 	}
 
 	.subitem {

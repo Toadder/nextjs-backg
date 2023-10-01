@@ -18,8 +18,11 @@ import { WithAnimation } from '@/hoc/WithAnimation';
 
 const INITIAL_SLIDES_PER_VIEW: number = 4;
 
-const ExampleSlider: FC<ILoungeExampleSlider> = ({ exampleSlider }) => {
-	if (!exampleSlider?.length) return;
+const ExampleSlider: FC<ILoungeExampleSlider> = ({
+	isBlockHidden,
+	exampleSlider
+}) => {
+	if (!exampleSlider?.length || isBlockHidden) return;
 
 	const sliderRef = useRef<SwiperType | null>(null);
 	const [slidesPerView, setSlidesPerView] = useState<number>(

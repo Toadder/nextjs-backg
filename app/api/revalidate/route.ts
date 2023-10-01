@@ -9,6 +9,9 @@ export async function GET(request: NextRequest) {
 	if (secret !== process.env.SECRET_TOKEN)
 		return NextResponse.json({ message: 'Invalid secret' }, { status: 401 });
 
-	pagesToRevalidate.forEach((value) => revalidatePath(value));
+	pagesToRevalidate.forEach((value) => {
+		revalidatePath(value, 'layout');
+		revalidatePath(value, 'page');
+	});
 	return NextResponse.json({ revalidated: true }, { status: 200 });
 }

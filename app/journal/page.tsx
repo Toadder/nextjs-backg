@@ -17,7 +17,7 @@ const JournalPage: NextPage = () => {
 	const { error, journalData, hasNextPage, endCursor } = use(getData());
 
 	if (error) {
-		console.log(error);
+		console.error(error);
 		return;
 	}
 

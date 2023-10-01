@@ -9,10 +9,11 @@ import styles from './AvailableEquipment.module.scss';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
 const AvailableEquipment: FC<IPavilionEquipment> = ({
+	isBlockHidden,
 	title,
 	equipmentItems
 }) => {
-	if (!equipmentItems?.length) return;
+	if (!equipmentItems?.length || isBlockHidden) return;
 
 	return (
 		<WithAnimation>

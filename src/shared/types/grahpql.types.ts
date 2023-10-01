@@ -1559,6 +1559,8 @@ export type CreateEquipmentPayload = {
 export type CreateJournalInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The comment status for the object */
+  commentStatus?: InputMaybe<Scalars['String']['input']>;
   /** The content of the object */
   content?: InputMaybe<Scalars['String']['input']>;
   /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
@@ -2359,6 +2361,8 @@ export type Dressing_Acfdressingfields = AcfFieldGroup & {
   previewcontent?: Maybe<Scalars['String']['output']>;
   previewimage?: Maybe<MediaItem>;
   previewlabel?: Maybe<Scalars['String']['output']>;
+  /** Номер позиции карточки объекта на главной странице */
+  priority?: Maybe<Scalars['Float']['output']>;
 };
 
 /** Relational context between connected nodes */
@@ -2671,6 +2675,8 @@ export type GeneralSettings_Acfsettings = AcfFieldGroup & {
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   footertext?: Maybe<Scalars['String']['output']>;
   instagramchannel?: Maybe<Scalars['String']['output']>;
+  isbookinghidden?: Maybe<Scalars['Boolean']['output']>;
+  istourhidden?: Maybe<Scalars['Boolean']['output']>;
   logo?: Maybe<MediaItem>;
   mapcoordinates?: Maybe<Scalars['String']['output']>;
   paymentlink?: Maybe<Scalars['String']['output']>;
@@ -2679,6 +2685,7 @@ export type GeneralSettings_Acfsettings = AcfFieldGroup & {
   tgchannel?: Maybe<Scalars['String']['output']>;
   vkgroup?: Maybe<Scalars['String']['output']>;
   whatsapp?: Maybe<Scalars['String']['output']>;
+  youtube?: Maybe<Scalars['String']['output']>;
 };
 
 /** Field Group */
@@ -3026,10 +3033,16 @@ export type HierarchicalTermNodeEnqueuedStylesheetsArgs = {
 };
 
 /** The journal type */
-export type Journal = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithContentEditor & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
+export type Journal = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithComments & NodeWithContentEditor & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
   __typename?: 'Journal';
   /** Added to the GraphQL Schema because the ACF Field Group &quot;Поля статьи&quot; was set to Show in GraphQL. */
   acfJournalData?: Maybe<Journal_Acfjournaldata>;
+  /** The number of comments. Even though WPGraphQL denotes this field as an integer, in WordPress this field should be saved as a numeric string for compatibility. */
+  commentCount?: Maybe<Scalars['Int']['output']>;
+  /** Whether the comments are open or closed for this particular post. */
+  commentStatus?: Maybe<Scalars['String']['output']>;
+  /** Connection between the Journal type and the Comment type */
+  comments?: Maybe<JournalToCommentConnection>;
   /** The content of the post. */
   content?: Maybe<Scalars['String']['output']>;
   /** Connection between the ContentNode type and the ContentType type */
@@ -3095,6 +3108,16 @@ export type Journal = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node
   title?: Maybe<Scalars['String']['output']>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The journal type */
+export type JournalCommentsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<JournalToCommentConnectionWhereArgs>;
 };
 
 
@@ -3170,6 +3193,103 @@ export enum JournalIdType {
   /** Identify a resource by the URI. */
   Uri = 'URI'
 }
+
+/** Connection between the Journal type and the Comment type */
+export type JournalToCommentConnection = CommentConnection & Connection & {
+  __typename?: 'JournalToCommentConnection';
+  /** Edges for the JournalToCommentConnection connection */
+  edges: Array<JournalToCommentConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Comment>;
+  /** Information about pagination in a connection. */
+  pageInfo: JournalToCommentConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type JournalToCommentConnectionEdge = CommentConnectionEdge & Edge & {
+  __typename?: 'JournalToCommentConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Comment;
+};
+
+/** Page Info on the &quot;JournalToCommentConnection&quot; */
+export type JournalToCommentConnectionPageInfo = CommentConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'JournalToCommentConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the JournalToCommentConnection connection */
+export type JournalToCommentConnectionWhereArgs = {
+  /** Comment author email address. */
+  authorEmail?: InputMaybe<Scalars['String']['input']>;
+  /** Array of author IDs to include comments for. */
+  authorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of author IDs to exclude comments for. */
+  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Comment author URL. */
+  authorUrl?: InputMaybe<Scalars['String']['input']>;
+  /** Array of comment IDs to include. */
+  commentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of IDs of users whose unapproved comments will be returned by the query regardless of status. */
+  commentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Include comments of a given type. */
+  commentType?: InputMaybe<Scalars['String']['input']>;
+  /** Include comments from a given array of comment types. */
+  commentTypeIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Exclude comments from a given array of comment types. */
+  commentTypeNotIn?: InputMaybe<Scalars['String']['input']>;
+  /** Content object author ID to limit results by. */
+  contentAuthor?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of author IDs to retrieve comments for. */
+  contentAuthorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of author IDs *not* to retrieve comments for. */
+  contentAuthorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Limit results to those affiliated with a given content object ID. */
+  contentId?: InputMaybe<Scalars['ID']['input']>;
+  /** Array of content object IDs to include affiliated comments for. */
+  contentIdIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of content object IDs to exclude affiliated comments for. */
+  contentIdNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Content object name (i.e. slug ) to retrieve affiliated comments for. */
+  contentName?: InputMaybe<Scalars['String']['input']>;
+  /** Content Object parent ID to retrieve affiliated comments for. */
+  contentParent?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of content object statuses to retrieve affiliated comments for. Pass 'any' to match any value. */
+  contentStatus?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Content object type or array of types to retrieve affiliated comments for. Pass 'any' to match any value. */
+  contentType?: InputMaybe<Array<InputMaybe<ContentTypeEnum>>>;
+  /** Array of IDs or email addresses of users whose unapproved comments will be returned by the query regardless of $status. Default empty */
+  includeUnapproved?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Karma score to retrieve matching comments for. */
+  karma?: InputMaybe<Scalars['Int']['input']>;
+  /** The cardinality of the order of the connection */
+  order?: InputMaybe<OrderEnum>;
+  /** Field to order the comments by. */
+  orderby?: InputMaybe<CommentsConnectionOrderbyEnum>;
+  /** Parent ID of comment to retrieve children of. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of parent IDs of comments to retrieve children for. */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of parent IDs of comments *not* to retrieve children for. */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Search term(s) to retrieve matching comments for. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Comment status to limit results by. */
+  status?: InputMaybe<Scalars['String']['input']>;
+  /** Include comments for a specific user ID. */
+  userId?: InputMaybe<Scalars['ID']['input']>;
+};
 
 /** Connection between the Journal type and the journal type */
 export type JournalToPreviewConnectionEdge = Edge & JournalConnectionEdge & OneToOneConnection & {
@@ -3347,6 +3467,12 @@ export type Lounge_Acfloungefields = AcfFieldGroup & {
   iframesrc?: Maybe<Scalars['String']['output']>;
   iframestyles?: Maybe<Scalars['String']['output']>;
   introslider?: Maybe<Array<Maybe<MediaItem>>>;
+  isexamplehidden?: Maybe<Scalars['Boolean']['output']>;
+  isiframehidden?: Maybe<Scalars['Boolean']['output']>;
+  isintrohidden?: Maybe<Scalars['Boolean']['output']>;
+  islayouthidden?: Maybe<Scalars['Boolean']['output']>;
+  ismainhidden?: Maybe<Scalars['Boolean']['output']>;
+  issimilarloungeshidden?: Maybe<Scalars['Boolean']['output']>;
   layout?: Maybe<MediaItem>;
   layoutcontent?: Maybe<Scalars['String']['output']>;
   layoutproperties?: Maybe<Array<Maybe<Lounge_Acfloungefields_Layoutproperties>>>;
@@ -3357,7 +3483,13 @@ export type Lounge_Acfloungefields = AcfFieldGroup & {
   previewcontent?: Maybe<Scalars['String']['output']>;
   previewimage?: Maybe<MediaItem>;
   previewlabel?: Maybe<Scalars['String']['output']>;
+  /** Номер позиции карточки объекта на главной странице */
+  priority?: Maybe<Scalars['Float']['output']>;
+  similarlounges?: Maybe<Array<Maybe<Lounge_Acfloungefields_Similarlounges>>>;
+  titlesimilarlounges?: Maybe<Scalars['String']['output']>;
 };
+
+export type Lounge_Acfloungefields_Similarlounges = Lounge;
 
 /** Field Group */
 export type Lounge_Acfloungefields_Exampleslider = AcfFieldGroup & {
@@ -4928,6 +5060,8 @@ export type Page_Acfcontactsfields = AcfFieldGroup & {
   communitytitle?: Maybe<Scalars['String']['output']>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+  iscommunityhidden?: Maybe<Scalars['Boolean']['output']>;
+  issocialhidden?: Maybe<Scalars['Boolean']['output']>;
   socialtitle?: Maybe<Scalars['String']['output']>;
 };
 
@@ -4937,6 +5071,8 @@ export type Page_Acfhomefields = AcfFieldGroup & {
   benefits?: Maybe<Array<Maybe<Page_Acfhomefields_Benefits>>>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+  isbenefitshidden?: Maybe<Scalars['Boolean']['output']>;
+  isobjectshidden?: Maybe<Scalars['Boolean']['output']>;
 };
 
 /** Field Group */
@@ -5105,6 +5241,11 @@ export type Pavilion_Acfpavilionfields = AcfFieldGroup & {
   equipment?: Maybe<Array<Maybe<Pavilion_Acfpavilionfields_Equipment>>>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+  isbenefithidden?: Maybe<Scalars['Boolean']['output']>;
+  isequipmenthidden?: Maybe<Scalars['Boolean']['output']>;
+  ismainhidden?: Maybe<Scalars['Boolean']['output']>;
+  israteshidden?: Maybe<Scalars['Boolean']['output']>;
+  issimilarloungeshidden?: Maybe<Scalars['Boolean']['output']>;
   maincontent?: Maybe<Scalars['String']['output']>;
   mainlayout?: Maybe<MediaItem>;
   mainslider?: Maybe<Array<Maybe<MediaItem>>>;
@@ -5112,6 +5253,8 @@ export type Pavilion_Acfpavilionfields = AcfFieldGroup & {
   previewcontent?: Maybe<Scalars['String']['output']>;
   previewimage?: Maybe<MediaItem>;
   previewlabel?: Maybe<Scalars['String']['output']>;
+  /** Номер позиции карточки объекта на главной странице */
+  priority?: Maybe<Scalars['Float']['output']>;
   rates?: Maybe<Array<Maybe<Pavilion_Acfpavilionfields_Rates>>>;
   similarlounges?: Maybe<Array<Maybe<Pavilion_Acfpavilionfields_Similarlounges>>>;
   titleequipment?: Maybe<Scalars['String']['output']>;
@@ -5121,7 +5264,7 @@ export type Pavilion_Acfpavilionfields = AcfFieldGroup & {
 
 export type Pavilion_Acfpavilionfields_Equipment = Equipment;
 
-export type Pavilion_Acfpavilionfields_Similarlounges = Lounge | Pavilion;
+export type Pavilion_Acfpavilionfields_Similarlounges = Pavilion;
 
 /** Field Group */
 export type Pavilion_Acfpavilionfields_Benefitslider = AcfFieldGroup & {
@@ -10544,6 +10687,8 @@ export type UpdateEquipmentPayload = {
 export type UpdateJournalInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The comment status for the object */
+  commentStatus?: InputMaybe<Scalars['String']['input']>;
   /** The content of the object */
   content?: InputMaybe<Scalars['String']['input']>;
   /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */

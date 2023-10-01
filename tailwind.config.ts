@@ -19,6 +19,9 @@ const config: Config = {
 			orange: '#f9be07'
 		},
 		extend: {
+			scale: {
+				80: '.8'
+			},
 			fontFamily: {
 				'muller-narrow': ['var(--font-muller-narrow)'],
 				'open-sans': ['var(--font-open-sans)']

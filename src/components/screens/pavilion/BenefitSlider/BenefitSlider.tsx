@@ -16,8 +16,8 @@ import { IPavilionBenefitSlider } from '../pavilion.interface'
 import { WithAnimation } from '@/hoc/WithAnimation'
 import styles from './BenefitSlider.module.scss'
 
-const BenefitSlider: FC<IPavilionBenefitSlider> = ({ benefitSlider }) => {
-	if (!benefitSlider?.length) return;
+const BenefitSlider: FC<IPavilionBenefitSlider> = ({ isBlockHidden, benefitSlider }) => {
+	if (!benefitSlider?.length || isBlockHidden) return;
 
 	const sliderRef = useRef<SwiperType | null>(null);
 	const isControlsVisible: boolean = benefitSlider?.length > 1;

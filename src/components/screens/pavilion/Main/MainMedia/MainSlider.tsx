@@ -17,7 +17,7 @@ const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
 	if (!slider?.length) return;
 
 	const sliderRef = useRef<SwiperType | null>(null);
-	const [thumbsSwiper, setThumbsSwiper] = useState(null);
+	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
 	return (
 		<div className={styles.sliders}>
@@ -28,7 +28,7 @@ const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
 						onBeforeInit={(swiper) => {
 							sliderRef.current = swiper;
 						}}
-						thumbs={{ swiper: thumbsSwiper }}
+						thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
 						autoplay={{
 							delay: 3000,
 							pauseOnMouseEnter: true

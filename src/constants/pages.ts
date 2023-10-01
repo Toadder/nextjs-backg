@@ -20,4 +20,9 @@ export const pagesUri: IPagesUri = {
 	pavilions: '/pavilions'
 };
 
-export const pagesToRevalidate: string[] = [pagesUri.home, pagesUri.equipment, pagesUri.contacts, pagesUri.conditions];
+export const pagesToRevalidate: string[] = [
+	pagesUri.home,
+	pagesUri.equipment,
+	pagesUri.contacts,
+	pagesUri.conditions
+];

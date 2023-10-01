@@ -8,6 +8,7 @@ import MainMedia from './MainMedia/MainMedia';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
 const Main: FC<IPavilionMain> = ({
+	isBlockHidden,
 	title,
 	content,
 	slider,
@@ -15,6 +16,8 @@ const Main: FC<IPavilionMain> = ({
 	phone,
 	whatsapp
 }) => {
+	if(isBlockHidden) return;
+
 	return (
 		<WithAnimation>
 			<section className={styles.root}>

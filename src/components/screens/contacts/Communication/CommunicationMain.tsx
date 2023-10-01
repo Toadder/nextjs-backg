@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import Heading from '@/components/ui/Heading/Heading';
 import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
+import PopupBtn from '@/components/ui/PopupBtn/PopupBtn';
 
 import { convertPhone } from '@/utils/data/convertPhone';
 
@@ -10,23 +11,22 @@ import { ICommunicationMain } from './communication.interface';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
 const CommunicationMain: FC<ICommunicationMain> = ({
+	isBlockHidden,
 	title,
 	phone,
 	email,
 	address,
 	addressLink,
-	telegram,
-	whatsapp
+	youtube
 }) => {
 	const isContactsExist: boolean =
 		!!phone?.length ||
 		!!email?.length ||
-		!!address?.length ||
-		!!telegram?.length ||
-		!!whatsapp?.length;
+		!!address?.length  ||
+		!!youtube?.length;
 	const cleanedPhoneNumber: string = convertPhone(phone || '');
 
-	if (!isContactsExist) return;
+	if (!isContactsExist || isBlockHidden) return;
 
 	return (
 		<WithAnimation>
@@ -54,26 +54,28 @@ const CommunicationMain: FC<ICommunicationMain> = ({
 					) : null}
 
 					{address?.length ? (
-						<a className={styles.contact} href={addressLink || ''} target="_blank">
+						<a
+							className={styles.contact}
+							href={addressLink || ''}
+							target="_blank"
+						>
 							<FontAwesomeIcon name="FaLocationDot" />
 							<div className={styles.subtitle}>Адрес</div>
 							<div className={styles.text}>{address}</div>
 						</a>
 					) : null}
 
-					{telegram?.length ? (
-						<a className={styles.contact} href={telegram} target="_blank">
-							<FontAwesomeIcon name="FaTelegram" />
-							<div className={styles.subtitle}>Telegram</div>
+					{youtube?.length ? (
+						<a className={styles.contact} href={youtube} target="_blank">
+							<FontAwesomeIcon name="FaYoutube" />
+							<div className={styles.subtitle}>Youtube</div>
 						</a>
 					) : null}
 
-					{whatsapp?.length ? (
-						<a className={styles.contact} href={whatsapp} target="_blank">
-							<FontAwesomeIcon name="FaWhatsapp" />
-							<div className={styles.subtitle}>WhatsApp</div>
-						</a>
-					) : null}
+					<PopupBtn popupName='messenger' className={styles.contact}>
+						<FontAwesomeIcon name="SiMessenger" />
+						<div className={styles.subtitle}>Мессенджер</div>
+					</PopupBtn>
 				</div>
 			</div>
 		</WithAnimation>

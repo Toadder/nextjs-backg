@@ -15,6 +15,10 @@
 
 body {
 	@apply text-brown overflow-x-hidden;
+
+	&.lock {
+		@apply overflow-hidden;
+	}
 }
 
 .layout {
@@ -25,10 +29,7 @@ body {
 
 .main {
 	flex: 1 0 auto;
-
-	@media (max-width: $xl) {
-		margin-top: rem(71);
-	}
+	margin-top: rem(71);
 
 	@media (max-width: $md) {
 		margin-top: rem(46);

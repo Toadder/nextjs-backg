@@ -8,6 +8,7 @@ import { ICommunicationGroups } from './communication.interface';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
 const CommunicationGroups: FC<ICommunicationGroups> = ({
+	isBlockHidden,
 	title,
 	vkGroup,
 	tgChannel,
@@ -16,7 +17,7 @@ const CommunicationGroups: FC<ICommunicationGroups> = ({
 	const isGroupsExist: boolean =
 		!!vkGroup?.length || !!tgChannel?.length || !!instagramChannel?.length;
 
-	if (!isGroupsExist) return;
+	if (!isGroupsExist || isBlockHidden) return;
 
 	return (
 		<WithAnimation>

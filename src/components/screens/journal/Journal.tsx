@@ -17,7 +17,7 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const entry = useIntersectionObserver(ref, {
 		freezeOnceVisible: false,
-		rootMargin: '-50% 0px 50% 0px'
+		rootMargin: '50%'
 	});
 	const isVisible = Boolean(entry?.isIntersecting);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 					setLastItemCursor(endCursor);
 				})
 				.catch((error) => {
-					console.log(error);
+					console.error(error);
 					setMorePagesAvailable(false);
 					alert('При загрузке данных произошла ошибка...');
 				})

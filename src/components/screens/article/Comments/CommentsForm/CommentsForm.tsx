@@ -57,7 +57,7 @@ const CommentsForm: FC<IArticleCommentsForm> = ({ postId }) => {
 
 			reset();
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			setMessageBackgroundClass(MessageBackground.Red);
 			setResponseMessage('При отправке запроса произошла ошибка.');
 		} finally {

@@ -5,16 +5,16 @@ import Heading from '@/components/ui/Heading/Heading';
 
 import { parseToObjectType } from '@/utils/data/parseToObjectType';
 
-import { IPavilionSimilarLounges } from '../pavilion.interface';
-
-import styles from './SimilarLounges.module.scss';
+import styles from './SimilarObjects.module.scss';
+import { ISimilarObjects } from './similar-objects.interface';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const SimilarLounges: FC<IPavilionSimilarLounges> = ({
+const SimilarObjects: FC<ISimilarObjects> = ({
+	isBlockHidden,
 	title,
-	similarLounges
+	similarObjects
 }) => {
-	if (!similarLounges?.length) return;
+	if (!similarObjects?.length || isBlockHidden) return;
 
 	return (
 		<WithAnimation>
@@ -25,7 +25,7 @@ const SimilarLounges: FC<IPavilionSimilarLounges> = ({
 					) : null}
 
 					<div className={styles.items}>
-						{similarLounges?.map((element) => {
+						{similarObjects?.map((element) => {
 							if (!element) return;
 							const object = parseToObjectType(element);
 							return (
@@ -47,4 +47,4 @@ const SimilarLounges: FC<IPavilionSimilarLounges> = ({
 	);
 };
 
-export default SimilarLounges;
+export default SimilarObjects;

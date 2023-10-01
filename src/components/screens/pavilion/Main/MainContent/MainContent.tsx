@@ -20,20 +20,19 @@ const MainContent: FC<IPavilionMainContent> = ({
 	return (
 		<div className={styles.root}>
 			<Heading className={styles.title} type="h1" htmlContent={title} />
-			<div className={styles.links}>
-				{phone?.length ? (
-					<a href={`tel:${convertPhone(phone)}`} className={styles.btn}>
-						Забронировать
-					</a>
-				) : null}
-				{whatsapp?.length ? (
-					<div className={styles.link}>
-						или в{' '}
-						<a href={whatsapp || ''} target="_blank">
-							WhatsApp
+			<div className={styles.wrapper}>
+				<div className={styles.links}>
+					{phone?.length ? (
+						<a href={`tel:${convertPhone(phone)}`} className={styles.btn}>
+							Забронировать
 						</a>
-					</div>
-				) : null}
+					) : null}
+					{whatsapp?.length ? (
+						<a href={whatsapp || ''} target="_blank" className={styles.link}>
+							или в WhatsApp
+						</a>
+					) : null}
+				</div>
 			</div>
 			<Description htmlContent={content || ''} />
 		</div>

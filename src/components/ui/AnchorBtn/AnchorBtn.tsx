@@ -1,9 +1,8 @@
 'use client';
 
-import { FC } from 'react'
+import { FC } from 'react';
 
-import { useMediaQuery } from '@/hooks/useMediaQuery'
-import { scrollToBlock } from '@/utils/window/scrollToBlock'
+import { scrollToBlock } from '@/utils/window/scrollToBlock';
 
 interface IAnchorBtn {
 	selector: string;
@@ -12,10 +11,8 @@ interface IAnchorBtn {
 }
 
 const AnchorBtn: FC<IAnchorBtn> = ({ selector, className, text }) => {
-	const isMobile = useMediaQuery('(max-width: 80em)');
-	
 	return (
-		<div className={className} onClick={() => scrollToBlock(selector, isMobile)}>
+		<div className={className} onClick={() => scrollToBlock(selector)}>
 			{text}
 		</div>
 	);

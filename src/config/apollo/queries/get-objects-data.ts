@@ -1,9 +1,15 @@
 import { gql } from '@apollo/client';
 
 import { imageFragment } from '../fraqments/image';
+import { pagesUri } from '@/constants/pages'
 
 export const GET_OBJECTS_DATA = gql`
 	query GET_OBJECTS_DATA {
+		fields: page(id: "${pagesUri.home}", idType: URI) {
+			acfHomeFields {
+				isobjectshidden
+			}
+		}
 		lounges {
 			edges {
 				node {
@@ -11,6 +17,7 @@ export const GET_OBJECTS_DATA = gql`
 					title
 					uri
 					acfLoungeFields {
+						priority
 						previewcontent
 						previewimage {
 							...ImageFragment
@@ -31,6 +38,7 @@ export const GET_OBJECTS_DATA = gql`
 						previewimage {
 							...ImageFragment
 						}
+						priority
 						previewlabel
 					}
 				}
@@ -44,6 +52,7 @@ export const GET_OBJECTS_DATA = gql`
 					uri
 					slug
 					acfDressingFields {
+						priority
 						previewcontent
 						previewimage {
 							...ImageFragment

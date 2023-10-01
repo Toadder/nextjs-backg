@@ -1,7 +1,8 @@
 import { gql } from '@apollo/client';
 
+import { imageFragment } from '../fraqments/image';
+
 import { pagesUri } from '@/constants/pages';
-import { imageFragment } from '../fraqments/image'
 
 export const GET_BENEFITS_DATA = gql`
 	query GET_BENEFITS_DATA {
@@ -15,6 +16,7 @@ export const GET_BENEFITS_DATA = gql`
 						...ImageFragment
 					}
 				}
+				isbenefitshidden
 			}
 		}
 	}

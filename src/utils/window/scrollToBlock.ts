@@ -1,10 +1,9 @@
 export const scrollToBlock = (
-	selector: string,
-	isMobile: boolean | null
+	selector: string
 ): void => {
 	const targetElement = document.querySelector(selector);
 	const header = document.querySelector('header');
-	const scrollOffset: number = isMobile && header ? header?.clientHeight : 0;
+	const scrollOffset: number = header?.clientHeight || 0;
 
 	if (targetElement) {
 		const offsetTop: number =

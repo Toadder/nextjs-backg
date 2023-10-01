@@ -10,7 +10,9 @@ import styles from './MainBottom.module.scss';
 import MainContentProperty from './MainProperty';
 import { WithAnimation } from '@/hoc/WithAnimation';
 
-const MainBottom: FC<ILoungeBottom> = ({ layout, content, properties }) => {
+const MainBottom: FC<ILoungeBottom> = ({ isBlockHidden, layout, content, properties }) => {
+	if(isBlockHidden) return;
+
 	return (
 		<WithAnimation>
 			<div className={styles.root}>
