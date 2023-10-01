@@ -8,7 +8,6 @@ import LazyVideo from '@/components/ui/LazyVideo/LazyVideo';
 import { ILoungeTop } from '../../lounge.interface';
 
 import styles from './MainTop.module.scss';
-import { WithAnimation } from '@/hoc/WithAnimation';
 
 const MainTop: FC<ILoungeTop> = ({
 	isBlockHidden,
@@ -21,40 +20,38 @@ const MainTop: FC<ILoungeTop> = ({
 	if (!title?.length || isBlockHidden) return;
 
 	return (
-		<WithAnimation>
-			<div className={styles.root}>
-				<div className={styles.content}>
-					<Heading type="h1" className={styles.title} htmlContent={title} />
-					<Description htmlContent={content || ''} />
-				</div>
-				{videoMp4?.mediaItemUrl?.length || videoWebm?.mediaItemUrl?.length ? (
-					<div className={styles.media}>
-						<LazyVideo
-							videoMp4={videoMp4?.mediaItemUrl || ''}
-							videoWebm={videoWebm?.mediaItemUrl || ''}
-						/>
-						<div className={styles.wrapper}>
-							<div className={styles.links}>
-								<AnchorBtn
-									selector="#booking"
-									text="Забронировать"
-									className={styles.btn}
-								/>
-								{whatsapp?.length ? (
-									<a
-										href={whatsapp || ''}
-										target="_blank"
-										className={styles.link}
-									>
-										или в WhatsApp
-									</a>
-								) : null}
-							</div>
+		<div className={styles.root}>
+			<div className={styles.content}>
+				<Heading type="h1" className={styles.title} htmlContent={title} />
+				<Description htmlContent={content || ''} />
+			</div>
+			{videoMp4?.mediaItemUrl?.length || videoWebm?.mediaItemUrl?.length ? (
+				<div className={styles.media}>
+					<LazyVideo
+						videoMp4={videoMp4?.mediaItemUrl || ''}
+						videoWebm={videoWebm?.mediaItemUrl || ''}
+					/>
+					<div className={styles.wrapper}>
+						<div className={styles.links}>
+							<AnchorBtn
+								selector="#booking"
+								text="Забронировать"
+								className={styles.btn}
+							/>
+							{whatsapp?.length ? (
+								<a
+									href={whatsapp || ''}
+									target="_blank"
+									className={styles.link}
+								>
+									или в WhatsApp
+								</a>
+							) : null}
 						</div>
 					</div>
-				) : null}
-			</div>
-		</WithAnimation>
+				</div>
+			) : null}
+		</div>
 	);
 };
 

@@ -9,7 +9,6 @@ import {
 	IRentalWidget,
 	IRentalWidgetIframeStyles
 } from './rental-widget.interface';
-import { WithAnimation } from '@/hoc/WithAnimation';
 
 const RentalWidget: FC<IRentalWidget> = ({
 	isBlockHidden,
@@ -31,23 +30,21 @@ const RentalWidget: FC<IRentalWidget> = ({
 	const iframeStylesObj: IRentalWidgetIframeStyles = JSON.parse(iframeStyles);
 
 	return (
-		<WithAnimation>
-			<div
-				className={styles.root}
-				ref={ref}
-				style={{
-					height: iframeStylesObj?.height
-				}}
-			>
-				{isVisible && (
-					<iframe
-						className={iframeClass}
-						src={iframeSrc}
-						style={iframeStylesObj}
-					/>
-				)}
-			</div>
-		</WithAnimation>
+		<div
+			className={styles.root}
+			ref={ref}
+			style={{
+				height: iframeStylesObj?.height
+			}}
+		>
+			{isVisible && (
+				<iframe
+					className={iframeClass}
+					src={iframeSrc}
+					style={iframeStylesObj}
+				/>
+			)}
+		</div>
 	);
 };
 

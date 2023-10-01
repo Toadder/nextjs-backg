@@ -7,7 +7,6 @@ import { parseToObjectType } from '@/utils/data/parseToObjectType';
 
 import styles from './SimilarObjects.module.scss';
 import { ISimilarObjects } from './similar-objects.interface';
-import { WithAnimation } from '@/hoc/WithAnimation';
 
 const SimilarObjects: FC<ISimilarObjects> = ({
 	isBlockHidden,
@@ -17,33 +16,31 @@ const SimilarObjects: FC<ISimilarObjects> = ({
 	if (!similarObjects?.length || isBlockHidden) return;
 
 	return (
-		<WithAnimation>
-			<section className={styles.root}>
-				<div className={styles.inner}>
-					{title?.length ? (
-						<Heading className={styles.title}>{title}</Heading>
-					) : null}
+		<section className={styles.root}>
+			<div className={styles.inner}>
+				{title?.length ? (
+					<Heading className={styles.title}>{title}</Heading>
+				) : null}
 
-					<div className={styles.items}>
-						{similarObjects?.map((element) => {
-							if (!element) return;
-							const object = parseToObjectType(element);
-							return (
-								<ObjectCard
-									key={object?.id}
-									imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(75rem / 2)"
-									image={object?.image}
-									title={object?.title}
-									excerpt={object?.excerpt}
-									link={object?.link}
-									label={object?.label}
-								/>
-							);
-						})}
-					</div>
+				<div className={styles.items}>
+					{similarObjects?.map((element) => {
+						if (!element) return;
+						const object = parseToObjectType(element);
+						return (
+							<ObjectCard
+								key={object?.id}
+								imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, calc(75rem / 2)"
+								image={object?.image}
+								title={object?.title}
+								excerpt={object?.excerpt}
+								link={object?.link}
+								label={object?.label}
+							/>
+						);
+					})}
 				</div>
-			</section>
-		</WithAnimation>
+			</div>
+		</section>
 	);
 };
 

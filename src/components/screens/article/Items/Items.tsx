@@ -6,7 +6,6 @@ import Heading from '@/components/ui/Heading/Heading';
 import { IArticleItems } from '../article.interface';
 
 import styles from './Items.module.scss';
-import { WithAnimation } from '@/hoc/WithAnimation';
 
 const Items: FC<IArticleItems> = ({ currentId, articles }) => {
 	if (!articles?.length) return;
@@ -16,26 +15,24 @@ const Items: FC<IArticleItems> = ({ currentId, articles }) => {
 		.slice(0, 4);
 
 	return (
-		<WithAnimation>
-			<section className={styles.root}>
-				<div className={styles.inner}>
-					<Heading className={styles.title}>Недавно добавлено</Heading>
-					<div className={styles.gridContainer}>
-						{filteredArticles?.map(({ node }) => (
-							<JournalCard
-								key={node?.id}
-								title={node?.title}
-								excerpt={node?.acfJournalData?.previewcontent}
-								link={node?.uri}
-								image={node?.acfJournalData?.previewimage}
-								imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, 18.3125rem"
-								size='small'
-							/>
-						))}
-					</div>
+		<section className={styles.root}>
+			<div className={styles.inner}>
+				<Heading className={styles.title}>Недавно добавлено</Heading>
+				<div className={styles.gridContainer}>
+					{filteredArticles?.map(({ node }) => (
+						<JournalCard
+							key={node?.id}
+							title={node?.title}
+							excerpt={node?.acfJournalData?.previewcontent}
+							link={node?.uri}
+							image={node?.acfJournalData?.previewimage}
+							imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, 18.3125rem"
+							size="small"
+						/>
+					))}
 				</div>
-			</section>
-		</WithAnimation>
+			</div>
+		</section>
 	);
 };
 

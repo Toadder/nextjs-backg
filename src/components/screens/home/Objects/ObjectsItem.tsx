@@ -5,7 +5,6 @@ import ObjectCard from '@/components/shared/ObjectCard/ObjectCard';
 
 import styles from './Objects.module.scss';
 import { IObjectItem } from './objects.interface';
-import { WithAnimation } from '@/hoc/WithAnimation';
 
 const ObjectItem: FC<IObjectItem> = ({
 	index,
@@ -22,7 +21,7 @@ const ObjectItem: FC<IObjectItem> = ({
 	const imageSizes = `(max-width: 48em) 100vw, (max-width: 64em) 50vw, ${desktopImageSizes}`;
 
 	return (
-		<WithAnimation
+		<div
 			className={cn(styles.wrapper, {
 				[styles.wide]: isWide
 			})}
@@ -34,8 +33,9 @@ const ObjectItem: FC<IObjectItem> = ({
 				link={link}
 				label={label}
 				imageSizes={imageSizes}
+				isImagePreloaded={index < 5}
 			/>
-		</WithAnimation>
+		</div>
 	);
 };
 

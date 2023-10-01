@@ -10,4 +10,5 @@ export interface IObject extends Pick<Lounge, 'id' | 'title'> {
 
 export interface IObjectCard extends Omit<IObject, 'id' | 'priority'> {
 	imageSizes: string;
+	isImagePreloaded?: boolean;
 }

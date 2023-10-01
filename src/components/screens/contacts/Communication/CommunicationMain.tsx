@@ -8,7 +8,6 @@ import { convertPhone } from '@/utils/data/convertPhone';
 
 import styles from './Communication.module.scss';
 import { ICommunicationMain } from './communication.interface';
-import { WithAnimation } from '@/hoc/WithAnimation';
 
 const CommunicationMain: FC<ICommunicationMain> = ({
 	isBlockHidden,
@@ -29,7 +28,6 @@ const CommunicationMain: FC<ICommunicationMain> = ({
 	if (!isContactsExist || isBlockHidden) return;
 
 	return (
-		<WithAnimation>
 			<div className={styles.block}>
 				{title?.length ? (
 					<Heading type="h1" className={styles.title}>
@@ -78,7 +76,6 @@ const CommunicationMain: FC<ICommunicationMain> = ({
 					</PopupBtn>
 				</div>
 			</div>
-		</WithAnimation>
 	);
 };
 

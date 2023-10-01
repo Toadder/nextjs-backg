@@ -9,7 +9,6 @@ import { GET_BOOKING_DATA } from '@/config/apollo/queries/get-booking-data';
 import styles from './Booking.module.scss';
 import { IBookingData } from './booking.interface';
 import { pagesUri } from '@/constants/pages';
-import { WithAnimation } from '@/hoc/WithAnimation';
 
 const getData = async () => {
 	const { error, data } = await client.query({ query: GET_BOOKING_DATA });
@@ -32,34 +31,30 @@ const Booking: FC = () => {
 	if (!isFieldsExist || bookingData?.isbookinghidden) return;
 
 	return (
-		<WithAnimation>
-			<section id="booking" className={styles.root}>
-				<div className={styles.inner}>
-					{bookingData?.bookingtitle?.length ? (
-						<Heading className="text-center">
-							{bookingData?.bookingtitle}
-						</Heading>
+		<section id="booking" className={styles.root}>
+			<div className={styles.inner}>
+				{bookingData?.bookingtitle?.length ? (
+					<Heading className="text-center">{bookingData?.bookingtitle}</Heading>
+				) : null}
+				<p className={styles.text}>
+					{bookingData?.bookingcontent || ''}
+					{bookingData?.bookingfile ? (
+						<>
+							Нажимая кнопку забронировать, вы соглашаетесь с{' '}
+							<a
+								href={bookingData?.bookingfile?.mediaItemUrl || ''}
+								target="_blank"
+							>
+								общими условиями аренды.
+							</a>
+						</>
 					) : null}
-					<p className={styles.text}>
-						{bookingData?.bookingcontent || ''}
-						{bookingData?.bookingfile ? (
-							<>
-								Нажимая кнопку забронировать, вы соглашаетесь с{' '}
-								<a
-									href={bookingData?.bookingfile?.mediaItemUrl || ''}
-									target="_blank"
-								>
-									общими условиями аренды.
-								</a>
-							</>
-						) : null}
-					</p>
-					<Link href={pagesUri.conditions} className={styles.link}>
-						Условия аренды
-					</Link>
-				</div>
-			</section>
-		</WithAnimation>
+				</p>
+				<Link href={pagesUri.conditions} className={styles.link}>
+					Условия аренды
+				</Link>
+			</div>
+		</section>
 	);
 };
 

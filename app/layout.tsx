@@ -20,7 +20,7 @@ import { GET_LAYOUT_DATA } from '@/config/apollo/queries/get-layout-data'
 import { GET_LAYOUT_METADATA } from '@/config/apollo/queries/get-layout-metadata'
 
 const mullerNarrow = localFont({
-	src: '../src/assets/fonts/MullerNarrow-ExtraBoldItalic.ttf',
+	src: '../src/assets/fonts/MullerNarrow-ExtraBoldItalic.woff2',
 	weight: '800',
 	style: 'italic',
 	variable: '--font-muller-narrow',

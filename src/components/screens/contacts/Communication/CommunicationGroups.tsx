@@ -5,7 +5,6 @@ import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
 
 import styles from './Communication.module.scss';
 import { ICommunicationGroups } from './communication.interface';
-import { WithAnimation } from '@/hoc/WithAnimation';
 
 const CommunicationGroups: FC<ICommunicationGroups> = ({
 	isBlockHidden,
@@ -20,7 +19,6 @@ const CommunicationGroups: FC<ICommunicationGroups> = ({
 	if (!isGroupsExist || isBlockHidden) return;
 
 	return (
-		<WithAnimation>
 			<div className={styles.block}>
 				{title ? <Heading className={styles.title}>{title}</Heading> : null}
 
@@ -51,7 +49,6 @@ const CommunicationGroups: FC<ICommunicationGroups> = ({
 					) : null}
 				</div>
 			</div>
-		</WithAnimation>
 	);
 };
 

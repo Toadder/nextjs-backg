@@ -13,7 +13,8 @@ const ObjectCard: FC<IObjectCard> = ({
 	image,
 	imageSizes,
 	excerpt,
-	label
+	label,
+	isImagePreloaded = false
 }) => {
 	return (
 		<article className={styles.item}>
@@ -25,6 +26,7 @@ const ObjectCard: FC<IObjectCard> = ({
 						sizes={imageSizes}
 						alt={image?.altText || ''}
 						className={styles.image}
+						priority={isImagePreloaded}
 					/>
 				) : null}
 				<div className={styles.content}>
