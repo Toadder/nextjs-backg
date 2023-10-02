@@ -8,7 +8,9 @@ const nextConfig = {
 	poweredByHeader: false,
 
 	env: {
-		WORDPRESS_SITE_URL: process.env.WORDPRESS_SITE_URL
+		WORDPRESS_SITE_URL: process.env.WORDPRESS_SITE_URL,
+		GTAG_ID: process.env.GTAG_ID,
+		YM_ID: process.env.YM_ID
 	},
 
 	webpack(config, { webpack }) {

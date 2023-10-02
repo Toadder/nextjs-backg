@@ -1,0 +1,1 @@
+export const INIT_DELAY: number = 4000;
