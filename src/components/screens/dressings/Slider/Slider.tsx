@@ -14,7 +14,7 @@ import { IDressingsSlider } from '../dressings.interface';
 
 import styles from './Slider.module.scss';
 
-const Slider: FC<IDressingsSlider> = ({ id, slider }) => {
+const Slider: FC<IDressingsSlider> = ({ id, slider, itemIndex }) => {
 	if (!slider?.length) return;
 
 	const sliderRef = useRef<SwiperType | null>(null);
@@ -22,7 +22,7 @@ const Slider: FC<IDressingsSlider> = ({ id, slider }) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.outer}>
-				<FancyboxContainer className={styles.fancy}>
+				<FancyboxContainer className={styles.fancy} swiperRef={sliderRef}>
 					<Swiper
 						className={styles.slider}
 						onBeforeInit={(swiper) => (sliderRef.current = swiper)}
@@ -35,7 +35,7 @@ const Slider: FC<IDressingsSlider> = ({ id, slider }) => {
 						modules={[Autoplay]}
 						loop={true}
 					>
-						{slider?.map((slide) => (
+						{slider?.map((slide, slideIndex) => (
 							<SwiperSlide key={slide?.sourceUrl} className={styles.slide}>
 								<a
 									href={slide?.sourceUrl || ''}
@@ -48,6 +48,7 @@ const Slider: FC<IDressingsSlider> = ({ id, slider }) => {
 										sizes="(max-width: 64em) 100vw, 34.75rem"
 										alt={slide?.altText || ''}
 										className={styles.image}
+										priority={itemIndex < 2 && slideIndex === 0}
 									/>
 								</a>
 							</SwiperSlide>

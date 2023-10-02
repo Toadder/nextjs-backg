@@ -51,7 +51,7 @@ const MainSlider: FC<IArticleMainSlider> = ({ title, date, slider }) => {
 					speed={600}
 					modules={[Autoplay, EffectFade]}
 				>
-					{slider?.map((slide) => (
+					{slider?.map((slide, index) => (
 						<SwiperSlide key={slide?.sourceUrl} className={styles.slide}>
 							<Image
 								src={slide?.sourceUrl || ''}
@@ -59,6 +59,7 @@ const MainSlider: FC<IArticleMainSlider> = ({ title, date, slider }) => {
 								sizes="(max-width: 80em) 100vw, 73.25rem"
 								alt={slide?.altText || ''}
 								className={styles.image}
+								priority={index === 0}
 							/>
 						</SwiperSlide>
 					))}

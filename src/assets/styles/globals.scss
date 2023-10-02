@@ -4,6 +4,11 @@
 
 @import '@/assets/styles/vars.scss';
 
+$fancyboxOffset: calc(
+	var(--fancybox-body-margin, 0px) +
+		var(--fancybox-scrollbar-compensate, 0px)
+);
+
 * {
 	box-sizing: border-box;
 }
@@ -11,6 +16,15 @@
 *:focus,
 *:active {
 	outline: none;
+}
+
+html.with-fancybox {
+	.lock-padding {
+		padding-right: $fancyboxOffset;
+	}
+	.aeWidgetBtn {
+		margin-right: $fancyboxOffset;
+	}
 }
 
 body {

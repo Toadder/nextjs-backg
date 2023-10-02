@@ -24,6 +24,7 @@ const ExampleSlider: FC<ILoungeExampleSlider> = ({
 	if (!exampleSlider?.length || isBlockHidden) return;
 
 	const sliderRef = useRef<SwiperType | null>(null);
+	const [isInit, setIsInit] = useState<boolean>(false);
 	const [slidesPerView, setSlidesPerView] = useState<number>(
 		INITIAL_SLIDES_PER_VIEW
 	);
@@ -33,12 +34,14 @@ const ExampleSlider: FC<ILoungeExampleSlider> = ({
 	return (
 		<div className={styles.root}>
 			<div className={styles.outer}>
-				<FancyboxContainer>
+				<FancyboxContainer swiperRef={sliderRef}>
 					<Swiper
+						style={{ opacity: Number(isInit) }}
 						className={styles.slider}
 						onBeforeInit={(swiper) => {
 							sliderRef.current = swiper;
 						}}
+						onAfterInit={() => setIsInit(true)}
 						onBreakpoint={(swiper) =>
 							setSlidesPerView(Number(swiper.params.slidesPerView))
 						}

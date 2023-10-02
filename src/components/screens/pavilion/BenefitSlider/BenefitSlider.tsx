@@ -45,7 +45,7 @@ const BenefitSlider: FC<IPavilionBenefitSlider> = ({
 					}}
 					modules={[Pagination, Autoplay]}
 				>
-					{benefitSlider?.map((slide) => (
+					{benefitSlider?.map((slide, index) => (
 						<SwiperSlide key={slide?.image?.sourceUrl} className={styles.slide}>
 							{({ isActive }) => (
 								<>
@@ -55,6 +55,7 @@ const BenefitSlider: FC<IPavilionBenefitSlider> = ({
 										sizes="100vw"
 										alt={slide?.image?.altText || ''}
 										className={styles.image}
+										priority={index === 0}
 									/>
 									<div
 										className={cn(styles.content, {

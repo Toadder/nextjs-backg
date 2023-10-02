@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.8.1",
-		"@fancyapps/ui": "^5.0.22",
+		"@fancyapps/ui": "^5.0.23",
 		"@pbe/react-yandex-maps": "^1.2.4",
 		"@types/node": "20.5.1",
 		"@types/react": "18.2.20",

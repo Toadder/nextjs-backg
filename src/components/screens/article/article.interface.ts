@@ -1,5 +1,9 @@
 import { IComment } from '@/shared/types/general.types';
-import { Journal, Journal_Acfjournaldata, CommentConnectionPageInfo } from '@/shared/types/grahpql.types';
+import {
+	CommentConnectionPageInfo,
+	Journal,
+	Journal_Acfjournaldata
+} from '@/shared/types/grahpql.types';
 
 import { IJournalData } from '../journal/journal.interface';
 
@@ -8,9 +12,9 @@ export interface IArticleData
 		Journal,
 		'id' | 'databaseId' | 'title' | 'date' | 'content' | 'acfJournalData'
 	> {
-	comments: { 
-		nodes: Array<IComment>; 
-		pageInfo: CommentConnectionPageInfo 
+	comments: {
+		nodes: Array<IComment>;
+		pageInfo: CommentConnectionPageInfo;
 	};
 }
 
@@ -31,7 +35,6 @@ export interface IArticleComments {
 	comments: Array<IComment>;
 	hasNextPage: boolean;
 	endCursor: string | null;
-	
 }
 
 export interface IArticleCommentsForm {

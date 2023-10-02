@@ -5,14 +5,14 @@ import { FC } from 'react';
 import { scrollToBlock } from '@/utils/window/scrollToBlock';
 
 interface IAnchorBtn {
-	selector: string;
+	blockId: string;
 	text: string;
 	className?: string;
 }
 
-const AnchorBtn: FC<IAnchorBtn> = ({ selector, className, text }) => {
+const AnchorBtn: FC<IAnchorBtn> = ({ blockId, className, text }) => {
 	return (
-		<div className={className} onClick={() => scrollToBlock(selector)}>
+		<div className={className} onClick={() => scrollToBlock(blockId)}>
 			{text}
 		</div>
 	);

@@ -18,17 +18,21 @@ const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
 
 	const sliderRef = useRef<SwiperType | null>(null);
 	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+	const [isThumbsInit, setIsThumbsInit] = useState<boolean>(false);
 
 	return (
 		<div className={styles.sliders}>
 			<div className={styles.outer}>
-				<FancyboxContainer>
+				<FancyboxContainer swiperRef={sliderRef}>
 					<Swiper
 						className={styles.slider}
 						onBeforeInit={(swiper) => {
 							sliderRef.current = swiper;
 						}}
-						thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+						thumbs={{
+							swiper:
+								thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
+						}}
 						autoplay={{
 							delay: 3000,
 							pauseOnMouseEnter: true
@@ -73,7 +77,10 @@ const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
 					</>
 				)}
 			</div>
+
 			<Swiper
+				style={{ opacity: Number(isThumbsInit) }}
+				onAfterInit={() => setIsThumbsInit(true)}
 				className={styles.thumbs}
 				slidesPerView={5}
 				spaceBetween={4}

@@ -34,7 +34,7 @@ const MainTop: FC<ILoungeTop> = ({
 					<div className={styles.wrapper}>
 						<div className={styles.links}>
 							<AnchorBtn
-								selector="#booking"
+								blockId="booking"
 								text="Забронировать"
 								className={styles.btn}
 							/>

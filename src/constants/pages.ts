@@ -22,7 +22,9 @@ export const pagesUri: IPagesUri = {
 
 export const pagesToRevalidate: string[] = [
 	pagesUri.home,
+	pagesUri.journal,
 	pagesUri.equipment,
 	pagesUri.contacts,
+	pagesUri.dressings,
 	pagesUri.conditions
 ];

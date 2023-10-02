@@ -10,13 +10,14 @@ const DressingsItem: FC<IDressingsItem> = ({
 	slug,
 	title,
 	content,
-	slider
+	slider,
+	itemIndex
 }) => {
 	return (
 		<div className={styles.item} id={slug || ''}>
 			<div className={styles.inner}>
 				<Content title={title} content={content} />
-				<Slider id={id} slider={slider} />
+				<Slider itemIndex={itemIndex} id={id} slider={slider} />
 			</div>
 		</div>
 	);

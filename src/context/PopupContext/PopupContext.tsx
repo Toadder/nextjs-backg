@@ -9,7 +9,7 @@ import {
 import { handleScrollBarPadding } from '@/utils/window/handleScrollBarPadding';
 
 import { IPopupContext, TActivePopup } from './popup-context.interface';
-import { APP_EVENT_WIDGET_CLASSNAME } from './popup-context.constants'
+import { APP_EVENT_WIDGET_CLASSNAME } from '@/constants/appEvent';
 
 const DEFAULT_POPUP_CONTEXT: IPopupContext = {
 	activePopup: '',
@@ -29,27 +29,18 @@ export const PopupProvider: FC<PropsWithChildren> = ({ children }) => {
 			window.innerWidth - document.documentElement.clientWidth;
 		const layout: HTMLElement | null = document.querySelector('.layout');
 		const fixedElements: HTMLElement[] = Array.from(
-			document.querySelectorAll('.lock-padding')
+			document.querySelectorAll(`.lock-padding, .${APP_EVENT_WIDGET_CLASSNAME}`)
 		);
-
-		const appEventWidget: HTMLElement | null =
-			document.querySelector(`.${APP_EVENT_WIDGET_CLASSNAME}`);
 
 		if (!layout) return;
 
 		if (isMounted && activePopup.length) {
 			document.body.classList.add('lock');
 			handleScrollBarPadding(scrollBarWidth, layout, ...fixedElements);
-
-			appEventWidget &&
-				(appEventWidget.style.marginRight = `${scrollBarWidth}px`);
 		} else {
 			setTimeout(() => {
 				document.body.classList.remove('lock');
 				handleScrollBarPadding(0, layout, ...fixedElements);
-
-				appEventWidget &&
-					(appEventWidget.style.marginRight = `${scrollBarWidth}px`);
 			}, 400);
 		}
 	};
@@ -61,7 +52,7 @@ export const PopupProvider: FC<PropsWithChildren> = ({ children }) => {
 		return () => {
 			isMounted = false;
 		};
-	});
+	}, [activePopup]);
 
 	return (
 		<PopupContext.Provider

@@ -14,9 +14,6 @@ import client from '@/config/apollo/client';
 import { GET_DRESSINGS_DATA } from '@/config/apollo/queries/get-dressings-data';
 
 import { pagesUri } from '@/constants/pages';
-import { INextContext } from '@/shared/types/next.types'
-
-export const dynamic = 'force-dynamic';
 
 export const generateMetadata = (): Promise<Metadata> =>
 	getMetadata(pagesUri.dressings);
@@ -24,19 +21,19 @@ export const generateMetadata = (): Promise<Metadata> =>
 const getData = async () => {
 	const { error, data } = await client.query({ query: GET_DRESSINGS_DATA });
 	const dressingsData: IDressingsData = data?.dressings?.edges?.map(
-		({ node }: { node: IDressingsNode }): IDressingsItem => ({
+		({ node }: { node: IDressingsNode }, index: number): IDressingsItem => ({
 			id: node?.id,
 			slug: node?.slug,
 			title: node?.acfDressingFields?.maintitle,
 			content: node?.acfDressingFields?.maincontent,
-			slider: node?.acfDressingFields?.mainslider
+			slider: node?.acfDressingFields?.mainslider,
+			itemIndex: index
 		})
 	);
 	return { error, dressingsData };
 };
 
-const DressingsPage = (context: INextContext) => {
-	const { dressing } = context?.searchParams;
+const DressingsPage = () => {
 	const { error, dressingsData } = use(getData());
 
 	if (error) {
@@ -44,7 +41,7 @@ const DressingsPage = (context: INextContext) => {
 		return;
 	}
 
-	return <Dressings items={dressingsData} slug={dressing} />;
+	return <Dressings items={dressingsData} />;
 };
 
 export default DressingsPage;

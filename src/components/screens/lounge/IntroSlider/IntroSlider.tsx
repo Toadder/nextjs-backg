@@ -23,6 +23,7 @@ const IntroSlider: FC<ILoungeIntroSlider> = ({
 	if (!introSlider?.length || isBlockHidden) return;
 
 	const sliderRef = useRef<SwiperType | null>(null);
+	const [isInit, setIsInit] = useState<boolean>(false);
 	const [slidesPerView, setSlidesPerView] =
 		useState<number>(INIT_SLIDES_PER_VIEW);
 
@@ -31,10 +32,12 @@ const IntroSlider: FC<ILoungeIntroSlider> = ({
 	return (
 		<div className={styles.root}>
 			<div className={styles.outer}>
-				<FancyboxContainer>
+				<FancyboxContainer swiperRef={sliderRef}>
 					<Swiper
+						style={{ opacity: Number(isInit) }}
 						className={styles.slider}
 						onBeforeInit={(swiper) => (sliderRef.current = swiper)}
+						onAfterInit={() => setIsInit(true)}
 						onBreakpoint={(swiper) =>
 							setSlidesPerView(Number(swiper.params.slidesPerView))
 						}
@@ -61,7 +64,7 @@ const IntroSlider: FC<ILoungeIntroSlider> = ({
 							}
 						}}
 					>
-						{introSlider?.map((slide) => (
+						{introSlider?.map((slide, index) => (
 							<SwiperSlide key={slide?.sourceUrl} className={styles.slide}>
 								<a
 									href={slide?.sourceUrl || ''}
@@ -74,6 +77,7 @@ const IntroSlider: FC<ILoungeIntroSlider> = ({
 										sizes="(max-width: 48em) 100vw, (max-width: 80em) 50vw, calc(100vw / 3)"
 										alt={slide?.altText || ''}
 										className={styles.image}
+										priority={index < slidesPerView}
 									/>
 								</a>
 							</SwiperSlide>

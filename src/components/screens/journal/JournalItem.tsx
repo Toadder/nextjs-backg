@@ -4,7 +4,13 @@ import JournalCard from '@/components/shared/JournalCard/JournalCard';
 
 import { IJournalItem } from './journal.interface';
 
-const JournalItem: FC<IJournalItem> = ({ index, title, excerpt, link, image }) => {
+const JournalItem: FC<IJournalItem> = ({
+	index,
+	title,
+	excerpt,
+	link,
+	image
+}) => {
 	return (
 		<JournalCard
 			title={title}

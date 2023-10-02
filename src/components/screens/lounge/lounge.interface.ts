@@ -1,6 +1,5 @@
-import { IGeneralSettings } from '@/shared/types/general.types'
+import { IGeneralSettings } from '@/shared/types/general.types';
 import {
-	Lounge,
 	Lounge_Acfloungefields,
 	Lounge_Acfloungefields_Layoutproperties
 } from '@/shared/types/grahpql.types';
@@ -8,7 +7,7 @@ import {
 export interface ILoungeData
 	extends Pick<
 		Lounge_Acfloungefields,
-		'isintrohidden'
+		| 'isintrohidden'
 		| 'introslider'
 		| 'isexamplehidden'
 		| 'exampleslider'
@@ -22,7 +21,7 @@ export interface ILoungeData
 		| 'layoutcontent'
 		| 'layoutproperties'
 		| 'issimilarloungeshidden'
-		| 'titlesimilarlounges' 
+		| 'titlesimilarlounges'
 		| 'similarlounges'
 		| 'isiframehidden'
 		| 'iframeclass'
@@ -31,12 +30,14 @@ export interface ILoungeData
 	> {}
 
 export interface ILoungeIntroSlider {
-	isBlockHidden: Lounge_Acfloungefields['isintrohidden']; 
+	isBlockHidden: Lounge_Acfloungefields['isintrohidden'];
 	introSlider: Lounge_Acfloungefields['introslider'];
 }
 
-export interface ILoungeMain extends Pick<Lounge_Acfloungefields, 'layout'>, Pick<IGeneralSettings, 'whatsapp'>  {
-	isMainHidden: Lounge_Acfloungefields['ismainhidden']; 
+export interface ILoungeMain
+	extends Pick<Lounge_Acfloungefields, 'layout'>,
+		Pick<IGeneralSettings, 'whatsapp'> {
+	isMainHidden: Lounge_Acfloungefields['ismainhidden'];
 	title: Lounge_Acfloungefields['maintitle'];
 	mainContent: Lounge_Acfloungefields['maincontent'];
 	videoMp4: Lounge_Acfloungefields['mainvideomp4'];
@@ -47,7 +48,7 @@ export interface ILoungeMain extends Pick<Lounge_Acfloungefields, 'layout'>, Pic
 }
 
 export interface ILoungeTop extends Pick<IGeneralSettings, 'whatsapp'> {
-	isBlockHidden: Lounge_Acfloungefields['ismainhidden']; 
+	isBlockHidden: Lounge_Acfloungefields['ismainhidden'];
 	title: Lounge_Acfloungefields['maintitle'];
 	content: Lounge_Acfloungefields['maincontent'];
 	videoMp4: Lounge_Acfloungefields['mainvideomp4'];
@@ -55,7 +56,7 @@ export interface ILoungeTop extends Pick<IGeneralSettings, 'whatsapp'> {
 }
 
 export interface ILoungeBottom extends Pick<Lounge_Acfloungefields, 'layout'> {
-	isBlockHidden: Lounge_Acfloungefields['islayouthidden']; 
+	isBlockHidden: Lounge_Acfloungefields['islayouthidden'];
 	content: Lounge_Acfloungefields['layoutcontent'];
 	properties: Lounge_Acfloungefields['layoutproperties'];
 }

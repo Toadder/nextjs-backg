@@ -1,7 +1,9 @@
 export const scrollToBlock = (
-	selector: string
+	id: string
 ): void => {
-	const targetElement = document.querySelector(selector);
+	if(!id?.length) return;
+
+	const targetElement = document.querySelector(`#${id}`);
 	const header = document.querySelector('header');
 	const scrollOffset: number = header?.clientHeight || 0;
 

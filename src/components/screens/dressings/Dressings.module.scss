@@ -1,11 +1,9 @@
 .root {
-	> *:nth-child(even) {
-		.item {
-			@apply bg-grey;
+	.item:nth-child(even) {
+		@apply bg-grey;
 
-			.inner {
-				@apply lg:flex-row-reverse flex-col;
-			}
+		.inner {
+			@apply lg:flex-row-reverse flex-col;
 		}
 	}
 
