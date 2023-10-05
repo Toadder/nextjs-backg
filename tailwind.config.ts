@@ -43,7 +43,7 @@ const config: Config = {
 				3: '3'
 			},
 			boxShadow: {
-				primary: '0px 5px 10px 4px rgba(0, 0, 0, 0.2)'
+				primary: '0px 5px 10px 4px rgba(0, 0, 0, 0.2)',
 			},
 			keyframes: {
 				fade: {
