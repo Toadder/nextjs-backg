@@ -17,4 +17,5 @@ export interface IJournalItem extends Pick<Journal, 'title'> {
 	excerpt: Journal_Acfjournaldata['previewcontent'];
 	link: Journal['uri'];
 	index: number;
+	masonryHeight: number;
 }

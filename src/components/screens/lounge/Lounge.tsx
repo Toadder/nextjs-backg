@@ -6,8 +6,6 @@ import Booking from '@/components/shared/Booking/Booking';
 import RentalWidget from '@/components/shared/RentalWidget/RentalWidget';
 import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects';
 
-import { IGeneralSettings } from '@/shared/types/general.types';
-
 import client from '@/config/apollo/client';
 import { GET_LOUNGE_DATA } from '@/config/apollo/queries/get-lounge-data';
 
@@ -23,13 +21,12 @@ const getData = async (slug: string) => {
 
 	if (!data?.lounge) notFound();
 
-	const generalSettings: IGeneralSettings = data?.generalSettings?.acfSettings;
 	const loungeData: ILoungeData = data?.lounge?.acfLoungeFields;
-	return { error, generalSettings, loungeData };
+	return { error, loungeData };
 };
 
 const Lounge: FC<{ slug: string }> = ({ slug }) => {
-	const { error, generalSettings, loungeData } = use(getData(slug));
+	const { error, loungeData } = use(getData(slug));
 
 	if (error) {
 		console.error(error);
@@ -52,7 +49,6 @@ const Lounge: FC<{ slug: string }> = ({ slug }) => {
 				layout={loungeData?.layout}
 				layoutContent={loungeData?.layoutcontent}
 				properties={loungeData?.layoutproperties}
-				whatsapp={generalSettings?.whatsapp}
 			/>
 			<ExampleSlider
 				isBlockHidden={loungeData?.isexamplehidden}

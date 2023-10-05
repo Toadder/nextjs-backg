@@ -35,8 +35,7 @@ export interface ILoungeIntroSlider {
 }
 
 export interface ILoungeMain
-	extends Pick<Lounge_Acfloungefields, 'layout'>,
-		Pick<IGeneralSettings, 'whatsapp'> {
+	extends Pick<Lounge_Acfloungefields, 'layout'> {
 	isMainHidden: Lounge_Acfloungefields['ismainhidden'];
 	title: Lounge_Acfloungefields['maintitle'];
 	mainContent: Lounge_Acfloungefields['maincontent'];
@@ -47,7 +46,7 @@ export interface ILoungeMain
 	properties: Lounge_Acfloungefields['layoutproperties'];
 }
 
-export interface ILoungeTop extends Pick<IGeneralSettings, 'whatsapp'> {
+export interface ILoungeTop {
 	isBlockHidden: Lounge_Acfloungefields['ismainhidden'];
 	title: Lounge_Acfloungefields['maintitle'];
 	content: Lounge_Acfloungefields['maincontent'];

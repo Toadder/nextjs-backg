@@ -2,7 +2,7 @@
 
 .root {
 	.title {
-		@apply font-muller-narrow text-center uppercase md:text-5xl;
+		@apply font-muller-narrow font-extrabold italic text-center uppercase md:text-5xl;
 
 		@media (max-width: $md) {
 			font-size: rem(26);
@@ -16,7 +16,7 @@
 	.social {
 		@apply md:text-7xl transition-colors hover:text-orange leading-none;
 
-		@media(max-width: $md) {
+		@media (max-width: $md) {
 			font-size: rem(46);
 		}
 	}

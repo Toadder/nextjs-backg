@@ -2,15 +2,6 @@
 
 .item {
 	@apply relative h-full overflow-hidden;
-	min-height: rem(450);
-
-	@media (max-width: $lg) {
-		min-height: rem(400);
-	}
-
-	@media (max-width: $md) {
-		min-height: rem(350);
-	}
 
 	@media (any-hover: hover) {
 		&:hover {

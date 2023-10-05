@@ -7,7 +7,6 @@ export const GET_PAVILION_DATA = gql`
 		generalSettings {
 			acfSettings {
 				phone
-				whatsapp
 			}
 		}
 		pavilion(id: $slug, idType: SLUG) {

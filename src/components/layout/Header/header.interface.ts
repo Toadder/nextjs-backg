@@ -28,7 +28,7 @@ export interface IHeaderItem
 	extends Pick<MenuItem, 'label' | 'path' | 'childItems'> {}
 
 export interface IHeaderItemContent extends IHeaderItem {
-	onClickHandler: (itemsLength?: number) => void;
+	onClickHandler: (isTrigger?: boolean) => void;
 	isSubmenuShown?: boolean;
 }
 
@@ -40,7 +40,7 @@ export interface IHeaderSubmenu {
 	childItems: IMenuNodes[];
 	isMobileDevice: boolean | null;
 	toggleEvent: Date | number;
-	onClickHandler: (itemsLength?: number) => void;
+	onClickHandler: (isTrigger?: boolean) => void;
 }
 
 export interface IHeaderPhone

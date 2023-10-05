@@ -14,10 +14,8 @@ const ObjectItem: FC<IObjectItem> = ({
 	link,
 	label
 }) => {
-	const isWide: boolean = (index + 1) % 5 === 0 || (index + 2) % 5 === 0;
-	const desktopImageSizes: string = isWide
-		? 'calc(75rem / 2)'
-		: 'calc(75rem / 3)';
+	const isWide: boolean = index % 5 === 0 || index % 5 === 1;
+	const desktopImageSizes: string = isWide ? '37.5rem' : '25rem';
 	const imageSizes = `(max-width: 48em) 100vw, (max-width: 64em) 50vw, ${desktopImageSizes}`;
 
 	return (

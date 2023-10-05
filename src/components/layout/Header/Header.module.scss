@@ -32,6 +32,14 @@
 			@apply relative z-2 font-muller-narrow font-extrabold italic hover:text-orange transition-colors;
 			font-size: rem(17);
 
+			@media (max-width: $xl) {
+				font-size: rem(32);
+			}
+	
+			@media (max-width: $md) {
+				font-size: rem(21);
+			}
+
 			span {
 				@apply xl:inline-block hidden;
 			}
@@ -44,16 +52,13 @@
 
 	.messenger {
 		@apply relative z-2 xl:text-xl transition-colors hover:text-orange cursor-pointer;
-	}
 
-	.phone > a,
-	.messenger {
 		@media (max-width: $xl) {
-			font-size: rem(32);
+			font-size: rem(36);
 		}
 
 		@media (max-width: $md) {
-			font-size: rem(21);
+			font-size: rem(25);
 		}
 	}
 }

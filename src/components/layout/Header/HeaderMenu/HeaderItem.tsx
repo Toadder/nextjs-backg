@@ -11,7 +11,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 import {
 	IHeaderItemContent,
-	IHeaderItemInteractive
+	IHeaderItemInteractive,
 } from '../header.interface';
 
 import styles from './HeaderMenu.module.scss';
@@ -35,12 +35,17 @@ const HeaderItemContent: FC<IHeaderItemContent> = ({
 			<div
 				className={cn(styles.link, {
 					[styles.toggled]: isSubmenuShown,
-					[styles.active]: checkActivePath(path, childItems.edges)
+					[styles.active]: checkActivePath(path)
 				})}
-				onClick={() => onClickHandler(childItems.edges.length)}
 			>
 				<span>{label}</span>
-				<FontAwesomeIcon name="FaCaretDown" />
+				<div
+					className={styles.icon}
+					onClick={() => onClickHandler(true)}
+				>
+					<FontAwesomeIcon name="FaCaretDown" />
+				</div>
+				<Link className={styles.overlay} href={path} onClick={() => onClickHandler()} />
 			</div>
 		);
 	}
@@ -69,11 +74,21 @@ const HeaderItem: FC<IHeaderItemInteractive> = ({
 	const [isSubmenuShown, setIsSubmenuShown] = useState<boolean>(false);
 	const [toggleEvent, setToggleEvent] = useState<Date | number>(0);
 
-	const onClickHandler = (itemsLength?: number): void => {
+	const onClickHandler = (isTrigger = false): void => {
 		if (!isMobileDevice) return;
-		!itemsLength && hideMenu();
-		setIsSubmenuShown((prevState) => !prevState);
-		setToggleEvent(Date.now());
+
+		if(isTrigger) {
+			setIsSubmenuShown(prevState => !prevState);
+			setToggleEvent(Date.now());
+		} else {
+			hideMenu();
+
+			if(isSubmenuShown) {
+				setIsSubmenuShown(false);
+				setToggleEvent(Date.now());
+			}
+		}
+
 	};
 
 	return (

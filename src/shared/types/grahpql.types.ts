@@ -2355,9 +2355,15 @@ export type Dressing_Acfdressingfields = AcfFieldGroup & {
   __typename?: 'Dressing_Acfdressingfields';
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Выберите страницы, на которых объект будет скрыт. Для множественного выбора зажмите Ctrl. */
+  hiddenon?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** Номер позиции карточки объекта на странице залов */
+  loungespriority?: Maybe<Scalars['Float']['output']>;
   maincontent?: Maybe<Scalars['String']['output']>;
   mainslider?: Maybe<Array<Maybe<MediaItem>>>;
   maintitle?: Maybe<Scalars['String']['output']>;
+  /** Номер позиции карточки объекта на странице павильонов */
+  pavilionspriority?: Maybe<Scalars['Float']['output']>;
   previewcontent?: Maybe<Scalars['String']['output']>;
   previewimage?: Maybe<MediaItem>;
   previewlabel?: Maybe<Scalars['String']['output']>;
@@ -3463,6 +3469,11 @@ export type Lounge_Acfloungefields = AcfFieldGroup & {
   exampleslider?: Maybe<Array<Maybe<Lounge_Acfloungefields_Exampleslider>>>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /**
+   * Выберите страницы, на которых объект будет скрыт.
+   * Для множественного выбора зажмите Ctrl.
+   */
+  hiddenon?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   iframeclass?: Maybe<Scalars['String']['output']>;
   iframesrc?: Maybe<Scalars['String']['output']>;
   iframestyles?: Maybe<Scalars['String']['output']>;
@@ -3476,6 +3487,8 @@ export type Lounge_Acfloungefields = AcfFieldGroup & {
   layout?: Maybe<MediaItem>;
   layoutcontent?: Maybe<Scalars['String']['output']>;
   layoutproperties?: Maybe<Array<Maybe<Lounge_Acfloungefields_Layoutproperties>>>;
+  /** Номер позиции карточки объекта на странице залов */
+  loungespriority?: Maybe<Scalars['Float']['output']>;
   maincontent?: Maybe<Scalars['String']['output']>;
   maintitle?: Maybe<Scalars['String']['output']>;
   mainvideomp4?: Maybe<MediaItem>;
@@ -4634,6 +4647,10 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   acfContactsFields?: Maybe<Page_Acfcontactsfields>;
   /** Added to the GraphQL Schema because the ACF Field Group &quot;Поля страницы &quot;Главная&quot;&quot; was set to Show in GraphQL. */
   acfHomeFields?: Maybe<Page_Acfhomefields>;
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;Поля страницы &quot;Залы&quot;&quot; was set to Show in GraphQL. */
+  acfLoungesFields?: Maybe<Page_Acfloungesfields>;
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;Поля страницы &quot;Павильоны&quot;&quot; was set to Show in GraphQL. */
+  acfPavilionsFields?: Maybe<Page_Acfpavilionsfields>;
   /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
   ancestors?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
   /** Connection between the NodeWithAuthor type and the User type */
@@ -5086,6 +5103,22 @@ export type Page_Acfhomefields_Benefits = AcfFieldGroup & {
   title?: Maybe<Scalars['String']['output']>;
 };
 
+/** Field Group */
+export type Page_Acfloungesfields = AcfFieldGroup & {
+  __typename?: 'Page_Acfloungesfields';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  isobjectshidden?: Maybe<Scalars['Boolean']['output']>;
+};
+
+/** Field Group */
+export type Page_Acfpavilionsfields = AcfFieldGroup & {
+  __typename?: 'Page_Acfpavilionsfields';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  isobjectshidden?: Maybe<Scalars['Boolean']['output']>;
+};
+
 /** The pavilion type */
 export type Pavilion = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
   __typename?: 'Pavilion';
@@ -5241,6 +5274,8 @@ export type Pavilion_Acfpavilionfields = AcfFieldGroup & {
   equipment?: Maybe<Array<Maybe<Pavilion_Acfpavilionfields_Equipment>>>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Выберите страницы, на которых объект будет скрыт. Для множественного выбора зажмите Ctrl. */
+  hiddenon?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   isbenefithidden?: Maybe<Scalars['Boolean']['output']>;
   isequipmenthidden?: Maybe<Scalars['Boolean']['output']>;
   ismainhidden?: Maybe<Scalars['Boolean']['output']>;
@@ -5250,6 +5285,8 @@ export type Pavilion_Acfpavilionfields = AcfFieldGroup & {
   mainlayout?: Maybe<MediaItem>;
   mainslider?: Maybe<Array<Maybe<MediaItem>>>;
   maintitle?: Maybe<Scalars['String']['output']>;
+  /** Номер позиции карточки объекта на странице павильонов */
+  pavilionspriority?: Maybe<Scalars['Float']['output']>;
   previewcontent?: Maybe<Scalars['String']['output']>;
   previewimage?: Maybe<MediaItem>;
   previewlabel?: Maybe<Scalars['String']['output']>;

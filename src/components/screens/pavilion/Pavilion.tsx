@@ -48,7 +48,6 @@ const Pavilion: FC<{ slug: string }> = ({ slug }) => {
 				slider={pavilionData?.mainslider}
 				layout={pavilionData?.mainlayout}
 				phone={generalSettings?.phone}
-				whatsapp={generalSettings?.whatsapp}
 			/>
 			<SimilarObjects
 				isBlockHidden={pavilionData?.issimilarloungeshidden}

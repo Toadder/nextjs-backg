@@ -21,7 +21,8 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 			priority: node?.acfPavilionFields?.priority,
 			image: node?.acfPavilionFields?.previewimage,
 			excerpt: node?.acfPavilionFields?.previewcontent,
-			label: node?.acfPavilionFields?.previewlabel
+			label: node?.acfPavilionFields?.previewlabel,
+			hiddenOn: node?.acfPavilionFields?.hiddenon,
 		};
 	} else if ('acfLoungeFields' in node) {
 		return {
@@ -29,7 +30,8 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 			priority: node?.acfLoungeFields?.priority,
 			image: node?.acfLoungeFields?.previewimage,
 			excerpt: node?.acfLoungeFields?.previewcontent,
-			label: node?.acfLoungeFields?.previewlabel
+			label: node?.acfLoungeFields?.previewlabel,
+			hiddenOn: node?.acfLoungeFields?.hiddenon,
 		};
 	} else if ('acfDressingFields' in node) {
 		return {
@@ -38,6 +40,7 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 			image: node?.acfDressingFields?.previewimage,
 			excerpt: node?.acfDressingFields?.previewcontent,
 			label: node?.acfDressingFields?.previewlabel,
+			hiddenOn: node?.acfDressingFields?.hiddenon,
 			link: node?.uri
 				?.replace(node?.slug || '', `?dressing=${node?.slug}`)
 				?.replace(/\/$/, '')

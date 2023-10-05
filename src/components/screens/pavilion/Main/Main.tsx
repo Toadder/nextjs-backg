@@ -12,8 +12,7 @@ const Main: FC<IPavilionMain> = ({
 	content,
 	slider,
 	layout,
-	phone,
-	whatsapp
+	phone
 }) => {
 	if (isBlockHidden) return;
 
@@ -21,12 +20,7 @@ const Main: FC<IPavilionMain> = ({
 		<section className={styles.root}>
 			<div className={styles.inner}>
 				<MainMedia slider={slider} layout={layout} />
-				<MainContent
-					title={title}
-					content={content}
-					phone={phone}
-					whatsapp={whatsapp}
-				/>
+				<MainContent title={title} content={content} phone={phone} />
 			</div>
 		</section>
 	);

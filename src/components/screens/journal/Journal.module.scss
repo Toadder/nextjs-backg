@@ -7,8 +7,18 @@
 		@apply container space-y-5;
 	}
 
-	.gridContainer {
-		@apply grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-3 gap-4;
+	.masonryContainer {
+		@apply flex md:gap-3 gap-4;
+	}
+
+	.masonryColumn {
+		@apply flex flex-col md:gap-y-3 gap-y-4;
+	}
+
+	.wrapper {
+		@media (max-width: $md) {
+			min-height: rem(400) !important;
+		}
 	}
 
 	.spinnerContainer {

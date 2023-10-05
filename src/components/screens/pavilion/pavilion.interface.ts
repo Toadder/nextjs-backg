@@ -31,8 +31,7 @@ export interface IPavilionBenefitSlider {
 	benefitSlider: Pavilion_Acfpavilionfields['benefitslider'];
 }
 
-export interface IPavilionMain
-	extends Pick<IGeneralSettings, 'phone' | 'whatsapp'> {
+export interface IPavilionMain extends Pick<IGeneralSettings, 'phone'> {
 	isBlockHidden: Pavilion_Acfpavilionfields['ismainhidden'];
 	title: Pavilion_Acfpavilionfields['maintitle'];
 	content: Pavilion_Acfpavilionfields['maincontent'];
@@ -49,8 +48,7 @@ export interface IPavilionMainSlider {
 	slider: Pavilion_Acfpavilionfields['mainslider'];
 }
 
-export interface IPavilionMainContent
-	extends Pick<IGeneralSettings, 'phone' | 'whatsapp'> {
+export interface IPavilionMainContent extends Pick<IGeneralSettings, 'phone'> {
 	title: Pavilion_Acfpavilionfields['maintitle'];
 	content: Pavilion_Acfpavilionfields['maincontent'];
 }

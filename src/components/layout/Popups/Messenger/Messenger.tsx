@@ -21,13 +21,13 @@ const Messenger: FC<IMessenger> = ({ whatsapp, telegram }) => {
 			<div className={styles.title}>Мессенджеры</div>
 			<div className={styles.socials}>
 				{telegram?.length ? (
-					<a className={styles.social} href={telegram || ''}>
+					<a className={styles.social} href={telegram} target="_blank">
 						<FontAwesomeIcon name="FaTelegram" />
 					</a>
 				) : null}
 
 				{whatsapp?.length ? (
-					<a className={styles.social} href={whatsapp || ''}>
+					<a className={styles.social} href={whatsapp} target="_blank">
 						<FontAwesomeIcon name="FaWhatsapp" />
 					</a>
 				) : null}

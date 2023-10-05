@@ -2,6 +2,7 @@
 
 import { ApolloProvider } from '@apollo/client/react';
 import { YMaps } from '@pbe/react-yandex-maps';
+import { JournalProvider } from 'context/JournalContext/JournalContext';
 import { PopupProvider } from 'context/PopupContext/PopupContext';
 import { FC, ReactNode } from 'react';
 
@@ -12,7 +13,9 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 		<ApolloProvider client={client}>
 			<YMaps>
 				<PopupProvider>
-					<div className="layout">{children}</div>
+					<JournalProvider>
+						<div className="layout">{children}</div>
+					</JournalProvider>
 				</PopupProvider>
 			</YMaps>
 		</ApolloProvider>

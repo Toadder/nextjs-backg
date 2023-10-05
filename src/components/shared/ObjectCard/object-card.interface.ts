@@ -6,9 +6,10 @@ export interface IObject extends Pick<Lounge, 'id' | 'title'> {
 	image: Lounge_Acfloungefields['previewimage'];
 	excerpt: Lounge_Acfloungefields['previewcontent'];
 	label?: Lounge_Acfloungefields['previewlabel'];
+	hiddenOn: Lounge_Acfloungefields['hiddenon'];
 }
 
-export interface IObjectCard extends Omit<IObject, 'id' | 'priority'> {
+export interface IObjectCard extends Omit<IObject, 'id' | 'priority' | 'hiddenOn'> {
 	imageSizes: string;
 	isImagePreloaded?: boolean;
 }

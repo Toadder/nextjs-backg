@@ -12,13 +12,12 @@ const Main: FC<ILoungeMain> = ({
 	mainContent,
 	videoMp4,
 	videoWebm,
-	whatsapp,
 	isLayoutHidden,
 	layout,
 	layoutContent,
 	properties
 }) => {
-	if(isMainHidden && isLayoutHidden) return;
+	if (isMainHidden && isLayoutHidden) return;
 
 	return (
 		<section className={styles.root}>
@@ -29,7 +28,6 @@ const Main: FC<ILoungeMain> = ({
 					content={mainContent}
 					videoMp4={videoMp4}
 					videoWebm={videoWebm}
-					whatsapp={whatsapp}
 				/>
 				<MainBottom
 					isBlockHidden={isLayoutHidden}

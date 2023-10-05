@@ -4,6 +4,7 @@ import AnchorBtn from '@/components/ui/AnchorBtn/AnchorBtn';
 import Description from '@/components/ui/Description/Description';
 import Heading from '@/components/ui/Heading/Heading';
 import LazyVideo from '@/components/ui/LazyVideo/LazyVideo';
+import PopupBtn from '@/components/ui/PopupBtn/PopupBtn';
 
 import { ILoungeTop } from '../../lounge.interface';
 
@@ -11,7 +12,6 @@ import styles from './MainTop.module.scss';
 
 const MainTop: FC<ILoungeTop> = ({
 	isBlockHidden,
-	whatsapp,
 	title,
 	content,
 	videoMp4,
@@ -38,15 +38,9 @@ const MainTop: FC<ILoungeTop> = ({
 								text="Забронировать"
 								className={styles.btn}
 							/>
-							{whatsapp?.length ? (
-								<a
-									href={whatsapp || ''}
-									target="_blank"
-									className={styles.link}
-								>
-									или в WhatsApp
-								</a>
-							) : null}
+							<PopupBtn className={styles.link} popupName="messenger">
+								Написать
+							</PopupBtn>
 						</div>
 					</div>
 				</div>

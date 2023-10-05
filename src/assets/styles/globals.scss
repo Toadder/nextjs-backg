@@ -54,6 +54,10 @@ body {
 	margin: 0 0 !important;
 }
 
+.aeWidgetBtn {
+	z-index: 1000 !important;
+}
+
 .page-loader {
 	@apply relative;
 	height: calc(100vh - rem(71));

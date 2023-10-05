@@ -4,11 +4,6 @@ import { imageFragment } from '../fraqments/image';
 
 export const GET_LOUNGE_DATA = gql`
 	query GET_LOUNGE_DATA($slug: ID!) {
-		generalSettings {
-			acfSettings {
-				whatsapp
-			}
-		}
 		lounge(id: $slug, idType: SLUG) {
 			acfLoungeFields {
 				isintrohidden

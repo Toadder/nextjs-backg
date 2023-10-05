@@ -7,7 +7,7 @@ import styles from './Header.module.scss';
 
 const HeaderMessenger: FC = () => (
 	<PopupBtn className={styles.messenger} popupName="messenger">
-		<FontAwesomeIcon name="SiMessenger" />
+		<FontAwesomeIcon name="AiFillMessage" />
 	</PopupBtn>
 );
 
