@@ -3391,6 +3391,8 @@ export type JournalToPreviewConnectionEdge = Edge & JournalConnectionEdge & OneT
 /** Field Group */
 export type Journal_Acfjournaldata = AcfFieldGroup & {
   __typename?: 'Journal_Acfjournaldata';
+  /** По умолчанию заполняется автоматически. */
+  articlepreivewheight?: Maybe<Scalars['Float']['output']>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   mainslider?: Maybe<Array<Maybe<MediaItem>>>;

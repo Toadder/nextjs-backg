@@ -8,11 +8,8 @@ import Spinner from '@/components/ui/Spinner/Spinner';
 
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
-import { generateRandomNumber } from '@/utils/data/generateRandomNumber';
-
 import styles from './Journal.module.scss';
 import JournalItem from './JournalItem';
-import { ARTICLE_MAX_HEIGHT, ARTICLE_MIN_HEIGHT } from './journal.constants';
 import { IJournal, IJournalData } from './journal.interface';
 import { getData } from './journal.requests';
 
@@ -23,17 +20,12 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 
 	const ref = useRef<HTMLDivElement | null>(null);
 	const entry = useIntersectionObserver(ref, {
-		freezeOnceVisible: false,
+		freezeOnceVisible: false
 	});
 	const isVisible = Boolean(entry?.isIntersecting);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const [articles, setArticles] = useState<IJournalData>(items);
-	const [heights, setHeights] = useState<number[]>(
-		articles.map(() =>
-			generateRandomNumber(ARTICLE_MIN_HEIGHT, ARTICLE_MAX_HEIGHT)
-		)
-	);
 
 	const [morePagesAvailable, setMorePagesAvailable] =
 		useState<boolean>(hasNextPage);
@@ -51,13 +43,8 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 			getData(lastItemCursor)
 				.then((data) => {
 					const { journalData, hasNextPage, endCursor } = data;
-					const newHeights: number[] = journalData.map(() =>
-						generateRandomNumber(ARTICLE_MIN_HEIGHT, ARTICLE_MAX_HEIGHT)
-					);
 
-					setHeights((prevData) => [...prevData, ...newHeights]);
 					setArticles((prevData) => [...prevData, ...journalData]);
-
 					setMorePagesAvailable(hasNextPage);
 					setLastItemCursor(endCursor);
 				})
@@ -83,17 +70,21 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 					className={styles.masonryContainer}
 					columnClassName={styles.masonryColumn}
 				>
-					{articles?.map(({ node }, index) => (
-						<JournalItem
-							masonryHeight={heights[index]}
-							index={index}
-							key={node?.id}
-							title={node?.title}
-							link={node?.uri}
-							excerpt={node?.acfJournalData?.previewcontent}
-							image={node?.acfJournalData?.previewimage}
-						/>
-					))}
+					{articles?.map(({ node }, index) => {
+						if (!node?.acfJournalData?.articlepreivewheight) return;
+
+						return (
+							<JournalItem
+								masonryHeight={node?.acfJournalData?.articlepreivewheight}
+								index={index}
+								key={node?.id}
+								title={node?.title}
+								link={node?.uri}
+								excerpt={node?.acfJournalData?.previewcontent}
+								image={node?.acfJournalData?.previewimage}
+							/>
+						);
+					})}
 				</Masonry>
 				{morePagesAvailable && (
 					<div className={styles.spinnerContainer} ref={ref}>
