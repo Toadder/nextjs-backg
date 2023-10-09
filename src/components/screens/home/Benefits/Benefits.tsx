@@ -9,7 +9,7 @@ import { IBenefitData } from './benefits.interface';
 
 const getData = async () => {
 	const { error, data } = await client.query({ query: GET_BENEFITS_DATA });
-	const benefitsData: IBenefitData = data?.fields?.acfHomeFields;
+	const benefitsData: IBenefitData = data?.fields?.acfSettings;
 	return { error, benefitsData };
 };
 

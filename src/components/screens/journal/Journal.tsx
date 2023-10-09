@@ -24,7 +24,6 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const entry = useIntersectionObserver(ref, {
 		freezeOnceVisible: false,
-		rootMargin: '50%'
 	});
 	const isVisible = Boolean(entry?.isIntersecting);
 	const [isLoading, setIsLoading] = useState<boolean>(false);

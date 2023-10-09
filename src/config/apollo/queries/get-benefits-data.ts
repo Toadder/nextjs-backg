@@ -6,8 +6,9 @@ import { pagesUri } from '@/constants/pages';
 
 export const GET_BENEFITS_DATA = gql`
 	query GET_BENEFITS_DATA {
-		fields: page(id: "${pagesUri.home}", idType: URI) {
-			acfHomeFields {
+		fields: generalSettings {
+			acfSettings {
+				isbenefitshidden
 				benefits {
 					content
 					excerpt
@@ -16,7 +17,6 @@ export const GET_BENEFITS_DATA = gql`
 						...ImageFragment
 					}
 				}
-				isbenefitshidden
 			}
 		}
 	}

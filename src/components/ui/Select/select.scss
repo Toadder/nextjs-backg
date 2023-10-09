@@ -1,0 +1,74 @@
+@import '@/assets/styles/vars.scss';
+
+.primary-select {
+	&__control {
+		box-shadow: none !important;
+		border-color: #f9be07 !important;
+		border-radius: 0.75rem !important;
+
+		&--is-focused {
+			outline: none !important;
+		}
+	}
+
+	&__value-container {
+		padding: rem(13.5) rem(16) !important;
+	}
+
+	&__input-container {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	&__indicator-separator {
+		display: none !important;
+	}
+
+	&__indicator {
+		cursor: pointer !important;
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: #f9be07 !important;
+			}
+		}
+	}
+
+	&__menu {
+	}
+
+	&__group {
+		padding: 0 !important;
+	}
+
+	&__option {
+		padding: rem(10) rem(18) !important;
+		cursor: pointer !important;
+		transition:
+			background-color 0.15s ease 0s,
+			color 0.15s ease 0s;
+
+		&--is-focused,
+		&--is-selected {
+			background-color: #f9be07 !important;
+			color: #3a3a3a !important;
+		}
+
+		@media (max-width: $md) {
+			font-size: rem(15) !important;
+		}
+	}
+}
+
+.primary-select-with-error {
+	.primary-select {
+		&__placeholder,
+		&__single-value,
+		&__indicator {
+			color: #d83f31 !important;
+		}
+		&__control {
+			border-color: #d83f31 !important;
+		}
+	}
+}

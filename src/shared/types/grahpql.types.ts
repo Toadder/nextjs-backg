@@ -2724,26 +2724,56 @@ export type GeneralSettings_Acfsettings = AcfFieldGroup & {
   __typename?: 'GeneralSettings_Acfsettings';
   address?: Maybe<Scalars['String']['output']>;
   addresslink?: Maybe<Scalars['String']['output']>;
+  benefits?: Maybe<Array<Maybe<GeneralSettings_Acfsettings_Benefits>>>;
   bookingcontent?: Maybe<Scalars['String']['output']>;
   bookingfile?: Maybe<MediaItem>;
   bookingtitle?: Maybe<Scalars['String']['output']>;
+  cooperationdestination?: Maybe<Scalars['String']['output']>;
+  cooperationtypes?: Maybe<Array<Maybe<GeneralSettings_Acfsettings_Cooperationtypes>>>;
   documents?: Maybe<Array<Maybe<GeneralSettings_Acfsettings_Documents>>>;
   email?: Maybe<Scalars['String']['output']>;
+  emailforfeedback?: Maybe<Scalars['String']['output']>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   footertext?: Maybe<Scalars['String']['output']>;
   instagramchannel?: Maybe<Scalars['String']['output']>;
+  isbenefitshidden?: Maybe<Scalars['Boolean']['output']>;
   isbookinghidden?: Maybe<Scalars['Boolean']['output']>;
   istourhidden?: Maybe<Scalars['Boolean']['output']>;
   logo?: Maybe<MediaItem>;
   mapcoordinates?: Maybe<Scalars['String']['output']>;
   paymentlink?: Maybe<Scalars['String']['output']>;
   phone?: Maybe<Scalars['String']['output']>;
+  /** Токен бота, выданный BotFather */
+  senderbottoken?: Maybe<Scalars['String']['output']>;
   telegram?: Maybe<Scalars['String']['output']>;
+  /** ID чата, в который бот будет отправлять данные с формы. */
+  telegramchatid?: Maybe<Scalars['Float']['output']>;
   tgchannel?: Maybe<Scalars['String']['output']>;
+  tourimage?: Maybe<MediaItem>;
+  tourtitle?: Maybe<Scalars['String']['output']>;
   vkgroup?: Maybe<Scalars['String']['output']>;
   whatsapp?: Maybe<Scalars['String']['output']>;
   youtube?: Maybe<Scalars['String']['output']>;
+};
+
+/** Field Group */
+export type GeneralSettings_Acfsettings_Benefits = AcfFieldGroup & {
+  __typename?: 'GeneralSettings_Acfsettings_benefits';
+  content?: Maybe<Scalars['String']['output']>;
+  excerpt?: Maybe<Scalars['String']['output']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<MediaItem>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+/** Field Group */
+export type GeneralSettings_Acfsettings_Cooperationtypes = AcfFieldGroup & {
+  __typename?: 'GeneralSettings_Acfsettings_cooperationtypes';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
 };
 
 /** Field Group */
@@ -5139,22 +5169,9 @@ export type Page_Acfcontactsfields = AcfFieldGroup & {
 /** Field Group */
 export type Page_Acfhomefields = AcfFieldGroup & {
   __typename?: 'Page_Acfhomefields';
-  benefits?: Maybe<Array<Maybe<Page_Acfhomefields_Benefits>>>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
-  isbenefitshidden?: Maybe<Scalars['Boolean']['output']>;
   isobjectshidden?: Maybe<Scalars['Boolean']['output']>;
-};
-
-/** Field Group */
-export type Page_Acfhomefields_Benefits = AcfFieldGroup & {
-  __typename?: 'Page_Acfhomefields_benefits';
-  content?: Maybe<Scalars['String']['output']>;
-  excerpt?: Maybe<Scalars['String']['output']>;
-  /** The name of the ACF Field Group */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  icon?: Maybe<MediaItem>;
-  title?: Maybe<Scalars['String']['output']>;
 };
 
 /** Field Group */

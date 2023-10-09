@@ -10,7 +10,9 @@ const nextConfig = {
 	env: {
 		WORDPRESS_SITE_URL: process.env.WORDPRESS_SITE_URL,
 		GTAG_ID: process.env.GTAG_ID,
-		YM_ID: process.env.YM_ID
+		YM_ID: process.env.YM_ID,
+		EMAIL_USER: process.env.EMAIL_USER,
+		EMAIL_PASSWORD: process.env.EMAIL_PASSWORD
 	},
 
 	webpack(config, { webpack }) {

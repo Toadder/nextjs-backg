@@ -10,7 +10,9 @@ import { IFooterData } from '@/components/layout/Footer/footer.interface';
 import Header from '@/components/layout/Header/Header';
 import { IHeaderData } from '@/components/layout/Header/header.interface';
 import Layout from '@/components/layout/Layout';
+import { TCooperationDestination } from '@/components/layout/Popups/BecomePartner/become-partner.interface';
 import Popups from '@/components/layout/Popups/Popups';
+import { IPopupsData } from '@/components/layout/Popups/popups.interface';
 
 import { IAllSettings, IFavicon } from '@/shared/types/next.types';
 
@@ -74,11 +76,15 @@ const getData = async () => {
 
 	const footerData: IFooterData = data?.footerFields?.acfSettings;
 
-	return { error, headerData, footerData, paymentLink };
+	const popupsData: IPopupsData = data?.popupFields?.acfSettings;
+
+	return { error, headerData, footerData, popupsData, paymentLink };
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
-	const { error, headerData, footerData, paymentLink } = use(getData());
+	const { error, headerData, footerData, popupsData, paymentLink } = use(
+		getData()
+	);
 
 	if (error) {
 		console.error(error);
@@ -95,6 +101,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
 					<Popups
 						whatsapp={footerData?.whatsapp}
 						telegram={footerData?.telegram}
+						cooperationTypes={popupsData?.cooperationtypes}
+						destination={
+							popupsData?.cooperationdestination as TCooperationDestination
+						}
 					/>
 				</Layout>
 

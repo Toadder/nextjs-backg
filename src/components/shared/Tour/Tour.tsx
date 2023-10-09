@@ -30,13 +30,15 @@ const Tour: FC = () => {
 			<a href="/" className={styles.link}>
 				<Image
 					className={styles.bg}
-					src="/static/shared/tour/main.webp"
+					src={tourData?.tourimage?.sourceUrl || ''}
 					fill
-					alt=""
+					alt={tourData?.tourimage?.altText || ''}
 					sizes="100vw"
 				/>
 				<div className={styles.inner}>
-					<div className={styles.text}>360° ТУР</div>
+					{tourData?.tourtitle?.length ? (
+						<div className={styles.text}>{tourData?.tourtitle}</div>
+					) : null}
 					<FontAwesomeIcon name="FaHandPointUp" />
 				</div>
 			</a>

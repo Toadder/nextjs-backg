@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
 import PopupCard from '@/components/ui/PopupCard/PopupCard';
@@ -36,4 +36,4 @@ const Messenger: FC<IMessenger> = ({ whatsapp, telegram }) => {
 	);
 };
 
-export default Messenger;
+export default memo(Messenger);

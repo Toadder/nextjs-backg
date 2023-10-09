@@ -20,7 +20,7 @@ const MainContent: FC<IPavilionMainContent> = ({ title, content, phone }) => {
 				<div className={styles.links}>
 					{phone?.length ? (
 						<a href={`tel:${convertPhone(phone)}`} className={styles.btn}>
-							Забронировать
+							Забронировать <br /> (звонок в студию)
 						</a>
 					) : null}
 					<PopupBtn className={styles.link} popupName="messenger">

@@ -29,7 +29,9 @@ const CommentsForm: FC<IArticleCommentsForm> = ({ postId }) => {
 		handleSubmit,
 		formState: { errors },
 		reset
-	} = useForm<ICommentsInput>();
+	} = useForm<ICommentsInput>({
+		shouldFocusError: false
+	});
 
 	const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(
 		SubmitStatus.Unsent
@@ -62,6 +64,7 @@ const CommentsForm: FC<IArticleCommentsForm> = ({ postId }) => {
 			setResponseMessage('При отправке запроса произошла ошибка.');
 		} finally {
 			setSubmitStatus(SubmitStatus.Submit);
+			setTimeout(() => setSubmitStatus(SubmitStatus.Unsent), 4000);
 		}
 	};
 
@@ -88,6 +91,7 @@ const CommentsForm: FC<IArticleCommentsForm> = ({ postId }) => {
 						name="name"
 						type="text"
 						placeholder="Имя*"
+						autoComplete="off"
 					/>
 				</div>
 				<div
@@ -102,6 +106,7 @@ const CommentsForm: FC<IArticleCommentsForm> = ({ postId }) => {
 						name="email"
 						type="email"
 						placeholder="Email*"
+						autoComplete="off"
 					/>
 				</div>
 				<div

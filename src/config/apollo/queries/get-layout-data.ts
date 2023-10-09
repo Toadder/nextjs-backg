@@ -1,7 +1,7 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
-import { imageFragment } from '../fraqments/image';
-import { menuFragment } from '../fraqments/menu';
+import { imageFragment } from '../fraqments/image'
+import { menuFragment } from '../fraqments/menu'
 
 export const GET_LAYOUT_DATA = gql`
 	query GET_LAYOUT_DATA {
@@ -49,6 +49,15 @@ export const GET_LAYOUT_DATA = gql`
 					documentfile {
 						mediaItemUrl
 					}
+				}
+			}
+		}
+		popupFields: generalSettings {
+			acfSettings {
+				cooperationdestination
+				cooperationtypes {
+					label: value
+					value
 				}
 			}
 		}

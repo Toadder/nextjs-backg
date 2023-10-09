@@ -16,7 +16,7 @@
 	}
 
 	.body {
-		@apply md:p-12 px-5 py-9 translate-y-7 transition-all duration-300 w-full bg-white rounded-3xl relative z-1;
+		@apply md:p-12 px-5 py-9 translate-y-7 transition-all duration-300 w-full bg-white rounded-2xl relative z-1;
 		max-width: rem(650);
 	}
 
