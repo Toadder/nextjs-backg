@@ -1,3 +1,5 @@
+@import '@/assets/styles/vars.scss';
+
 .root {
 	@apply section;
 
@@ -22,14 +24,18 @@
 	}
 
 	.btns {
-		@apply flex md:flex-row flex-col-reverse items-stretch justify-center gap-x-5 gap-y-2 ;
+		@apply flex md:flex-row flex-col-reverse items-stretch justify-center gap-x-5 gap-y-2;
 	}
 
 	.link {
-		@apply flex items-center;
+		min-width: rem(265);
+
+		@media(max-width: $md) {
+			min-width: auto;
+		}
 
 		&:first-child {
-			@apply btn-secondary;
+			@apply btn-secondary flex items-center justify-center;
 		}
 
 		&:last-child {
