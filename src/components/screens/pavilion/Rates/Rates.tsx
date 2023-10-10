@@ -36,15 +36,17 @@ const Rates: FC<IPavilionRates> = ({
 				<div className={styles.items}>
 					{rates?.map((rate) => <RatesItem key={rate?.name} {...rate} />)}
 				</div>
-				<div className={styles.btns}>
-					<Link href={pagesUri.conditions} className={styles.link}>
-						Условия аренды
-					</Link>
-					{phone?.length ? (
-						<a href={`tel:${convertPhone(phone)}`} className={styles.link}>
-							Забронировать
-						</a>
-					) : null}
+				<div className={styles.wrapper}>
+					<div className={styles.btns}>
+						<Link href={pagesUri.conditions} className={styles.link}>
+							Условия аренды
+						</Link>
+						{phone?.length ? (
+							<a href={`tel:${convertPhone(phone)}`} className={styles.link}>
+								Забронировать <br /> (звонок в студию)
+							</a>
+						) : null}
+					</div>
 				</div>
 			</div>
 		</section>
