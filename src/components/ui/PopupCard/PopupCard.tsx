@@ -1,24 +1,19 @@
-'use client';
+'use client'
 
-import cn from 'clsx';
-import { PopupContext } from 'context/PopupContext/PopupContext';
-import { TActivePopup } from 'context/PopupContext/popup-context.interface';
-import { PropsWithChildren, useContext } from 'react';
+import cn from 'clsx'
+import { PopupContext } from 'context/PopupContext/PopupContext'
+import { useContext } from 'react'
 
-import FontAwesomeIcon from '../Icons/FontAwesomeIcon';
+import FontAwesomeIcon from '../Icons/FontAwesomeIcon'
 
-import styles from './PopupCard.module.scss';
-
-interface IPopupCard extends PropsWithChildren {
-	currentPopup: TActivePopup;
-	className?: string;
-}
+import styles from './PopupCard.module.scss'
+import { IPopupCard } from './popup-card.interface'
 
 const PopupCard = ({ children, currentPopup, className = '' }: IPopupCard) => {
-	const { activePopup, setActivePopup } = useContext(PopupContext);
-	const isVisible: boolean = currentPopup === activePopup;
+	const { activePopup, setActivePopup } = useContext(PopupContext)
+	const isVisible: boolean = currentPopup === activePopup
 
-	const closePopup = () => setActivePopup('');
+	const closePopup = () => setActivePopup('')
 
 	return (
 		<div
@@ -36,7 +31,7 @@ const PopupCard = ({ children, currentPopup, className = '' }: IPopupCard) => {
 			</div>
 			<div onClick={closePopup} className={styles.backdrop} />
 		</div>
-	);
-};
+	)
+}
 
-export default PopupCard;
+export default PopupCard

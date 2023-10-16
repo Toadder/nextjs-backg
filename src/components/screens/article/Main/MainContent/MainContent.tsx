@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import { IArticleMainContentt } from '../../article.interface';
+import { IArticleMainContent } from '../../article.interface'
 
-import styles from './MainContent.module.scss';
+import styles from './MainContent.module.scss'
 
-const MainContent: FC<IArticleMainContentt> = ({ content }) => {
-	if (!content?.length) return;
+const MainContent: FC<IArticleMainContent> = ({ content }) => {
+	if (!content?.length) return
 
 	return (
 		<div className={styles.root}>
@@ -14,7 +14,7 @@ const MainContent: FC<IArticleMainContentt> = ({ content }) => {
 				dangerouslySetInnerHTML={{ __html: content }}
 			></div>
 		</div>
-	);
-};
+	)
+}
 
-export default MainContent;
+export default MainContent

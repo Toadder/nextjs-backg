@@ -1,12 +1,12 @@
-import { IGeneralSettings } from '@/shared/types/general.types';
+import { IGeneralSettings } from '@/shared/types/general.types'
 import {
-	Pavilion_Acfpavilionfields,
-	Pavilion_Acfpavilionfields_Rates
-} from '@/shared/types/grahpql.types';
+	Pavilion_Acfpavilionfields as PavilionAcfSettings,
+	Pavilion_Acfpavilionfields_Rates as PavilionRatesAcfSettings
+} from '@/shared/types/grahpql.types'
 
 export interface IPavilionData
 	extends Pick<
-		Pavilion_Acfpavilionfields,
+		PavilionAcfSettings,
 		| 'isbenefithidden'
 		| 'benefitslider'
 		| 'ismainhidden'
@@ -27,48 +27,54 @@ export interface IPavilionData
 	> {}
 
 export interface IPavilionBenefitSlider {
-	isBlockHidden: Pavilion_Acfpavilionfields['isbenefithidden'];
-	benefitSlider: Pavilion_Acfpavilionfields['benefitslider'];
+	isBlockHidden: PavilionAcfSettings['isbenefithidden']
+	benefitSlider: PavilionAcfSettings['benefitslider']
 }
 
-export interface IPavilionMain extends Pick<IGeneralSettings, 'phone'> {
-	isBlockHidden: Pavilion_Acfpavilionfields['ismainhidden'];
-	title: Pavilion_Acfpavilionfields['maintitle'];
-	content: Pavilion_Acfpavilionfields['maincontent'];
-	slider: Pavilion_Acfpavilionfields['mainslider'];
-	layout: Pavilion_Acfpavilionfields['mainlayout'];
+export interface IPavilionMain {
+	phone: IGeneralSettings['phone']
+	isBlockHidden: PavilionAcfSettings['ismainhidden']
+	title: PavilionAcfSettings['maintitle']
+	content: PavilionAcfSettings['maincontent']
+	slider: PavilionAcfSettings['mainslider']
+	layout: PavilionAcfSettings['mainlayout']
 }
 
 export interface IPavilionMainMedia {
-	slider: Pavilion_Acfpavilionfields['mainslider'];
-	layout: Pavilion_Acfpavilionfields['mainlayout'];
+	slider: PavilionAcfSettings['mainslider']
+	layout: PavilionAcfSettings['mainlayout']
 }
 
 export interface IPavilionMainSlider {
-	slider: Pavilion_Acfpavilionfields['mainslider'];
+	slider: PavilionAcfSettings['mainslider']
 }
 
-export interface IPavilionMainContent extends Pick<IGeneralSettings, 'phone'> {
-	title: Pavilion_Acfpavilionfields['maintitle'];
-	content: Pavilion_Acfpavilionfields['maincontent'];
+export interface IPavilionMainContent {
+	phone: IGeneralSettings['phone']
+	title: PavilionAcfSettings['maintitle']
+	content: PavilionAcfSettings['maincontent']
 }
 
 export interface IPavilionEquipment {
-	isBlockHidden: Pavilion_Acfpavilionfields['isequipmenthidden'];
-	title: Pavilion_Acfpavilionfields['titleequipment'];
-	equipmentItems: Pavilion_Acfpavilionfields['equipment'];
+	isBlockHidden: PavilionAcfSettings['isequipmenthidden']
+	title: PavilionAcfSettings['titleequipment']
+	equipmentItems: PavilionAcfSettings['equipment']
 }
 
-export interface IPavilionRates
-	extends Pick<Pavilion_Acfpavilionfields, 'rates'>,
-		Pick<IGeneralSettings, 'phone'> {
-	isBlockHidden: Pavilion_Acfpavilionfields['israteshidden'];
-	title: Pavilion_Acfpavilionfields['titlerates'];
-	content: Pavilion_Acfpavilionfields['contentrates'];
+export interface IPavilionRates {
+	phone: IGeneralSettings['phone']
+	rates: PavilionAcfSettings['rates']
+	isBlockHidden: PavilionAcfSettings['israteshidden']
+	title: PavilionAcfSettings['titlerates']
+	content: PavilionAcfSettings['contentrates']
 }
 
-export interface IPavilionRate
-	extends Pick<
-		Pavilion_Acfpavilionfields_Rates,
-		'name' | 'time' | 'price' | 'unit' | 'properties' | 'content' | 'label'
-	> {}
+export interface IPavilionRate {
+	name: PavilionRatesAcfSettings['name']
+	time: PavilionRatesAcfSettings['time']
+	price: PavilionRatesAcfSettings['price']
+	unit: PavilionRatesAcfSettings['unit']
+	properties: PavilionRatesAcfSettings['properties']
+	content: PavilionRatesAcfSettings['content']
+	label: PavilionRatesAcfSettings['label']
+}

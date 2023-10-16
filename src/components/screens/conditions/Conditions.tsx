@@ -1,29 +1,19 @@
-import { FC, use } from 'react';
+import { FC, use } from 'react'
 
-import { IGeneralSettings } from '@/shared/types/general.types';
-
-import client from '@/config/apollo/client';
-import { GET_CONDITIONS_DATA } from '@/config/apollo/queries/get-conditions-data';
-
-import styles from './Conditions.module.scss';
-import { IConditionsData } from './conditions.interface';
-
-const getData = async () => {
-	const { error, data } = await client.query({ query: GET_CONDITIONS_DATA });
-	const generalSettings: IGeneralSettings = data?.generalSettings?.acfSettings;
-	const conditionsData: IConditionsData = data?.page;
-	return { error, generalSettings, conditionsData };
-};
+import styles from './Conditions.module.scss'
+import conditionsService from './conditions.service'
 
 const Conditions: FC = () => {
-	const { error, generalSettings, conditionsData } = use(getData());
+	const { error, generalSettings, conditionsData } = use(
+		conditionsService.getData()
+	)
 
 	if (error) {
-		console.error(error);
-		return;
+		console.error(error)
+		return
 	}
 
-	if (!conditionsData?.content?.length) return;
+	if (!conditionsData?.content?.length) return
 
 	return (
 		<div className={styles.root}>
@@ -43,7 +33,7 @@ const Conditions: FC = () => {
 				) : null}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Conditions;
+export default Conditions

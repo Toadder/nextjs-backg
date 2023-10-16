@@ -1,26 +1,17 @@
-import cn from 'clsx';
-import { FC, MutableRefObject } from 'react';
-import { Swiper as SwiperType } from 'swiper/types';
+import cn from 'clsx'
+import { FC } from 'react'
 
-import FontAwesomeIcon from '../Icons/FontAwesomeIcon';
+import FontAwesomeIcon from '../Icons/FontAwesomeIcon'
 
-import styles from './SliderArrow.module.scss';
-
-type DirectionType = 'prev' | 'next';
-
-interface ISliderArrow {
-	type: DirectionType;
-	sliderRef: MutableRefObject<SwiperType | null>;
-	className?: string;
-}
-0;
+import styles from './SliderArrow.module.scss'
+import { ISliderArrow } from './slider-arrow.interface'
 
 const SliderArrow: FC<ISliderArrow> = ({ type, sliderRef, className = '' }) => {
 	const handleClick = () => {
 		type === 'next'
 			? sliderRef.current?.slideNext()
-			: sliderRef.current?.slidePrev();
-	};
+			: sliderRef.current?.slidePrev()
+	}
 
 	return (
 		<div
@@ -31,7 +22,7 @@ const SliderArrow: FC<ISliderArrow> = ({ type, sliderRef, className = '' }) => {
 		>
 			<FontAwesomeIcon name="FaChevronLeft" />
 		</div>
-	);
-};
+	)
+}
 
-export default SliderArrow;
+export default SliderArrow

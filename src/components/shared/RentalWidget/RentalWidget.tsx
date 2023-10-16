@@ -1,14 +1,14 @@
-'use client';
+'use client'
 
-import { FC, useRef } from 'react';
+import { FC, useRef } from 'react'
 
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
-import styles from './RentalWidget.module.scss';
+import styles from './RentalWidget.module.scss'
 import {
 	IRentalWidget,
 	IRentalWidgetIframeStyles
-} from './rental-widget.interface';
+} from './rental-widget.interface'
 
 const RentalWidget: FC<IRentalWidget> = ({
 	isBlockHidden,
@@ -22,12 +22,12 @@ const RentalWidget: FC<IRentalWidget> = ({
 		!iframeStyles?.length ||
 		isBlockHidden
 	)
-		return;
+		return
 
-	const ref = useRef<HTMLDivElement | null>(null);
-	const entry = useIntersectionObserver(ref, {});
-	const isVisible = Boolean(entry?.isIntersecting);
-	const iframeStylesObj: IRentalWidgetIframeStyles = JSON.parse(iframeStyles);
+	const ref = useRef<HTMLDivElement | null>(null)
+	const entry = useIntersectionObserver(ref, {})
+	const isVisible = Boolean(entry?.isIntersecting)
+	const iframeStylesObj: IRentalWidgetIframeStyles = JSON.parse(iframeStyles)
 
 	return (
 		<div
@@ -45,7 +45,7 @@ const RentalWidget: FC<IRentalWidget> = ({
 				/>
 			)}
 		</div>
-	);
-};
+	)
+}
 
-export default RentalWidget;
+export default RentalWidget

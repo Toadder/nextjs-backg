@@ -1,4 +1,4 @@
-import { AiFillMessage } from 'react-icons/ai';
+import { AiFillMessage } from 'react-icons/ai'
 import {
 	FaCaretDown,
 	FaCheckCircle,
@@ -10,13 +10,13 @@ import {
 	FaVk,
 	FaWhatsapp,
 	FaYoutube
-} from 'react-icons/fa';
+} from 'react-icons/fa'
 import {
 	FaCalendar,
 	FaHandPointUp,
 	FaLocationDot,
 	FaXmark
-} from 'react-icons/fa6';
+} from 'react-icons/fa6'
 
 export const fontAwesomeIcons = {
 	FaCaretDown,
@@ -34,6 +34,6 @@ export const fontAwesomeIcons = {
 	FaCalendar,
 	FaXmark,
 	AiFillMessage
-} as const;
+} as const
 
-export type FontAwesomeIconName = keyof typeof fontAwesomeIcons;
+export type FontAwesomeIconName = keyof typeof fontAwesomeIcons

@@ -1,5 +1,6 @@
+import { gql } from '@apollo/client'
+
 import { pagesUri } from '@/constants/pages'
-import { gql } from '@apollo/client';
 
 export const GET_CONDITIONS_DATA = gql`
 	query GET_CONDITIONS_DATA {
@@ -14,4 +15,4 @@ export const GET_CONDITIONS_DATA = gql`
 			content
 		}
 	}
-`;
+`

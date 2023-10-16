@@ -1,14 +1,8 @@
-import cn from 'clsx';
-import { FC, HTMLProps, ReactNode } from 'react';
+import cn from 'clsx'
+import { FC } from 'react'
 
-import styles from './Heading.module.scss';
-
-interface IHeading extends HTMLProps<HTMLTitleElement> {
-	children?: ReactNode;
-	htmlContent?: string;
-	type?: 'h1' | 'h2';
-	className?: string;
-}
+import styles from './Heading.module.scss'
+import { IHeading } from './heading.interface'
 
 const Heading: FC<IHeading> = ({
 	children,
@@ -21,10 +15,10 @@ const Heading: FC<IHeading> = ({
 			<h1 className={cn(styles.heading, className)}>{children}</h1>
 		) : (
 			<h2 className={cn(styles.heading, className)}>{children}</h2>
-		);
+		)
 	}
 
-	if (!htmlContent?.length) return;
+	if (!htmlContent?.length) return
 
 	return type === 'h1' ? (
 		<h1
@@ -36,7 +30,7 @@ const Heading: FC<IHeading> = ({
 			className={cn(styles.heading, className)}
 			dangerouslySetInnerHTML={{ __html: htmlContent }}
 		/>
-	);
-};
+	)
+}
 
-export default Heading;
+export default Heading

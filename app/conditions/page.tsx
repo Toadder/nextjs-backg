@@ -1,13 +1,14 @@
+import { Metadata, NextPage } from 'next'
+
 import Conditions from '@/components/screens/conditions/Conditions'
-import { pagesUri } from '@/constants/pages'
+
 import { getMetadata } from '@/utils/seo/getMetadata'
-import { Metadata, NextPage } from 'next';
+
+import { pagesUri } from '@/constants/pages'
 
 export const generateMetadata = (): Promise<Metadata> =>
-	getMetadata(pagesUri.conditions);
+	getMetadata(pagesUri.conditions)
 
-const ConditionsPage: NextPage = () => {
-	return <Conditions />;
-};
+const ConditionsPage: NextPage = () => <Conditions />
 
-export default ConditionsPage;
+export default ConditionsPage

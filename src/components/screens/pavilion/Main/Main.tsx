@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import { IPavilionMain } from '../pavilion.interface';
+import { IPavilionMain } from '../pavilion.interface'
 
-import styles from './Main.module.scss';
-import MainContent from './MainContent/MainContent';
-import MainMedia from './MainMedia/MainMedia';
+import styles from './Main.module.scss'
+import MainContent from './MainContent/MainContent'
+import MainMedia from './MainMedia/MainMedia'
 
 const Main: FC<IPavilionMain> = ({
 	isBlockHidden,
@@ -14,7 +14,7 @@ const Main: FC<IPavilionMain> = ({
 	layout,
 	phone
 }) => {
-	if (isBlockHidden) return;
+	if (isBlockHidden) return
 
 	return (
 		<section className={styles.root}>
@@ -23,7 +23,7 @@ const Main: FC<IPavilionMain> = ({
 				<MainContent title={title} content={content} phone={phone} />
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default Main;
+export default Main

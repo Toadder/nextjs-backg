@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import { IArticleComments } from '../article.interface';
+import { IArticleComments } from '../article.interface'
 
-import styles from './Comments.module.scss';
-import CommentsForm from './CommentsForm/CommentsForm';
-import CommentsItems from './CommentsItems/CommentsItems';
+import styles from './Comments.module.scss'
+import CommentsForm from './CommentsForm/CommentsForm'
+import CommentsItems from './CommentsItems/CommentsItems'
 
 const Comments: FC<IArticleComments> = ({
 	slug,
@@ -25,7 +25,7 @@ const Comments: FC<IArticleComments> = ({
 				/>
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default Comments;
+export default Comments

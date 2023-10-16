@@ -1,15 +1,14 @@
 // @ts-nocheck
-
-import { INIT_DELAY } from './analytics.constants'
+import { INIT_DELAY } from './analytics.constant'
 
 const initYMScript = (): void => {
-	if (window.didYMInit) return;
+	if (window.didYMInit) return
 
-	window.didYMInit = true;
-	const script = document.createElement('script');
-	script.type = 'text/javascript';
-	script.id = 'ym-id';
-	script.async = true;
+	window.didYMInit = true
+	const script = document.createElement('script')
+	script.type = 'text/javascript'
+	script.id = 'ym-id'
+	script.async = true
 	script.innerHTML = `
 		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 		m[i].l=1*new Date();
@@ -23,22 +22,22 @@ const initYMScript = (): void => {
 				accurateTrackBounce:true,
 				webvisor:true
 		});
-	`;
-	script.onload = () => console.log('loaded');
+	`
+	script.onload = () => console.log('loaded')
 
-	document.head.appendChild(script);
-};
+	document.head.appendChild(script)
+}
 
 export const initYMScriptOnEvent = (event: Event) => {
-	initYMScript();
-	event.currentTarget?.removeEventListener(event.type, initYMScriptOnEvent);
-};
+	initYMScript()
+	event.currentTarget?.removeEventListener(event.type, initYMScriptOnEvent)
+}
 
 export const initYMScriptWithDelay = () => {
 	return setTimeout(() => {
-		initYMScript();
-		document.removeEventListener('scroll', initYMScriptOnEvent);
-		document.removeEventListener('mouseover', initYMScriptOnEvent);
-		document.removeEventListener('touchstart', initYMScriptOnEvent);
-	}, INIT_DELAY);
-};
+		initYMScript()
+		document.removeEventListener('scroll', initYMScriptOnEvent)
+		document.removeEventListener('mouseover', initYMScriptOnEvent)
+		document.removeEventListener('touchstart', initYMScriptOnEvent)
+	}, INIT_DELAY)
+}

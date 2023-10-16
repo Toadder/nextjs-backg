@@ -30,11 +30,13 @@ const FooterContent: FC<IFooterContent> = ({
 								<FontAwesomeIcon name="FaTelegram" />
 							</a>
 						) : null}
+
 						{whatsapp?.length ? (
 							<a href={whatsapp} target="_blank" className={styles.social} aria-label='WhatsApp'>
 								<FontAwesomeIcon name="FaWhatsapp" />
 							</a>
 						) : null}
+
 						{email?.length ? (
 							<a
 								href={`mailto:${email}`}

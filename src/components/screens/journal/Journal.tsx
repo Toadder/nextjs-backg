@@ -1,61 +1,60 @@
-'use client';
+'use client'
 
-import { JournalContext } from 'context/JournalContext/JournalContext';
-import { FC, useContext, useEffect, useRef, useState } from 'react';
-import Masonry from 'react-masonry-css';
+import { JournalContext } from 'context/JournalContext/JournalContext'
+import { FC, useContext, useEffect, useRef, useState } from 'react'
+import Masonry from 'react-masonry-css'
 
-import Spinner from '@/components/ui/Spinner/Spinner';
+import Spinner from '@/components/ui/Spinner/Spinner'
 
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
-import styles from './Journal.module.scss';
-import JournalItem from './JournalItem';
-import { IJournal, IJournalData } from './journal.interface';
-import { getData } from './journal.requests';
+import styles from './Journal.module.scss'
+import JournalItem from './JournalItem'
+import { IJournal, IJournalData } from './journal.interface'
+import journalService from './journal.service'
 
 const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
-	if (!items?.length) return;
+	if (!items?.length) return
 
-	const { isJournalLoaded, loadJournal } = useContext(JournalContext);
+	const { isJournalLoaded, loadJournal } = useContext(JournalContext)
 
-	const ref = useRef<HTMLDivElement | null>(null);
+	const ref = useRef<HTMLDivElement | null>(null)
 	const entry = useIntersectionObserver(ref, {
 		freezeOnceVisible: false
-	});
-	const isVisible = Boolean(entry?.isIntersecting);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
+	})
+	const isVisible = Boolean(entry?.isIntersecting)
+	const [isLoading, setIsLoading] = useState<boolean>(false)
 
-	const [articles, setArticles] = useState<IJournalData>(items);
+	const [articles, setArticles] = useState<IJournalData>(items)
 
 	const [morePagesAvailable, setMorePagesAvailable] =
-		useState<boolean>(hasNextPage);
-	const [lastItemCursor, setLastItemCursor] = useState<string | null>(
-		endCursor
-	);
+		useState<boolean>(hasNextPage)
+	const [lastItemCursor, setLastItemCursor] = useState<string | null>(endCursor)
 
 	useEffect(() => {
-		if (!isJournalLoaded) loadJournal();
-	}, []);
+		if (!isJournalLoaded) loadJournal()
+	}, [])
 
 	useEffect(() => {
 		if (isVisible && !isLoading) {
-			setIsLoading(true);
-			getData(lastItemCursor)
-				.then((data) => {
-					const { journalData, hasNextPage, endCursor } = data;
+			setIsLoading(true)
+			journalService
+				.getData(lastItemCursor)
+				.then(data => {
+					const { journalData, hasNextPage, endCursor } = data
 
-					setArticles((prevData) => [...prevData, ...journalData]);
-					setMorePagesAvailable(hasNextPage);
-					setLastItemCursor(endCursor);
+					setArticles(prevData => [...prevData, ...journalData])
+					setMorePagesAvailable(hasNextPage)
+					setLastItemCursor(endCursor)
 				})
-				.catch((error) => {
-					console.error(error);
-					setMorePagesAvailable(false);
-					alert('При загрузке данных произошла ошибка...');
+				.catch(error => {
+					console.error(error)
+					setMorePagesAvailable(false)
+					alert('При загрузке данных произошла ошибка...')
 				})
-				.finally(() => setIsLoading(false));
+				.finally(() => setIsLoading(false))
 		}
-	}, [isVisible]);
+	}, [isVisible])
 
 	return (
 		<div className={styles.root}>
@@ -71,7 +70,7 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 					columnClassName={styles.masonryColumn}
 				>
 					{articles?.map(({ node }, index) => {
-						if (!node?.acfJournalData?.articlepreivewheight) return;
+						if (!node?.acfJournalData?.articlepreivewheight) return
 
 						return (
 							<JournalItem
@@ -83,7 +82,7 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 								excerpt={node?.acfJournalData?.previewcontent}
 								image={node?.acfJournalData?.previewimage}
 							/>
-						);
+						)
 					})}
 				</Masonry>
 				{morePagesAvailable && (
@@ -93,7 +92,7 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 				)}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Journal;
+export default Journal

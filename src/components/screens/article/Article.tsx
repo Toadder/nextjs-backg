@@ -1,9 +1,9 @@
-import { FC, use } from 'react';
+import { FC, use } from 'react'
 
-import Comments from './Comments/Comments';
-import Items from './Items/Items';
-import Main from './Main/Main';
-import { getData } from './article.requests';
+import Comments from './Comments/Comments'
+import Items from './Items/Items'
+import Main from './Main/Main'
+import articleService from './article.service'
 
 const Article: FC<{ slug: string }> = ({ slug }) => {
 	const {
@@ -12,11 +12,11 @@ const Article: FC<{ slug: string }> = ({ slug }) => {
 		commentsHasNextPage,
 		commentsEndCursor,
 		otherArticles
-	} = use(getData(slug));
+	} = use(articleService.getData(slug))
 
 	if (error) {
-		console.error(error);
-		return;
+		console.error(error)
+		return
 	}
 
 	return (
@@ -36,7 +36,7 @@ const Article: FC<{ slug: string }> = ({ slug }) => {
 				endCursor={commentsEndCursor}
 			/>
 		</>
-	);
-};
+	)
+}
 
-export default Article;
+export default Article

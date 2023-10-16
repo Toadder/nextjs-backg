@@ -1,19 +1,19 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import ObjectCard from '@/components/shared/ObjectCard/ObjectCard';
-import Heading from '@/components/ui/Heading/Heading';
+import ObjectCard from '@/components/shared/ObjectCard/ObjectCard'
+import Heading from '@/components/ui/Heading/Heading'
 
-import { parseToObjectType } from '@/utils/data/parseToObjectType';
+import { parseToObjectType } from '@/utils/data/parseToObjectType'
 
-import styles from './SimilarObjects.module.scss';
-import { ISimilarObjects } from './similar-objects.interface';
+import styles from './SimilarObjects.module.scss'
+import { ISimilarObjects } from './similar-objects.interface'
 
 const SimilarObjects: FC<ISimilarObjects> = ({
 	isBlockHidden,
 	title,
 	similarObjects
 }) => {
-	if (!similarObjects?.length || isBlockHidden) return;
+	if (!similarObjects?.length || isBlockHidden) return
 
 	return (
 		<section className={styles.root}>
@@ -23,9 +23,10 @@ const SimilarObjects: FC<ISimilarObjects> = ({
 				) : null}
 
 				<div className={styles.items}>
-					{similarObjects?.map((element) => {
-						if (!element) return;
-						const object = parseToObjectType(element);
+					{similarObjects?.map(element => {
+						if (!element) return
+
+						const object = parseToObjectType(element)
 						return (
 							<ObjectCard
 								key={object?.id}
@@ -36,12 +37,12 @@ const SimilarObjects: FC<ISimilarObjects> = ({
 								link={object?.link}
 								label={object?.label}
 							/>
-						);
+						)
 					})}
 				</div>
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default SimilarObjects;
+export default SimilarObjects

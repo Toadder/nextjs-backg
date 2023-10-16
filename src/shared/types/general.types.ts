@@ -1,9 +1,10 @@
-import { GeneralSettings_Acfsettings, Comment } from './grahpql.types';
+import {
+	GeneralSettings_Acfsettings as AcfSettings,
+	Comment
+} from './grahpql.types'
 
 export interface IGeneralSettings
-	extends Pick<
-		GeneralSettings_Acfsettings,
-		'phone' | 'bookingfile'
-	> {}
+	extends Pick<AcfSettings, 'phone' | 'bookingfile'> {}
 
-export interface IComment extends Pick<Comment, 'id' | 'date' | 'content' | 'author'> {}
+export interface IComment
+	extends Pick<Comment, 'id' | 'date' | 'content' | 'author'> {}

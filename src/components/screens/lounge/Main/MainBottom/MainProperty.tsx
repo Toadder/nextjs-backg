@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import cn from 'clsx';
-import Image from 'next/image';
-import { FC, useState } from 'react';
+import cn from 'clsx'
+import Image from 'next/image'
+import { FC, useState } from 'react'
 
-import { ILoungeProperty } from '../../lounge.interface';
+import { ILoungeProperty } from '../../lounge.interface'
 
-import styles from './MainBottom.module.scss';
+import styles from './MainBottom.module.scss'
 
 const MainProperty: FC<ILoungeProperty> = ({
 	icon,
@@ -18,15 +18,15 @@ const MainProperty: FC<ILoungeProperty> = ({
 		!!icon?.sourceUrl?.length ||
 		!!title?.length ||
 		!!content?.length ||
-		!!excerpt?.length;
+		!!excerpt?.length
 
-	if (!isFieldsExists) return;
+	if (!isFieldsExists) return
 
-	const [isOpened, setIsOpened] = useState<boolean>(false);
+	const [isOpened, setIsOpened] = useState<boolean>(false)
 
 	const toggleIsOpened = (): void => {
-		setIsOpened((prevState) => !prevState);
-	};
+		setIsOpened(prevState => !prevState)
+	}
 
 	return (
 		<div className={styles.property} onClick={toggleIsOpened}>
@@ -50,7 +50,7 @@ const MainProperty: FC<ILoungeProperty> = ({
 				<p className={styles.text}>{content}</p>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default MainProperty;
+export default MainProperty

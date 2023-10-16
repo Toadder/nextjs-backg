@@ -64,4 +64,4 @@ export const GET_LAYOUT_DATA = gql`
 	}
 	${menuFragment}
 	${imageFragment}
-`;
+`

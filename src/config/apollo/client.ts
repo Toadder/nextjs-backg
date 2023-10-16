@@ -3,7 +3,7 @@ import {
 	DefaultOptions,
 	InMemoryCache,
 	createHttpLink
-} from '@apollo/client';
+} from '@apollo/client'
 
 const defaultOptions: DefaultOptions = {
 	watchQuery: {
@@ -12,22 +12,22 @@ const defaultOptions: DefaultOptions = {
 	},
 	query: {
 		fetchPolicy: 'no-cache',
-		errorPolicy: 'all',
+		errorPolicy: 'all'
 	}
-};
+}
 
 const cache = new InMemoryCache({
 	resultCaching: false
-});
+})
 
 const link = createHttpLink({
 	uri: process.env.WORDPRESS_SITE_URL
-});
+})
 
 const client = new ApolloClient({
 	link,
 	cache,
 	defaultOptions
-});
+})
 
-export default client;
+export default client

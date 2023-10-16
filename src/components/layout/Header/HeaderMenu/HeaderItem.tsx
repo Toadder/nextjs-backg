@@ -1,34 +1,29 @@
-'use client';
+'use client'
 
-import cn from 'clsx';
-import Link from 'next/link';
-import { FC, useState } from 'react';
+import cn from 'clsx'
+import Link from 'next/link'
+import { FC, useState } from 'react'
 
-import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
+import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon'
 
-import { useActivePath } from '@/hooks/useActivePath';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useActivePath } from '@/hooks/useActivePath'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
-import {
-	IHeaderItemContent,
-	IHeaderItemInteractive,
-} from '../header.interface';
+import { IHeaderItem, IHeaderItemInner } from '../header.interface'
 
-import styles from './HeaderMenu.module.scss';
-import HeaderSubmenu from './HeaderSubmenu';
+import styles from './HeaderMenu.module.scss'
+import HeaderSubmenu from './HeaderSubmenu'
 
-const HeaderItemContent: FC<IHeaderItemContent> = ({
+const HeaderItemInner: FC<IHeaderItemInner> = ({
 	label,
 	path,
 	childItems,
 	onClickHandler,
 	isSubmenuShown
 }) => {
-	if (!label || !path) {
-		return;
-	}
+	if (!label || !path) return
 
-	const checkActivePath = useActivePath();
+	const checkActivePath = useActivePath()
 
 	if (childItems?.edges?.length) {
 		return (
@@ -39,15 +34,16 @@ const HeaderItemContent: FC<IHeaderItemContent> = ({
 				})}
 			>
 				<span>{label}</span>
-				<div
-					className={styles.icon}
-					onClick={() => onClickHandler(true)}
-				>
+				<div className={styles.icon} onClick={() => onClickHandler(true)}>
 					<FontAwesomeIcon name="FaCaretDown" />
 				</div>
-				<Link className={styles.overlay} href={path} onClick={() => onClickHandler()} />
+				<Link
+					className={styles.overlay}
+					href={path}
+					onClick={() => onClickHandler()}
+				/>
 			</div>
-		);
+		)
 	}
 
 	return (
@@ -61,39 +57,33 @@ const HeaderItemContent: FC<IHeaderItemContent> = ({
 		>
 			<span>{label}</span>
 		</Link>
-	);
-};
+	)
+}
 
-const HeaderItem: FC<IHeaderItemInteractive> = ({
-	label,
-	path,
-	childItems,
-	hideMenu
-}) => {
-	const isMobileDevice = useMediaQuery('(max-width: 80em)');
-	const [isSubmenuShown, setIsSubmenuShown] = useState<boolean>(false);
-	const [toggleEvent, setToggleEvent] = useState<Date | number>(0);
+const HeaderItem: FC<IHeaderItem> = ({ label, path, childItems, hideMenu }) => {
+	const isMobileDevice = useMediaQuery('(max-width: 80em)')
+	const [isSubmenuShown, setIsSubmenuShown] = useState<boolean>(false)
+	const [toggleEvent, setToggleEvent] = useState<Date | number>(0)
 
 	const onClickHandler = (isTrigger = false): void => {
-		if (!isMobileDevice) return;
+		if (!isMobileDevice) return
 
-		if(isTrigger) {
-			setIsSubmenuShown(prevState => !prevState);
-			setToggleEvent(Date.now());
+		if (isTrigger) {
+			setIsSubmenuShown(prevState => !prevState)
+			setToggleEvent(Date.now())
 		} else {
-			hideMenu();
+			hideMenu()
 
-			if(isSubmenuShown) {
-				setIsSubmenuShown(false);
-				setToggleEvent(Date.now());
+			if (isSubmenuShown) {
+				setIsSubmenuShown(false)
+				setToggleEvent(Date.now())
 			}
 		}
-
-	};
+	}
 
 	return (
 		<li className={styles.item}>
-			<HeaderItemContent
+			<HeaderItemInner
 				label={label}
 				path={path}
 				childItems={childItems}
@@ -105,11 +95,11 @@ const HeaderItem: FC<IHeaderItemInteractive> = ({
 					isMobileDevice={isMobileDevice}
 					onClickHandler={onClickHandler}
 					toggleEvent={toggleEvent}
-					childItems={childItems.edges}
+					menu={childItems.edges}
 				/>
 			) : null}
 		</li>
-	);
-};
+	)
+}
 
-export default HeaderItem;
+export default HeaderItem

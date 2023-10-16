@@ -1,28 +1,28 @@
-'use client';
+'use client'
 
-import axios from 'axios';
-import cn from 'clsx';
-import { FC, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import axios from 'axios'
+import cn from 'clsx'
+import { FC, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-import Heading from '@/components/ui/Heading/Heading';
-import Spinner from '@/components/ui/Spinner/Spinner';
+import Heading from '@/components/ui/Heading/Heading'
+import Spinner from '@/components/ui/Spinner/Spinner'
 
-import { isEmpty } from '@/utils/validations/isEmpty';
-import { emailPattern } from '@/utils/validations/regex';
+import { isEmpty } from '@/utils/validations/isEmpty'
+import { emailPattern } from '@/utils/validations/regex'
 
-import { IArticleCommentsForm } from '../../article.interface';
+import { IArticleCommentsForm } from '../../article.interface'
 
-import styles from './CommentsForm.module.scss';
+import styles from './CommentsForm.module.scss'
 import {
 	ICommentsBody,
 	ICommentsInput,
 	MessageBackground,
 	SubmitStatus
-} from './comments-form.interface';
+} from './comments-form.interface'
 
 const CommentsForm: FC<IArticleCommentsForm> = ({ postId }) => {
-	if (!postId) return;
+	if (!postId) return
 
 	const {
 		register,
@@ -31,42 +31,42 @@ const CommentsForm: FC<IArticleCommentsForm> = ({ postId }) => {
 		reset
 	} = useForm<ICommentsInput>({
 		shouldFocusError: false
-	});
+	})
 
 	const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(
 		SubmitStatus.Unsent
-	);
-	const [responseMessage, setResponseMessage] = useState<string>('');
+	)
+	const [responseMessage, setResponseMessage] = useState<string>('')
 	const [messageBackgroundClass, setMessageBackgroundClass] =
-		useState<MessageBackground>(MessageBackground.Green);
+		useState<MessageBackground>(MessageBackground.Green)
 
-	const onSubmit: SubmitHandler<ICommentsInput> = async (fields) => {
+	const onSubmit: SubmitHandler<ICommentsInput> = async fields => {
 		const body: ICommentsBody = {
 			postId,
 			name: fields.name.trim(),
 			email: fields.email.trim(),
 			content: fields.content.trim()
-		};
+		}
 
-		setSubmitStatus(SubmitStatus.Pending);
+		setSubmitStatus(SubmitStatus.Pending)
 
 		try {
-			const response = await axios.post('/api/comment', body);
-			setResponseMessage(response.data?.message || '');
+			const response = await axios.post('/api/comment', body)
+			setResponseMessage(response.data?.message || '')
 
 			if (response.statusText !== 'OK')
-				setMessageBackgroundClass(MessageBackground.Red);
+				setMessageBackgroundClass(MessageBackground.Red)
 
-			reset();
+			reset()
 		} catch (error) {
-			console.error(error);
-			setMessageBackgroundClass(MessageBackground.Red);
-			setResponseMessage('При отправке запроса произошла ошибка.');
+			console.error(error)
+			setMessageBackgroundClass(MessageBackground.Red)
+			setResponseMessage('При отправке запроса произошла ошибка.')
 		} finally {
-			setSubmitStatus(SubmitStatus.Submit);
-			setTimeout(() => setSubmitStatus(SubmitStatus.Unsent), 4000);
+			setSubmitStatus(SubmitStatus.Submit)
+			setTimeout(() => setSubmitStatus(SubmitStatus.Unsent), 4000)
 		}
-	};
+	}
 
 	return (
 		<div className={styles.root}>
@@ -142,7 +142,7 @@ const CommentsForm: FC<IArticleCommentsForm> = ({ postId }) => {
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
 
-export default CommentsForm;
+export default CommentsForm

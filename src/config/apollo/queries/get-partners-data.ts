@@ -1,5 +1,6 @@
+import { gql } from '@apollo/client'
+
 import { pagesUri } from '@/constants/pages'
-import { gql } from '@apollo/client';
 
 export const GET_PARTNERS_DATA = gql`
 	query GET_PARTNERS_DATA {
@@ -23,4 +24,4 @@ export const GET_PARTNERS_DATA = gql`
 			}
 		}
 	}
-`;
+`

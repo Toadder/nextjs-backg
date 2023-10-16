@@ -1,26 +1,26 @@
-import cn from 'clsx';
-import Link from 'next/link';
-import { FC, LegacyRef } from 'react';
-import SlideToggle from 'react-slide-toggle';
+import cn from 'clsx'
+import Link from 'next/link'
+import { FC, LegacyRef } from 'react'
+import SlideToggle from 'react-slide-toggle'
 
-import { useActivePath } from '@/hooks/useActivePath';
+import { useActivePath } from '@/hooks/useActivePath'
 
-import { IHeaderSubmenu } from '../header.interface';
+import { IHeaderSubmenu } from '../header.interface'
 
-import styles from './HeaderMenu.module.scss';
+import styles from './HeaderMenu.module.scss'
 
 const HeaderSubmenu: FC<IHeaderSubmenu> = ({
-	childItems,
+	menu,
 	isMobileDevice,
 	toggleEvent,
 	onClickHandler
 }) => {
-	if (!childItems.length) return;
+	if (!menu.length) return
 
-	const checkActivePath = useActivePath();
+	const checkActivePath = useActivePath()
 
-	const itemsJsx = childItems.map(({ node }) => {
-		if (!node?.label || !node?.path) return;
+	const itemsJsx = menu.map(({ node }) => {
+		if (!node?.label || !node?.path) return
 
 		return (
 			<li key={node.id} className={styles.subitem}>
@@ -34,15 +34,15 @@ const HeaderSubmenu: FC<IHeaderSubmenu> = ({
 					<span>{node.label}</span>
 				</Link>
 			</li>
-		);
-	});
+		)
+	})
 
 	return isMobileDevice ? (
 		<SlideToggle toggleEvent={toggleEvent} duration={400} collapsed={true}>
 			{({
 				setCollapsibleElement
 			}: {
-				setCollapsibleElement: LegacyRef<HTMLUListElement>;
+				setCollapsibleElement: LegacyRef<HTMLUListElement>
 			}) => (
 				<ul className={styles.sublist} ref={setCollapsibleElement}>
 					{itemsJsx}
@@ -51,7 +51,7 @@ const HeaderSubmenu: FC<IHeaderSubmenu> = ({
 		</SlideToggle>
 	) : (
 		<ul className={styles.sublist}>{itemsJsx}</ul>
-	);
-};
+	)
+}
 
-export default HeaderSubmenu;
+export default HeaderSubmenu

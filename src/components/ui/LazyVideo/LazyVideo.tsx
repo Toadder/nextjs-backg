@@ -1,20 +1,14 @@
-'use client';
+'use client'
 
-import cn from 'clsx';
-import { FC, useRef, useState } from 'react';
+import cn from 'clsx'
+import { FC, useRef, useState } from 'react'
 
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../Spinner/Spinner'
 
-import styles from './LazyVideo.module.scss';
-
-interface ILazyVideo {
-	videoMp4?: string;
-	videoWebm?: string;
-	className?: string;
-	spinnerClassName?: string;
-}
+import styles from './LazyVideo.module.scss'
+import { ILazyVideo } from './lazy-video.interface'
 
 const LazyVideo: FC<ILazyVideo> = ({
 	videoMp4,
@@ -22,18 +16,19 @@ const LazyVideo: FC<ILazyVideo> = ({
 	className,
 	spinnerClassName
 }) => {
-	if (!videoMp4?.length && !videoWebm?.length) return;
+	if (!videoMp4?.length && !videoWebm?.length) return
 
-	const ref = useRef<HTMLDivElement | null>(null);
-	const entry = useIntersectionObserver(ref, {});
-	const isVisible = Boolean(entry?.isIntersecting);
-	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const ref = useRef<HTMLDivElement | null>(null)
+	const entry = useIntersectionObserver(ref, {})
+	const isVisible = Boolean(entry?.isIntersecting)
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	return (
 		<div className={cn(styles.video, className)} ref={ref}>
 			{!isVisible || isLoading ? (
 				<Spinner className={spinnerClassName} />
 			) : null}
+
 			{isVisible && (
 				<video
 					autoPlay
@@ -49,7 +44,7 @@ const LazyVideo: FC<ILazyVideo> = ({
 				</video>
 			)}
 		</div>
-	);
-};
+	)
+}
 
-export default LazyVideo;
+export default LazyVideo

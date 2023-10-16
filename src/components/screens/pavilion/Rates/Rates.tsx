@@ -1,15 +1,15 @@
-import Link from 'next/link';
-import { FC } from 'react';
+import Link from 'next/link'
+import { FC } from 'react'
 
-import Heading from '@/components/ui/Heading/Heading';
+import Heading from '@/components/ui/Heading/Heading'
 
-import { convertPhone } from '@/utils/data/convertPhone';
+import { convertPhone } from '@/utils/data/convertPhone'
 
-import { IPavilionRates } from '../pavilion.interface';
+import { IPavilionRates } from '../pavilion.interface'
 
-import styles from './Rates.module.scss';
-import RatesItem from './RatesItem/RatesItem';
-import { pagesUri } from '@/constants/pages';
+import styles from './Rates.module.scss'
+import RatesItem from './RatesItem/RatesItem'
+import { pagesUri } from '@/constants/pages'
 
 const Rates: FC<IPavilionRates> = ({
 	isBlockHidden,
@@ -18,7 +18,7 @@ const Rates: FC<IPavilionRates> = ({
 	rates,
 	phone
 }) => {
-	if (!rates?.length || isBlockHidden) return;
+	if (!rates?.length || isBlockHidden) return
 
 	return (
 		<section className={styles.root}>
@@ -34,7 +34,18 @@ const Rates: FC<IPavilionRates> = ({
 					</p>
 				) : null}
 				<div className={styles.items}>
-					{rates?.map((rate) => <RatesItem key={rate?.name} {...rate} />)}
+					{rates?.map(rate => (
+						<RatesItem
+							key={rate?.name}
+							name={rate?.name}
+							time={rate?.time}
+							price={rate?.price}
+							unit={rate?.unit}
+							properties={rate?.properties}
+							content={rate?.content}
+							label={rate?.label}
+						/>
+					))}
 				</div>
 				<div className={styles.wrapper}>
 					<div className={styles.btns}>
@@ -50,7 +61,7 @@ const Rates: FC<IPavilionRates> = ({
 				</div>
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default Rates;
+export default Rates

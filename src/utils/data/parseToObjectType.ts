@@ -1,11 +1,13 @@
-import { IObject } from '@/components/shared/ObjectCard/object-card.interface';
+import { IObject } from '@/components/shared/ObjectCard/object-card.interface'
 
-import { Dressing, Lounge, Pavilion } from '@/shared/types/grahpql.types';
+import { Dressing, Lounge, Pavilion } from '@/shared/types/grahpql.types'
 
-type TNode = Lounge | Pavilion | Dressing;
+type TNode = Lounge | Pavilion | Dressing
 
-interface ICommonFields extends Pick<Lounge, 'id' | 'title' | 'slug'> {
-	link: Lounge['uri'];
+interface ICommonFields {
+	id: Lounge['id']
+	title: Lounge['title']
+	link: Lounge['uri']
 }
 
 export const parseToObjectType = (node: TNode): IObject | null => {
@@ -13,7 +15,7 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 		id: node?.id,
 		title: node?.title,
 		link: node?.uri
-	};
+	}
 
 	if ('acfPavilionFields' in node) {
 		return {
@@ -22,8 +24,8 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 			image: node?.acfPavilionFields?.previewimage,
 			excerpt: node?.acfPavilionFields?.previewcontent,
 			label: node?.acfPavilionFields?.previewlabel,
-			hiddenOn: node?.acfPavilionFields?.hiddenon,
-		};
+			hiddenOn: node?.acfPavilionFields?.hiddenon
+		}
 	} else if ('acfLoungeFields' in node) {
 		return {
 			...commonFields,
@@ -31,8 +33,8 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 			image: node?.acfLoungeFields?.previewimage,
 			excerpt: node?.acfLoungeFields?.previewcontent,
 			label: node?.acfLoungeFields?.previewlabel,
-			hiddenOn: node?.acfLoungeFields?.hiddenon,
-		};
+			hiddenOn: node?.acfLoungeFields?.hiddenon
+		}
 	} else if ('acfDressingFields' in node) {
 		return {
 			...commonFields,
@@ -44,8 +46,8 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 			link: node?.uri
 				?.replace(node?.slug || '', `?dressing=${node?.slug}`)
 				?.replace(/\/$/, '')
-		};
+		}
 	}
 
-	return null;
-};
+	return null
+}

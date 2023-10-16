@@ -1,23 +1,23 @@
-'use client';
+'use client'
 
-import cn from 'clsx';
-import Image from 'next/image';
-import { FC, useState } from 'react';
+import cn from 'clsx'
+import Image from 'next/image'
+import { FC, useState } from 'react'
 
-import styles from './Benefits.module.scss';
-import { IBenefit } from './benefits.interface';
+import styles from './Benefits.module.scss'
+import { IBenefit } from './benefits.interface'
 
 const BenefitsItem: FC<IBenefit> = ({ icon, title, content, excerpt }) => {
 	const ifFieldsExist: boolean =
-		!!icon || !!title?.length || !!content?.length || !!excerpt?.length;
+		!!icon || !!title?.length || !!content?.length || !!excerpt?.length
 
-	if (!ifFieldsExist) return;
+	if (!ifFieldsExist) return
 
-	const [isOpened, setIsOpened] = useState<boolean>(false);
+	const [isOpened, setIsOpened] = useState<boolean>(false)
 
 	const toggleIsOpened = (): void => {
-		setIsOpened((prevState) => !prevState);
-	};
+		setIsOpened(prevState => !prevState)
+	}
 
 	return (
 		<div className={styles.item} onClick={toggleIsOpened}>
@@ -41,7 +41,7 @@ const BenefitsItem: FC<IBenefit> = ({ icon, title, content, excerpt }) => {
 				<p className={styles.text}>{content}</p>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default BenefitsItem;
+export default BenefitsItem

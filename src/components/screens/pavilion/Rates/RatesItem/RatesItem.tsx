@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
-import Label from '@/components/ui/Label/Label';
+import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon'
+import Label from '@/components/ui/Label/Label'
 
-import { IPavilionRate } from '../../pavilion.interface';
+import { IPavilionRate } from '../../pavilion.interface'
 
-import styles from './RatesItem.module.scss';
+import styles from './RatesItem.module.scss'
 
 const RatesItem: FC<IPavilionRate> = ({
 	name,
@@ -34,7 +34,7 @@ const RatesItem: FC<IPavilionRate> = ({
 				</div>
 				{properties?.length ? (
 					<div className={styles.properties}>
-						{properties?.map((propertyObj) => (
+						{properties?.map(propertyObj => (
 							<div className={styles.property} key={propertyObj?.property}>
 								<FontAwesomeIcon name="FaCheckCircle" />
 								<div>{propertyObj?.property}</div>
@@ -46,7 +46,7 @@ const RatesItem: FC<IPavilionRate> = ({
 			</div>
 			{label ? <Label text={label} /> : null}
 		</div>
-	);
-};
+	)
+}
 
-export default RatesItem;
+export default RatesItem

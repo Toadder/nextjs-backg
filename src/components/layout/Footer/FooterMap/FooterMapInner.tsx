@@ -1,21 +1,18 @@
-import { Map, Placemark } from '@pbe/react-yandex-maps';
-import { FC } from 'react';
+import { Map, Placemark } from '@pbe/react-yandex-maps'
+import { FC } from 'react'
 
-import { IFooterMap } from '../footer.interface';
+import { IFooterMap } from '../footer.interface'
 
 const FooterMapInner: FC<IFooterMap> = ({ address, coordinates }) => {
-	if (!coordinates?.length) return;
+	if (!coordinates?.length) return
 
-	const coordinatesArray: number[] = coordinates
-		.replaceAll(' ', '')
-		.split(',')
-		.map((item) => Number(item));
+	const coordinatesArray: number[] = coordinates.split(',').map(Number)
 
 	return (
 		<>
 			<Map
-				instanceRef={(ref) => {
-					ref && ref.behaviors.disable('scrollZoom');
+				instanceRef={ref => {
+					ref && ref.behaviors.disable('scrollZoom')
 				}}
 				defaultState={{
 					center: coordinatesArray,
@@ -40,7 +37,7 @@ const FooterMapInner: FC<IFooterMap> = ({ address, coordinates }) => {
 				/>
 			</Map>
 		</>
-	);
-};
+	)
+}
 
-export default FooterMapInner;
+export default FooterMapInner

@@ -1,31 +1,31 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import { FC, useRef } from 'react';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import { Autoplay, EffectFade } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
+import Image from 'next/image'
+import { FC, useRef } from 'react'
+import 'swiper/css'
+import 'swiper/css/effect-fade'
+import { Autoplay, EffectFade } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
 
-import Heading from '@/components/ui/Heading/Heading';
-import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
-import SliderArrow from '@/components/ui/SliderArrows/SliderArrow';
+import Heading from '@/components/ui/Heading/Heading'
+import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon'
+import SliderArrow from '@/components/ui/SliderArrows/SliderArrow'
 
-import { MONTHS } from '../../article.constants';
-import { IArticleMainSlider } from '../../article.interface';
+import { MONTHS } from '../../article.constant'
+import { IArticleMainSlider } from '../../article.interface'
 
-import styles from './MainSlider.module.scss';
+import styles from './MainSlider.module.scss'
 
 const MainSlider: FC<IArticleMainSlider> = ({ title, date, slider }) => {
-	if (!slider?.length) return;
+	if (!slider?.length) return
 
-	const sliderRef = useRef<SwiperType | null>(null);
+	const sliderRef = useRef<SwiperType | null>(null)
 
-	const articleDate: Date = new Date(date || '1970/01/01');
+	const articleDate: Date = new Date(date || '1970/01/01')
 	const formattedDate: string = `${articleDate.getDate()} ${
 		MONTHS[articleDate.getMonth()]
-	} ${articleDate.getFullYear()}`;
+	} ${articleDate.getFullYear()}`
 
 	return (
 		<div className={styles.root}>
@@ -40,7 +40,7 @@ const MainSlider: FC<IArticleMainSlider> = ({ title, date, slider }) => {
 
 				<Swiper
 					className={styles.slider}
-					onBeforeInit={(swiper) => (sliderRef.current = swiper)}
+					onBeforeInit={swiper => (sliderRef.current = swiper)}
 					autoplay={{
 						delay: 3000,
 						pauseOnMouseEnter: true
@@ -81,7 +81,7 @@ const MainSlider: FC<IArticleMainSlider> = ({ title, date, slider }) => {
 				)}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default MainSlider;
+export default MainSlider

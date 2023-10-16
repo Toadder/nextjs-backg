@@ -1,31 +1,25 @@
-import cn from 'clsx';
-import { FC, ReactNode } from 'react';
+import cn from 'clsx'
+import { FC } from 'react'
 
-import styles from './Descripiton.module.scss';
-
-interface IDescription {
-	children?: ReactNode;
-	htmlContent?: string;
-	className?: string;
-}
+import styles from './Descripiton.module.scss'
+import { IDescription } from './description.interface'
 
 const Description: FC<IDescription> = ({
 	children,
 	htmlContent,
 	className = ''
 }) => {
-	if (children) {
-		return <div className={cn(styles.description, className)}>{children}</div>;
-	}
+	if (children)
+		return <div className={cn(styles.description, className)}>{children}</div>
 
-	if (!htmlContent?.length) return;
+	if (!htmlContent?.length) return
 
 	return (
 		<div
 			className={cn(styles.description, className)}
 			dangerouslySetInnerHTML={{ __html: htmlContent }}
 		/>
-	);
-};
+	)
+}
 
-export default Description;
+export default Description

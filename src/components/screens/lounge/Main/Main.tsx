@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import { ILoungeMain } from '../lounge.interface';
+import { ILoungeMain } from '../lounge.interface'
 
-import styles from './Main.module.scss';
-import MainBottom from './MainBottom/MainBottom';
-import MainTop from './MainTop/MainTop';
+import styles from './Main.module.scss'
+import MainBottom from './MainBottom/MainBottom'
+import MainTop from './MainTop/MainTop'
 
 const Main: FC<ILoungeMain> = ({
 	isMainHidden,
@@ -17,7 +17,7 @@ const Main: FC<ILoungeMain> = ({
 	layoutContent,
 	properties
 }) => {
-	if (isMainHidden && isLayoutHidden) return;
+	if (isMainHidden && isLayoutHidden) return
 
 	return (
 		<section className={styles.root}>
@@ -37,7 +37,7 @@ const Main: FC<ILoungeMain> = ({
 				/>
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default Main;
+export default Main

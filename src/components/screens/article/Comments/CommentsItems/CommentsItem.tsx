@@ -1,25 +1,25 @@
-import Image from 'next/image';
-import { FC } from 'react';
+import Image from 'next/image'
+import { FC } from 'react'
 
-import { COMMENT_NAME_LENGTH } from '../../article.constants';
-import { IArticleCommentsItem } from '../../article.interface';
+import { COMMENT_NAME_LENGTH } from '../../article.constant'
+import { IArticleCommentsItem } from '../../article.interface'
 
-import styles from './CommentsItems.module.scss';
+import styles from './CommentsItems.module.scss'
 
 const CommentsItem: FC<IArticleCommentsItem> = ({ author, content, date }) => {
-	if (!author?.node?.name?.length && !content?.length && !date?.length) return;
+	if (!author?.node?.name?.length && !content?.length && !date?.length) return
 
-	const commentDate: Date = new Date(date || '1970-01-01');
-	const day: string = `${commentDate.getDate()}`.padStart(2, '0');
-	const month: string = `${commentDate.getMonth() + 1}`.padStart(2, '0');
-	const year: string = `${commentDate.getFullYear()}`;
+	const commentDate: Date = new Date(date || '1970-01-01')
+	const day: string = `${commentDate.getDate()}`.padStart(2, '0')
+	const month: string = `${commentDate.getMonth() + 1}`.padStart(2, '0')
+	const year: string = `${commentDate.getFullYear()}`
 
-	const nameLength: number = Number(author?.node?.name?.length);
+	const nameLength: number = Number(author?.node?.name?.length)
 	const formattedName: string =
 		nameLength > COMMENT_NAME_LENGTH
 			? `${author?.node?.name?.slice(0, COMMENT_NAME_LENGTH).trim()}...`
-			: String(author?.node?.name);
-	const formattedDate: string = `${day}.${month}.${year}`;
+			: String(author?.node?.name)
+	const formattedDate: string = `${day}.${month}.${year}`
 
 	return (
 		<div className={styles.comment}>
@@ -43,7 +43,7 @@ const CommentsItem: FC<IArticleCommentsItem> = ({ author, content, date }) => {
 				dangerouslySetInnerHTML={{ __html: content || '' }}
 			/>
 		</div>
-	);
-};
+	)
+}
 
-export default CommentsItem;
+export default CommentsItem

@@ -1,4 +1,4 @@
-import { MediaSize, Settings } from './grahpql.types';
+import { MediaSize, Settings } from './grahpql.types'
 
 export interface IAllSettings extends Pick<Settings, 'generalSettingsTitle'> {}
 
@@ -7,9 +7,9 @@ export interface IFavicon
 
 export interface INextContext {
 	params: {
-		slug?: string;
-	};
+		slug?: string
+	}
 	searchParams: {
-		[key: string]: string;
-	};
+		[key: string]: string
+	}
 }

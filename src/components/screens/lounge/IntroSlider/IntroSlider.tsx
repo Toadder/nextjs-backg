@@ -1,33 +1,32 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import { FC, useRef, useState } from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
+import Image from 'next/image'
+import { FC, useRef, useState } from 'react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Autoplay, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
 
-import { ILoungeIntroSlider } from '@/components/screens/lounge/lounge.interface';
-import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer';
-import SliderArrow from '@/components/ui/SliderArrows/SliderArrow';
+import { ILoungeIntroSlider } from '@/components/screens/lounge/lounge.interface'
+import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer'
+import SliderArrow from '@/components/ui/SliderArrows/SliderArrow'
 
-import styles from './IntroSlider.module.scss';
-
-const INIT_SLIDES_PER_VIEW: number = 3;
+import styles from './IntroSlider.module.scss'
+import { INIT_SLIDES_PER_VIEW } from './intro-slider.constant'
 
 const IntroSlider: FC<ILoungeIntroSlider> = ({
 	isBlockHidden,
 	introSlider
 }) => {
-	if (!introSlider?.length || isBlockHidden) return;
+	if (!introSlider?.length || isBlockHidden) return
 
-	const sliderRef = useRef<SwiperType | null>(null);
-	const [isInit, setIsInit] = useState<boolean>(false);
+	const sliderRef = useRef<SwiperType | null>(null)
+	const [isInit, setIsInit] = useState<boolean>(false)
 	const [slidesPerView, setSlidesPerView] =
-		useState<number>(INIT_SLIDES_PER_VIEW);
+		useState<number>(INIT_SLIDES_PER_VIEW)
 
-	const isControlsVisible: boolean = introSlider?.length > slidesPerView;
+	const isControlsVisible: boolean = introSlider?.length > slidesPerView
 
 	return (
 		<div className={styles.root}>
@@ -36,9 +35,9 @@ const IntroSlider: FC<ILoungeIntroSlider> = ({
 					<Swiper
 						style={{ opacity: Number(isInit) }}
 						className={styles.slider}
-						onBeforeInit={(swiper) => (sliderRef.current = swiper)}
+						onBeforeInit={swiper => (sliderRef.current = swiper)}
 						onAfterInit={() => setIsInit(true)}
-						onBreakpoint={(swiper) =>
+						onBreakpoint={swiper =>
 							setSlidesPerView(Number(swiper.params.slidesPerView))
 						}
 						autoplay={{
@@ -102,7 +101,7 @@ const IntroSlider: FC<ILoungeIntroSlider> = ({
 			</div>
 			{isControlsVisible && <div className={styles.pagination}></div>}
 		</div>
-	);
-};
+	)
+}
 
-export default IntroSlider;
+export default IntroSlider

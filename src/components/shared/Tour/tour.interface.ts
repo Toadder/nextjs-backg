@@ -1,7 +1,4 @@
-import { GeneralSettings_Acfsettings } from '@/shared/types/grahpql.types';
+import { GeneralSettings_Acfsettings as AcfSettings } from '@/shared/types/grahpql.types'
 
 export interface ITourData
-	extends Pick<
-		GeneralSettings_Acfsettings,
-		'istourhidden' | 'tourtitle' | 'tourimage'
-	> {}
+	extends Pick<AcfSettings, 'istourhidden' | 'tourtitle' | 'tourimage'> {}

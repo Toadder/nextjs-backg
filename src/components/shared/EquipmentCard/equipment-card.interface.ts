@@ -1,18 +1,18 @@
-import { IEquipment } from '@/components/screens/equipment/equipment.interface';
+import { IEquipment } from '@/components/screens/equipment/equipment.interface'
 
 export interface IAlignVariants {
-	verticalTop: string;
-	verticalCenter: string;
-	verticalBottom: string;
+	verticalTop: string
+	verticalCenter: string
+	verticalBottom: string
 
-	horizontalLeft: string;
-	horizontalCenter: string;
-	horizontalRight: string;
+	horizontalLeft: string
+	horizontalCenter: string
+	horizontalRight: string
 
-	[key: string]: string;
+	[key: string]: string
 }
 
 export interface IEquipmentCard extends Omit<IEquipment, 'index'> {
-	imageSizes: string;
-	isImagePreloaded?: boolean;
+	imageSizes: string
+	isImagePreloaded?: boolean
 }

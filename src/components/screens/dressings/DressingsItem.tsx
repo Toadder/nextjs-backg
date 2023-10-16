@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import Content from './Content/Content';
-import styles from './Dressings.module.scss';
-import Slider from './Slider/Slider';
-import { IDressingsItem } from './dressings.interface';
+import Content from './Content/Content'
+import styles from './Dressings.module.scss'
+import Slider from './Slider/Slider'
+import { IDressingsItem } from './dressings.interface'
 
 const DressingsItem: FC<IDressingsItem> = ({
 	id,
@@ -20,7 +20,7 @@ const DressingsItem: FC<IDressingsItem> = ({
 				<Slider itemIndex={itemIndex} id={id} slider={slider} />
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default DressingsItem;
+export default DressingsItem

@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import { FC } from 'react';
+import Image from 'next/image'
+import { FC } from 'react'
 
-import Description from '@/components/ui/Description/Description';
-import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer';
+import Description from '@/components/ui/Description/Description'
+import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer'
 
-import { ILoungeBottom } from '../../lounge.interface';
+import { ILoungeBottom } from '../../lounge.interface'
 
-import styles from './MainBottom.module.scss';
-import MainContentProperty from './MainProperty';
+import styles from './MainBottom.module.scss'
+import MainContentProperty from './MainProperty'
 
 const MainBottom: FC<ILoungeBottom> = ({
 	isBlockHidden,
@@ -15,7 +15,7 @@ const MainBottom: FC<ILoungeBottom> = ({
 	content,
 	properties
 }) => {
-	if (isBlockHidden) return;
+	if (isBlockHidden) return
 
 	return (
 		<div className={styles.root}>
@@ -42,7 +42,7 @@ const MainBottom: FC<ILoungeBottom> = ({
 					<Description htmlContent={content || ''} />
 					{properties?.length ? (
 						<div className={styles.properties}>
-							{properties?.map((property) => (
+							{properties?.map(property => (
 								<MainContentProperty
 									key={property?.title}
 									icon={property?.icon}
@@ -56,7 +56,7 @@ const MainBottom: FC<ILoungeBottom> = ({
 				</div>
 			) : null}
 		</div>
-	);
-};
+	)
+}
 
-export default MainBottom;
+export default MainBottom

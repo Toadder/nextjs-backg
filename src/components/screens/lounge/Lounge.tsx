@@ -1,36 +1,20 @@
-import { notFound } from 'next/navigation';
-import { FC, use } from 'react';
+import { FC, use } from 'react'
 
-import IntroSlider from '@/components/screens/lounge/IntroSlider/IntroSlider';
-import Booking from '@/components/shared/Booking/Booking';
-import RentalWidget from '@/components/shared/RentalWidget/RentalWidget';
-import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects';
+import IntroSlider from '@/components/screens/lounge/IntroSlider/IntroSlider'
+import Booking from '@/components/shared/Booking/Booking'
+import RentalWidget from '@/components/shared/RentalWidget/RentalWidget'
+import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects'
 
-import client from '@/config/apollo/client';
-import { GET_LOUNGE_DATA } from '@/config/apollo/queries/get-lounge-data';
-
-import ExampleSlider from './ExampleSlider/ExampleSlider';
-import Main from './Main/Main';
-import { ILoungeData } from './lounge.interface';
-
-const getData = async (slug: string) => {
-	const { error, data } = await client.query({
-		query: GET_LOUNGE_DATA,
-		variables: { slug }
-	});
-
-	if (!data?.lounge) notFound();
-
-	const loungeData: ILoungeData = data?.lounge?.acfLoungeFields;
-	return { error, loungeData };
-};
+import ExampleSlider from './ExampleSlider/ExampleSlider'
+import Main from './Main/Main'
+import loungeService from './lounge.service'
 
 const Lounge: FC<{ slug: string }> = ({ slug }) => {
-	const { error, loungeData } = use(getData(slug));
+	const { error, loungeData } = use(loungeService.getData(slug))
 
 	if (error) {
-		console.error(error);
-		return;
+		console.error(error)
+		return
 	}
 
 	return (
@@ -67,7 +51,7 @@ const Lounge: FC<{ slug: string }> = ({ slug }) => {
 				iframeStyles={loungeData?.iframestyles}
 			/>
 		</>
-	);
-};
+	)
+}
 
-export default Lounge;
+export default Lounge

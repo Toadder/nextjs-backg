@@ -1,18 +1,18 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import EquipmentCard from '@/components/shared/EquipmentCard/EquipmentCard';
-import Heading from '@/components/ui/Heading/Heading';
+import EquipmentCard from '@/components/shared/EquipmentCard/EquipmentCard'
+import Heading from '@/components/ui/Heading/Heading'
 
-import { IPavilionEquipment } from '../pavilion.interface';
+import { IPavilionEquipment } from '../pavilion.interface'
 
-import styles from './AvailableEquipment.module.scss';
+import styles from './AvailableEquipment.module.scss'
 
 const AvailableEquipment: FC<IPavilionEquipment> = ({
 	isBlockHidden,
 	title,
 	equipmentItems
 }) => {
-	if (!equipmentItems?.length || isBlockHidden) return;
+	if (!equipmentItems?.length || isBlockHidden) return
 
 	return (
 		<section className={styles.root}>
@@ -23,7 +23,7 @@ const AvailableEquipment: FC<IPavilionEquipment> = ({
 			) : null}
 
 			<div className={styles.items}>
-				{equipmentItems?.map((item) => (
+				{equipmentItems?.map(item => (
 					<EquipmentCard
 						key={item?.id}
 						image={item?.acfEquipmentFields?.image}
@@ -41,7 +41,7 @@ const AvailableEquipment: FC<IPavilionEquipment> = ({
 				))}
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default AvailableEquipment;
+export default AvailableEquipment

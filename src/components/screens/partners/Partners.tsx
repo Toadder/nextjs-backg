@@ -1,14 +1,14 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import Heading from '@/components/ui/Heading/Heading';
-import PopupBtn from '@/components/ui/PopupBtn/PopupBtn';
+import Heading from '@/components/ui/Heading/Heading'
+import PopupBtn from '@/components/ui/PopupBtn/PopupBtn'
 
-import styles from './Partners.module.scss';
-import PartnersItem from './PartnersItem';
-import { IPartners } from './partners.interface';
+import styles from './Partners.module.scss'
+import PartnersItem from './PartnersItem'
+import { IPartners } from './partners.interface'
 
 const Partners: FC<IPartners> = ({ title, partners }) => {
-	if (!partners?.length) return;
+	if (!partners?.length) return
 
 	return (
 		<section className={styles.root}>
@@ -20,7 +20,7 @@ const Partners: FC<IPartners> = ({ title, partners }) => {
 				) : null}
 
 				<div className={styles.gridContainer}>
-					{partners?.map((partner) => (
+					{partners?.map(partner => (
 						<PartnersItem key={partner.id} {...partner} />
 					))}
 				</div>
@@ -30,7 +30,7 @@ const Partners: FC<IPartners> = ({ title, partners }) => {
 				</PopupBtn>
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default Partners;
+export default Partners

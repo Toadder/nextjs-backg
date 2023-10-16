@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const GET_TELEGRAM_CONFIG = gql`
 	query GET_TELEGRAM_CONFIG {
@@ -9,7 +9,7 @@ export const GET_TELEGRAM_CONFIG = gql`
 			}
 		}
 	}
-`;
+`
 
 export const GET_EMAIL_CONFIG = gql`
 	query GET_EMAIL_CONFIG {
@@ -19,4 +19,4 @@ export const GET_EMAIL_CONFIG = gql`
 			}
 		}
 	}
-`;
+`

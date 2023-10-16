@@ -1,4 +1,5 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
+
 import { imageFragment } from '../fraqments/image'
 
 export const GET_EQUIPMENT_DATA = gql`
@@ -22,4 +23,4 @@ export const GET_EQUIPMENT_DATA = gql`
 		}
 	}
 	${imageFragment}
-`;
+`

@@ -1,16 +1,16 @@
-import { APP_EVENT_WIDGET_CLASSNAME } from '@/constants/appEvent';
+import { APP_EVENT_WIDGET_CLASS_NAME } from '@/constants/appEvent'
 
 export const handleScrollBarPadding = (
 	offset: number,
 	...items: HTMLElement[]
 ): void => {
-	items.forEach((item) => {
+	items.forEach(item => {
 		const styleName: keyof CSSStyleDeclaration = item.classList.contains(
-			`${APP_EVENT_WIDGET_CLASSNAME}`
+			`${APP_EVENT_WIDGET_CLASS_NAME}`
 		)
 			? 'marginRight'
-			: 'paddingRight';
+			: 'paddingRight'
 
-		item.style[styleName] = offset ? `${offset}px` : '';
-	});
-};
+		item.style[styleName] = offset ? `${offset}px` : ''
+	})
+}

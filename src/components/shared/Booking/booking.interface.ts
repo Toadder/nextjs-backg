@@ -1,7 +1,7 @@
-import { GeneralSettings_Acfsettings } from '@/shared/types/grahpql.types';
+import { GeneralSettings_Acfsettings as AcfSettings } from '@/shared/types/grahpql.types'
 
 export interface IBookingData
 	extends Pick<
-		GeneralSettings_Acfsettings,
+		AcfSettings,
 		'bookingtitle' | 'bookingcontent' | 'bookingfile' | 'isbookinghidden'
 	> {}

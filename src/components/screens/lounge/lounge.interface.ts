@@ -1,12 +1,11 @@
-import { IGeneralSettings } from '@/shared/types/general.types';
 import {
-	Lounge_Acfloungefields,
-	Lounge_Acfloungefields_Layoutproperties
-} from '@/shared/types/grahpql.types';
+	Lounge_Acfloungefields as LoungeAcfSettings,
+	Lounge_Acfloungefields_Layoutproperties as LoungeLayoutAcfSettings
+} from '@/shared/types/grahpql.types'
 
 export interface ILoungeData
 	extends Pick<
-		Lounge_Acfloungefields,
+		LoungeAcfSettings,
 		| 'isintrohidden'
 		| 'introslider'
 		| 'isexamplehidden'
@@ -30,43 +29,45 @@ export interface ILoungeData
 	> {}
 
 export interface ILoungeIntroSlider {
-	isBlockHidden: Lounge_Acfloungefields['isintrohidden'];
-	introSlider: Lounge_Acfloungefields['introslider'];
+	isBlockHidden: LoungeAcfSettings['isintrohidden']
+	introSlider: LoungeAcfSettings['introslider']
 }
 
-export interface ILoungeMain
-	extends Pick<Lounge_Acfloungefields, 'layout'> {
-	isMainHidden: Lounge_Acfloungefields['ismainhidden'];
-	title: Lounge_Acfloungefields['maintitle'];
-	mainContent: Lounge_Acfloungefields['maincontent'];
-	videoMp4: Lounge_Acfloungefields['mainvideomp4'];
-	videoWebm: Lounge_Acfloungefields['mainvideowebm'];
-	isLayoutHidden: Lounge_Acfloungefields['islayouthidden'];
-	layoutContent: Lounge_Acfloungefields['layoutcontent'];
-	properties: Lounge_Acfloungefields['layoutproperties'];
+export interface ILoungeMain {
+	layout: LoungeAcfSettings['layout']
+	isMainHidden: LoungeAcfSettings['ismainhidden']
+	title: LoungeAcfSettings['maintitle']
+	mainContent: LoungeAcfSettings['maincontent']
+	videoMp4: LoungeAcfSettings['mainvideomp4']
+	videoWebm: LoungeAcfSettings['mainvideowebm']
+	isLayoutHidden: LoungeAcfSettings['islayouthidden']
+	layoutContent: LoungeAcfSettings['layoutcontent']
+	properties: LoungeAcfSettings['layoutproperties']
 }
 
 export interface ILoungeTop {
-	isBlockHidden: Lounge_Acfloungefields['ismainhidden'];
-	title: Lounge_Acfloungefields['maintitle'];
-	content: Lounge_Acfloungefields['maincontent'];
-	videoMp4: Lounge_Acfloungefields['mainvideomp4'];
-	videoWebm: Lounge_Acfloungefields['mainvideowebm'];
+	isBlockHidden: LoungeAcfSettings['ismainhidden']
+	title: LoungeAcfSettings['maintitle']
+	content: LoungeAcfSettings['maincontent']
+	videoMp4: LoungeAcfSettings['mainvideomp4']
+	videoWebm: LoungeAcfSettings['mainvideowebm']
 }
 
-export interface ILoungeBottom extends Pick<Lounge_Acfloungefields, 'layout'> {
-	isBlockHidden: Lounge_Acfloungefields['islayouthidden'];
-	content: Lounge_Acfloungefields['layoutcontent'];
-	properties: Lounge_Acfloungefields['layoutproperties'];
+export interface ILoungeBottom {
+	layout: LoungeAcfSettings['layout']
+	isBlockHidden: LoungeAcfSettings['islayouthidden']
+	content: LoungeAcfSettings['layoutcontent']
+	properties: LoungeAcfSettings['layoutproperties']
 }
 
-export interface ILoungeProperty
-	extends Pick<
-		Lounge_Acfloungefields_Layoutproperties,
-		'icon' | 'title' | 'excerpt' | 'content'
-	> {}
+export interface ILoungeProperty {
+	icon: LoungeLayoutAcfSettings['icon']
+	title: LoungeLayoutAcfSettings['title']
+	excerpt: LoungeLayoutAcfSettings['excerpt']
+	content: LoungeLayoutAcfSettings['content']
+}
 
 export interface ILoungeExampleSlider {
-	isBlockHidden: Lounge_Acfloungefields['isexamplehidden'];
-	exampleSlider: Lounge_Acfloungefields['exampleslider'];
+	isBlockHidden: LoungeAcfSettings['isexamplehidden']
+	exampleSlider: LoungeAcfSettings['exampleslider']
 }

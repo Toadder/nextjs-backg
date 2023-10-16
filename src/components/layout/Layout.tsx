@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { ApolloProvider } from '@apollo/client/react';
-import { YMaps } from '@pbe/react-yandex-maps';
-import { JournalProvider } from 'context/JournalContext/JournalContext';
-import { PartnerProvider } from 'context/PartnerContext/PartnerContext';
-import { PopupProvider } from 'context/PopupContext/PopupContext';
-import { FC, ReactNode } from 'react';
+import { ApolloProvider } from '@apollo/client/react'
+import { YMaps } from '@pbe/react-yandex-maps'
+import { JournalProvider } from 'context/JournalContext/JournalContext'
+import { PartnerProvider } from 'context/PartnerContext/PartnerContext'
+import { PopupProvider } from 'context/PopupContext/PopupContext'
+import { FC, ReactNode } from 'react'
 
-import client from '@/config/apollo/client';
+import client from '@/config/apollo/client'
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
@@ -22,7 +22,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 				</PopupProvider>
 			</YMaps>
 		</ApolloProvider>
-	);
-};
+	)
+}
 
-export default Layout;
+export default Layout

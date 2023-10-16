@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import styles from './Footer.module.scss';
-import FooterContent from './FooterContent/FooterContent';
-import FooterMap from './FooterMap/FooterMap';
-import { IFooterData } from './footer.interface';
+import styles from './Footer.module.scss'
+import FooterContent from './FooterContent/FooterContent'
+import FooterMap from './FooterMap/FooterMap'
+import { IFooterData } from './footer.interface'
 
 const Footer: FC<{ data: IFooterData }> = ({ data }) => {
-	if (!data?.mapcoordinates?.length) return;
+	if (!data?.mapcoordinates?.length) return
 
 	return (
 		<footer className={styles.footer}>
@@ -21,7 +21,7 @@ const Footer: FC<{ data: IFooterData }> = ({ data }) => {
 				<FooterMap address={data?.address} coordinates={data?.mapcoordinates} />
 			</div>
 		</footer>
-	);
-};
+	)
+}
 
-export default Footer;
+export default Footer

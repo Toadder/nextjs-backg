@@ -1,17 +1,17 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC } from 'react';
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC } from 'react'
 
-import styles from './Header.module.scss';
-import { IHeaderLogo } from './header.interface';
+import styles from './Header.module.scss'
+import { IHeaderLogo } from './header.interface'
 
 const HeaderLogo: FC<IHeaderLogo> = ({ logo, hideMenu }) => {
-	if (!logo) return;
+	if (!logo?.sourceUrl?.length) return
 
 	return (
 		<Link href="/" className={styles.logo} onClick={hideMenu}>
 			<Image
-				src={logo.sourceUrl || ''}
+				src={logo.sourceUrl}
 				width={logo.mediaDetails?.width || 0}
 				height={logo.mediaDetails?.height || 0}
 				alt={logo.altText || ''}
@@ -21,7 +21,7 @@ const HeaderLogo: FC<IHeaderLogo> = ({ logo, hideMenu }) => {
 				priority
 			/>
 		</Link>
-	);
-};
+	)
+}
 
-export default HeaderLogo;
+export default HeaderLogo

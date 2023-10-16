@@ -1,34 +1,26 @@
-import Link from 'next/link';
-import { FC, use } from 'react';
+import Link from 'next/link'
+import { FC, use } from 'react'
 
-import Heading from '@/components/ui/Heading/Heading';
+import Heading from '@/components/ui/Heading/Heading'
 
-import client from '@/config/apollo/client';
-import { GET_BOOKING_DATA } from '@/config/apollo/queries/get-booking-data';
-
-import styles from './Booking.module.scss';
-import { IBookingData } from './booking.interface';
-import { pagesUri } from '@/constants/pages';
-
-const getData = async () => {
-	const { error, data } = await client.query({ query: GET_BOOKING_DATA });
-	const bookingData: IBookingData = data?.fields?.acfSettings;
-	return { error, bookingData };
-};
+import styles from './Booking.module.scss'
+import bookingService from './booking.service'
+import { pagesUri } from '@/constants/pages'
 
 const Booking: FC = () => {
-	const { error, bookingData } = use(getData());
+	const { error, bookingData } = use(bookingService.getData())
+
 	const isFieldsExist: boolean =
 		!!bookingData?.bookingtitle?.length ||
 		!!bookingData?.bookingcontent?.length ||
-		!!bookingData?.bookingfile?.mediaItemUrl?.length;
+		!!bookingData?.bookingfile?.mediaItemUrl?.length
 
 	if (error) {
-		console.error(error);
-		return;
+		console.error(error)
+		return
 	}
 
-	if (!isFieldsExist || bookingData?.isbookinghidden) return;
+	if (!isFieldsExist || bookingData?.isbookinghidden) return
 
 	return (
 		<section id="booking" className={styles.root}>
@@ -55,7 +47,7 @@ const Booking: FC = () => {
 				</Link>
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default Booking;
+export default Booking

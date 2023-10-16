@@ -1,21 +1,12 @@
-import cn from 'clsx';
-import Image from 'next/image';
-import { FC } from 'react';
+import cn from 'clsx'
+import Image from 'next/image'
+import { FC } from 'react'
 
-import Label from '@/components/ui/Label/Label';
+import Label from '@/components/ui/Label/Label'
 
-import styles from './EquipmentCard.module.scss';
-import { IAlignVariants, IEquipmentCard } from './equipment-card.interface';
-
-const alignVariants: IAlignVariants = {
-	verticalTop: 'items-start',
-	verticalCenter: 'items-center',
-	verticalBottom: 'items-end',
-
-	horizontalLeft: 'text-left justify-start',
-	horizontalCenter: 'text-center justify-center',
-	horizontalRight: 'text-right justify-end'
-};
+import styles from './EquipmentCard.module.scss'
+import { alignVariants } from './equipment-card.constant'
+import { IEquipmentCard } from './equipment-card.interface'
 
 const EquipmentCard: FC<IEquipmentCard> = ({
 	title,
@@ -28,10 +19,12 @@ const EquipmentCard: FC<IEquipmentCard> = ({
 	isImagePreloaded = false
 }) => {
 	const itemVerticalPosition: string =
-		alignVariants[contentAlignVertical ?? 'verticalTop'];
+		alignVariants[contentAlignVertical ?? 'verticalTop']
+
 	const itemHorizontalPosition: string =
-		alignVariants[contentAlignHorizontal ?? 'horizontalLeft'];
-	const itemPositionClass: string = `${itemVerticalPosition} ${itemHorizontalPosition}`;
+		alignVariants[contentAlignHorizontal ?? 'horizontalLeft']
+
+	const itemPositionClass: string = `${itemVerticalPosition} ${itemHorizontalPosition}`
 
 	return (
 		<div className={cn(styles.item, itemPositionClass)}>
@@ -56,7 +49,7 @@ const EquipmentCard: FC<IEquipmentCard> = ({
 			</div>
 			{label?.length ? <Label text={label} /> : null}
 		</div>
-	);
-};
+	)
+}
 
-export default EquipmentCard;
+export default EquipmentCard

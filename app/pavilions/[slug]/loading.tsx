@@ -1,5 +1,6 @@
-import PageLoader from '@/components/ui/PageLoader/PageLoader';
+import PageLoader from '@/components/ui/PageLoader/PageLoader'
+import { FC } from 'react'
 
-export default function Loading() {
-	return <PageLoader />;
-}
+const Loading: FC = () => <PageLoader />
+
+export default Loading

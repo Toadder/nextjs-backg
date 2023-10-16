@@ -1,4 +1,4 @@
 export interface IPartnerContext {
-	message: string;
-	setMessage: (msg: string) => void;
+	message: string
+	setMessage: (msg: string) => void
 }

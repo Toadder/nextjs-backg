@@ -1,10 +1,10 @@
-import cn from 'clsx';
-import { FC } from 'react';
+import cn from 'clsx'
+import { FC } from 'react'
 
-import ObjectCard from '@/components/shared/ObjectCard/ObjectCard';
+import ObjectCard from '@/components/shared/ObjectCard/ObjectCard'
 
-import styles from './Objects.module.scss';
-import { IObjectItem } from './objects.interface';
+import styles from './Objects.module.scss'
+import { IObjectItem } from './objects.interface'
 
 const ObjectItem: FC<IObjectItem> = ({
 	index,
@@ -14,9 +14,9 @@ const ObjectItem: FC<IObjectItem> = ({
 	link,
 	label
 }) => {
-	const isWide: boolean = index % 5 === 0 || index % 5 === 1;
-	const desktopImageSizes: string = isWide ? '37.5rem' : '25rem';
-	const imageSizes = `(max-width: 48em) 100vw, (max-width: 64em) 50vw, ${desktopImageSizes}`;
+	const isWide: boolean = index % 5 === 0 || index % 5 === 1
+	const desktopImageSizes: string = isWide ? '37.5rem' : '25rem'
+	const imageSizes = `(max-width: 48em) 100vw, (max-width: 64em) 50vw, ${desktopImageSizes}`
 
 	return (
 		<div
@@ -34,7 +34,7 @@ const ObjectItem: FC<IObjectItem> = ({
 				isImagePreloaded={index < 5}
 			/>
 		</div>
-	);
-};
+	)
+}
 
-export default ObjectItem;
+export default ObjectItem

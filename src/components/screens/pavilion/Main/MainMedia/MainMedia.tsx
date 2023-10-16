@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import { FC } from 'react';
+import Image from 'next/image'
+import { FC } from 'react'
 
-import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer';
+import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer'
 
-import { IPavilionMainMedia } from '../../pavilion.interface';
+import { IPavilionMainMedia } from '../../pavilion.interface'
 
-import styles from './MainMedia.module.scss';
-import MainSlider from './MainSlider';
+import styles from './MainMedia.module.scss'
+import MainSlider from './MainSlider'
 
 const MainMedia: FC<IPavilionMainMedia> = ({ slider, layout }) => {
 	return (
@@ -26,7 +26,7 @@ const MainMedia: FC<IPavilionMainMedia> = ({ slider, layout }) => {
 				</FancyboxContainer>
 			) : null}
 		</div>
-	);
-};
+	)
+}
 
-export default MainMedia;
+export default MainMedia

@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC } from 'react';
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC } from 'react'
 
-import Label from '@/components/ui/Label/Label';
+import Label from '@/components/ui/Label/Label'
 
-import styles from './ObjectCard.module.scss';
-import { IObjectCard } from './object-card.interface';
+import styles from './ObjectCard.module.scss'
+import { IObjectCard } from './object-card.interface'
 
 const ObjectCard: FC<IObjectCard> = ({
 	link,
@@ -39,7 +39,7 @@ const ObjectCard: FC<IObjectCard> = ({
 				{label ? <Label text={label} /> : null}
 			</Link>
 		</article>
-	);
-};
+	)
+}
 
-export default ObjectCard;
+export default ObjectCard

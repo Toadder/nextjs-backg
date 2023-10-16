@@ -1,3 +1,6 @@
-import { GeneralSettings_Acfsettings } from '@/shared/types/grahpql.types'
+import { GeneralSettings_Acfsettings as AcfSettings } from '@/shared/types/grahpql.types'
 
-export interface IMessenger extends Pick<GeneralSettings_Acfsettings, 'whatsapp' | 'telegram'> {}
+export interface IMessenger {
+	whatsapp: AcfSettings['whatsapp']
+	telegram: AcfSettings['telegram']
+}

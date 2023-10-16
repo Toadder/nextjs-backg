@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import { FC, useState } from 'react';
+import { FC, useState } from 'react'
 
-import Spinner from '@/components/ui/Spinner/Spinner';
+import Spinner from '@/components/ui/Spinner/Spinner'
 
-import { IComment } from '@/shared/types/general.types';
+import { IComment } from '@/shared/types/general.types'
 
-import { IArticleCommentsItems } from '../../article.interface';
-import { getData } from '../../article.requests';
+import { IArticleCommentsItems } from '../../article.interface'
+import articleService from '../../article.service'
 
-import CommentsItem from './CommentsItem';
-import styles from './CommentsItems.module.scss';
+import CommentsItem from './CommentsItem'
+import styles from './CommentsItems.module.scss'
 
 const CommentsItems: FC<IArticleCommentsItems> = ({
 	slug,
@@ -18,39 +18,43 @@ const CommentsItems: FC<IArticleCommentsItems> = ({
 	hasNextPage,
 	endCursor
 }) => {
-	if (!comments?.length) return;
+	if (!comments?.length) return
 
-	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [items, setItems] = useState<IComment[]>(comments);
+	const [isLoading, setIsLoading] = useState<boolean>(false)
+	const [items, setItems] = useState<IComment[]>(comments)
 	const [moreItemsAvailable, setMoreItemsAvailable] =
-		useState<boolean>(hasNextPage);
-	const [lastItemCursor, setLastItemCursor] = useState<string | null>(
-		endCursor
-	);
+		useState<boolean>(hasNextPage)
+	const [lastItemCursor, setLastItemCursor] = useState<string | null>(endCursor)
 
 	const loadComments = () => {
-		setIsLoading(true);
+		setIsLoading(true)
 
-		getData(slug, lastItemCursor)
-			.then((data) => {
-				const { articleData, commentsEndCursor, commentsHasNextPage } = data;
-				setItems((prevData) => [...prevData, ...articleData?.comments?.nodes]);
-				setMoreItemsAvailable(commentsHasNextPage);
-				setLastItemCursor(commentsEndCursor);
+		articleService
+			.getData(slug, lastItemCursor)
+			.then(data => {
+				const { articleData, commentsEndCursor, commentsHasNextPage } = data
+				setItems(prevData => [...prevData, ...articleData?.comments?.nodes])
+				setMoreItemsAvailable(commentsHasNextPage)
+				setLastItemCursor(commentsEndCursor)
 			})
-			.catch((error) => {
-				console.error(error);
-				setMoreItemsAvailable(false);
-				alert('При загрузке данных произошла ошибка...');
+			.catch(error => {
+				console.error(error)
+				setMoreItemsAvailable(false)
+				alert('При загрузке данных произошла ошибка...')
 			})
-			.finally(() => setIsLoading(false));
-	};
+			.finally(() => setIsLoading(false))
+	}
 
 	return (
 		<div className={styles.root}>
 			<div className={styles.comments}>
-				{items?.map((comment) => (
-					<CommentsItem key={comment?.id} {...comment} />
+				{items?.map(comment => (
+					<CommentsItem
+						key={comment?.id}
+						author={comment?.author}
+						content={comment?.content}
+						date={comment?.date}
+					/>
 				))}
 			</div>
 			{moreItemsAvailable && !isLoading ? (
@@ -64,7 +68,7 @@ const CommentsItems: FC<IArticleCommentsItems> = ({
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
 
-export default CommentsItems;
+export default CommentsItems

@@ -1,6 +1,11 @@
-export type TActivePopup = '' | 'messenger' | 'aboutPartner' | 'becomePartner' | 'greeting';
+export type TActivePopup =
+	| ''
+	| 'messenger'
+	| 'aboutPartner'
+	| 'becomePartner'
+	| 'greeting'
 
 export interface IPopupContext {
-	activePopup: TActivePopup;
-	setActivePopup: (popupName: TActivePopup) => void;
+	activePopup: TActivePopup
+	setActivePopup: (popupName: TActivePopup) => void
 }

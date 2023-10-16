@@ -1,28 +1,28 @@
-import { Metadata } from 'next';
+import { Metadata } from 'next'
 
-import { IMetadata } from '@/shared/types/seo.types';
+import { IMetadata } from '@/shared/types/seo.types'
 
-import client from '@/config/apollo/client';
-import { GET_PAGE_METADATA } from '@/config/apollo/queries/get-page-metadata';
+import client from '@/config/apollo/client'
+import { GET_PAGE_METADATA } from '@/config/apollo/queries/get-page-metadata'
 
 export const getMetadata = async (path: string): Promise<Metadata> => {
 	const { error, data } = await client.query({
 		query: GET_PAGE_METADATA,
 		variables: { id: path }
-	});
+	})
 
 	if (error) {
-		console.error(error);
-		return {};
+		console.error(error)
+		return {}
 	}
 
 	if (!data?.page)
 		return {
 			title: 'Страница не найдена',
 			robots: { index: false, follow: false }
-		};
+		}
 
-	const metadata: IMetadata = data?.page?.seo;
+	const metadata: IMetadata = data?.page?.seo
 
 	return {
 		title: metadata?.title,
@@ -39,5 +39,5 @@ export const getMetadata = async (path: string): Promise<Metadata> => {
 			url: metadata?.opengraphUrl || '',
 			type: (metadata?.opengraphType as any) || 'article'
 		}
-	};
-};
+	}
+}

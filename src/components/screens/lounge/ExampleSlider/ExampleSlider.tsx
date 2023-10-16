@@ -1,35 +1,34 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import { FC, useRef, useState } from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
+import Image from 'next/image'
+import { FC, useRef, useState } from 'react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Autoplay, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
 
-import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer';
-import SliderArrow from '@/components/ui/SliderArrows/SliderArrow';
+import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer'
+import SliderArrow from '@/components/ui/SliderArrows/SliderArrow'
 
-import { ILoungeExampleSlider } from '../lounge.interface';
+import { ILoungeExampleSlider } from '../lounge.interface'
 
-import styles from './ExampleSlider.module.scss';
-
-const INITIAL_SLIDES_PER_VIEW: number = 4;
+import styles from './ExampleSlider.module.scss'
+import { INITIAL_SLIDES_PER_VIEW } from './example-slider.constant'
 
 const ExampleSlider: FC<ILoungeExampleSlider> = ({
 	isBlockHidden,
 	exampleSlider
 }) => {
-	if (!exampleSlider?.length || isBlockHidden) return;
+	if (!exampleSlider?.length || isBlockHidden) return
 
-	const sliderRef = useRef<SwiperType | null>(null);
-	const [isInit, setIsInit] = useState<boolean>(false);
+	const sliderRef = useRef<SwiperType | null>(null)
+	const [isInit, setIsInit] = useState<boolean>(false)
 	const [slidesPerView, setSlidesPerView] = useState<number>(
 		INITIAL_SLIDES_PER_VIEW
-	);
+	)
 
-	const isControlsVisible: boolean = exampleSlider?.length > slidesPerView;
+	const isControlsVisible: boolean = exampleSlider?.length > slidesPerView
 
 	return (
 		<div className={styles.root}>
@@ -38,11 +37,11 @@ const ExampleSlider: FC<ILoungeExampleSlider> = ({
 					<Swiper
 						style={{ opacity: Number(isInit) }}
 						className={styles.slider}
-						onBeforeInit={(swiper) => {
-							sliderRef.current = swiper;
+						onBeforeInit={swiper => {
+							sliderRef.current = swiper
 						}}
 						onAfterInit={() => setIsInit(true)}
-						onBreakpoint={(swiper) =>
+						onBreakpoint={swiper =>
 							setSlidesPerView(Number(swiper.params.slidesPerView))
 						}
 						slidesPerView={INITIAL_SLIDES_PER_VIEW}
@@ -71,7 +70,7 @@ const ExampleSlider: FC<ILoungeExampleSlider> = ({
 							}
 						}}
 					>
-						{exampleSlider?.map((slide) => (
+						{exampleSlider?.map(slide => (
 							<SwiperSlide
 								key={slide?.image?.sourceUrl}
 								className={styles.slide}
@@ -112,7 +111,7 @@ const ExampleSlider: FC<ILoungeExampleSlider> = ({
 			</div>
 			{isControlsVisible && <div className={styles.pagination}></div>}
 		</div>
-	);
-};
+	)
+}
 
-export default ExampleSlider;
+export default ExampleSlider

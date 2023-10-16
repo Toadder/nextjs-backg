@@ -1,29 +1,20 @@
-import Image from 'next/image';
-import { FC, use } from 'react';
+import Image from 'next/image'
+import { FC, use } from 'react'
 
-import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
+import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon'
 
-import client from '@/config/apollo/client';
-import { GET_TOUR_DATA } from '@/config/apollo/queries/get-tour-data';
-
-import styles from './Tour.module.scss';
-import { ITourData } from './tour.interface';
-
-const getData = async () => {
-	const { error, data } = await client.query({ query: GET_TOUR_DATA });
-	const tourData: ITourData = data?.fields?.acfSettings;
-	return { error, tourData };
-};
+import styles from './Tour.module.scss'
+import tourService from './tour.service'
 
 const Tour: FC = () => {
-	const { error, tourData } = use(getData());
+	const { error, tourData } = use(tourService.getData())
 
 	if (error) {
-		console.error(error);
-		return;
+		console.error(error)
+		return
 	}
 
-	if (tourData?.istourhidden) return;
+	if (tourData?.istourhidden) return
 
 	return (
 		<div className={styles.root}>
@@ -43,7 +34,7 @@ const Tour: FC = () => {
 				</div>
 			</a>
 		</div>
-	);
-};
+	)
+}
 
-export default Tour;
+export default Tour

@@ -1,21 +1,24 @@
-import { Journal, Journal_Acfjournaldata } from '@/shared/types/grahpql.types';
+import {
+	Journal,
+	Journal_Acfjournaldata as JournalAcfSettings
+} from '@/shared/types/grahpql.types'
 
 interface IJournalNode {
-	node: Journal;
+	node: Journal
 }
 
 export interface IJournalData extends Array<IJournalNode> {}
 
 export interface IJournal {
-	items: IJournalData;
-	hasNextPage: boolean;
-	endCursor: string | null;
+	items: IJournalData
+	hasNextPage: boolean
+	endCursor: string | null
 }
 
 export interface IJournalItem extends Pick<Journal, 'title'> {
-	image: Journal_Acfjournaldata['previewimage'];
-	excerpt: Journal_Acfjournaldata['previewcontent'];
-	link: Journal['uri'];
-	index: number;
-	masonryHeight: number;
+	index: number
+	masonryHeight: number
+	link: Journal['uri']
+	image: JournalAcfSettings['previewimage']
+	excerpt: JournalAcfSettings['previewcontent']
 }

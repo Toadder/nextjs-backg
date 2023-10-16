@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import Description from '@/components/ui/Description/Description';
-import Heading from '@/components/ui/Heading/Heading';
+import Description from '@/components/ui/Description/Description'
+import Heading from '@/components/ui/Heading/Heading'
 
-import { IDressingsContent } from '../dressings.interface';
+import { IDressingsContent } from '../dressings.interface'
 
-import styles from './Content.module.scss';
+import styles from './Content.module.scss'
 
 const Content: FC<IDressingsContent> = ({ title, content }) => {
 	return (
@@ -15,7 +15,7 @@ const Content: FC<IDressingsContent> = ({ title, content }) => {
 			) : null}
 			{content?.length ? <Description htmlContent={content} /> : null}
 		</div>
-	);
-};
+	)
+}
 
-export default Content;
+export default Content

@@ -1,4 +1,4 @@
 export interface IJournalContext {
-	isJournalLoaded: boolean;
-	loadJournal: () => void;
+	isJournalLoaded: boolean
+	loadJournal: () => void
 }

@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
-import { imageFragment } from '../fraqments/image';
+import { imageFragment } from '../fraqments/image'
 
 export const GET_PAVILION_DATA = gql`
 	query GET_PAVILION_DATA($slug: ID!) {
@@ -81,4 +81,4 @@ export const GET_PAVILION_DATA = gql`
 		}
 	}
 	${imageFragment}
-`;
+`

@@ -1,9 +1,9 @@
-import cn from 'clsx';
-import { FC } from 'react';
+import cn from 'clsx'
+import { FC } from 'react'
 
-import { IHeaderBurger } from '../header.interface';
+import { IHeaderBurger } from '../header.interface'
 
-import styles from './HeaderBurger.module.scss';
+import styles from './HeaderBurger.module.scss'
 
 const HeaderBurger: FC<IHeaderBurger> = ({ isOpened, toggleIsOpened }) => {
 	return (
@@ -15,7 +15,7 @@ const HeaderBurger: FC<IHeaderBurger> = ({ isOpened, toggleIsOpened }) => {
 		>
 			<span></span>
 		</div>
-	);
-};
+	)
+}
 
-export default HeaderBurger;
+export default HeaderBurger

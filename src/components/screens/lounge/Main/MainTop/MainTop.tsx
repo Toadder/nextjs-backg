@@ -1,14 +1,14 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import AnchorBtn from '@/components/ui/AnchorBtn/AnchorBtn';
-import Description from '@/components/ui/Description/Description';
-import Heading from '@/components/ui/Heading/Heading';
-import LazyVideo from '@/components/ui/LazyVideo/LazyVideo';
-import PopupBtn from '@/components/ui/PopupBtn/PopupBtn';
+import AnchorBtn from '@/components/ui/AnchorBtn/AnchorBtn'
+import Description from '@/components/ui/Description/Description'
+import Heading from '@/components/ui/Heading/Heading'
+import LazyVideo from '@/components/ui/LazyVideo/LazyVideo'
+import PopupBtn from '@/components/ui/PopupBtn/PopupBtn'
 
-import { ILoungeTop } from '../../lounge.interface';
+import { ILoungeTop } from '../../lounge.interface'
 
-import styles from './MainTop.module.scss';
+import styles from './MainTop.module.scss'
 
 const MainTop: FC<ILoungeTop> = ({
 	isBlockHidden,
@@ -17,7 +17,7 @@ const MainTop: FC<ILoungeTop> = ({
 	videoMp4,
 	videoWebm
 }) => {
-	if (!title?.length || isBlockHidden) return;
+	if (!title?.length || isBlockHidden) return
 
 	return (
 		<div className={styles.root}>
@@ -46,7 +46,7 @@ const MainTop: FC<ILoungeTop> = ({
 				</div>
 			) : null}
 		</div>
-	);
-};
+	)
+}
 
-export default MainTop;
+export default MainTop

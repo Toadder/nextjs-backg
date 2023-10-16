@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import { PartnerContext } from 'context/PartnerContext/PartnerContext';
-import Image from 'next/image';
-import { FC, useContext } from 'react';
+import { PartnerContext } from 'context/PartnerContext/PartnerContext'
+import Image from 'next/image'
+import { FC, useContext } from 'react'
 
-import PopupBtn from '@/components/ui/PopupBtn/PopupBtn';
+import PopupBtn from '@/components/ui/PopupBtn/PopupBtn'
 
-import styles from './Partners.module.scss';
+import styles from './Partners.module.scss'
 import { IPartner } from './partners.interface'
 
 const PartnersItem: FC<IPartner> = ({ content, image }) => {
-	if (!image?.sourceUrl?.length || !content?.length) return;
+	if (!image?.sourceUrl?.length || !content?.length) return
 
-	const { setMessage } = useContext(PartnerContext);
+	const { setMessage } = useContext(PartnerContext)
 
 	return (
 		<div className={styles.wrapper} onClick={() => setMessage(content)}>
@@ -28,7 +28,7 @@ const PartnersItem: FC<IPartner> = ({ content, image }) => {
 				/>
 			</PopupBtn>
 		</div>
-	);
-};
+	)
+}
 
-export default PartnersItem;
+export default PartnersItem

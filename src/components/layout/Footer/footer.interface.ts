@@ -1,8 +1,8 @@
-import { GeneralSettings_Acfsettings } from '@/shared/types/grahpql.types';
+import { GeneralSettings_Acfsettings as AcfSettings } from '@/shared/types/grahpql.types';
 
 export interface IFooterData
 	extends Pick<
-		GeneralSettings_Acfsettings,
+		AcfSettings,
 		| 'address'
 		| 'addresslink'
 		| 'documents'
@@ -13,14 +13,15 @@ export interface IFooterData
 		| 'whatsapp'
 	> {}
 
-export interface IFooterContent
-	extends Pick<
-		GeneralSettings_Acfsettings,
-		'email' | 'telegram' | 'whatsapp' | 'documents'
-	> {
-	text: GeneralSettings_Acfsettings['footertext'];
+export interface IFooterContent {
+	text: AcfSettings['footertext'];
+	email: AcfSettings['email'];
+	telegram: AcfSettings['telegram'];
+	whatsapp: AcfSettings['whatsapp'];
+	documents: AcfSettings['documents'];
 }
 
-export interface IFooterMap extends Pick<GeneralSettings_Acfsettings, 'address' > {
-	coordinates: GeneralSettings_Acfsettings['mapcoordinates'];
+export interface IFooterMap {
+	address: AcfSettings['address'];
+	coordinates: AcfSettings['mapcoordinates'];
 }

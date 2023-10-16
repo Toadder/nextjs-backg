@@ -1,16 +1,16 @@
 import {
-	Lounge_Acfloungefields,
-	Pavilion_Acfpavilionfields
-} from '@/shared/types/grahpql.types';
+	Lounge_Acfloungefields as LoungeAcfSettings,
+	Pavilion_Acfpavilionfields as PavilionAcfSettings
+} from '@/shared/types/grahpql.types'
 
 export interface ISimilarObjects {
 	isBlockHidden:
-		| Lounge_Acfloungefields['issimilarloungeshidden']
-		| Pavilion_Acfpavilionfields['issimilarloungeshidden'];
+		| LoungeAcfSettings['issimilarloungeshidden']
+		| PavilionAcfSettings['issimilarloungeshidden']
 	title:
-		| Lounge_Acfloungefields['titlesimilarlounges']
-		| Pavilion_Acfpavilionfields['titleequipment'];
+		| LoungeAcfSettings['titlesimilarlounges']
+		| PavilionAcfSettings['titleequipment']
 	similarObjects:
-		| Lounge_Acfloungefields['similarlounges']
-		| Pavilion_Acfpavilionfields['similarlounges'];
+		| LoungeAcfSettings['similarlounges']
+		| PavilionAcfSettings['similarlounges']
 }

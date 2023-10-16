@@ -4,13 +4,11 @@ import Tour from '@/components/shared/Tour/Tour'
 
 import Communication from './Communication/Communication'
 
-const Contacts: FC = () => {
-	return (
-		<>
-			<Communication />
-			<Tour />
-		</>
-	);
-};
+const Contacts: FC = () => (
+	<>
+		<Communication />
+		<Tour />
+	</>
+)
 
-export default Contacts;
+export default Contacts

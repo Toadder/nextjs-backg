@@ -1,24 +1,24 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import { FC, useRef, useState } from 'react';
-import { Autoplay, Thumbs } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
+import Image from 'next/image'
+import { FC, useRef, useState } from 'react'
+import { Autoplay, Thumbs } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
 
-import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer';
-import SliderArrow from '@/components/ui/SliderArrows/SliderArrow';
+import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer'
+import SliderArrow from '@/components/ui/SliderArrows/SliderArrow'
 
-import { IPavilionMainSlider } from '../../pavilion.interface';
+import { IPavilionMainSlider } from '../../pavilion.interface'
 
-import styles from './MainMedia.module.scss';
+import styles from './MainMedia.module.scss'
 
 const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
-	if (!slider?.length) return;
+	if (!slider?.length) return
 
-	const sliderRef = useRef<SwiperType | null>(null);
-	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-	const [isThumbsInit, setIsThumbsInit] = useState<boolean>(false);
+	const sliderRef = useRef<SwiperType | null>(null)
+	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
+	const [isThumbsInit, setIsThumbsInit] = useState<boolean>(false)
 
 	return (
 		<div className={styles.sliders}>
@@ -26,8 +26,8 @@ const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
 				<FancyboxContainer swiperRef={sliderRef}>
 					<Swiper
 						className={styles.slider}
-						onBeforeInit={(swiper) => {
-							sliderRef.current = swiper;
+						onBeforeInit={swiper => {
+							sliderRef.current = swiper
 						}}
 						thumbs={{
 							swiper:
@@ -42,7 +42,7 @@ const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
 						loop={true}
 						modules={[Autoplay, Thumbs]}
 					>
-						{slider?.map((slide) => (
+						{slider?.map(slide => (
 							<SwiperSlide key={slide?.sourceUrl} className={styles.slide}>
 								<a
 									href={slide?.sourceUrl || ''}
@@ -100,7 +100,7 @@ const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
 					}
 				}}
 			>
-				{slider?.map((slide) => (
+				{slider?.map(slide => (
 					<SwiperSlide key={slide?.sourceUrl} className={styles.thumb}>
 						<Image
 							src={slide?.sourceUrl || ''}
@@ -113,7 +113,7 @@ const MainSlider: FC<IPavilionMainSlider> = ({ slider }) => {
 				))}
 			</Swiper>
 		</div>
-	);
-};
+	)
+}
 
-export default MainSlider;
+export default MainSlider

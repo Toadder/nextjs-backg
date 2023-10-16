@@ -1,15 +1,13 @@
-import cn from 'clsx';
-import { FC } from 'react';
+import cn from 'clsx'
+import { FC } from 'react'
 
-import { IHeaderMenu } from '../header.interface';
+import { IHeaderMenu } from '../header.interface'
 
-import HeaderItem from './HeaderItem';
-import styles from './HeaderMenu.module.scss';
+import HeaderItem from './HeaderItem'
+import styles from './HeaderMenu.module.scss'
 
 const HeaderMenu: FC<IHeaderMenu> = ({ menu, isOpened, hideMenu }) => {
-	if (!menu.length) {
-		return;
-	}
+	if (!menu.length) return
 
 	return (
 		<div
@@ -34,7 +32,7 @@ const HeaderMenu: FC<IHeaderMenu> = ({ menu, isOpened, hideMenu }) => {
 			</div>
 			<div className={styles.backdrop} onClick={hideMenu}></div>
 		</div>
-	);
-};
+	)
+}
 
-export default HeaderMenu;
+export default HeaderMenu

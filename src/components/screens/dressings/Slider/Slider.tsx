@@ -1,23 +1,23 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import { FC, useRef } from 'react';
-import 'swiper/css';
-import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
+import Image from 'next/image'
+import { FC, useRef } from 'react'
+import 'swiper/css'
+import { Autoplay } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
 
-import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer';
-import SliderArrow from '@/components/ui/SliderArrows/SliderArrow';
+import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer'
+import SliderArrow from '@/components/ui/SliderArrows/SliderArrow'
 
-import { IDressingsSlider } from '../dressings.interface';
+import { IDressingsSlider } from '../dressings.interface'
 
-import styles from './Slider.module.scss';
+import styles from './Slider.module.scss'
 
 const Slider: FC<IDressingsSlider> = ({ id, slider, itemIndex }) => {
-	if (!slider?.length) return;
+	if (!slider?.length) return
 
-	const sliderRef = useRef<SwiperType | null>(null);
+	const sliderRef = useRef<SwiperType | null>(null)
 
 	return (
 		<div className={styles.root}>
@@ -25,7 +25,7 @@ const Slider: FC<IDressingsSlider> = ({ id, slider, itemIndex }) => {
 				<FancyboxContainer className={styles.fancy} swiperRef={sliderRef}>
 					<Swiper
 						className={styles.slider}
-						onBeforeInit={(swiper) => (sliderRef.current = swiper)}
+						onBeforeInit={swiper => (sliderRef.current = swiper)}
 						autoplay={{
 							delay: 3000,
 							pauseOnMouseEnter: true
@@ -72,7 +72,7 @@ const Slider: FC<IDressingsSlider> = ({ id, slider, itemIndex }) => {
 				)}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Slider;
+export default Slider

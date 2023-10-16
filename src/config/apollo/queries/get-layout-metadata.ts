@@ -12,6 +12,6 @@ export const GET_LAYOUT_METADATA = gql`
 					sourceUrl
 				}
 			}
-		}		
+		}
 	}
-`;
+`

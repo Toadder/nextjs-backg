@@ -1,12 +1,12 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
-import { imageFragment } from '../fraqments/image';
+import { imageFragment } from '../fraqments/image'
 
 export const GET_ARTICLE_DATA = gql`
 	query GET_ARTICLE_DATA(
 		$slug: ID!
 		$articlesQty: Int!
-		$commentsQty: Int!,
+		$commentsQty: Int!
 		$commentsCursor: String = null
 	) {
 		journal(id: $slug, idType: SLUG) {
@@ -54,4 +54,4 @@ export const GET_ARTICLE_DATA = gql`
 		}
 	}
 	${imageFragment}
-`;
+`

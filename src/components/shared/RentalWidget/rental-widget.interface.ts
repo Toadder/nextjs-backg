@@ -1,15 +1,15 @@
-import { Lounge_Acfloungefields } from '@/shared/types/grahpql.types';
+import { Lounge_Acfloungefields as LoungeAcfSettings } from '@/shared/types/grahpql.types'
 
 export interface IRentalWidget {
-	isBlockHidden: Lounge_Acfloungefields['isiframehidden']; 
-	iframeSrc: Lounge_Acfloungefields['iframesrc'];
-	iframeClass: Lounge_Acfloungefields['iframeclass'];
-	iframeStyles: Lounge_Acfloungefields['iframestyles'];
+	isBlockHidden: LoungeAcfSettings['isiframehidden']
+	iframeSrc: LoungeAcfSettings['iframesrc']
+	iframeClass: LoungeAcfSettings['iframeclass']
+	iframeStyles: LoungeAcfSettings['iframestyles']
 }
 
 export interface IRentalWidgetIframeStyles {
-	background?: string;
-	border?: string;
-	width?: string;
-	height?: number;
+	background?: string
+	border?: string
+	width?: string
+	height?: number
 }

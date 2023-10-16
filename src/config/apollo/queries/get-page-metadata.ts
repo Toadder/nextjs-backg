@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const GET_PAGE_METADATA = gql`
 	query GET_PAGE_METADATA($id: ID!) {
@@ -11,7 +11,9 @@ export const GET_PAGE_METADATA = gql`
 				metaRobotsNofollow
 				metaRobotsNoindex
 				opengraphDescription
-				opengraphImage { sourceUrl }
+				opengraphImage {
+					sourceUrl
+				}
 				opengraphSiteName
 				opengraphTitle
 				opengraphType
@@ -19,4 +21,4 @@ export const GET_PAGE_METADATA = gql`
 			}
 		}
 	}
-`;
+`

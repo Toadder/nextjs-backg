@@ -3,4 +3,4 @@ export const imageFragment = `
 		sourceUrl
 		altText
 	}
-`;
+`

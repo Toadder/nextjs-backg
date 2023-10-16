@@ -1,14 +1,13 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
 import {
 	FontAwesomeIconName,
 	fontAwesomeIcons
-} from '@/shared/types/icon.types';
+} from '@/shared/types/icon.types'
 
 const FontAwesomeIcon: FC<{ name: FontAwesomeIconName }> = ({ name }) => {
-	const IconComponent = fontAwesomeIcons[name];
+	const IconComponent = fontAwesomeIcons[name]
+	return <IconComponent /> || <></>
+}
 
-	return <IconComponent /> || <></>;
-};
-
-export default FontAwesomeIcon;
+export default FontAwesomeIcon

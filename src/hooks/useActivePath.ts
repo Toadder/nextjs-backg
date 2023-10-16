@@ -1,12 +1,14 @@
-import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation'
 
-import { MenuItem } from '@/shared/types/grahpql.types';
+import { MenuItem } from '@/shared/types/grahpql.types'
+
+type TPath = MenuItem['path']
 
 export const useActivePath = () => {
-	const pathname = usePathname();
+	const pathname = usePathname()
 
-	return (path: MenuItem['path']): boolean => {
-		if (!path?.length) return false;
-		return pathname.includes(path) || `${pathname}/`.includes(path);
-	};
-};
+	return (path: TPath): boolean => {
+		if (!path?.length) return false
+		return pathname.includes(path) || `${pathname}/`.includes(path)
+	}
+}

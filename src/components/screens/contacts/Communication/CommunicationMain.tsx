@@ -1,13 +1,13 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import Heading from '@/components/ui/Heading/Heading';
-import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon';
-import PopupBtn from '@/components/ui/PopupBtn/PopupBtn';
+import Heading from '@/components/ui/Heading/Heading'
+import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon'
+import PopupBtn from '@/components/ui/PopupBtn/PopupBtn'
 
-import { convertPhone } from '@/utils/data/convertPhone';
+import { convertPhone } from '@/utils/data/convertPhone'
 
-import styles from './Communication.module.scss';
-import { ICommunicationMain } from './communication.interface';
+import styles from './Communication.module.scss'
+import { ICommunicationMain } from './communication.interface'
 
 const CommunicationMain: FC<ICommunicationMain> = ({
 	isBlockHidden,
@@ -19,13 +19,10 @@ const CommunicationMain: FC<ICommunicationMain> = ({
 	youtube
 }) => {
 	const isContactsExist: boolean =
-		!!phone?.length ||
-		!!email?.length ||
-		!!address?.length ||
-		!!youtube?.length;
-	const cleanedPhoneNumber: string = convertPhone(phone || '');
+		!!phone?.length || !!email?.length || !!address?.length || !!youtube?.length
+	const cleanedPhoneNumber: string = convertPhone(phone || '')
 
-	if (!isContactsExist || isBlockHidden) return;
+	if (!isContactsExist || isBlockHidden) return
 
 	return (
 		<div className={styles.block}>
@@ -76,7 +73,7 @@ const CommunicationMain: FC<ICommunicationMain> = ({
 				</PopupBtn>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default CommunicationMain;
+export default CommunicationMain

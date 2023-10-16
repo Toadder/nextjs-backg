@@ -1,38 +1,21 @@
-import { notFound } from 'next/navigation';
-import { FC, use } from 'react';
+import { FC, use } from 'react'
 
-import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects';
+import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects'
 
-import { IGeneralSettings } from '@/shared/types/general.types';
-
-import client from '@/config/apollo/client';
-import { GET_PAVILION_DATA } from '@/config/apollo/queries/get-pavilion-data';
-
-import AvailableEquipment from './AvailableEquipment/AvailableEquipment';
-import BenefitSlider from './BenefitSlider/BenefitSlider';
-import Main from './Main/Main';
-import Rates from './Rates/Rates';
-import { IPavilionData } from './pavilion.interface';
-
-const getData = async (slug: string) => {
-	const { error, data } = await client.query({
-		query: GET_PAVILION_DATA,
-		variables: { slug }
-	});
-
-	if (!data?.pavilion) notFound();
-
-	const generalSettings: IGeneralSettings = data?.generalSettings?.acfSettings;
-	const pavilionData: IPavilionData = data?.pavilion?.acfPavilionFields;
-	return { error, generalSettings, pavilionData };
-};
+import AvailableEquipment from './AvailableEquipment/AvailableEquipment'
+import BenefitSlider from './BenefitSlider/BenefitSlider'
+import Main from './Main/Main'
+import Rates from './Rates/Rates'
+import pavilionService from './pavilion.service'
 
 const Pavilion: FC<{ slug: string }> = ({ slug }) => {
-	const { error, generalSettings, pavilionData } = use(getData(slug));
+	const { error, generalSettings, pavilionData } = use(
+		pavilionService.getData(slug)
+	)
 
 	if (error) {
-		console.error(error);
-		return;
+		console.error(error)
+		return
 	}
 
 	return (
@@ -67,7 +50,7 @@ const Pavilion: FC<{ slug: string }> = ({ slug }) => {
 				rates={pavilionData?.rates}
 			/>
 		</>
-	);
-};
+	)
+}
 
-export default Pavilion;
+export default Pavilion

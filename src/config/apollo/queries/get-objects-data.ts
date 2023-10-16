@@ -1,11 +1,11 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
-import { imageFragment } from '../fraqments/image';
+import { imageFragment } from '../fraqments/image'
 
-import { pagesUri } from '@/constants/pages';
+import { pagesUri } from '@/constants/pages'
 
-type TAcfName = 'acfLoungeFields' | 'acfPavilionFields' | 'acfDressingFields';
-type TPriorityName = 'priority' | 'loungespriority' | 'pavilionspriority';
+type TAcfName = 'acfLoungeFields' | 'acfPavilionFields' | 'acfDressingFields'
+type TPriorityName = 'priority' | 'loungespriority' | 'pavilionspriority'
 
 const generateObjectFields = (
 	acfName: TAcfName,
@@ -23,7 +23,7 @@ const generateObjectFields = (
 		}
 		previewlabel
 	}
-`;
+`
 
 export const GET_OBJECTS_DATA = gql`
 	query GET_OBJECTS_DATA {
@@ -52,7 +52,7 @@ export const GET_OBJECTS_DATA = gql`
 		}
 	}
 	${imageFragment}
-`;
+`
 
 export const GET_LOUNGES_OBJECTS_DATA = gql`
 	query GET_LOUNGES_OBJECTS_DATA {
@@ -76,7 +76,7 @@ export const GET_LOUNGES_OBJECTS_DATA = gql`
 		}
 	}
 	${imageFragment}
-`;
+`
 
 export const GET_PAVILIONS_OBJECTS_DATA = gql`
 	query GET_PAVILIONS_OBJECTS_DATA {
@@ -100,4 +100,4 @@ export const GET_PAVILIONS_OBJECTS_DATA = gql`
 		}
 	}
 	${imageFragment}
-`;
+`

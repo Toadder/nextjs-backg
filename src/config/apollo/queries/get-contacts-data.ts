@@ -25,4 +25,4 @@ export const GET_CONTACTS_DATA = gql`
 			}
 		}
 	}
-`;
+`

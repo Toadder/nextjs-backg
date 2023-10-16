@@ -1,27 +1,18 @@
-import { FC, use } from 'react';
+import { FC, use } from 'react'
 
-import client from '@/config/apollo/client';
-import { GET_EQUIPMENT_DATA } from '@/config/apollo/queries/get-equipment-data';
-
-import styles from './Equipment.module.scss';
-import EquipmentItem from './EquipmentItem';
-import { IEquipmentData } from './equipment.interface';
-
-const getData = async () => {
-	const { error, data } = await client.query({ query: GET_EQUIPMENT_DATA });
-	const equipmentData: IEquipmentData = data?.allEquipment?.edges;
-	return { error, equipmentData };
-};
+import styles from './Equipment.module.scss'
+import EquipmentItem from './EquipmentItem'
+import equipmentService from './equipment.service'
 
 const Equipment: FC = () => {
-	const { error, equipmentData } = use(getData());
+	const { error, equipmentData } = use(equipmentService.getData())
 
 	if (error) {
-		console.error(error);
-		return;
+		console.error(error)
+		return
 	}
 
-	if (!equipmentData?.length) return;
+	if (!equipmentData?.length) return
 
 	return (
 		<div className={styles.root}>
@@ -44,7 +35,7 @@ const Equipment: FC = () => {
 				))}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Equipment;
+export default Equipment

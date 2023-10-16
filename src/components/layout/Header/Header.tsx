@@ -1,26 +1,26 @@
-'use client';
+'use client'
 
-import cn from 'clsx';
-import { FC, useState } from 'react';
+import cn from 'clsx'
+import { FC, useState } from 'react'
 
-import styles from './Header.module.scss';
-import HeaderBurger from './HeaderBurger/HeaderBurger';
-import HeaderLogo from './HeaderLogo';
-import HeaderMenu from './HeaderMenu/HeaderMenu';
-import HeaderMessenger from './HeaderMessenger';
-import HeaderPhone from './HeaderPhone';
-import { IHeaderData } from './header.interface';
+import styles from './Header.module.scss'
+import HeaderBurger from './HeaderBurger/HeaderBurger'
+import HeaderLogo from './HeaderLogo'
+import HeaderMenu from './HeaderMenu/HeaderMenu'
+import HeaderMessenger from './HeaderMessenger'
+import HeaderPhone from './HeaderPhone'
+import { IHeaderData } from './header.interface'
 
 const Header: FC<{ data: IHeaderData }> = ({ data }) => {
-	const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false);
+	const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
 
 	const toggleMenu = (): void => {
-		setIsMenuOpened((prevState) => !prevState);
-	};
+		setIsMenuOpened(prevState => !prevState)
+	}
 
 	const hideMenu = (): void => {
-		setIsMenuOpened(false);
-	};
+		setIsMenuOpened(false)
+	}
 
 	return (
 		<header className={cn(styles.header, 'lock-padding')}>
@@ -38,7 +38,7 @@ const Header: FC<{ data: IHeaderData }> = ({ data }) => {
 				</div>
 			</div>
 		</header>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header

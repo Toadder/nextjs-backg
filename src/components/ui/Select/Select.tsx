@@ -6,20 +6,20 @@ import './select.scss'
 
 const Select = forwardRef<any, ISelect>(
 	({ options, value: value, setValue, error, ...rest }, ref) => {
-		if(!options?.length) return;
+		if (!options?.length) return
 
-		const hasError: boolean = !!error?.type?.length;
+		const hasError: boolean = !!error?.type?.length
 
 		const getValue = () =>
-			value ? options.find((item) => item.value === value) : value;
+			value ? options.find(item => item.value === value) : value
 
 		const changeHandler = (option: IOption): void => {
-			setValue(option ? option.value : option);
-		};
+			setValue(option ? option.value : option)
+		}
 
 		return (
 			<ReactSelect
-				classNamePrefix='primary-select'
+				classNamePrefix="primary-select"
 				className={hasError ? 'primary-select-with-error' : undefined}
 				options={options}
 				value={getValue()}
@@ -28,8 +28,8 @@ const Select = forwardRef<any, ISelect>(
 				ref={ref}
 				{...rest}
 			/>
-		);
+		)
 	}
-);
+)
 
-export default Select;
+export default Select

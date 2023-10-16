@@ -1,17 +1,17 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import Description from '@/components/ui/Description/Description';
-import Heading from '@/components/ui/Heading/Heading';
-import PopupBtn from '@/components/ui/PopupBtn/PopupBtn';
+import Description from '@/components/ui/Description/Description'
+import Heading from '@/components/ui/Heading/Heading'
+import PopupBtn from '@/components/ui/PopupBtn/PopupBtn'
 
-import { convertPhone } from '@/utils/data/convertPhone';
+import { convertPhone } from '@/utils/data/convertPhone'
 
-import { IPavilionMainContent } from '../../pavilion.interface';
+import { IPavilionMainContent } from '../../pavilion.interface'
 
-import styles from './MainContent.module.scss';
+import styles from './MainContent.module.scss'
 
 const MainContent: FC<IPavilionMainContent> = ({ title, content, phone }) => {
-	if (!title?.length) return;
+	if (!title?.length) return
 
 	return (
 		<div className={styles.root}>
@@ -30,7 +30,7 @@ const MainContent: FC<IPavilionMainContent> = ({ title, content, phone }) => {
 			</div>
 			<Description htmlContent={content || ''} />
 		</div>
-	);
-};
+	)
+}
 
-export default MainContent;
+export default MainContent

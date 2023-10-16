@@ -2,8 +2,9 @@
 	"trailingComma": "none",
 	"tabWidth": 2,
 	"useTabs": true,
-	"semi": true,
+	"semi": false,
 	"singleQuote": true,
+	"arrowParens": "avoid",
 	"importOrder": [
 		"<THIRD_PART_MODULES>",
 		"^@/components/(.*)$",

@@ -1,10 +1,9 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import JournalCard from '@/components/shared/JournalCard/JournalCard';
+import JournalCard from '@/components/shared/JournalCard/JournalCard'
 
-import { IJournalItem } from './journal.interface';
-
-import styles from './Journal.module.scss';
+import styles from './Journal.module.scss'
+import { IJournalItem } from './journal.interface'
 
 const JournalItem: FC<IJournalItem> = ({
 	index,
@@ -15,9 +14,12 @@ const JournalItem: FC<IJournalItem> = ({
 	masonryHeight
 }) => {
 	return (
-		<div className={styles.wrapper} style={{
-			minHeight: `${masonryHeight / 16}rem`
-		}}>
+		<div
+			className={styles.wrapper}
+			style={{
+				minHeight: `${masonryHeight / 16}rem`
+			}}
+		>
 			<JournalCard
 				title={title}
 				excerpt={excerpt}
@@ -27,7 +29,7 @@ const JournalItem: FC<IJournalItem> = ({
 				isImagePreloaded={index < 6}
 			/>
 		</div>
-	);
-};
+	)
+}
 
-export default JournalItem;
+export default JournalItem

@@ -1,18 +1,18 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import JournalCard from '@/components/shared/JournalCard/JournalCard';
-import Heading from '@/components/ui/Heading/Heading';
+import JournalCard from '@/components/shared/JournalCard/JournalCard'
+import Heading from '@/components/ui/Heading/Heading'
 
-import { IArticleItems } from '../article.interface';
+import { IArticleItems } from '../article.interface'
 
-import styles from './Items.module.scss';
+import styles from './Items.module.scss'
 
 const Items: FC<IArticleItems> = ({ currentId, articles }) => {
-	if (!articles?.length) return;
+	if (!articles?.length) return
 
 	const filteredArticles = articles
 		?.filter(({ node }) => node?.id !== currentId)
-		.slice(0, 4);
+		.slice(0, 4)
 
 	return (
 		<section className={styles.root}>
@@ -33,7 +33,7 @@ const Items: FC<IArticleItems> = ({ currentId, articles }) => {
 				</div>
 			</div>
 		</section>
-	);
-};
+	)
+}
 
-export default Items;
+export default Items

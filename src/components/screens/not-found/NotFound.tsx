@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { FC } from 'react';
+import Link from 'next/link'
+import { FC } from 'react'
 
-import styles from './NotFound.module.scss';
+import styles from './NotFound.module.scss'
 
 const NotFound: FC = () => {
 	return (
@@ -17,7 +17,7 @@ const NotFound: FC = () => {
 				</Link>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default NotFound;
+export default NotFound

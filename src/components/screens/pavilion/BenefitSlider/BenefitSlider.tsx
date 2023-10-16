@@ -1,36 +1,36 @@
-'use client';
+'use client'
 
-import cn from 'clsx';
-import Image from 'next/image';
-import { FC, useRef } from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
+import cn from 'clsx'
+import Image from 'next/image'
+import { FC, useRef } from 'react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Autoplay, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
 
-import SliderArrow from '@/components/ui/SliderArrows/SliderArrow';
+import SliderArrow from '@/components/ui/SliderArrows/SliderArrow'
 
-import { IPavilionBenefitSlider } from '../pavilion.interface';
+import { IPavilionBenefitSlider } from '../pavilion.interface'
 
-import styles from './BenefitSlider.module.scss';
+import styles from './BenefitSlider.module.scss'
 
 const BenefitSlider: FC<IPavilionBenefitSlider> = ({
 	isBlockHidden,
 	benefitSlider
 }) => {
-	if (!benefitSlider?.length || isBlockHidden) return;
+	if (!benefitSlider?.length || isBlockHidden) return
 
-	const sliderRef = useRef<SwiperType | null>(null);
-	const isControlsVisible: boolean = benefitSlider?.length > 1;
+	const sliderRef = useRef<SwiperType | null>(null)
+	const isControlsVisible: boolean = benefitSlider?.length > 1
 
 	return (
 		<div className={styles.root}>
 			<div className={styles.outer}>
 				<Swiper
 					className={styles.slider}
-					onBeforeInit={(swiper) => {
-						sliderRef.current = swiper;
+					onBeforeInit={swiper => {
+						sliderRef.current = swiper
 					}}
 					slidesPerView={1}
 					speed={600}
@@ -95,7 +95,7 @@ const BenefitSlider: FC<IPavilionBenefitSlider> = ({
 			</div>
 			{isControlsVisible && <div className={styles.pagination}></div>}
 		</div>
-	);
-};
+	)
+}
 
-export default BenefitSlider;
+export default BenefitSlider
