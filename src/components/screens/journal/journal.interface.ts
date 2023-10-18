@@ -1,24 +1,45 @@
-import {
-	Journal,
-	Journal_Acfjournaldata as JournalAcfSettings
-} from '@/shared/types/grahpql.types'
+import { IJournalCard } from '@/components/shared/JournalCard/journal-card.interface'
 
-interface IJournalNode {
-	node: Journal
+import { Event, Journal } from '@/shared/types/grahpql.types'
+import { ApolloError } from '@apollo/client'
+
+interface IPageInfo {
+	hasNextPage: boolean
 }
 
-export interface IJournalData extends Array<IJournalNode> {}
+export interface IJournalGetDataResponse {
+	error: ApolloError | undefined,
+	items: IJournalNode[],
+	articleCursor: string | null,
+	eventCursor: string | null,
+	isNextArticlesExist: boolean,
+	isNextEventsExist: boolean
+}
+
+export interface IJournalNode {
+	node: Journal | Event
+	cursor: string
+}
+
+export interface IJournalData {
+	edges: IJournalNode[]
+	pageInfo: IPageInfo
+}
 
 export interface IJournal {
-	items: IJournalData
-	hasNextPage: boolean
-	endCursor: string | null
+	items: IJournalNode[]
+	articleCursor: string | null,
+	eventCursor: string | null,
+	isNextArticlesExist: boolean,
+	isNextEventsExist: boolean
 }
 
-export interface IJournalItem extends Pick<Journal, 'title'> {
+export interface IJournalGrid {
+	articles: IJournalNode[]
+}
+
+export interface IJournalItem
+	extends Omit<IJournalCard, 'imageSizes' | 'isImagePreloaded' | 'size'> {
 	index: number
 	masonryHeight: number
-	link: Journal['uri']
-	image: JournalAcfSettings['previewimage']
-	excerpt: JournalAcfSettings['previewcontent']
 }

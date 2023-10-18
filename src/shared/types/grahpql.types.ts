@@ -1292,6 +1292,8 @@ export enum ContentTypeEnum {
   /** The Type of Content object */
   Equipment = 'EQUIPMENT',
   /** The Type of Content object */
+  Events = 'EVENTS',
+  /** The Type of Content object */
   Journal = 'JOURNAL',
   /** The Type of Content object */
   Lounges = 'LOUNGES',
@@ -1555,6 +1557,33 @@ export type CreateEquipmentPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The Post object mutation type. */
   equipment?: Maybe<Equipment>;
+};
+
+/** Input for the createEvent mutation. */
+export type CreateEventInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createEvent mutation. */
+export type CreateEventPayload = {
+  __typename?: 'CreateEventPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The Post object mutation type. */
+  event?: Maybe<Event>;
 };
 
 /** Input for the createJournal mutation. */
@@ -2026,6 +2055,29 @@ export type DeleteEquipmentPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
   /** The object before it was deleted */
   equipment?: Maybe<Equipment>;
+};
+
+/** Input for the deleteEvent mutation. */
+export type DeleteEventInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The ID of the event to delete */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** The payload for the deleteEvent mutation. */
+export type DeleteEventPayload = {
+  __typename?: 'DeleteEventPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+  /** The object before it was deleted */
+  event?: Maybe<Event>;
 };
 
 /** Input for the deleteJournal mutation. */
@@ -2710,6 +2762,165 @@ export type Equipment_Acfequipmentfields = AcfFieldGroup & {
   label?: Maybe<Scalars['String']['output']>;
 };
 
+/** The event type */
+export type Event = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
+  __typename?: 'Event';
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;Поля мероприятия&quot; was set to Show in GraphQL. */
+  acfEventData?: Maybe<Event_Acfeventdata>;
+  /** Connection between the ContentNode type and the ContentType type */
+  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String']['output'];
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** Post publishing date. */
+  date?: Maybe<Scalars['String']['output']>;
+  /** The publishing date set in GMT. */
+  dateGmt?: Maybe<Scalars['String']['output']>;
+  /** The desired slug of the post */
+  desiredSlug?: Maybe<Scalars['String']['output']>;
+  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
+  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+  /** The RSS enclosure for the object */
+  enclosure?: Maybe<Scalars['String']['output']>;
+  /** Connection between the ContentNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
+  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of the databaseId field
+   */
+  eventId: Scalars['Int']['output'];
+  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+  guid?: Maybe<Scalars['String']['output']>;
+  /** The globally unique identifier of the events object. */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the object is a node in the preview state */
+  isPreview?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The user that most recently edited the node */
+  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+  /** The permalink of the post */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+  modified?: Maybe<Scalars['String']['output']>;
+  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+  modifiedGmt?: Maybe<Scalars['String']['output']>;
+  /** Connection between the Event type and the event type */
+  preview?: Maybe<EventToPreviewConnectionEdge>;
+  /** The database id of the preview node */
+  previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** Whether the object is a node in the preview state */
+  previewRevisionId?: Maybe<Scalars['ID']['output']>;
+  /** The Yoast SEO data of the ContentNode */
+  seo?: Maybe<PostTypeSeo>;
+  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The current status of the object */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The template assigned to the node */
+  template?: Maybe<ContentTemplate>;
+  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The event type */
+export type EventEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The event type */
+export type EventEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The event type */
+export type EventTitleArgs = {
+  format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** Connection to event Nodes */
+export type EventConnection = {
+  /** A list of edges (relational context) between RootQuery and connected event Nodes */
+  edges: Array<EventConnectionEdge>;
+  /** A list of connected event Nodes */
+  nodes: Array<Event>;
+  /** Information about pagination in a connection. */
+  pageInfo: EventConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected event */
+export type EventConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected event Node */
+  node: Event;
+};
+
+/** Page Info on the connected EventConnectionEdge */
+export type EventConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum EventIdType {
+  /** Identify a resource by the Database ID. */
+  DatabaseId = 'DATABASE_ID',
+  /** Identify a resource by the (hashed) Global ID. */
+  Id = 'ID',
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  Slug = 'SLUG',
+  /** Identify a resource by the URI. */
+  Uri = 'URI'
+}
+
+/** Connection between the Event type and the event type */
+export type EventToPreviewConnectionEdge = Edge & EventConnectionEdge & OneToOneConnection & {
+  __typename?: 'EventToPreviewConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Event;
+};
+
+/** Field Group */
+export type Event_Acfeventdata = AcfFieldGroup & {
+  __typename?: 'Event_Acfeventdata';
+  /** По умолчанию заполняется автоматически. Может быть перезаписано. */
+  dynamicpreivewheight?: Maybe<Scalars['Float']['output']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  previewcontent?: Maybe<Scalars['String']['output']>;
+  previewimage?: Maybe<MediaItem>;
+  previewstatus?: Maybe<Scalars['Boolean']['output']>;
+};
+
 /** Настройки сайта options. */
 export type GeneralSettings = {
   __typename?: 'GeneralSettings';
@@ -3391,8 +3602,8 @@ export type JournalToPreviewConnectionEdge = Edge & JournalConnectionEdge & OneT
 /** Field Group */
 export type Journal_Acfjournaldata = AcfFieldGroup & {
   __typename?: 'Journal_Acfjournaldata';
-  /** По умолчанию заполняется автоматически. */
-  articlepreivewheight?: Maybe<Scalars['Float']['output']>;
+  /** По умолчанию заполняется автоматически. Может быть перезаписано. */
+  dynamicpreivewheight?: Maybe<Scalars['Float']['output']>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   mainslider?: Maybe<Array<Maybe<MediaItem>>>;
@@ -4243,7 +4454,7 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = Category | Dressing | Equipment | Journal | Lounge | Page | Partner | Pavilion | Post | Tag;
+export type MenuItemObjectUnion = Category | Dressing | Equipment | Event | Journal | Lounge | Page | Partner | Pavilion | Post | Tag;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = Edge & MenuConnectionEdge & OneToOneConnection & {
@@ -7106,6 +7317,8 @@ export type RootMutation = {
   createDressing?: Maybe<CreateDressingPayload>;
   /** The createEquipment mutation */
   createEquipment?: Maybe<CreateEquipmentPayload>;
+  /** The createEvent mutation */
+  createEvent?: Maybe<CreateEventPayload>;
   /** The createJournal mutation */
   createJournal?: Maybe<CreateJournalPayload>;
   /** The createLounge mutation */
@@ -7134,6 +7347,8 @@ export type RootMutation = {
   deleteDressing?: Maybe<DeleteDressingPayload>;
   /** The deleteEquipment mutation */
   deleteEquipment?: Maybe<DeleteEquipmentPayload>;
+  /** The deleteEvent mutation */
+  deleteEvent?: Maybe<DeleteEventPayload>;
   /** The deleteJournal mutation */
   deleteJournal?: Maybe<DeleteJournalPayload>;
   /** The deleteLounge mutation */
@@ -7172,6 +7387,8 @@ export type RootMutation = {
   updateDressing?: Maybe<UpdateDressingPayload>;
   /** The updateEquipment mutation */
   updateEquipment?: Maybe<UpdateEquipmentPayload>;
+  /** The updateEvent mutation */
+  updateEvent?: Maybe<UpdateEventPayload>;
   /** The updateJournal mutation */
   updateJournal?: Maybe<UpdateJournalPayload>;
   /** The updateLounge mutation */
@@ -7218,6 +7435,12 @@ export type RootMutationCreateDressingArgs = {
 /** The root mutation */
 export type RootMutationCreateEquipmentArgs = {
   input: CreateEquipmentInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateEventArgs = {
+  input: CreateEventInput;
 };
 
 
@@ -7302,6 +7525,12 @@ export type RootMutationDeleteDressingArgs = {
 /** The root mutation */
 export type RootMutationDeleteEquipmentArgs = {
   input: DeleteEquipmentInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteEventArgs = {
+  input: DeleteEventInput;
 };
 
 
@@ -7420,6 +7649,12 @@ export type RootMutationUpdateEquipmentArgs = {
 
 
 /** The root mutation */
+export type RootMutationUpdateEventArgs = {
+  input: UpdateEventInput;
+};
+
+
+/** The root mutation */
 export type RootMutationUpdateJournalArgs = {
   input: UpdateJournalInput;
 };
@@ -7527,6 +7762,15 @@ export type RootQuery = {
    * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
    */
   equipmentBy?: Maybe<Equipment>;
+  /** An object of the event Type.  */
+  event?: Maybe<Event>;
+  /**
+   * A event object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  eventBy?: Maybe<Event>;
+  /** Connection between the RootQuery type and the event type */
+  events?: Maybe<RootQueryToEventConnection>;
   /** Favicon set in the customizer */
   favicon?: Maybe<MediaItem>;
   /** Настройки сайта options. */
@@ -7783,6 +8027,33 @@ export type RootQueryEquipmentByArgs = {
   id?: InputMaybe<Scalars['ID']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   uri?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryEventArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']['input']>;
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<EventIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryEventByArgs = {
+  eventId?: InputMaybe<Scalars['Int']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  uri?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryEventsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToEventConnectionWhereArgs>;
 };
 
 
@@ -8636,6 +8907,79 @@ export type RootQueryToEquipmentConnectionPageInfo = EquipmentConnectionPageInfo
 
 /** Arguments for filtering the RootQueryToEquipmentConnection connection */
 export type RootQueryToEquipmentConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What paramater to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the RootQuery type and the event type */
+export type RootQueryToEventConnection = Connection & EventConnection & {
+  __typename?: 'RootQueryToEventConnection';
+  /** Edges for the RootQueryToEventConnection connection */
+  edges: Array<RootQueryToEventConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Event>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToEventConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToEventConnectionEdge = Edge & EventConnectionEdge & {
+  __typename?: 'RootQueryToEventConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Event;
+};
+
+/** Page Info on the &quot;RootQueryToEventConnection&quot; */
+export type RootQueryToEventConnectionPageInfo = EventConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToEventConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToEventConnection connection */
+export type RootQueryToEventConnectionWhereArgs = {
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -9922,6 +10266,7 @@ export type SeoContentTypes = {
   __typename?: 'SEOContentTypes';
   dressing?: Maybe<SeoContentType>;
   equipment?: Maybe<SeoContentType>;
+  event?: Maybe<SeoContentType>;
   journal?: Maybe<SeoContentType>;
   lounge?: Maybe<SeoContentType>;
   mediaItem?: Maybe<SeoContentType>;
@@ -11089,6 +11434,37 @@ export type UpdateEquipmentPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The Post object mutation type. */
   equipment?: Maybe<Equipment>;
+};
+
+/** Input for the updateEvent mutation. */
+export type UpdateEventInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the event object */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateEvent mutation. */
+export type UpdateEventPayload = {
+  __typename?: 'UpdateEventPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The Post object mutation type. */
+  event?: Maybe<Event>;
 };
 
 /** Input for the updateJournal mutation. */

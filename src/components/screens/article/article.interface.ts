@@ -1,3 +1,5 @@
+import { ApolloError } from '@apollo/client'
+
 import { IComment } from '@/shared/types/general.types'
 import {
 	CommentConnectionPageInfo,
@@ -5,7 +7,17 @@ import {
 	Journal_Acfjournaldata as JournalAcfSettings
 } from '@/shared/types/grahpql.types'
 
-import { IJournalData } from '../journal/journal.interface'
+export interface IArticleNode {
+	node: Journal
+}
+
+export interface IArticleGetDataResponse {
+	error: ApolloError | undefined
+	articleData: IArticleData
+	commentsHasNextPage: boolean
+	commentsEndCursor: string | null
+	otherArticles: IArticleNode[]
+}
 
 export interface IArticleData
 	extends Pick<
@@ -62,5 +74,5 @@ export interface IArticleCommentsItem {
 
 export interface IArticleItems {
 	currentId: Journal['id']
-	articles: IJournalData
+	articles: IArticleNode[]
 }

@@ -3,12 +3,13 @@ import { GET_DRESSINGS_DATA } from '@/config/apollo/queries/get-dressings-data'
 
 import {
 	IDressingsData,
+	IDressingsGetDataResponse,
 	IDressingsItem,
 	IDressingsNode
 } from './dressings.interface'
 
 class DressingsService {
-	async getData() {
+	async getData(): Promise<IDressingsGetDataResponse> {
 		const { error, data } = await client.query({ query: GET_DRESSINGS_DATA })
 		const dressingsData: IDressingsData = data?.dressings?.edges?.map(
 			({ node }: { node: IDressingsNode }, index: number): IDressingsItem => ({

@@ -2,16 +2,16 @@ import { FC, memo } from 'react'
 
 import JournalCard from '@/components/shared/JournalCard/JournalCard'
 
-import styles from './Journal.module.scss'
-import { IJournalItem } from './journal.interface'
+import styles from './EventsItem.module.scss'
+import { IEventsItem } from './events.interface'
 
-const JournalItem: FC<IJournalItem> = ({
+const EventsItem: FC<IEventsItem> = ({
 	index,
+	masonryHeight,
 	title,
 	excerpt,
 	link,
-	image,
-	masonryHeight
+	image
 }) => {
 	if (!masonryHeight || !image) return
 
@@ -27,6 +27,7 @@ const JournalItem: FC<IJournalItem> = ({
 				excerpt={excerpt}
 				link={link}
 				image={image}
+				label="Событие"
 				imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, 25rem"
 				isImagePreloaded={index < 6}
 			/>
@@ -34,4 +35,4 @@ const JournalItem: FC<IJournalItem> = ({
 	)
 }
 
-export default memo(JournalItem)
+export default memo(EventsItem)

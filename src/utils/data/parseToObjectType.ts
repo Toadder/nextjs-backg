@@ -17,7 +17,7 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 		link: node?.uri
 	}
 
-	if ('acfPavilionFields' in node) {
+	if (node.__typename === 'Pavilion') {
 		return {
 			...commonFields,
 			priority: node?.acfPavilionFields?.priority,
@@ -26,7 +26,7 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 			label: node?.acfPavilionFields?.previewlabel,
 			hiddenOn: node?.acfPavilionFields?.hiddenon
 		}
-	} else if ('acfLoungeFields' in node) {
+	} else if (node.__typename === 'Lounge') {
 		return {
 			...commonFields,
 			priority: node?.acfLoungeFields?.priority,
@@ -35,7 +35,7 @@ export const parseToObjectType = (node: TNode): IObject | null => {
 			label: node?.acfLoungeFields?.previewlabel,
 			hiddenOn: node?.acfLoungeFields?.hiddenon
 		}
-	} else if ('acfDressingFields' in node) {
+	} else if (node.__typename === 'Dressing') {
 		return {
 			...commonFields,
 			priority: node?.acfDressingFields?.priority,

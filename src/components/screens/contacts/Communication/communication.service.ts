@@ -1,10 +1,13 @@
 import client from '@/config/apollo/client'
 import { GET_CONTACTS_DATA } from '@/config/apollo/queries/get-contacts-data'
 
-import { ICommunicationData } from './communication.interface'
+import {
+	ICommunicationData,
+	ICommunicationGetDataResponse
+} from './communication.interface'
 
 class CommunicationService {
-	async getData() {
+	async getData(): Promise<ICommunicationGetDataResponse> {
 		const { error, data } = await client.query({ query: GET_CONTACTS_DATA })
 
 		const communicationData: ICommunicationData = {

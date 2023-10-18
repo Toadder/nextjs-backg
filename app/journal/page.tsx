@@ -12,9 +12,14 @@ export const generateMetadata = (): Promise<Metadata> =>
 	getMetadata(pagesUri.journal)
 
 const JournalPage: NextPage = () => {
-	const { error, journalData, hasNextPage, endCursor } = use(
-		journalService.getData()
-	)
+	const {
+		error,
+		items,
+		isNextArticlesExist,
+		isNextEventsExist,
+		articleCursor,
+		eventCursor
+	} = use(journalService.getData())
 
 	if (error) {
 		console.error(error)
@@ -23,9 +28,11 @@ const JournalPage: NextPage = () => {
 
 	return (
 		<Journal
-			items={journalData}
-			hasNextPage={hasNextPage}
-			endCursor={endCursor}
+			items={items}
+			isNextArticlesExist={isNextArticlesExist}
+			isNextEventsExist={isNextEventsExist}
+			articleCursor={articleCursor}
+			eventCursor={eventCursor}
 		/>
 	)
 }

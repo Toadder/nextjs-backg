@@ -2,6 +2,12 @@ import {
 	Dressing,
 	Dressing_Acfdressingfields as DressingAcfSettings
 } from '@/shared/types/grahpql.types'
+import { ApolloError } from '@apollo/client'
+
+export interface IDressingsGetDataResponse {
+	error: ApolloError | undefined
+	dressingsData: IDressingsData
+}
 
 export interface IDressingsNode {
 	id: Dressing['id']

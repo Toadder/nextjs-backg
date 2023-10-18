@@ -1,8 +1,16 @@
+import { ApolloError } from '@apollo/client'
+
 import { IGeneralSettings } from '@/shared/types/general.types'
 import {
 	Pavilion_Acfpavilionfields as PavilionAcfSettings,
 	Pavilion_Acfpavilionfields_Rates as PavilionRatesAcfSettings
 } from '@/shared/types/grahpql.types'
+
+export interface IPavilionGetDataResponse {
+	error: ApolloError | undefined
+	generalSettings: IGeneralSettings
+	pavilionData: IPavilionData
+}
 
 export interface IPavilionData
 	extends Pick<

@@ -2,6 +2,12 @@ import {
 	GeneralSettings_Acfsettings as AcfSettings,
 	Page_Acfcontactsfields as ContactsAcfSettings
 } from '@/shared/types/grahpql.types'
+import { ApolloError } from '@apollo/client'
+
+export interface ICommunicationGetDataResponse {
+	error: ApolloError | undefined
+	communicationData: ICommunicationData
+}
 
 export interface ICommunicationData
 	extends Pick<

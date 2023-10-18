@@ -2,6 +2,12 @@ import {
 	Lounge_Acfloungefields as LoungeAcfSettings,
 	Lounge_Acfloungefields_Layoutproperties as LoungeLayoutAcfSettings
 } from '@/shared/types/grahpql.types'
+import { ApolloError } from '@apollo/client'
+
+export interface ILoungeGetDataResponse {
+	error: ApolloError | undefined
+	loungeData: ILoungeData
+}
 
 export interface ILoungeData
 	extends Pick<

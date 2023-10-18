@@ -9,10 +9,17 @@ import { parseToObjectType } from '@/utils/data/parseToObjectType'
 
 import client from '@/config/apollo/client'
 
-import { IObjectsData, TPages } from './objects.interface'
+import {
+	IObjectsData,
+	IObjectsGetDataResponse,
+	TPages
+} from './objects.interface'
 
 class ObjectsService {
-	async getData(query: DocumentNode, page: TPages) {
+	async getData(
+		query: DocumentNode,
+		page: TPages
+	): Promise<IObjectsGetDataResponse> {
 		const { error, data } = await client.query({ query })
 
 		const isObjectsHidden: boolean =

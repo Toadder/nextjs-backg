@@ -1,10 +1,10 @@
 import client from '@/config/apollo/client'
 import { GET_EQUIPMENT_DATA } from '@/config/apollo/queries/get-equipment-data'
 
-import { IEquipmentData } from './equipment.interface'
+import { IEquipmentData, IEquipmentGetDataResponse } from './equipment.interface'
 
 class EquipmentService {
-	async getData() {
+	async getData(): Promise<IEquipmentGetDataResponse> {
 		const { error, data } = await client.query({ query: GET_EQUIPMENT_DATA })
 		const equipmentData: IEquipmentData = data?.allEquipment?.edges
 		return { error, equipmentData }

@@ -1,22 +1,24 @@
 'use client'
 
-import { JournalContext } from 'context/JournalContext/JournalContext'
-import { FC, useContext, useEffect, useRef, useState } from 'react'
-import Masonry from 'react-masonry-css'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import Spinner from '@/components/ui/Spinner/Spinner'
 
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 import styles from './Journal.module.scss'
-import JournalItem from './JournalItem'
-import { IJournal, IJournalData } from './journal.interface'
+import JournalGrid from './JournalGrid'
+import { IJournal, IJournalNode } from './journal.interface'
 import journalService from './journal.service'
 
-const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
+const Journal: FC<IJournal> = ({
+	items,
+	articleCursor,
+	eventCursor,
+	isNextArticlesExist,
+	isNextEventsExist
+}) => {
 	if (!items?.length) return
-
-	const { isJournalLoaded, loadJournal } = useContext(JournalContext)
 
 	const ref = useRef<HTMLDivElement | null>(null)
 	const entry = useIntersectionObserver(ref, {
@@ -25,32 +27,51 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 	const isVisible = Boolean(entry?.isIntersecting)
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 
-	const [articles, setArticles] = useState<IJournalData>(items)
+	const [articles, setArticles] = useState<IJournalNode[]>(items)
 
-	const [morePagesAvailable, setMorePagesAvailable] =
-		useState<boolean>(hasNextPage)
-	const [lastItemCursor, setLastItemCursor] = useState<string | null>(endCursor)
+	const [lastArticleCursor, setLastArticleCursor] = useState<string | null>(
+		articleCursor
+	)
+	const [lastEventCursor, setLastEventCursor] = useState<string | null>(
+		eventCursor
+	)
 
-	useEffect(() => {
-		if (!isJournalLoaded) loadJournal()
-	}, [])
+	const [isNextArticles, setIsNextArticles] =
+		useState<boolean>(isNextArticlesExist)
+	const [isNextEvents, setIsNextEvents] = useState<boolean>(isNextEventsExist)
 
 	useEffect(() => {
 		if (isVisible && !isLoading) {
 			setIsLoading(true)
-			journalService
-				.getData(lastItemCursor)
-				.then(data => {
-					const { journalData, hasNextPage, endCursor } = data
 
-					setArticles(prevData => [...prevData, ...journalData])
-					setMorePagesAvailable(hasNextPage)
-					setLastItemCursor(endCursor)
+			journalService
+				.getData(lastArticleCursor, lastEventCursor)
+				.then(data => {
+					const {
+						items,
+						articleCursor,
+						eventCursor,
+						isNextArticlesExist,
+						isNextEventsExist
+					} = data
+
+					console.log(data)
+
+					setArticles(prevData => [...prevData, ...items])
+
+					setLastArticleCursor(articleCursor)
+					setLastEventCursor(eventCursor)
+
+					setIsNextArticles(isNextArticlesExist)
+					setIsNextEvents(isNextEventsExist)
 				})
 				.catch(error => {
 					console.error(error)
-					setMorePagesAvailable(false)
+
 					alert('При загрузке данных произошла ошибка...')
+
+					setIsNextArticles(false)
+					setIsNextEvents(false)
 				})
 				.finally(() => setIsLoading(false))
 		}
@@ -59,37 +80,12 @@ const Journal: FC<IJournal> = ({ items, hasNextPage, endCursor }) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.inner}>
-				<Masonry
-					style={{ opacity: Number(isJournalLoaded) }}
-					breakpointCols={{
-						default: 3,
-						1024: 2,
-						768: 1
-					}}
-					className={styles.masonryContainer}
-					columnClassName={styles.masonryColumn}
-				>
-					{articles?.map(({ node }, index) => {
-						if (!node?.acfJournalData?.articlepreivewheight) return
-
-						return (
-							<JournalItem
-								masonryHeight={node?.acfJournalData?.articlepreivewheight}
-								index={index}
-								key={node?.id}
-								title={node?.title}
-								link={node?.uri}
-								excerpt={node?.acfJournalData?.previewcontent}
-								image={node?.acfJournalData?.previewimage}
-							/>
-						)
-					})}
-				</Masonry>
-				{morePagesAvailable && (
+				<JournalGrid articles={articles} />
+				{isNextArticles || isNextEvents ? (
 					<div className={styles.spinnerContainer} ref={ref}>
 						<Spinner />
 					</div>
-				)}
+				) : null}
 			</div>
 		</div>
 	)

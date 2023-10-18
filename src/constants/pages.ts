@@ -8,6 +8,7 @@ interface IPagesUri {
 	dressings: string
 	lounges: string
 	pavilions: string
+	events: string
 }
 
 export const pagesUri: IPagesUri = {
@@ -19,7 +20,8 @@ export const pagesUri: IPagesUri = {
 	partners: '/partners',
 	contacts: '/contacts',
 	conditions: '/conditions',
-	dressings: '/dressings'
+	dressings: '/dressings',
+	events: '/events'
 }
 
 export const pagesToRevalidate: string[] = [

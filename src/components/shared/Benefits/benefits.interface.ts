@@ -2,6 +2,12 @@ import {
 	GeneralSettings_Acfsettings as AcfSettings,
 	GeneralSettings_Acfsettings_Benefits as BenefitsAcfSettings
 } from '@/shared/types/grahpql.types'
+import { ApolloError } from '@apollo/client'
+
+export interface IBenefitGetDataResponse {
+	error: ApolloError | undefined
+	benefitsData: IBenefitData
+}
 
 export interface IBenefit {
 	icon: BenefitsAcfSettings['icon']

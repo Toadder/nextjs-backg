@@ -3,10 +3,10 @@ import { notFound } from 'next/navigation'
 import client from '@/config/apollo/client'
 import { GET_LOUNGE_DATA } from '@/config/apollo/queries/get-lounge-data'
 
-import { ILoungeData } from './lounge.interface'
+import { ILoungeData, ILoungeGetDataResponse } from './lounge.interface'
 
 class LoungeService {
-	async getData(slug: string) {
+	async getData(slug: string): Promise<ILoungeGetDataResponse> {
 		const { error, data } = await client.query({
 			query: GET_LOUNGE_DATA,
 			variables: { slug }

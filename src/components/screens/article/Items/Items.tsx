@@ -22,10 +22,10 @@ const Items: FC<IArticleItems> = ({ currentId, articles }) => {
 					{filteredArticles?.map(({ node }) => (
 						<JournalCard
 							key={node?.id}
-							title={node?.title}
-							excerpt={node?.acfJournalData?.previewcontent}
-							link={node?.uri}
-							image={node?.acfJournalData?.previewimage}
+							title={node?.title || ''}
+							excerpt={node?.acfJournalData?.previewcontent || ''}
+							link={node?.uri || ''}
+							image={node?.acfJournalData?.previewimage || null}
 							imageSizes="(max-width: 48em) 100vw, (max-width: 64em) 50vw, 18.3125rem"
 							size="small"
 						/>

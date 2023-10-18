@@ -5,10 +5,10 @@ import { IGeneralSettings } from '@/shared/types/general.types'
 import client from '@/config/apollo/client'
 import { GET_PAVILION_DATA } from '@/config/apollo/queries/get-pavilion-data'
 
-import { IPavilionData } from './pavilion.interface'
+import { IPavilionData, IPavilionGetDataResponse } from './pavilion.interface'
 
 class PavilionService {
-	async getData(slug: string) {
+	async getData(slug: string): Promise<IPavilionGetDataResponse> {
 		const { error, data } = await client.query({
 			query: GET_PAVILION_DATA,
 			variables: { slug }

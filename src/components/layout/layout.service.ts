@@ -7,8 +7,10 @@ import '@/assets/styles/globals.scss'
 import client from '@/config/apollo/client'
 import { GET_LAYOUT_DATA } from '@/config/apollo/queries/get-layout-data'
 
+import { ILayoutGetDataResponse } from './layout.interface'
+
 class LayoutService {
-	async getData() {
+	async getData(): Promise<ILayoutGetDataResponse> {
 		const { error, data } = await client.query({ query: GET_LAYOUT_DATA })
 
 		const paymentLink: string = data?.payment?.acfSettings?.paymentlink || ''

@@ -1,10 +1,14 @@
 import client from '@/config/apollo/client'
 import { GET_PARTNERS_DATA } from '@/config/apollo/queries/get-partners-data'
 
-import { IPartnersData, IPartnersNode } from './partners.interface'
+import {
+	IPartnersData,
+	IPartnersGetDataResponse,
+	IPartnersNode
+} from './partners.interface'
 
 class PartnersService {
-	async getData() {
+	async getData(): Promise<IPartnersGetDataResponse> {
 		const { error, data } = await client.query({ query: GET_PARTNERS_DATA })
 
 		const title: string = data?.fields?.acfPartnersFields?.title || ''
