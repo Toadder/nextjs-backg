@@ -1,19 +1,37 @@
 import { compareByDate } from '@/utils/data/compareByDate'
 
 import client from '@/config/apollo/client'
-import { GET_JOURNAL_DATA } from '@/config/apollo/queries/get-journal-data'
+import {
+	GET_ARTICLES_DATA,
+	GET_EVENTS_DATA,
+	GET_JOURNAL_DATA
+} from '@/config/apollo/queries/get-journal-data'
 
 import { ARTICLES_TO_LOAD } from './journal.constant'
 import {
 	IJournalData,
 	IJournalGetDataResponse,
-	IJournalNode
+	IJournalNode,
+	TFilterValue
 } from './journal.interface'
 
 class JournalService {
 	async getData(
+		filterType: TFilterValue,
 		articleCursor: string | null = null,
 		eventCursor: string | null = null
+	): Promise<IJournalGetDataResponse> {
+		if (filterType === 'events')
+			return this.getEventsData(articleCursor, eventCursor)
+		else if (filterType === 'articles')
+			return this.getArticlesData(articleCursor, eventCursor)
+
+		return this.getAllData(articleCursor, eventCursor)
+	}
+
+	private async getAllData(
+		articleCursor: string | null,
+		eventCursor: string | null
 	): Promise<IJournalGetDataResponse> {
 		const { error, data } = await client.query({
 			query: GET_JOURNAL_DATA,
@@ -97,6 +115,54 @@ class JournalService {
 			items: [...relevantEvents, ...sortedItems],
 			articleCursor: lastArticleCursor,
 			eventCursor: lastEventCursor
+		}
+	}
+
+	private async getArticlesData(
+		articleCursor: string | null,
+		eventCursor: string | null
+	): Promise<IJournalGetDataResponse> {
+		const { error, data } = await client.query({
+			query: GET_ARTICLES_DATA,
+			variables: { take: ARTICLES_TO_LOAD, cursor: articleCursor }
+		})
+
+		const articlesData: IJournalData = data?.allJournal
+
+		const hasNextPage: boolean = articlesData?.pageInfo?.hasNextPage
+		const endCursor: string | null = articlesData?.pageInfo?.endCursor
+
+		return {
+			error,
+			items: articlesData?.edges,
+			isNextArticlesExist: hasNextPage,
+			isNextEventsExist: false,
+			articleCursor: endCursor,
+			eventCursor: null
+		}
+	}
+
+	private async getEventsData(
+		articleCursor: string | null,
+		eventCursor: string | null
+	): Promise<IJournalGetDataResponse> {
+		const { error, data } = await client.query({
+			query: GET_EVENTS_DATA,
+			variables: { take: ARTICLES_TO_LOAD, cursor: eventCursor }
+		})
+
+		const eventsData: IJournalData = data?.events
+
+		const hasNextPage: boolean = eventsData?.pageInfo?.hasNextPage
+		const endCursor: string | null = eventsData?.pageInfo?.endCursor
+
+		return {
+			error,
+			items: eventsData?.edges,
+			isNextArticlesExist: false,
+			isNextEventsExist: hasNextPage,
+			articleCursor: null,
+			eventCursor: endCursor
 		}
 	}
 }

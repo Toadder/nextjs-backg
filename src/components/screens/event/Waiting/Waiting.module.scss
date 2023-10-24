@@ -1,0 +1,29 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section bg-[#F9F9F9];
+
+	.inner {
+		@apply container space-y-5;
+	}
+
+	.title {
+		@apply text-center;
+	}
+
+	.items {
+		@apply flex md:items-start items-center md:flex-row flex-col justify-center flex-wrap gap-y-5;
+	}
+
+	.item {
+		@apply md:w-1/3 w-full text-center md:space-y-3 space-y-2.5 md:py-5 lg:px-9 md:px-5 px-5;
+	}
+
+	.icon {
+		@apply mx-auto md:w-12 md:h-12 w-9 h-9;
+	}
+
+	.text {
+		@apply md:text-base text-sm;
+	}
+}

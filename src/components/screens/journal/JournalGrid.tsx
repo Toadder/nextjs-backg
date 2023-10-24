@@ -4,7 +4,7 @@ import { JournalContext } from 'context/JournalContext/JournalContext'
 import { FC, useContext, useEffect } from 'react'
 import Masonry from 'react-masonry-css'
 
-import EventsItem from '../events/EventsItem'
+import EventsItem from './EventItem/EventItem'
 
 import styles from './Journal.module.scss'
 import JournalItem from './JournalItem'

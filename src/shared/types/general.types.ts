@@ -4,7 +4,7 @@ import {
 } from './grahpql.types'
 
 export interface IGeneralSettings
-	extends Pick<AcfSettings, 'phone' | 'bookingfile'> {}
+	extends Pick<AcfSettings, 'phone' | 'bookingfile' | 'address'| 'addresslink'> {}
 
 export interface IComment
 	extends Pick<Comment, 'id' | 'date' | 'content' | 'author'> {}

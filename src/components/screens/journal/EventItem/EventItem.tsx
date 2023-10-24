@@ -2,10 +2,10 @@ import { FC, memo } from 'react'
 
 import JournalCard from '@/components/shared/JournalCard/JournalCard'
 
-import styles from './EventsItem.module.scss'
-import { IEventsItem } from './events.interface'
+import styles from './EventItem.module.scss'
+import { IEventItem } from './event-item.interface'
 
-const EventsItem: FC<IEventsItem> = ({
+const EventsItem: FC<IEventItem> = ({
 	index,
 	masonryHeight,
 	title,

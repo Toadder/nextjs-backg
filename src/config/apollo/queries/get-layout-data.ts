@@ -5,9 +5,9 @@ import { menuFragment } from '../fraqments/menu'
 
 export const GET_LAYOUT_DATA = gql`
 	query GET_LAYOUT_DATA {
-		payment: generalSettings {
+		generalSettings {
 			acfSettings {
-				paymentlink
+				loungewidget
 			}
 		}
 		headerFields: generalSettings {

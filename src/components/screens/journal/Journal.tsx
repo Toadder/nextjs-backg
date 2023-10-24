@@ -1,14 +1,15 @@
 'use client'
 
+import cn from 'clsx'
 import { FC, useEffect, useRef, useState } from 'react'
-
-import Spinner from '@/components/ui/Spinner/Spinner'
 
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 import styles from './Journal.module.scss'
+import JournalFilters from './JournalFilters'
 import JournalGrid from './JournalGrid'
-import { IJournal, IJournalNode } from './journal.interface'
+import JournalLoaders from './JournalLoaders/JournalLoaders'
+import { IJournal, IJournalNode, TFilterValue } from './journal.interface'
 import journalService from './journal.service'
 
 const Journal: FC<IJournal> = ({
@@ -20,6 +21,7 @@ const Journal: FC<IJournal> = ({
 }) => {
 	if (!items?.length) return
 
+	// Infinite scroll
 	const ref = useRef<HTMLDivElement | null>(null)
 	const entry = useIntersectionObserver(ref, {
 		freezeOnceVisible: false
@@ -39,15 +41,62 @@ const Journal: FC<IJournal> = ({
 	const [isNextArticles, setIsNextArticles] =
 		useState<boolean>(isNextArticlesExist)
 	const [isNextEvents, setIsNextEvents] = useState<boolean>(isNextEventsExist)
+	// /Infinite scroll
 
+	// Filters
+	const [currentFilter, setCurrentFilter] = useState<TFilterValue>('all')
+	const [isArticlesLoading, setIsArticlesLoading] = useState<boolean>(false)
+	// /Filters
+
+	// Filters functionality
+	const updateFilterData = async (value: TFilterValue) => {
+		if (value === currentFilter) return
+
+		setIsArticlesLoading(true)
+		setCurrentFilter(value)
+
+		try {
+			const {
+				error,
+				items,
+				isNextArticlesExist,
+				isNextEventsExist,
+				articleCursor,
+				eventCursor
+			} = await journalService.getData(value)
+
+			if (error) throw new Error('Apollo Graphql Error')
+
+			setArticles(items)
+
+			setLastArticleCursor(articleCursor)
+			setLastEventCursor(eventCursor)
+
+			setIsNextArticles(isNextArticlesExist)
+			setIsNextEvents(isNextEventsExist)
+		} catch (error) {
+			console.error(error)
+			alert('При загрузке данных произошла ошибка...')
+
+			setIsNextArticles(false)
+			setIsNextEvents(false)
+		} finally {
+			setIsArticlesLoading(false)
+		}
+	}
+
+	// Infinite scroll functionality
 	useEffect(() => {
+		if (!isNextArticles && !isNextEvents) return
+
 		if (isVisible && !isLoading) {
 			setIsLoading(true)
 
 			journalService
-				.getData(lastArticleCursor, lastEventCursor)
+				.getData(currentFilter, lastArticleCursor, lastEventCursor)
 				.then(data => {
 					const {
+						error,
 						items,
 						articleCursor,
 						eventCursor,
@@ -55,7 +104,7 @@ const Journal: FC<IJournal> = ({
 						isNextEventsExist
 					} = data
 
-					console.log(data)
+					if (error) throw new Error('Apollo Graphql Error')
 
 					setArticles(prevData => [...prevData, ...items])
 
@@ -67,7 +116,6 @@ const Journal: FC<IJournal> = ({
 				})
 				.catch(error => {
 					console.error(error)
-
 					alert('При загрузке данных произошла ошибка...')
 
 					setIsNextArticles(false)
@@ -78,14 +126,27 @@ const Journal: FC<IJournal> = ({
 	}, [isVisible])
 
 	return (
-		<div className={styles.root}>
+		<div
+			className={cn(styles.root, {
+				[styles.loading]: isArticlesLoading
+			})}
+		>
 			<div className={styles.inner}>
-				<JournalGrid articles={articles} />
-				{isNextArticles || isNextEvents ? (
-					<div className={styles.spinnerContainer} ref={ref}>
-						<Spinner />
-					</div>
-				) : null}
+				<JournalFilters
+					currentFilter={currentFilter}
+					updateFilterData={updateFilterData}
+				/>
+
+				{!isArticlesLoading && <JournalGrid articles={articles} />}
+
+				<JournalLoaders.JournalLoadMore
+					ref={ref}
+					isDisabled={isArticlesLoading}
+					isNextArticles={isNextArticles}
+					isNextEvents={isNextEvents}
+				/>
+
+				<JournalLoaders.JournalLoadFilter isActive={isArticlesLoading} />
 			</div>
 		</div>
 	)

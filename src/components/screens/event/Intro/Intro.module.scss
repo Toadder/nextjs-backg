@@ -1,0 +1,109 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply lg:py-16 md:py-14 py-12 relative flex flex-col items-center justify-center;
+	min-height: rem(768);
+
+	@media (max-width: $md) {
+		min-height: rem(550);
+	}
+
+	.inner {
+		@apply container relative text-center;
+	}
+
+	.videoBackground {
+		@apply bg-black absolute top-0 left-0 w-full h-full overflow-hidden -z-1;
+	}
+	.videoForeground,
+	.videoForeground iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	.videoForeground {
+		@media (min-aspect-ratio: 16/9) {
+			height: 300%;
+			top: -100%;
+		}
+		@media (max-aspect-ratio: 16/9) {
+			width: 300%;
+			left: -100%;
+		}
+	}
+
+	.title {
+		@apply text-orange text-center;
+		-webkit-text-stroke-width: 2px;
+		stroke-width: 2px;
+		-webkit-text-stroke-color: #000;
+		stroke: #000;
+	}
+
+	.subtitle {
+		@apply text-white font-bold lg:text-6xl md:text-5xl text-4xl font-muller-narrow italic mt-5;
+		-webkit-text-stroke-width: 2px;
+		stroke-width: 2px;
+		-webkit-text-stroke-color: #000;
+		stroke: #000;
+	}
+
+	.info {
+		@apply text-white font-bold md:text-5xl text-3xl font-muller-narrow italic mt-8;
+		-webkit-text-stroke-width: 2px;
+		stroke-width: 2px;
+		-webkit-text-stroke-color: #000;
+		stroke: #000;
+	}
+
+	.outer {
+		@apply mt-12 md:space-y-3 space-y-1.5;
+	}
+
+	.text {
+		@apply text-white font-bold md:text-4xl text-2xl font-muller-narrow italic;
+		-webkit-text-stroke-width: 2px;
+		stroke-width: 2px;
+		-webkit-text-stroke-color: #000;
+		stroke: #000;
+
+		@media (max-width: $md) {
+			-webkit-text-stroke-width: 1.5px;
+			stroke-width: 1.5px;
+		}
+	}
+
+	.timer {
+		@apply grid grid-cols-3 mx-auto md:gap-x-8 gap-x-4;
+		max-width: rem(650);
+	}
+
+	.item {
+		@apply text-white py-5 whitespace-nowrap bg-[#0d0d0d] bg-opacity-60;
+	}
+
+	.value {
+		@apply font-bold lg:text-7xl md:text-6xl text-4xl leading-none;
+	}
+
+	.label {
+		@apply md:text-xl text-lg font-medium leading-snug;
+	}
+
+	.over {
+		@apply text-white uppercase md:text-4xl text-2xl font-muller-narrow italic font-black;
+		-webkit-text-stroke-width: 2px;
+		stroke-width: 2px;
+		-webkit-text-stroke-color: #000;
+		stroke: #000;
+
+		@media (max-width: $md) {
+			-webkit-text-stroke-width: 1.5px;
+			stroke-width: 1.5px;
+		}
+	}
+}

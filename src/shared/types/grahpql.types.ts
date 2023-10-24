@@ -2765,7 +2765,7 @@ export type Equipment_Acfequipmentfields = AcfFieldGroup & {
 /** The event type */
 export type Event = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
   __typename?: 'Event';
-  /** Added to the GraphQL Schema because the ACF Field Group &quot;Поля мероприятия&quot; was set to Show in GraphQL. */
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;Поля события&quot; was set to Show in GraphQL. */
   acfEventData?: Maybe<Event_Acfeventdata>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
@@ -2912,13 +2912,59 @@ export type EventToPreviewConnectionEdge = Edge & EventConnectionEdge & OneToOne
 /** Field Group */
 export type Event_Acfeventdata = AcfFieldGroup & {
   __typename?: 'Event_Acfeventdata';
+  contentinner?: Maybe<Scalars['String']['output']>;
   /** По умолчанию заполняется автоматически. Может быть перезаписано. */
   dynamicpreivewheight?: Maybe<Scalars['Float']['output']>;
+  examplesitems?: Maybe<Array<Maybe<MediaItem>>>;
+  examplestitle?: Maybe<Scalars['String']['output']>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+  introcity?: Maybe<Scalars['String']['output']>;
+  introdate?: Maybe<Scalars['String']['output']>;
+  introsubtitle?: Maybe<Scalars['String']['output']>;
+  /**
+   * Можно узнать в адресной строке видео:
+   * www.youtube.com/watch?v=XXXXXXXXXXX
+   */
+  introvideo?: Maybe<Scalars['String']['output']>;
+  iscontenthidden?: Maybe<Scalars['Boolean']['output']>;
+  isexampleshidden?: Maybe<Scalars['Boolean']['output']>;
+  isintrohidden?: Maybe<Scalars['Boolean']['output']>;
+  isplacehidden?: Maybe<Scalars['Boolean']['output']>;
+  isspeakerhidden?: Maybe<Scalars['Boolean']['output']>;
+  isthemeshidden?: Maybe<Scalars['Boolean']['output']>;
+  iswaitinghidden?: Maybe<Scalars['Boolean']['output']>;
+  placeobject?: Maybe<Scalars['String']['output']>;
+  placeslider?: Maybe<Array<Maybe<MediaItem>>>;
+  placetitle?: Maybe<Scalars['String']['output']>;
   previewcontent?: Maybe<Scalars['String']['output']>;
   previewimage?: Maybe<MediaItem>;
   previewstatus?: Maybe<Scalars['Boolean']['output']>;
+  speakercontent?: Maybe<Scalars['String']['output']>;
+  speakerimage?: Maybe<MediaItem>;
+  speakertitle?: Maybe<Scalars['String']['output']>;
+  themesitems?: Maybe<Array<Maybe<Event_Acfeventdata_Themesitems>>>;
+  themestitle?: Maybe<Scalars['String']['output']>;
+  waitingitems?: Maybe<Array<Maybe<Event_Acfeventdata_Waitingitems>>>;
+  waitingtitle?: Maybe<Scalars['String']['output']>;
+};
+
+/** Field Group */
+export type Event_Acfeventdata_Themesitems = AcfFieldGroup & {
+  __typename?: 'Event_Acfeventdata_themesitems';
+  content?: Maybe<Scalars['String']['output']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  time?: Maybe<Scalars['String']['output']>;
+};
+
+/** Field Group */
+export type Event_Acfeventdata_Waitingitems = AcfFieldGroup & {
+  __typename?: 'Event_Acfeventdata_waitingitems';
+  content?: Maybe<Scalars['String']['output']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<MediaItem>;
 };
 
 /** Настройки сайта options. */
@@ -2944,6 +2990,7 @@ export type GeneralSettings_Acfsettings = AcfFieldGroup & {
   documents?: Maybe<Array<Maybe<GeneralSettings_Acfsettings_Documents>>>;
   email?: Maybe<Scalars['String']['output']>;
   emailforfeedback?: Maybe<Scalars['String']['output']>;
+  eventwidget?: Maybe<Scalars['String']['output']>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   footertext?: Maybe<Scalars['String']['output']>;
@@ -2952,8 +2999,8 @@ export type GeneralSettings_Acfsettings = AcfFieldGroup & {
   isbookinghidden?: Maybe<Scalars['Boolean']['output']>;
   istourhidden?: Maybe<Scalars['Boolean']['output']>;
   logo?: Maybe<MediaItem>;
+  loungewidget?: Maybe<Scalars['String']['output']>;
   mapcoordinates?: Maybe<Scalars['String']['output']>;
-  paymentlink?: Maybe<Scalars['String']['output']>;
   phone?: Maybe<Scalars['String']['output']>;
   /** Токен бота, выданный BotFather */
   senderbottoken?: Maybe<Scalars['String']['output']>;

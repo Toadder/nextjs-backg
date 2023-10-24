@@ -12,7 +12,9 @@ export const generateMetadata = (): Promise<Metadata> =>
 	getMetadata(pagesUri.home)
 
 const HomePage: NextPage = () => (
-	<Home objectsQuery={GET_OBJECTS_DATA} page="home" />
+	<>
+		<Home objectsQuery={GET_OBJECTS_DATA} page="home" />
+	</>
 )
 
 export default HomePage

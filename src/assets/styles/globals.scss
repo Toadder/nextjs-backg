@@ -5,8 +5,7 @@
 @import '@/assets/styles/vars.scss';
 
 $fancyboxOffset: calc(
-	var(--fancybox-body-margin, 0px) +
-		var(--fancybox-scrollbar-compensate, 0px)
+	var(--fancybox-body-margin, 0px) + var(--fancybox-scrollbar-compensate, 0px)
 );
 
 * {
@@ -78,3 +77,5 @@ body {
 .alignright {
 	@apply md:float-right md:ml-5 md:mr-0 mx-auto;
 }
+
+

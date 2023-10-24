@@ -1,0 +1,47 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section relative;
+
+	&::before {
+		@apply absolute top-0 left-0 w-full h-full z-0 bg-black bg-opacity-50;
+		content: '';
+	}
+
+	.inner {
+		@apply container relative z-1;
+	}
+
+	.bg {
+		@apply image-like-bg w-full h-full -z-1;
+	}
+
+	.title {
+		@apply text-orange text-center;
+	}
+
+	.themes {
+		@apply mx-auto text-white md:mt-3 mt-1.5;
+		max-width: rem(782);
+	}
+
+	.item {
+		@apply space-y-1 py-5;
+
+		&:not(:first-child) {
+			@apply border-t border-t-white;
+		}
+	}
+
+	.time {
+		@apply font-black md:text-xl text-lg leading-none;
+	}
+
+	.text {
+		@apply md:text-lg leading-snug;
+	}
+
+	.btn {
+		@apply btn-primary relative left-1/2 -translate-x-1/2 md:mt-5 mt-2.5;
+	}
+}

@@ -1,0 +1,39 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section;
+
+	.inner {
+		@apply container md:space-y-6 space-y-4;
+	}
+
+	.title {
+		@apply text-center;
+	}
+
+	.main {
+		@apply mx-auto flex md:flex-row flex-col lg:gap-x-7 gap-x-5 gap-y-4;
+		max-width: rem(782);
+	}
+
+	.image {
+		flex: 0 1 rem(265);
+
+		@media (max-width: $md) {
+			flex: 0 0 auto;
+		}
+
+		img {
+			@apply mx-auto;
+		}
+	}
+
+	.content {
+		@apply md:py-2;
+		flex: 0 1 rem(457);
+
+		@media (max-width: $md) {
+			flex: 0 0 auto;
+		}
+	}
+}

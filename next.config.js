@@ -2,7 +2,7 @@
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true'
-});
+})
 
 const nextConfig = {
 	poweredByHeader: false,
@@ -21,8 +21,8 @@ const nextConfig = {
 			new webpack.DefinePlugin({
 				'globalThis.__DEV__': process.env.NODE_ENV === 'development'
 			})
-		);
-		return config;
+		)
+		return config
 	},
 
 	images: {
@@ -30,7 +30,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'http',
-				hostname: 'zheka2y5.beget.tech',
+				hostname: 'zheka2vo.beget.tech',
 				port: '',
 				pathname: '/**'
 			}
@@ -59,8 +59,8 @@ const nextConfig = {
 					}
 				]
 			}
-		];
+		]
 	}
-};
+}
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withBundleAnalyzer(nextConfig)

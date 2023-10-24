@@ -1,0 +1,23 @@
+.root {
+	@apply section bg-[#F9F9F9];
+
+	.inner {
+		@apply container md:space-y-6 space-y-4;
+	}
+
+	.title {
+		@apply text-center;
+	}
+
+	.masonryContainer {
+		@apply flex md:gap-3 gap-2;
+	}
+
+	.masonryColumn {
+		@apply flex flex-col md:gap-y-3 gap-y-2;
+
+		img {
+			@apply image-like-bg w-full;
+		}
+	}
+}

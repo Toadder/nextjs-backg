@@ -3,8 +3,33 @@
 .root {
 	@apply section;
 
+	&.loading {
+		@apply flex flex-col;
+
+		min-height: calc(100vh - rem(71));
+
+		@media (max-width: $md) {
+			min-height: calc(100vh - rem(49));
+		}
+	}
+
 	.inner {
-		@apply container space-y-5;
+		@apply container space-y-5 flex-grow flex flex-col;
+	}
+
+	.filters {
+	}
+
+	.filtersList {
+		@apply flex items-center md:gap-x-3 gap-x-2 gap-y-2 flex-wrap;
+	}
+
+	.filtersButton {
+		@apply w-full py-1.5 md:px-6 px-4 md:text-lg text-sm rounded-2xl border-2 border-brown font-muller-narrow font-extrabold italic uppercase whitespace-nowrap transition-colors hover:text-white hover:bg-brown;
+
+		&.active {
+			@apply bg-brown text-white;
+		}
 	}
 
 	.masonryContainer {
@@ -19,9 +44,5 @@
 		@media (max-width: $md) {
 			min-height: rem(400) !important;
 		}
-	}
-
-	.spinnerContainer {
-		@apply relative w-full h-20;
 	}
 }

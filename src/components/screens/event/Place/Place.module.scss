@@ -1,0 +1,75 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply section;
+
+	.inner {
+		@apply container;
+	}
+
+	.title {
+		@apply text-center;
+	}
+
+	.info {
+		@apply mt-3 text-center leading-snug md:text-xl text-lg space-y-1;
+	}
+
+	.address {
+		@apply flex items-center justify-center flex-wrap gap-x-1.5;
+		a {
+			@apply text-blue hover:text-orange transition-colors;
+		}
+	}
+
+	.place {
+	}
+
+	.slider {
+		@apply md:mt-8 mt-7;
+	}
+
+	.outer {
+		@apply relative;
+
+		.slider {
+			height: rem(400);
+
+			@media (max-width: $lg) {
+				height: rem(450);
+			}
+		}
+
+		.slide {
+		}
+
+		.link {
+			@apply block w-full h-full;
+		}
+
+		.image {
+			@apply image-like-bg;
+		}
+
+		.prev,
+		.next {
+			@apply absolute top-1/2;
+		}
+
+		.prev {
+			@apply left-3;
+		}
+
+		.next {
+			@apply right-3;
+		}
+	}
+
+	.pagination {
+		@apply slider-pagination lg:mt-6 mt-4;
+	}
+
+	.btn {
+		@apply btn-primary relative left-1/2 -translate-x-1/2 md:mt-7 mt-6;
+	}
+}

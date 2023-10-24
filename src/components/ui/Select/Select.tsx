@@ -5,7 +5,7 @@ import { IOption, ISelect } from './select.interface'
 import './select.scss'
 
 const Select = forwardRef<any, ISelect>(
-	({ options, value: value, setValue, error, ...rest }, ref) => {
+	({ options, value, setValue, error, ...rest }, ref) => {
 		if (!options?.length) return
 
 		const hasError: boolean = !!error?.type?.length

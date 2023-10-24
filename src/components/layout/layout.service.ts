@@ -13,7 +13,8 @@ class LayoutService {
 	async getData(): Promise<ILayoutGetDataResponse> {
 		const { error, data } = await client.query({ query: GET_LAYOUT_DATA })
 
-		const paymentLink: string = data?.payment?.acfSettings?.paymentlink || ''
+		const loungeWidget: string =
+			data?.generalSettings?.acfSettings?.loungewidget || ''
 
 		const headerData: IHeaderData = {
 			menu: data?.menu?.edges,
@@ -24,7 +25,13 @@ class LayoutService {
 
 		const popupsData: IPopupsData = data?.popupFields?.acfSettings
 
-		return { error, headerData, footerData, popupsData, paymentLink }
+		return {
+			error,
+			headerData,
+			footerData,
+			popupsData,
+			loungeWidget
+		}
 	}
 }
 

@@ -19,7 +19,7 @@ const JournalPage: NextPage = () => {
 		isNextEventsExist,
 		articleCursor,
 		eventCursor
-	} = use(journalService.getData())
+	} = use(journalService.getData('all'))
 
 	if (error) {
 		console.error(error)

@@ -1,0 +1,11 @@
+.loadFilterSpinner {
+	@apply relative w-full flex-grow;
+}
+
+.loadMoreSpinner {
+	@apply relative w-full h-20;
+
+	&.disabled {
+		@apply hidden;
+	}
+}

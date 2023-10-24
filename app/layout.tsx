@@ -66,7 +66,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 /* =>> /SEO <<= */
 
 export default function RootLayout({ children }: PropsWithChildren) {
-	const { error, headerData, footerData, popupsData, paymentLink } = use(
+	const { error, headerData, footerData, popupsData, loungeWidget } = use(
 		layoutService.getData()
 	)
 
@@ -92,8 +92,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
 					/>
 				</Layout>
 
-				{/* App Event */}
-				<Script id="aeWidgetScript" src={paymentLink} strategy="lazyOnload" />
+				{loungeWidget?.length ? (
+					<Script src={loungeWidget} strategy="lazyOnload" id="aeWidgetBtn" />
+				) : null}
 
 				{process.env.NODE_ENV === 'production' && (
 					<>
