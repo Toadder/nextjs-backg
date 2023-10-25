@@ -46,9 +46,10 @@ const ExampleSlider: FC<ILoungeExampleSlider> = ({
 						}
 						slidesPerView={INITIAL_SLIDES_PER_VIEW}
 						speed={600}
+						loop={true}
 						pagination={{
 							el: `.${styles.pagination}`,
-							clickable: true
+							clickable: false,
 						}}
 						autoplay={{
 							delay: 3000,

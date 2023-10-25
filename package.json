@@ -34,7 +34,7 @@
 		"react-slide-toggle": "^0.3.5",
 		"react-timer-hook": "^3.0.7",
 		"react-youtube": "^10.1.0",
-		"swiper": "^10.2.0",
+		"swiper": "^11.0.2",
 		"tailwindcss": "3.3.3",
 		"typescript": "^5.2.2"
 	},

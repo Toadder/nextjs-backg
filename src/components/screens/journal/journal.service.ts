@@ -153,12 +153,28 @@ class JournalService {
 
 		const eventsData: IJournalData = data?.events
 
+		const relevantEvents: IJournalNode[] = eventsData?.edges?.filter(
+			({ node }) => {
+				if (node.__typename !== 'Event') return
+				return node?.acfEventData?.previewstatus
+			}
+		)
+
+		const archivalEvents: IJournalNode[] = eventsData?.edges?.filter(
+			({ node }) => {
+				if (node.__typename !== 'Event') return
+				return !node?.acfEventData?.previewstatus
+			}
+		)
+
+		const sortedItems: IJournalNode[] = [...relevantEvents, ...archivalEvents]
+
 		const hasNextPage: boolean = eventsData?.pageInfo?.hasNextPage
 		const endCursor: string | null = eventsData?.pageInfo?.endCursor
 
 		return {
 			error,
-			items: eventsData?.edges,
+			items: sortedItems,
 			isNextArticlesExist: false,
 			isNextEventsExist: hasNextPage,
 			articleCursor: null,

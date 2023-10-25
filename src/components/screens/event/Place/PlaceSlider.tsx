@@ -41,11 +41,12 @@ const PlaceSlider: FC<IEventPlaceSlider> = ({ slider }) => {
 						onBreakpoint={swiper =>
 							setSlidesPerView(Number(swiper.params.slidesPerView))
 						}
+						loop={true}
 						slidesPerView={INITIAL_SLIDES_PER_VIEW}
 						speed={600}
 						pagination={{
 							el: `.${styles.pagination}`,
-							clickable: true
+							clickable: false,
 						}}
 						autoplay={{
 							delay: 3000,

@@ -46,9 +46,10 @@ const IntroSlider: FC<ILoungeIntroSlider> = ({
 						}}
 						slidesPerView={INIT_SLIDES_PER_VIEW}
 						speed={600}
+						loop={true}
 						pagination={{
 							el: `.${styles.pagination}`,
-							clickable: true
+							clickable: false
 						}}
 						modules={[Pagination, Autoplay]}
 						breakpoints={{

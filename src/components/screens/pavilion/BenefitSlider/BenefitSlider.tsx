@@ -36,7 +36,7 @@ const BenefitSlider: FC<IPavilionBenefitSlider> = ({
 					speed={600}
 					pagination={{
 						el: `.${styles.pagination}`,
-						clickable: true
+						clickable: false
 					}}
 					loop={true}
 					autoplay={{
