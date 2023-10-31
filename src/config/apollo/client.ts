@@ -21,7 +21,7 @@ const cache = new InMemoryCache({
 })
 
 const link = createHttpLink({
-	uri: process.env.WORDPRESS_SITE_URL
+	uri: `${process.env.WORDPRESS_SITE_URL}/graphql`
 })
 
 const client = new ApolloClient({

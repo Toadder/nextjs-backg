@@ -45,4 +45,8 @@
 			min-height: rem(400) !important;
 		}
 	}
+
+	.notFound {
+		@apply text-center md:text-xl;
+	}
 }

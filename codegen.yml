@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'http://zheka2vo.beget.tech/graphql'
+schema: 'http://XXXX/graphql'
 generates:
   src/shared/types/grahpql.types.ts:
     plugins:

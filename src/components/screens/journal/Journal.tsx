@@ -19,8 +19,6 @@ const Journal: FC<IJournal> = ({
 	isNextArticlesExist,
 	isNextEventsExist
 }) => {
-	if (!items?.length) return
-
 	// Infinite scroll
 	const ref = useRef<HTMLDivElement | null>(null)
 	const entry = useIntersectionObserver(ref, {
@@ -147,6 +145,10 @@ const Journal: FC<IJournal> = ({
 				/>
 
 				<JournalLoaders.JournalLoadFilter isActive={isArticlesLoading} />
+
+				{!articles?.length ? (
+					<p className={styles.notFound}>К сожалению, данный раздел пуст.</p>
+				) : null}
 			</div>
 		</div>
 	)

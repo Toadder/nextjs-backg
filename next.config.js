@@ -26,31 +26,29 @@ const nextConfig = {
 	},
 
 	images: {
-		// FIXME: Delete in production mode
 		remotePatterns: [
 			{
 				protocol: 'http',
-				hostname: 'zheka2vo.beget.tech',
+				hostname: process.env.WORDPRESS_SITE_HOST,
 				port: '',
-				pathname: '/**'
+				pathname: '/wp-content/uploads/**'
 			}
 		]
 	},
+
 	async headers() {
-		// FIXME: Delete in production mode
 		return [
 			{
-				// matching all API routes
 				source: '/api/revalidate',
 				headers: [
 					{ key: 'Access-Control-Allow-Credentials', value: 'true' },
 					{
 						key: 'Access-Control-Allow-Origin',
-						value: '*'
+						value: process.env.WORDPRESS_SITE_URL
 					},
 					{
 						key: 'Access-Control-Allow-Methods',
-						value: 'GET,DELETE,PATCH,POST,PUT'
+						value: 'GET'
 					},
 					{
 						key: 'Access-Control-Allow-Headers',
