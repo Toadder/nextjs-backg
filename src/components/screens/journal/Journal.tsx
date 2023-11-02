@@ -146,7 +146,7 @@ const Journal: FC<IJournal> = ({
 
 				<JournalLoaders.JournalLoadFilter isActive={isArticlesLoading} />
 
-				{!articles?.length ? (
+				{!articles?.length && !isArticlesLoading ? (
 					<p className={styles.notFound}>К сожалению, данный раздел пуст.</p>
 				) : null}
 			</div>

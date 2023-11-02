@@ -8,11 +8,11 @@ import { IArticleItems } from '../article.interface'
 import styles from './Items.module.scss'
 
 const Items: FC<IArticleItems> = ({ currentId, articles }) => {
-	if (!articles?.length) return
-
 	const filteredArticles = articles
 		?.filter(({ node }) => node?.id !== currentId)
 		.slice(0, 4)
+
+	if (!filteredArticles?.length) return
 
 	return (
 		<section className={styles.root}>
