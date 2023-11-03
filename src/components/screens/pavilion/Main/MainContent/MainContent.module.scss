@@ -32,4 +32,10 @@
 	.link {
 		@apply btn-secondary;
 	}
+
+	.description {
+		[class='wp-video'] {
+			width: 100% !important;
+		}
+	}
 }

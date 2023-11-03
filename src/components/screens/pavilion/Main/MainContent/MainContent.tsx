@@ -28,7 +28,7 @@ const MainContent: FC<IPavilionMainContent> = ({ title, content, phone }) => {
 					</PopupBtn>
 				</div>
 			</div>
-			<Description htmlContent={content || ''} />
+			<Description className={styles.description} htmlContent={content || ''} />
 		</div>
 	)
 }
