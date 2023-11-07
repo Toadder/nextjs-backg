@@ -89,11 +89,11 @@
 	}
 
 	.sublist {
-		@apply xl:hidden xl:absolute xl:left-0 xl:top-full bg-white xl:shadow-primary overflow-y-auto;
+		@apply xl:hidden xl:absolute xl:left-0 xl:top-full bg-white xl:shadow-primary overflow-y-auto z-1;
 		min-width: rem(190);
 		max-height: calc(100vh - rem(58));
 
-		@media(max-width: $xl) {
+		@media (max-width: $xl) {
 			max-height: 100%;
 		}
 	}
