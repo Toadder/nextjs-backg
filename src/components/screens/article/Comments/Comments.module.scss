@@ -1,11 +1,10 @@
 @import '@/assets/styles/functions.scss';
 
 .root {
-	@apply section;
+	@apply section clear-both;
 
 	.inner {
 		@apply container md:space-y-8 space-y-6;
 		max-width: rem(957);
 	}
-
 }

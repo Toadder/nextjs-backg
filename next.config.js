@@ -31,7 +31,7 @@ const nextConfig = {
 				protocol: 'http',
 				hostname: process.env.WORDPRESS_SITE_HOST,
 				port: '',
-				pathname: '/wp-content/uploads/**'
+				pathname: '/wp-content/**'
 			}
 		]
 	},
