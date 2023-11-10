@@ -21,7 +21,7 @@
 	}
 
 	.filtersList {
-		@apply flex items-center md:gap-x-3 gap-x-2 gap-y-2 flex-wrap;
+		@apply flex items-center md:space-x-3 space-x-0 md:gap-x-0 gap-x-2 gap-y-2 flex-wrap;
 	}
 
 	.filtersButton {
@@ -33,14 +33,16 @@
 	}
 
 	.masonryContainer {
-		@apply flex md:gap-3 gap-4;
+		@apply flex md:space-x-3 space-x-4;
 	}
 
 	.masonryColumn {
-		@apply flex flex-col md:gap-y-3 gap-y-4;
+		@apply flex flex-col md:space-y-3 space-y-4;
 	}
 
 	.wrapper {
+		@apply flex flex-col;
+
 		@media (max-width: $md) {
 			min-height: rem(400) !important;
 		}

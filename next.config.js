@@ -28,7 +28,7 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				protocol: 'http',
+				protocol: 'https',
 				hostname: process.env.WORDPRESS_SITE_HOST,
 				port: '',
 				pathname: '/wp-content/**'

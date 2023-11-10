@@ -1,7 +1,7 @@
 @import '@/assets/styles/vars.scss';
 
 .root {
-	@apply flex xl:flex-row flex-col items-start justify-between gap-x-10 md:gap-y-6 gap-y-4;
+	@apply flex xl:flex-row flex-col items-start justify-between xl:space-x-10 space-x-0 xl:space-y-0 md:space-y-6 space-y-4;
 
 	.media {
 		@apply w-full flex justify-center;

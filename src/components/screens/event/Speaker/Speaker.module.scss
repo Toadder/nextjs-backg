@@ -12,7 +12,7 @@
 	}
 
 	.main {
-		@apply mx-auto flex md:flex-row flex-col lg:gap-x-7 gap-x-5 gap-y-4;
+		@apply mx-auto flex md:flex-row flex-col lg:space-x-7 md:space-x-5 space-x-0 md:space-y-0 space-y-4;
 		max-width: rem(782);
 	}
 

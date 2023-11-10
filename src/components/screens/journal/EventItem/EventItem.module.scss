@@ -1,6 +1,7 @@
 @import '@/assets/styles/vars.scss';
 
 .wrapper {
+	@apply flex flex-col;
 	@media (max-width: $md) {
 		min-height: rem(400) !important;
 	}

@@ -1,7 +1,7 @@
 @import '@/assets/styles/vars.scss';
 
 .item {
-	@apply relative h-full overflow-hidden;
+	@apply relative flex-grow flex flex-col;
 
 	@media (any-hover: hover) {
 		&:hover {
@@ -20,7 +20,7 @@
 	}
 
 	.link {
-		@apply flex items-end justify-start p-5 h-full relative;
+		@apply flex items-end justify-start p-5 relative overflow-hidden flex-grow;
 
 		&::before {
 			content: '';

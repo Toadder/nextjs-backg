@@ -17,7 +17,7 @@
 	}
 
 	.actions {
-		@apply flex items-center justify-end md:gap-x-4 gap-x-3;
+		@apply flex items-center justify-end md:space-x-4 space-x-3;
 		min-width: rem(180);
 
 		@media (max-width: $xxl) {

@@ -22,7 +22,7 @@
 		}
 
 		.socials {
-			@apply flex xl:flex-col items-center justify-center flex-wrap gap-y-3 md:gap-x-8 gap-x-6;
+			@apply flex xl:flex-col items-center justify-center flex-wrap xl:space-y-3 space-y-0 xl:space-x-0 md:space-x-8 space-x-6;
 		}
 
 		.social {
@@ -30,7 +30,7 @@
 		}
 
 		.links {
-			@apply flex flex-col justify-center xl:text-base md:text-xl text-sm gap-y-0.5;
+			@apply flex flex-col justify-center xl:text-base md:text-xl text-sm space-y-0.5;
 		}
 
 		.link {

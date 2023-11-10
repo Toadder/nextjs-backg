@@ -6,7 +6,7 @@ export const useMediaQuery = (query: string): boolean | null => {
 		if (typeof window !== 'undefined') {
 			return window.matchMedia(query).matches
 		}
-		return null
+		return false
 	}
 
 	const [matches, setMatches] = useState<boolean | null>(getMatches(query))
@@ -22,10 +22,18 @@ export const useMediaQuery = (query: string): boolean | null => {
 		handleChange()
 
 		// Listen matchMedia
-		matchMedia.addEventListener('change', handleChange)
+		if (matchMedia.addListener) {
+			matchMedia.addListener(handleChange)
+		} else {
+			matchMedia.addEventListener('change', handleChange)
+		}
 
 		return () => {
-			matchMedia.removeEventListener('change', handleChange)
+			if (matchMedia.removeListener) {
+				matchMedia.removeListener(handleChange)
+			} else {
+				matchMedia.removeEventListener('change', handleChange)
+			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [query])

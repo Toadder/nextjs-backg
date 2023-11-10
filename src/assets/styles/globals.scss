@@ -80,4 +80,8 @@ body {
 
 .wp-video {
 	width: auto !important;
+
+	video {
+		width: 100%;
+	}
 }

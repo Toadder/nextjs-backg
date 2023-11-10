@@ -16,7 +16,7 @@
 	}
 
 	.address {
-		@apply flex items-center justify-center flex-wrap gap-x-1.5;
+		@apply flex items-center justify-center flex-wrap md:space-x-1.5 space-x-0 md:gap-x-0 gap-x-1.5;
 		a {
 			@apply text-blue hover:text-orange transition-colors;
 		}

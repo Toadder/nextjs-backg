@@ -41,7 +41,7 @@
 	}
 
 	.property {
-		@apply flex items-center justify-center gap-x-3 text-sm py-3.5 font-medium;
+		@apply flex items-center justify-center space-x-3 text-sm py-3.5 font-medium;
 
 		&:not(:first-child) {
 			@apply border-t-2 border-t-grey;

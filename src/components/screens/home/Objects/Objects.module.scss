@@ -8,7 +8,7 @@
 	}
 
 	.wrapper {
-		@apply lg:col-span-2 md:col-span-3 col-span-6;
+		@apply lg:col-span-2 md:col-span-3 col-span-6 flex flex-col;
 
 		&.wide {
 			@apply md:col-span-3 col-span-6;
