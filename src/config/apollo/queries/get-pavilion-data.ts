@@ -60,6 +60,18 @@ export const GET_PAVILION_DATA = gql`
 							previewlabel
 						}
 					}
+					... on Lounge {
+						id
+						title
+						uri
+						acfLoungeFields {
+							previewcontent
+							previewimage {
+								...ImageFragment
+							}
+							previewlabel
+						}
+					}
 				}
 				isequipmenthidden
 				titleequipment

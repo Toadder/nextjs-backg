@@ -52,6 +52,6 @@ const MainContent: FC<IPavilionMainContent> = ({
 			) : null}
 		</div>
 	)
-}ц
+}
 
 export default MainContent
