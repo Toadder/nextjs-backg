@@ -22,6 +22,14 @@ export const GET_PAVILION_DATA = gql`
 				ismainhidden
 				maintitle
 				maincontent
+				mainproperties {
+					icon {
+						...ImageFragment
+					}
+					title
+					excerpt
+					content
+				}
 				mainslider {
 					altText
 					sourceUrl
@@ -29,6 +37,13 @@ export const GET_PAVILION_DATA = gql`
 				mainlayout {
 					altText
 					sourceUrl
+				}
+				isexamplehidden
+				exampleslider {
+					caption
+					image {
+						...ImageFragment
+					}
 				}
 				issimilarloungeshidden
 				titlesimilarlounges

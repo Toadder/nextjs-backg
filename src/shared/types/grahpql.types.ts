@@ -103,7 +103,7 @@ export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermN
   parentId?: Maybe<Scalars['ID']['output']>;
   /** Connection between the Category type and the post type */
   posts?: Maybe<CategoryToPostConnection>;
-  /** The Yoast SEO data of the Categories taxonomy. */
+  /** The Yoast SEO data of the Рубрики taxonomy. */
   seo?: Maybe<TaxonomySeo>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars['String']['output']>;
@@ -393,7 +393,7 @@ export type CategoryToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -491,7 +491,7 @@ export type CategoryToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -672,13 +672,13 @@ export enum CommentNodeIdTypeEnum {
 
 /** The status of the comment object. */
 export enum CommentStatusEnum {
-  /** Comments with the Approved status */
+  /** Comments with the Одобрен status */
   Approve = 'APPROVE',
-  /** Comments with the Unapproved status */
+  /** Comments with the Не одобрен status */
   Hold = 'HOLD',
-  /** Comments with the Spam status */
+  /** Comments with the Спам status */
   Spam = 'SPAM',
-  /** Comments with the Trash status */
+  /** Comments with the Удалён status */
   Trash = 'TRASH'
 }
 
@@ -1370,7 +1370,7 @@ export type ContentTypeToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -1982,7 +1982,7 @@ export type DeleteCategoryInput = {
 /** The payload for the deleteCategory mutation. */
 export type DeleteCategoryPayload = {
   __typename?: 'DeleteCategoryPayload';
-  /** The deteted term object */
+  /** The deleted term object */
   category?: Maybe<Category>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']['output']>;
@@ -2231,7 +2231,7 @@ export type DeletePostFormatPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The ID of the deleted object */
   deletedId?: Maybe<Scalars['ID']['output']>;
-  /** The deteted term object */
+  /** The deleted term object */
   postFormat?: Maybe<PostFormat>;
 };
 
@@ -2273,7 +2273,7 @@ export type DeleteTagPayload = {
   clientMutationId?: Maybe<Scalars['String']['output']>;
   /** The ID of the deleted object */
   deletedId?: Maybe<Scalars['ID']['output']>;
-  /** The deteted term object */
+  /** The deleted term object */
   tag?: Maybe<Tag>;
 };
 
@@ -2301,9 +2301,9 @@ export type DeleteUserPayload = {
 /** The discussion setting type */
 export type DiscussionSettings = {
   __typename?: 'DiscussionSettings';
-  /** Allow people to submit comments on new posts. */
+  /** Разрешить оставлять комментарии к новым записям. */
   defaultCommentStatus?: Maybe<Scalars['String']['output']>;
-  /** Allow link notifications from other blogs (pingbacks and trackbacks) on new articles. */
+  /** Разрешить ссылки оповещения с других блогов (уведомления и обратные ссылки) на новые статьи. */
   defaultPingStatus?: Maybe<Scalars['String']['output']>;
 };
 
@@ -3204,7 +3204,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -3279,7 +3279,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -5395,7 +5395,7 @@ export type PageToRevisionConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -5767,17 +5767,20 @@ export type Pavilion_Acfpavilionfields = AcfFieldGroup & {
   benefitslider?: Maybe<Array<Maybe<Pavilion_Acfpavilionfields_Benefitslider>>>;
   contentrates?: Maybe<Scalars['String']['output']>;
   equipment?: Maybe<Array<Maybe<Pavilion_Acfpavilionfields_Equipment>>>;
+  exampleslider?: Maybe<Array<Maybe<Pavilion_Acfpavilionfields_Exampleslider>>>;
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   /** Выберите страницы, на которых объект будет скрыт. Для множественного выбора зажмите Ctrl. */
   hiddenon?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   isbenefithidden?: Maybe<Scalars['Boolean']['output']>;
   isequipmenthidden?: Maybe<Scalars['Boolean']['output']>;
+  isexamplehidden?: Maybe<Scalars['Boolean']['output']>;
   ismainhidden?: Maybe<Scalars['Boolean']['output']>;
   israteshidden?: Maybe<Scalars['Boolean']['output']>;
   issimilarloungeshidden?: Maybe<Scalars['Boolean']['output']>;
   maincontent?: Maybe<Scalars['String']['output']>;
   mainlayout?: Maybe<MediaItem>;
+  mainproperties?: Maybe<Array<Maybe<Pavilion_Acfpavilionfields_Mainproperties>>>;
   mainslider?: Maybe<Array<Maybe<MediaItem>>>;
   maintitle?: Maybe<Scalars['String']['output']>;
   /** Номер позиции карточки объекта на странице павильонов */
@@ -5805,6 +5808,26 @@ export type Pavilion_Acfpavilionfields_Benefitslider = AcfFieldGroup & {
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   image?: Maybe<MediaItem>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+/** Field Group */
+export type Pavilion_Acfpavilionfields_Exampleslider = AcfFieldGroup & {
+  __typename?: 'Pavilion_Acfpavilionfields_exampleslider';
+  caption?: Maybe<Scalars['String']['output']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<MediaItem>;
+};
+
+/** Field Group */
+export type Pavilion_Acfpavilionfields_Mainproperties = AcfFieldGroup & {
+  __typename?: 'Pavilion_Acfpavilionfields_mainproperties';
+  content?: Maybe<Scalars['String']['output']>;
+  excerpt?: Maybe<Scalars['String']['output']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<MediaItem>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -6197,7 +6220,7 @@ export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceI
   postFormatId?: Maybe<Scalars['Int']['output']>;
   /** Connection between the PostFormat type and the post type */
   posts?: Maybe<PostFormatToPostConnection>;
-  /** The Yoast SEO data of the Formats taxonomy. */
+  /** The Yoast SEO data of the Форматы taxonomy. */
   seo?: Maybe<TaxonomySeo>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars['String']['output']>;
@@ -6352,7 +6375,7 @@ export type PostFormatToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -6441,7 +6464,7 @@ export type PostFormatToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -6953,7 +6976,7 @@ export type PostToRevisionConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -7248,13 +7271,13 @@ export type Previewable = {
 /** The reading setting type */
 export type ReadingSettings = {
   __typename?: 'ReadingSettings';
-  /** The ID of the page that should display the latest posts */
+  /** ID страницы, на которой должны отображаться последние записи */
   pageForPosts?: Maybe<Scalars['Int']['output']>;
-  /** The ID of the page that should be displayed on the front page */
+  /** ID страницы, которая должна отображаться на главной странице */
   pageOnFront?: Maybe<Scalars['Int']['output']>;
-  /** Blog pages show at most. */
+  /** Максимум страниц блога для показа. */
   postsPerPage?: Maybe<Scalars['Int']['output']>;
-  /** What to show on the front page */
+  /** Что показать на главной странице */
   showOnFront?: Maybe<Scalars['String']['output']>;
 };
 
@@ -8719,7 +8742,7 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -8827,7 +8850,7 @@ export type RootQueryToDressingConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -8970,7 +8993,7 @@ export type RootQueryToEquipmentConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9043,7 +9066,7 @@ export type RootQueryToEventConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9116,7 +9139,7 @@ export type RootQueryToJournalConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9189,7 +9212,7 @@ export type RootQueryToLoungeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9270,7 +9293,7 @@ export type RootQueryToMediaItemConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9443,7 +9466,7 @@ export type RootQueryToPageConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9516,7 +9539,7 @@ export type RootQueryToPartnerConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9589,7 +9612,7 @@ export type RootQueryToPavilionConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9723,7 +9746,7 @@ export type RootQueryToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -9891,7 +9914,7 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -10200,7 +10223,7 @@ export type RootQueryToUserConnectionWhereArgs = {
   nicenameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** An array of nicenames to exclude. Users matching one of these nicenames will not be included in results. */
   nicenameNotIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<UsersConnectionOrderbyInput>>>;
   /** An array of role names that users must match to be included in results. Note that this is an inclusive list: users must match *each* role. */
   role?: InputMaybe<UserRoleEnum>;
@@ -10639,7 +10662,7 @@ export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & Unif
   name?: Maybe<Scalars['String']['output']>;
   /** Connection between the Tag type and the post type */
   posts?: Maybe<TagToPostConnection>;
-  /** The Yoast SEO data of the Tags taxonomy. */
+  /** The Yoast SEO data of the Метки taxonomy. */
   seo?: Maybe<TaxonomySeo>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars['String']['output']>;
@@ -10799,7 +10822,7 @@ export type TagToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -10888,7 +10911,7 @@ export type TagToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -10934,6 +10957,8 @@ export type Taxonomy = Node & {
   __typename?: 'Taxonomy';
   /** List of Content Types associated with the Taxonomy */
   connectedContentTypes?: Maybe<TaxonomyToContentTypeConnection>;
+  /** List of Term Nodes associated with the Taxonomy */
+  connectedTerms?: Maybe<TaxonomyToTermNodeConnection>;
   /** Description of the taxonomy. This field is equivalent to WP_Taxonomy-&gt;description */
   description?: Maybe<Scalars['String']['output']>;
   /** The plural name of the post type within the GraphQL Schema. */
@@ -10952,7 +10977,7 @@ export type Taxonomy = Node & {
   name?: Maybe<Scalars['String']['output']>;
   /** Whether the taxonomy is publicly queryable */
   public?: Maybe<Scalars['Boolean']['output']>;
-  /** Name of content type to diplay in REST API &quot;wp/v2&quot; namespace. */
+  /** Name of content type to display in REST API &quot;wp/v2&quot; namespace. */
   restBase?: Maybe<Scalars['String']['output']>;
   /** The REST Controller class assigned to handling this content type. */
   restControllerClass?: Maybe<Scalars['String']['output']>;
@@ -10977,6 +11002,15 @@ export type Taxonomy = Node & {
 
 /** A taxonomy object */
 export type TaxonomyConnectedContentTypesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** A taxonomy object */
+export type TaxonomyConnectedTermsArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -11084,6 +11118,41 @@ export type TaxonomyToContentTypeConnectionEdge = ContentTypeConnectionEdge & Ed
 /** Page Info on the &quot;TaxonomyToContentTypeConnection&quot; */
 export type TaxonomyToContentTypeConnectionPageInfo = ContentTypeConnectionPageInfo & PageInfo & WpPageInfo & {
   __typename?: 'TaxonomyToContentTypeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+};
+
+/** Connection between the Taxonomy type and the TermNode type */
+export type TaxonomyToTermNodeConnection = Connection & TermNodeConnection & {
+  __typename?: 'TaxonomyToTermNodeConnection';
+  /** Edges for the TaxonomyToTermNodeConnection connection */
+  edges: Array<TaxonomyToTermNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<TermNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: TaxonomyToTermNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type TaxonomyToTermNodeConnectionEdge = Edge & TermNodeConnectionEdge & {
+  __typename?: 'TaxonomyToTermNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: TermNode;
+};
+
+/** Page Info on the &quot;TaxonomyToTermNodeConnection&quot; */
+export type TaxonomyToTermNodeConnectionPageInfo = PageInfo & TermNodeConnectionPageInfo & WpPageInfo & {
+  __typename?: 'TaxonomyToTermNodeConnectionPageInfo';
   /** When paginating forwards, the cursor to continue. */
   endCursor?: Maybe<Scalars['String']['output']>;
   /** When paginating forwards, are there more items? */
@@ -11806,41 +11875,41 @@ export type UpdatePostPayload = {
 export type UpdateSettingsInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Allow people to submit comments on new posts. */
+  /** Разрешить оставлять комментарии к новым записям. */
   discussionSettingsDefaultCommentStatus?: InputMaybe<Scalars['String']['input']>;
-  /** Allow link notifications from other blogs (pingbacks and trackbacks) on new articles. */
+  /** Разрешить ссылки оповещения с других блогов (уведомления и обратные ссылки) на новые статьи. */
   discussionSettingsDefaultPingStatus?: InputMaybe<Scalars['String']['input']>;
-  /** A date format for all date strings. */
+  /** Общий формат даты. */
   generalSettingsDateFormat?: InputMaybe<Scalars['String']['input']>;
-  /** Site tagline. */
+  /** Слоган сайта. */
   generalSettingsDescription?: InputMaybe<Scalars['String']['input']>;
-  /** This address is used for admin purposes, like new user notification. */
+  /** Этот адрес используется в целях администрирования. Например, для уведомления о новых пользователях. */
   generalSettingsEmail?: InputMaybe<Scalars['String']['input']>;
-  /** WordPress locale code. */
+  /** Код локали WordPress. */
   generalSettingsLanguage?: InputMaybe<Scalars['String']['input']>;
-  /** A day number of the week that the week should start on. */
+  /** Первый день недели. */
   generalSettingsStartOfWeek?: InputMaybe<Scalars['Int']['input']>;
-  /** A time format for all time strings. */
+  /** Общий формат времени. */
   generalSettingsTimeFormat?: InputMaybe<Scalars['String']['input']>;
-  /** A city in the same timezone as you. */
+  /** Город в той же временной зоне что и у вас. */
   generalSettingsTimezone?: InputMaybe<Scalars['String']['input']>;
-  /** Site title. */
+  /** Название сайта. */
   generalSettingsTitle?: InputMaybe<Scalars['String']['input']>;
-  /** Site URL. */
+  /** Адрес сайта (URL) */
   generalSettingsUrl?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the page that should display the latest posts */
+  /** ID страницы, на которой должны отображаться последние записи */
   readingSettingsPageForPosts?: InputMaybe<Scalars['Int']['input']>;
-  /** The ID of the page that should be displayed on the front page */
+  /** ID страницы, которая должна отображаться на главной странице */
   readingSettingsPageOnFront?: InputMaybe<Scalars['Int']['input']>;
-  /** Blog pages show at most. */
+  /** Максимум страниц блога для показа. */
   readingSettingsPostsPerPage?: InputMaybe<Scalars['Int']['input']>;
-  /** What to show on the front page */
+  /** Что показать на главной странице */
   readingSettingsShowOnFront?: InputMaybe<Scalars['String']['input']>;
-  /** Default post category. */
+  /** Рубрика для записей по умолчанию. */
   writingSettingsDefaultCategory?: InputMaybe<Scalars['Int']['input']>;
-  /** Default post format. */
+  /** Формат записей по умолчанию. */
   writingSettingsDefaultPostFormat?: InputMaybe<Scalars['String']['input']>;
-  /** Convert emoticons like :-) and :-P to graphics on display. */
+  /** Преобразовывать смайлики наподобие :-) и :-P в картинки при показе. */
   writingSettingsUseSmilies?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -11974,7 +12043,7 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   locale?: Maybe<Scalars['String']['output']>;
   /** Connection between the User type and the mediaItem type */
   mediaItems?: Maybe<UserToMediaItemConnection>;
-  /** Display name of the user. This is equivalent to the WP_User-&gt;dispaly_name property. */
+  /** Display name of the user. This is equivalent to the WP_User-&gt;display_name property. */
   name?: Maybe<Scalars['String']['output']>;
   /** The nicename for the user. This field is equivalent to WP_User-&gt;user_nicename */
   nicename?: Maybe<Scalars['String']['output']>;
@@ -12435,7 +12504,7 @@ export type UserToMediaItemConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -12516,7 +12585,7 @@ export type UserToPageConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -12605,7 +12674,7 @@ export type UserToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -12692,7 +12761,7 @@ export type UserToRevisionsConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']['input']>;
@@ -12806,10 +12875,10 @@ export type WpPageInfo = {
 /** The writing setting type */
 export type WritingSettings = {
   __typename?: 'WritingSettings';
-  /** Default post category. */
+  /** Рубрика для записей по умолчанию. */
   defaultCategory?: Maybe<Scalars['Int']['output']>;
-  /** Default post format. */
+  /** Формат записей по умолчанию. */
   defaultPostFormat?: Maybe<Scalars['String']['output']>;
-  /** Convert emoticons like :-) and :-P to graphics on display. */
+  /** Преобразовывать смайлики наподобие :-) и :-P в картинки при показе. */
   useSmilies?: Maybe<Scalars['Boolean']['output']>;
 };

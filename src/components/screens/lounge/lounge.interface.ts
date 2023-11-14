@@ -66,14 +66,3 @@ export interface ILoungeBottom {
 	properties: LoungeAcfSettings['layoutproperties']
 }
 
-export interface ILoungeProperty {
-	icon: LoungeLayoutAcfSettings['icon']
-	title: LoungeLayoutAcfSettings['title']
-	excerpt: LoungeLayoutAcfSettings['excerpt']
-	content: LoungeLayoutAcfSettings['content']
-}
-
-export interface ILoungeExampleSlider {
-	isBlockHidden: LoungeAcfSettings['isexamplehidden']
-	exampleSlider: LoungeAcfSettings['exampleslider']
-}

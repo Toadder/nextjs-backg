@@ -2,7 +2,7 @@
 
 .item {
 	@apply relative h-full overflow-hidden flex xl:p-9 p-7;
-	min-height: rem(500);
+	min-height: rem(440);
 
 	&::before {
 		content: '';

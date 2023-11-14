@@ -9,8 +9,14 @@ import { convertPhone } from '@/utils/data/convertPhone'
 import { IPavilionMainContent } from '../../pavilion.interface'
 
 import styles from './MainContent.module.scss'
+import Property from '@/components/ui/Property/Property'
 
-const MainContent: FC<IPavilionMainContent> = ({ title, content, phone }) => {
+const MainContent: FC<IPavilionMainContent> = ({
+	title,
+	content,
+	phone,
+	properties
+}) => {
 	if (!title?.length) return
 
 	return (
@@ -28,9 +34,24 @@ const MainContent: FC<IPavilionMainContent> = ({ title, content, phone }) => {
 					</PopupBtn>
 				</div>
 			</div>
+
 			<Description className={styles.description} htmlContent={content || ''} />
+
+			{properties?.length ? (
+				<div className={styles.properties}>
+					{properties?.map(property => (
+						<Property
+							key={property?.title}
+							icon={property?.icon}
+							title={property?.title}
+							excerpt={property?.excerpt}
+							content={property?.content}
+						/>
+					))}
+				</div>
+			) : null}
 		</div>
 	)
-}
+}ц
 
 export default MainContent

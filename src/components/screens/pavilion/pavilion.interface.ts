@@ -20,8 +20,11 @@ export interface IPavilionData
 		| 'ismainhidden'
 		| 'maintitle'
 		| 'maincontent'
+		| 'mainproperties'
 		| 'mainslider'
 		| 'mainlayout'
+		| 'isexamplehidden'
+		| 'exampleslider'
 		| 'issimilarloungeshidden'
 		| 'titlesimilarlounges'
 		| 'similarlounges'
@@ -44,6 +47,7 @@ export interface IPavilionMain {
 	isBlockHidden: PavilionAcfSettings['ismainhidden']
 	title: PavilionAcfSettings['maintitle']
 	content: PavilionAcfSettings['maincontent']
+	properties: PavilionAcfSettings['mainproperties']
 	slider: PavilionAcfSettings['mainslider']
 	layout: PavilionAcfSettings['mainlayout']
 }
@@ -61,6 +65,7 @@ export interface IPavilionMainContent {
 	phone: IGeneralSettings['phone']
 	title: PavilionAcfSettings['maintitle']
 	content: PavilionAcfSettings['maincontent']
+	properties: PavilionAcfSettings['mainproperties']
 }
 
 export interface IPavilionEquipment {

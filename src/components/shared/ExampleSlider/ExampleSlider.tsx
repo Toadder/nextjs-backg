@@ -11,12 +11,11 @@ import { Swiper as SwiperType } from 'swiper/types'
 import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer'
 import SliderArrow from '@/components/ui/SliderArrows/SliderArrow'
 
-import { ILoungeExampleSlider } from '../lounge.interface'
-
 import styles from './ExampleSlider.module.scss'
 import { INITIAL_SLIDES_PER_VIEW } from './example-slider.constant'
+import { IExampleSlider } from './example-slider.interface'
 
-const ExampleSlider: FC<ILoungeExampleSlider> = ({
+const ExampleSlider: FC<IExampleSlider> = ({
 	isBlockHidden,
 	exampleSlider
 }) => {
@@ -49,7 +48,7 @@ const ExampleSlider: FC<ILoungeExampleSlider> = ({
 						loop={true}
 						pagination={{
 							el: `.${styles.pagination}`,
-							clickable: false,
+							clickable: false
 						}}
 						autoplay={{
 							delay: 3000,

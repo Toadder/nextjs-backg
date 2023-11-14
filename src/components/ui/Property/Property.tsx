@@ -4,23 +4,17 @@ import cn from 'clsx'
 import Image from 'next/image'
 import { FC, useState } from 'react'
 
-import { ILoungeProperty } from '../../lounge.interface'
+import styles from './Property.module.scss'
+import { IProperty } from './property.interface'
 
-import styles from './MainBottom.module.scss'
-
-const MainProperty: FC<ILoungeProperty> = ({
-	icon,
-	title,
-	content,
-	excerpt
-}) => {
+const Property: FC<IProperty> = ({ icon, title, content, excerpt }) => {
 	const isFieldsExists: boolean =
 		!!icon?.sourceUrl?.length ||
 		!!title?.length ||
 		!!content?.length ||
 		!!excerpt?.length
 
-	if (!isFieldsExists) return
+	if (!isFieldsExists) returnц
 
 	const [isOpened, setIsOpened] = useState<boolean>(false)
 
@@ -53,4 +47,4 @@ const MainProperty: FC<ILoungeProperty> = ({
 	)
 }
 
-export default MainProperty
+export default Property

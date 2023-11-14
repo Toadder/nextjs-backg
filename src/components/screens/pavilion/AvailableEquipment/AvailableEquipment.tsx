@@ -16,29 +16,28 @@ const AvailableEquipment: FC<IPavilionEquipment> = ({
 
 	return (
 		<section className={styles.root}>
-			{title?.length ? (
-				<div className={styles.inner}>
+			<div className={styles.inner}>
+				{title?.length ? (
 					<Heading className={styles.title}>{title}</Heading>
+				) : null}
+				<div className={styles.items}>
+					{equipmentItems?.map(item => (
+						<EquipmentCard
+							key={item?.id}
+							image={item?.acfEquipmentFields?.image}
+							title={item?.title}
+							content={item?.acfEquipmentFields?.content}
+							contentAlignHorizontal={
+								item?.acfEquipmentFields?.contentalignhorizontal
+							}
+							contentAlignVertical={
+								item?.acfEquipmentFields?.contentalignvertical
+							}
+							label={item?.acfEquipmentFields?.label}
+							imageSizes="(max-width: 48em) 100vw, 50vw"
+						/>
+					))}
 				</div>
-			) : null}
-
-			<div className={styles.items}>
-				{equipmentItems?.map(item => (
-					<EquipmentCard
-						key={item?.id}
-						image={item?.acfEquipmentFields?.image}
-						title={item?.title}
-						content={item?.acfEquipmentFields?.content}
-						contentAlignHorizontal={
-							item?.acfEquipmentFields?.contentalignhorizontal
-						}
-						contentAlignVertical={
-							item?.acfEquipmentFields?.contentalignvertical
-						}
-						label={item?.acfEquipmentFields?.label}
-						imageSizes="(max-width: 48em) 100vw, (max-width: 80em) 50vw, calc(100vw / 3)"
-					/>
-				))}
 			</div>
 		</section>
 	)

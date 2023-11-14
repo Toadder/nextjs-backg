@@ -3,11 +3,11 @@ import { FC } from 'react'
 
 import Description from '@/components/ui/Description/Description'
 import FancyboxContainer from '@/components/ui/FancyboxContainer/FancyboxContainer'
+import Property from '@/components/ui/Property/Property'
 
 import { ILoungeBottom } from '../../lounge.interface'
 
 import styles from './MainBottom.module.scss'
-import MainContentProperty from './MainProperty'
 
 const MainBottom: FC<ILoungeBottom> = ({
 	isBlockHidden,
@@ -43,7 +43,7 @@ const MainBottom: FC<ILoungeBottom> = ({
 					{properties?.length ? (
 						<div className={styles.properties}>
 							{properties?.map(property => (
-								<MainContentProperty
+								<Property
 									key={property?.title}
 									icon={property?.icon}
 									title={property?.title}

@@ -10,6 +10,7 @@ const Main: FC<IPavilionMain> = ({
 	isBlockHidden,
 	title,
 	content,
+	properties,
 	slider,
 	layout,
 	phone
@@ -20,7 +21,7 @@ const Main: FC<IPavilionMain> = ({
 		<section className={styles.root}>
 			<div className={styles.inner}>
 				<MainMedia slider={slider} layout={layout} />
-				<MainContent title={title} content={content} phone={phone} />
+				<MainContent title={title} content={content} phone={phone} properties={properties} />
 			</div>
 		</section>
 	)

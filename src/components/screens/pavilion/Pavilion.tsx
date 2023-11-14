@@ -1,5 +1,6 @@
 import { FC, use } from 'react'
 
+import ExampleSlider from '@/components/shared/ExampleSlider/ExampleSlider'
 import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects'
 
 import AvailableEquipment from './AvailableEquipment/AvailableEquipment'
@@ -28,9 +29,14 @@ const Pavilion: FC<{ slug: string }> = ({ slug }) => {
 				isBlockHidden={pavilionData?.ismainhidden}
 				title={pavilionData?.maintitle}
 				content={pavilionData?.maincontent}
+				properties={pavilionData?.mainproperties}
 				slider={pavilionData?.mainslider}
 				layout={pavilionData?.mainlayout}
 				phone={generalSettings?.phone}
+			/>
+			<ExampleSlider
+				isBlockHidden={pavilionData?.isexamplehidden}
+				exampleSlider={pavilionData?.exampleslider}
 			/>
 			<SimilarObjects
 				isBlockHidden={pavilionData?.issimilarloungeshidden}

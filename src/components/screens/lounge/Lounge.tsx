@@ -5,7 +5,8 @@ import Booking from '@/components/shared/Booking/Booking'
 import RentalWidget from '@/components/shared/RentalWidget/RentalWidget'
 import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects'
 
-import ExampleSlider from './ExampleSlider/ExampleSlider'
+import ExampleSlider from '../../shared/ExampleSlider/ExampleSlider'
+
 import Main from './Main/Main'
 import loungeService from './lounge.service'
 
