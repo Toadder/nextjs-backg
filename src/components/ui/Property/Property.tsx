@@ -14,7 +14,7 @@ const Property: FC<IProperty> = ({ icon, title, content, excerpt }) => {
 		!!content?.length ||
 		!!excerpt?.length
 
-	if (!isFieldsExists) returnц
+	if (!isFieldsExists) return
 
 	const [isOpened, setIsOpened] = useState<boolean>(false)
 
