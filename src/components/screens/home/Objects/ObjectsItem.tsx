@@ -12,11 +12,16 @@ const ObjectItem: FC<IObjectItem> = ({
 	title,
 	excerpt,
 	link,
-	label
+	label,
+	count
 }) => {
-	const isWide: boolean = index % 5 === 0 || index % 5 === 1
+	let isWide: boolean = index % 5 === 0 || index % 5 === 1
 	const desktopImageSizes: string = isWide ? '37.5rem' : '25rem'
 	const imageSizes = `(max-width: 48em) 100vw, (max-width: 64em) 50vw, ${desktopImageSizes}`
+
+	if (count % 5 == 3) {
+		if (index >= count - 3 && index <= count - 1) isWide = false
+	}
 
 	return (
 		<div

@@ -15,6 +15,7 @@ export interface IObjectsData extends Array<IObject> {}
 
 export interface IObjectItem extends IObject {
 	index: number
+	count: number
 }
 
 export interface IObjectsQuery {

@@ -21,7 +21,7 @@ const Objects: FC<IObjectsQuery> = ({ objectsQuery, page }) => {
 		<div className={styles.root}>
 			<div className={styles.inner}>
 				{objectsData?.map((object, i) => (
-					<ObjectItem key={object?.id} index={i} {...object} />
+					<ObjectItem key={object?.id} count={objectsData?.length} index={i} {...object} />
 				))}
 			</div>
 		</div>
