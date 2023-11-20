@@ -78,6 +78,10 @@ body {
 	@apply md:float-right md:ml-5 md:mr-0 mx-auto;
 }
 
+.alignnone {
+	@apply md:mx-0 mx-auto;
+}
+
 .wp-video {
 	width: auto !important;
 

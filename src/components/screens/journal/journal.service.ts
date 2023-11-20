@@ -88,14 +88,12 @@ class JournalService {
 			(acc, { node }) => (node.__typename === 'Journal' ? acc + 1 : acc),
 			0
 		)
-		const isNextArticlesExist: boolean = hasArticleNextPage
-			? hasArticleNextPage
-			: includedArticlesQty < ARTICLES_TO_LOAD && hasArticleNextPage
+		const isNextArticlesExist: boolean =
+			hasArticleNextPage || includedArticlesQty < articlesData?.edges?.length
 
-		const includedEventsQty: number = ARTICLES_TO_LOAD - includedArticlesQty
-		const isNextEventsExist: boolean = hasEventNextPage
-			? hasEventNextPage
-			: includedEventsQty < ARTICLES_TO_LOAD && hasEventNextPage
+		const includedEventsQty: number = sortedItems.length - includedArticlesQty
+		const isNextEventsExist: boolean =
+			hasEventNextPage || includedEventsQty < eventsData?.edges?.length
 
 		// Find cursors of last article and event
 		const lastIncludedArticle = sortedItems.findLast(

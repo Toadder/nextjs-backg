@@ -29,16 +29,12 @@ const Journal: FC<IJournal> = ({
 
 	const [articles, setArticles] = useState<IJournalNode[]>(items)
 
-	const [lastArticleCursor, setLastArticleCursor] = useState<string | null>(
-		articleCursor
-	)
-	const [lastEventCursor, setLastEventCursor] = useState<string | null>(
-		eventCursor
-	)
-
 	const [isNextArticles, setIsNextArticles] =
 		useState<boolean>(isNextArticlesExist)
 	const [isNextEvents, setIsNextEvents] = useState<boolean>(isNextEventsExist)
+
+	const lastArticleCursorRef = useRef<string | null>(articleCursor)
+	const lastEventCursorRef = useRef<string | null>(eventCursor)
 	// /Infinite scroll
 
 	// Filters
@@ -67,11 +63,11 @@ const Journal: FC<IJournal> = ({
 
 			setArticles(items)
 
-			setLastArticleCursor(articleCursor)
-			setLastEventCursor(eventCursor)
-
 			setIsNextArticles(isNextArticlesExist)
 			setIsNextEvents(isNextEventsExist)
+
+			lastArticleCursorRef.current = articleCursor
+			lastEventCursorRef.current = eventCursor
 		} catch (error) {
 			console.error(error)
 			alert('При загрузке данных произошла ошибка...')
@@ -91,7 +87,11 @@ const Journal: FC<IJournal> = ({
 			setIsLoading(true)
 
 			journalService
-				.getData(currentFilter, lastArticleCursor, lastEventCursor)
+				.getData(
+					currentFilter,
+					lastArticleCursorRef.current,
+					lastEventCursorRef.current
+				)
 				.then(data => {
 					const {
 						error,
@@ -106,11 +106,11 @@ const Journal: FC<IJournal> = ({
 
 					setArticles(prevData => [...prevData, ...items])
 
-					setLastArticleCursor(articleCursor)
-					setLastEventCursor(eventCursor)
-
 					setIsNextArticles(isNextArticlesExist)
 					setIsNextEvents(isNextEventsExist)
+
+					lastArticleCursorRef.current = articleCursor
+					lastEventCursorRef.current = eventCursor
 				})
 				.catch(error => {
 					console.error(error)

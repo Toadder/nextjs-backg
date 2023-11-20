@@ -28,7 +28,6 @@
 			"@/config/*": ["config/*"],
 			"@/hooks/*": ["hooks/*"],
 			"@/hoc/*": ["hoc/*"],
-			"@/services/*": ["services/*"],
 			"@/shared/*": ["shared/*"],
 			"@/store/*": ["store/*"],
 			"@/utils/*": ["utils/*"],
