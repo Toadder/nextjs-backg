@@ -7,17 +7,18 @@ import { type PropsWithChildren, use } from 'react'
 import AnalyticLoader from '@/components/layout/AnalyticLoader/AnalyticLoader'
 import Footer from '@/components/layout/Footer/Footer'
 import Header from '@/components/layout/Header/Header'
-import Layout from '@/components/layout/Layout'
+import LayoutProvider from '@/components/layout/LayoutProvider'
 import { TCooperationDestination } from '@/components/layout/Popups/BecomePartner/become-partner.interface'
 import Popups from '@/components/layout/Popups/Popups'
 
 import { IAllSettings, IFavicon } from '@/shared/types/next.types'
 
+import layoutService from '@/services/layout.service'
+
 import '@/assets/styles/globals.scss'
 
 import client from '@/config/apollo/client'
 import { GET_LAYOUT_METADATA } from '@/config/apollo/queries/get-layout-metadata'
-import layoutService from '@/services/layout.service'
 
 /* =>> FONTS <<= */
 const mullerNarrow = localFont({
@@ -78,7 +79,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html lang="ru">
 			<body className={`${openSans.variable} ${mullerNarrow.variable}`}>
-				<Layout>
+				<LayoutProvider>
 					<Header data={headerData} />
 					<main className="main">{children}</main>
 					<Footer data={footerData} />
@@ -90,7 +91,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
 							popupsData?.cooperationdestination as TCooperationDestination
 						}
 					/>
-				</Layout>
+				</LayoutProvider>
 
 				{loungeWidget?.length ? (
 					<Script src={loungeWidget} strategy="lazyOnload" id="aeWidgetBtn" />

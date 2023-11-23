@@ -9,7 +9,7 @@ import { FC, ReactNode } from 'react'
 
 import client from '@/config/apollo/client'
 
-const Layout: FC<{ children: ReactNode }> = ({ children }) => {
+const LayoutProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
 		<ApolloProvider client={client}>
 			<YMaps>
@@ -25,4 +25,4 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 	)
 }
 
-export default Layout
+export default LayoutProvider
