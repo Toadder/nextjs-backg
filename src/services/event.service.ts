@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation'
 
+import { IEventData } from '@/components/screens/event/event.interface'
+
+import { IGeneralSettings } from '@/shared/types/general.types'
+
 import client from '@/config/apollo/client'
 import { GET_EVENT_DATA } from '@/config/apollo/queries/get-event-data'
-
-import { IEventData } from './event.interface'
-import { IGeneralSettings } from '@/shared/types/general.types'
 
 class EventService {
 	async getData(slug: string) {

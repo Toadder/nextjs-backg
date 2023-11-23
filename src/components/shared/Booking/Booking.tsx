@@ -3,8 +3,9 @@ import { FC, use } from 'react'
 
 import Heading from '@/components/ui/Heading/Heading'
 
+import bookingService from '@/services/booking.service'
+
 import styles from './Booking.module.scss'
-import bookingService from './booking.service'
 import { pagesUri } from '@/constants/pages'
 
 const Booking: FC = () => {

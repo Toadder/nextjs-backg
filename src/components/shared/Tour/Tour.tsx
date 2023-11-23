@@ -3,8 +3,9 @@ import { FC, use } from 'react'
 
 import FontAwesomeIcon from '@/components/ui/Icons/FontAwesomeIcon'
 
+import tourService from '@/services/tour.service'
+
 import styles from './Tour.module.scss'
-import tourService from './tour.service'
 
 const Tour: FC = () => {
 	const { error, tourData } = use(tourService.getData())

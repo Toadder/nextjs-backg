@@ -5,7 +5,7 @@ import {
 	IPartnersData,
 	IPartnersGetDataResponse,
 	IPartnersNode
-} from './partners.interface'
+} from '@/components/screens/partners/partners.interface'
 
 class PartnersService {
 	async getData(): Promise<IPartnersGetDataResponse> {

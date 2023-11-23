@@ -10,7 +10,6 @@ import Header from '@/components/layout/Header/Header'
 import Layout from '@/components/layout/Layout'
 import { TCooperationDestination } from '@/components/layout/Popups/BecomePartner/become-partner.interface'
 import Popups from '@/components/layout/Popups/Popups'
-import layoutService from '@/components/layout/layout.service'
 
 import { IAllSettings, IFavicon } from '@/shared/types/next.types'
 
@@ -18,6 +17,7 @@ import '@/assets/styles/globals.scss'
 
 import client from '@/config/apollo/client'
 import { GET_LAYOUT_METADATA } from '@/config/apollo/queries/get-layout-metadata'
+import layoutService from '@/services/layout.service'
 
 /* =>> FONTS <<= */
 const mullerNarrow = localFont({

@@ -1,9 +1,10 @@
 import { FC, use } from 'react'
 
+import communicationService from '@/services/communication.service'
+
 import styles from './Communication.module.scss'
 import CommunicationGroups from './CommunicationGroups'
 import CommunicationMain from './CommunicationMain'
-import communicationService from './communication.service'
 
 const Communication: FC = () => {
 	const { error, communicationData } = use(communicationService.getData())

@@ -1,8 +1,9 @@
 import { FC, use } from 'react'
 
+import benefitsService from '@/services/benefits.service'
+
 import styles from './Benefits.module.scss'
 import BenefitsItem from './BenefitsItem'
-import benefitsService from './benefits.service'
 
 const Benefits: FC = () => {
 	const { error, benefitsData } = use(benefitsService.getData())

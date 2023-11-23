@@ -6,8 +6,8 @@ import Spinner from '@/components/ui/Spinner/Spinner'
 
 import { IComment } from '@/shared/types/general.types'
 
+import articleService from '../../../../../services/article.service'
 import { IArticleCommentsItems } from '../../article.interface'
-import articleService from '../../article.service'
 
 import CommentsItem from './CommentsItem'
 import styles from './CommentsItems.module.scss'

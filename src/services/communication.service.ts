@@ -4,7 +4,7 @@ import { GET_CONTACTS_DATA } from '@/config/apollo/queries/get-contacts-data'
 import {
 	ICommunicationData,
 	ICommunicationGetDataResponse
-} from './communication.interface'
+} from '@/components/screens/contacts/Communication/communication.interface'
 
 class CommunicationService {
 	async getData(): Promise<ICommunicationGetDataResponse> {

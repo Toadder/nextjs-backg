@@ -1,8 +1,9 @@
 import { FC, use } from 'react'
 
+import equipmentService from '@/services/equipment.service'
+
 import styles from './Equipment.module.scss'
 import EquipmentItem from './EquipmentItem'
-import equipmentService from './equipment.service'
 
 const Equipment: FC = () => {
 	const { error, equipmentData } = use(equipmentService.getData())

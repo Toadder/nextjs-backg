@@ -1,9 +1,10 @@
 import { FC, use } from 'react'
 
+import articleService from '@/services/article.service'
+
 import Comments from './Comments/Comments'
 import Items from './Items/Items'
 import Main from './Main/Main'
-import articleService from './article.service'
 
 const Article: FC<{ slug: string }> = ({ slug }) => {
 	const {

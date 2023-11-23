@@ -2,7 +2,8 @@ import { Metadata, NextPage } from 'next'
 import { use } from 'react'
 
 import Partners from '@/components/screens/partners/Partners'
-import partnersService from '@/components/screens/partners/partners.service'
+
+import partnersService from '@/services/partners.service'
 
 import { getMetadata } from '@/utils/seo/getMetadata'
 

@@ -1,3 +1,11 @@
+import { ARTICLES_TO_LOAD } from '@/components/screens/journal/journal.constant'
+import {
+	IJournalData,
+	IJournalGetDataResponse,
+	IJournalNode,
+	TFilterValue
+} from '@/components/screens/journal/journal.interface'
+
 import { compareByDate } from '@/utils/data/compareByDate'
 
 import client from '@/config/apollo/client'
@@ -6,14 +14,6 @@ import {
 	GET_EVENTS_DATA,
 	GET_JOURNAL_DATA
 } from '@/config/apollo/queries/get-journal-data'
-
-import { ARTICLES_TO_LOAD } from './journal.constant'
-import {
-	IJournalData,
-	IJournalGetDataResponse,
-	IJournalNode,
-	TFilterValue
-} from './journal.interface'
 
 class JournalService {
 	async getData(

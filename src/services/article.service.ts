@@ -1,14 +1,17 @@
 import { notFound } from 'next/navigation'
 
-import client from '@/config/apollo/client'
-import { GET_ARTICLE_DATA } from '@/config/apollo/queries/get-article-data'
-
-import { ARTICLES_TO_LOAD, COMMENTS_TO_SHOW } from './article.constant'
+import {
+	ARTICLES_TO_LOAD,
+	COMMENTS_TO_SHOW
+} from '@/components/screens/article/article.constant'
 import {
 	IArticleData,
 	IArticleGetDataResponse,
 	IArticleNode
-} from './article.interface'
+} from '@/components/screens/article/article.interface'
+
+import client from '@/config/apollo/client'
+import { GET_ARTICLE_DATA } from '@/config/apollo/queries/get-article-data'
 
 class ArticleService {
 	async getData(

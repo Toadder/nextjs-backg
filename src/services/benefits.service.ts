@@ -1,7 +1,10 @@
+import {
+	IBenefitData,
+	IBenefitGetDataResponse
+} from '@/components/shared/Benefits/benefits.interface'
+
 import client from '@/config/apollo/client'
 import { GET_BENEFITS_DATA } from '@/config/apollo/queries/get-benefits-data'
-
-import { IBenefitData, IBenefitGetDataResponse } from './benefits.interface'
 
 class BenefitsService {
 	async getData(): Promise<IBenefitGetDataResponse> {

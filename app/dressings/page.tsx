@@ -2,7 +2,8 @@ import { Metadata } from 'next'
 import { use } from 'react'
 
 import Dressings from '@/components/screens/dressings/Dressings'
-import dressingsService from '@/components/screens/dressings/dressings.service'
+
+import dressingsService from '@/services/dressings.service'
 
 import { getMetadata } from '@/utils/seo/getMetadata'
 

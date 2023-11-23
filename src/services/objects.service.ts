@@ -13,7 +13,7 @@ import {
 	IObjectsData,
 	IObjectsGetDataResponse,
 	TPages
-} from './objects.interface'
+} from '@/components/screens/home/Objects/objects.interface'
 
 class ObjectsService {
 	async getData(

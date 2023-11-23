@@ -3,11 +3,12 @@ import { FC, use } from 'react'
 import ExampleSlider from '@/components/shared/ExampleSlider/ExampleSlider'
 import SimilarObjects from '@/components/shared/SimilarLounges/SimilarObjects'
 
+import pavilionService from '@/services/pavilion.service'
+
 import AvailableEquipment from './AvailableEquipment/AvailableEquipment'
 import BenefitSlider from './BenefitSlider/BenefitSlider'
 import Main from './Main/Main'
 import Rates from './Rates/Rates'
-import pavilionService from './pavilion.service'
 
 const Pavilion: FC<{ slug: string }> = ({ slug }) => {
 	const { error, generalSettings, pavilionData } = use(

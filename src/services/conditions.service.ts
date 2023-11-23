@@ -6,7 +6,7 @@ import { GET_CONDITIONS_DATA } from '@/config/apollo/queries/get-conditions-data
 import {
 	IConditionsData,
 	IConditionsGetDataResponse
-} from './conditions.interface'
+} from '@/components/screens/conditions/conditions.interface'
 
 class ConditionsService {
 	async getData(): Promise<IConditionsGetDataResponse> {

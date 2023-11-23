@@ -6,7 +6,7 @@ import {
 	IDressingsGetDataResponse,
 	IDressingsItem,
 	IDressingsNode
-} from './dressings.interface'
+} from '@/components/screens/dressings/dressings.interface'
 
 class DressingsService {
 	async getData(): Promise<IDressingsGetDataResponse> {

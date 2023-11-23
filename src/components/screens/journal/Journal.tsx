@@ -5,12 +5,13 @@ import { FC, useEffect, useRef, useState } from 'react'
 
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
+import journalService from '@/services/journal.service'
+
 import styles from './Journal.module.scss'
 import JournalFilters from './JournalFilters'
 import JournalGrid from './JournalGrid'
 import JournalLoaders from './JournalLoaders/JournalLoaders'
 import { IJournal, IJournalNode, TFilterValue } from './journal.interface'
-import journalService from './journal.service'
 
 const Journal: FC<IJournal> = ({
 	items,

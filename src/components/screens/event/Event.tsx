@@ -1,5 +1,7 @@
 import { FC, use } from 'react'
 
+import eventService from '@/services/event.service'
+
 import Content from './Content/Content'
 import Examples from './Examples/Examples'
 import Intro from './Intro/Intro'
@@ -7,7 +9,6 @@ import Place from './Place/Place'
 import Speaker from './Speaker/Speaker'
 import Themes from './Themes/Themes'
 import Waiting from './Waiting/Waiting'
-import eventService from './event.service'
 
 const Event: FC<{ slug: string }> = ({ slug }) => {
 	const { error, generalSettings, eventData, eventWidget } = use(

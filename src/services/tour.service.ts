@@ -1,7 +1,10 @@
 import client from '@/config/apollo/client'
 import { GET_TOUR_DATA } from '@/config/apollo/queries/get-tour-data'
 
-import { ITourData, ITourGetDataResponse } from './tour.interface'
+import {
+	ITourData,
+	ITourGetDataResponse
+} from '@/components/shared/Tour/tour.interface'
 
 class TourService {
 	async getData(): Promise<ITourGetDataResponse> {

@@ -2,7 +2,8 @@ import { Metadata, NextPage } from 'next'
 import { use } from 'react'
 
 import Journal from '@/components/screens/journal/Journal'
-import journalService from '@/components/screens/journal/journal.service'
+
+import journalService from '@/services/journal.service'
 
 import { getMetadata } from '@/utils/seo/getMetadata'
 

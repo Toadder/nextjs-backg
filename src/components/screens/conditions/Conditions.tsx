@@ -1,7 +1,8 @@
 import { FC, use } from 'react'
 
+import conditionsService from '@/services/conditions.service'
+
 import styles from './Conditions.module.scss'
-import conditionsService from './conditions.service'
 
 const Conditions: FC = () => {
 	const { error, generalSettings, conditionsData } = use(
