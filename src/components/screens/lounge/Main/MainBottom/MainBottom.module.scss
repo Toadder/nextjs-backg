@@ -17,7 +17,7 @@
 	}
 
 	.info {
-		@apply lg:space-y-6 md:space-y-5 space-y-3;
+		@apply lg:space-y-6 md:space-y-5 space-y-3 w-full;
 		flex: 1 1 rem(580);
 
 		@media (max-width: $xl) {

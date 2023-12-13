@@ -29,15 +29,14 @@ export const getMetadata = async (path: string): Promise<Metadata> => {
 		description: metadata?.metaDesc,
 		keywords: metadata?.focuskw,
 		robots: `${metadata?.metaRobotsNoindex}, ${metadata?.metaRobotsNofollow}`,
-		metadataBase: new URL(process.env.SITE_URL || 'http://localhost:3000'),
+		metadataBase: new URL(process.env.SITE_URL as string),
 		alternates: { canonical: path },
 		openGraph: {
 			title: metadata?.opengraphTitle || '',
 			siteName: metadata?.opengraphTitle || '',
 			description: metadata?.opengraphDescription || '',
-			images: metadata?.opengraphImage?.sourceUrl || '',
-			url: metadata?.opengraphUrl || '',
-			type: (metadata?.opengraphType as any) || 'article'
+			url: path,
+			type: metadata?.opengraphType as any
 		}
 	}
 }

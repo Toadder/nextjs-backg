@@ -1,0 +1,41 @@
+@import '@/assets/styles/vars.scss';
+
+.announcement {
+	@apply block bg-orange;
+
+	height: rem(156);
+
+	@media (max-width: $xl) {
+		height: rem(144);
+	}
+
+	@media (max-width: $lg) {
+		height: rem(128);
+	}
+
+	@media (max-width: $md) {
+		height: rem(96);
+	}
+
+	.img {
+		@apply object-contain w-full;
+
+		width: rem(278);
+		height: rem(156);
+
+		@media (max-width: $xl) {
+			width: rem(256);
+			height: rem(144);
+		}
+
+		@media (max-width: $lg) {
+			width: rem(228);
+			height: rem(128);
+		}
+
+		@media (max-width: $md) {
+			width: rem(171);
+			height: rem(96);
+		}
+	}
+}

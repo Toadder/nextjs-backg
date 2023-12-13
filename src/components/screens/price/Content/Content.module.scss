@@ -1,0 +1,45 @@
+@import '@/assets/styles/vars.scss';
+
+.root {
+	@apply md:pt-7 pt-6 px-4 mx-auto md:space-y-7 space-y-6;
+	max-width: rem(712);
+
+	.content {
+		@apply md:space-y-5 space-y-4 text-lg text-justify;
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			@apply font-semibold md:text-3xl text-2xl;
+			margin-bottom: rem(-15);
+
+			@media (max-width: $md) {
+				margin-bottom: rem(-10);
+			}
+		}
+
+		ul,
+		ol {
+			@apply pl-4 space-y-1;
+		}
+
+		ul {
+			@apply list-disc;
+		}
+
+		ol {
+			@apply list-decimal;
+		}
+
+		a {
+			@apply text-orange underline;
+		}
+	}
+
+	.btn {
+		@apply btn-secondary md:inline-block block relative left-1/2 -translate-x-1/2;
+	}
+}
